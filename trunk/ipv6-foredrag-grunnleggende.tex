@@ -74,14 +74,14 @@
   \pause
   \begin{itemize}[<+->]
   \item En lag-3-protokoll ment å erstatte IPv4
-  \item Eksistert siden desember 1995, \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
-  \item Enkel grunnheader
-  \item Flere utvidelsesheadere
+  \item Har eksistert siden desember 1995, \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
+  \item Enkel grunnheader med fast lengde
+  \item Flere utvidelsesheadere, riktig rekkefølge er viktig
   \item 128-bit adresser
   \item Ny versjon av ICMP: ICMPv6
   \item ARP og RARP for IPv6 er en del av ICMPv6
     \begin{itemize}[<+->]
-    \item Ikke nødvendig med ekstra lim mellom adressene i lagene 2 og 3
+    \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
     \end{itemize}
   \item Ny versjon av DHCP: DHCPv6
   \item Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6
@@ -96,9 +96,9 @@
   \item Totalt antall IPv6-adresser:
   \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
   \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
-  \item $2^{125}=42.535.295.865.117.307.932.921.825.928.971.026.432$
+  \item $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
   \item Fortsatt mye mer enn det fullstendige IPv4-adresserommet:
-  \item $2^{32}=4.294.967.296$
+  \item $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
   \item Bare $3.702.258.688$ IPv4-adresser kan bli brukt som offentlige IPv4-unicast-adresser
   \item Se Tronds utregning fra 2012:
     \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
@@ -111,17 +111,17 @@
   \framesubtitle{Hvorfor trenger vi IPv6?}
   \pause
   \begin{itemize}[<+->]
-  \item Verden går tom for offentlige IPv4-adresser:
-      \item \href{http://www.iana.org/}{IANA} gikk tom i \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{februar 2011}
-      \begin{itemize}[<+->]
-        \item \href{http://www.apnic.net/}{APNIC} gikk tom i \href{http://www.apnic.net/community/ipv4-exhaustion/graphical-information}{april 2011}
-        \item \href{http://www.ripe.net/}{RIPE} gikk tom i \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september 2012}
-        \item Dersom disse oppfører seg pent:
-          \begin{itemize}
-            \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC} kan holde på til \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni 2014}
-            \item \href{https://www.arin.net/}{ARIN} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
-            \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
-        \end{itemize}
+  \item Verden går tom for offentlige IPv4-adresser
+  \item \href{http://www.iana.org/}{IANA} gikk tom i \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{februar 2011}
+    \begin{itemize}[<+->]
+    \item \href{http://www.apnic.net/}{APNIC} gikk tom i \href{http://www.apnic.net/community/ipv4-exhaustion/graphical-information}{april 2011}
+    \item \href{http://www.ripe.net/}{RIPE} gikk tom i \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september 2012}
+    \item Dersom disse oppfører seg pent:
+      \begin{itemize}
+      \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC} kan holde på til \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni 2014}
+      \item \href{https://www.arin.net/}{ARIN} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
+      \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
+      \end{itemize}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -138,13 +138,15 @@
     støttebandasje
     \begin{itemize}[<+->]
     \item Glem det
-    \item Ende-til-ende-konnektivitet blir best oppnådd uten noen former for adresseoversettelse
+    \item Ende-til-ende-konnektivitet blir best oppnådd uten noen
+      former for adresseoversettelse
     \end{itemize}
   \item Hierarkisk adressestruktur
   \item Enklere planlegging av subnett sammenlignet med IPv4
     \begin{itemize}[<+->]
     \item De fleste IPv6-subnett bruker et 64-bit prefiks
-    \item Dette er ikke absolutt
+    \item Fast prefikslengde på 64 bit er ikke et absolutt krav
+    \item Autokonfigurasjon \textit{krever\/} 64-bit prefiks
     \end{itemize}
   \item Kortere rutingtabeller
   \end{itemize}
@@ -176,7 +178,51 @@
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item 1994: Ble tildelt \texttt{128.39.174.0/24} av Uninett
+  \item 1.~juni 2005: Ny IT-ansvarlig, yours truly
+  \item Høsten 2005: Fikk reservert IPv4-serien
+    \texttt{128.39.172.0/23}
+  \item Påska 2006: Fikk reservert IPv6-serien
+    \texttt{2001:700:1100::/48}
+  \item Før og etter pinsehelga 2006: Fiberlinjer fra serverrommet og
+    til sentralt punkt i hver etasje i hovedetasjen
+  \item Sommeren 2006: Nytt Cisco-gear som Catalyst 3560G og 2960
+    \begin{itemize}[<+->]
+    \item \texttt{128.39.174.0/24} ble brukt til servernett og
+      ansattnett, m.m.
+    \item \texttt{128.39.172.0/24} ble brukt til datalab
+    \item \texttt{128.39.173.0/24} ble brukt til klienter på trådløst
+      studentnett
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{IPv6 ved Fagskolen Innlandet}
+  \pause
+  \begin{itemize}[<+->]
+  \item 6.~september 2006: IPv6-linknettet
+    \texttt{2001:700:0:11D::/64} ble aktivert mellom HiG/Uninett og
+    FSI
+    \begin{itemize}[<+->]
+    \item \texttt{2001:700:0:11D::1/64} brukes hos HiG
+    \item \texttt{2001:700:0:11D::2/64} brukes hos FSI
+    \end{itemize}
+  \item Samme dag ble IPv6-subnett innført for FSI-VLAN-ene 20, 30, 70 og 80.
+    \begin{itemize}[<+->]
+    \item FSI-VLAN 20: \texttt{2001:700:1100:1::/64}
+    \item FSI-VLAN 30: \texttt{2001:700:1100:2::/64}
+    \item FSI-VLAN 70: \texttt{2001:700:1100:3::/64}
+    \item FSI-VLAN 80: \texttt{2001:700:1100:4::/64}
+    \end{itemize}
+  \item Høsten 2010: Enda en IPv4-serie ble innført: \texttt{128.39.194.0/24}
+    \begin{itemize}[<+->]
+    \item \texttt{128.39.172.0/23} brukes til klienter på trådløst
+      studentnett
+    \item \texttt{128.39.194.0/24} brukes til datalab etter samme
+      mønster som for \texttt{128.39.172.0/24}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
