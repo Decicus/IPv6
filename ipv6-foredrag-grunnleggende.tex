@@ -51,7 +51,258 @@
 
 \section*{Oversikt}
 \begin{frame}
+  \begin{itemize}
+  \item Filene til foredraget er tilgjengelig gjennom:
+    \begin{itemize}
+    \item Subversion: \texttt{svn co \textbackslash\ svn://svn.ximalas.info/ipv6-foredrag-grunnleggende}
+    \item Web: \texttt{\url{http://svnweb.ximalas.info/viewvc.cgi/ipv6-foredrag-grunnleggende/}}
+    \end{itemize}
+  \item Hovedfila bærer denne identifikasjonen:\\
+    \texttt{\$${}$Ximalas${}$\$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \tableofcontents
+\end{frame}
+
+\section{Kort om IPv6}
+\subsection{Hva er IPv6?}
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hva er IPv6?}
+  \pause
+  \begin{itemize}[<+->]
+  \item En lag-3-protokoll ment å erstatte IPv4
+  \item Eksistert siden desember 1995, \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
+  \item Enkel grunnheader
+  \item Flere utvidelsesheadere
+  \item 128-bit adresser
+  \item Ny versjon av ICMP: ICMPv6
+  \item ARP og RARP for IPv6 er en del av ICMPv6
+    \begin{itemize}[<+->]
+    \item Ikke nødvendig med ekstra lim mellom adressene i lagene 2 og 3
+    \end{itemize}
+  \item Ny versjon av DHCP: DHCPv6
+  \item Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hva er IPv6?}
+  \pause
+  \begin{itemize}[<+->]
+  \item Totalt antall IPv6-adresser:
+  \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
+  \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
+  \item $2^{125}=42.535.295.865.117.307.932.921.825.928.971.026.432$
+  \item Fortsatt mye mer enn det fullstendige IPv4-adresserommet:
+  \item $2^{32}=4.294.967.296$
+  \item Bare $3.702.258.688$ IPv4-adresser kan bli brukt som offentlige IPv4-unicast-adresser
+  \item Se Tronds utregning fra 2012:
+    \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
+  \end{itemize}
+\end{frame}
+
+\subsection{Hvorfor trenger vi IPv6?}
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hvorfor trenger vi IPv6?}
+  \pause
+  \begin{itemize}[<+->]
+  \item Verden går tom for offentlige IPv4-adresser:
+      \item \href{http://www.iana.org/}{IANA} gikk tom i \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{februar 2011}
+      \begin{itemize}[<+->]
+        \item \href{http://www.apnic.net/}{APNIC} gikk tom i \href{http://www.apnic.net/community/ipv4-exhaustion/graphical-information}{april 2011}
+        \item \href{http://www.ripe.net/}{RIPE} gikk tom i \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september 2012}
+        \item Dersom disse oppfører seg pent:
+          \begin{itemize}
+            \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC} kan holde på til \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni 2014}
+            \item \href{https://www.arin.net/}{ARIN} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
+            \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
+        \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hvorfor trenger vi IPv6?}
+  \pause
+  \begin{itemize}[<+->]
+  \item NAT (\href{http://tools.ietf.org/html/rfc2663}{RFC~2663}), CGN
+    (\href{http://tools.ietf.org/html/rfc6264}{RFC~6264}) og Shared
+    Address Space
+    (\href{http://tools.ietf.org/html/rfc6598}{RFC~6598}) er bare
+    støttebandasje
+    \begin{itemize}[<+->]
+    \item Glem det
+    \item Ende-til-ende-konnektivitet blir best oppnådd uten noen former for adresseoversettelse
+    \end{itemize}
+  \item Hierarkisk adressestruktur
+  \item Enklere planlegging av subnett sammenlignet med IPv4
+    \begin{itemize}[<+->]
+    \item De fleste IPv6-subnett bruker et 64-bit prefiks
+    \item Dette er ikke absolutt
+    \end{itemize}
+  \item Kortere rutingtabeller
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hvorfor trenger vi IPv6?}
+  \pause
+  \begin{itemize}[<+->]
+  \item Uninett annonserer disse IPv4-subnettene med BGP:
+  \item \texttt{78.91.0.0/16},\hfill\texttt{128.39.0.0/16},
+      \hfill\texttt{129.177.0.0/16},\hfill\texttt{129.240.0.0/15},
+      \hfill\texttt{129.242.0.0/16},\hfill\texttt{144.164.0.0/16},
+      \hfill\texttt{151.157.0.0/16},\hfill\texttt{152.94.0.0/16},
+      \hfill\texttt{156.116.0.0/16},\hfill\texttt{157.249.0.0/16},
+      \hfill\texttt{158.36.0.0/14},\hfill\texttt{161.4.0.0/16},
+      \hfill\texttt{193.156.0.0/15},\hfill\texttt{192.111.33.0/24},
+      \hfill\texttt{192.133.32.0/24},\hfill\texttt{192.146.238.0/23}
+    \item Til gjengjeld trenger Uninett bare å annonsere dette
+      IPv6-prefikset:
+    \item \texttt{2001:700::/32}
+  \end{itemize}
+\end{frame}
+
+\subsection{IPv6 ved Fagskolen Innlandet}
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{IPv6 ved Fagskolen Innlandet}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{RFC-er om IPv6}
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{RFC-er om IPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item IPv6-spesifikasjon:
+    \href{http://tools.ietf.org/html/rfc2460}{RFC~2460},
+    \href{http://tools.ietf.org/html/rfc5095}{RFC~5095},
+    \href{http://tools.ietf.org/html/rfc5722}{RFC~5722},
+    \href{http://tools.ietf.org/html/rfc5871}{RFC~5871},
+    \href{http://tools.ietf.org/html/rfc6437}{RFC~6437},
+    \href{http://tools.ietf.org/html/rfc6564}{RFC~6564},
+    \href{http://tools.ietf.org/html/rfc6935}{RFC~6935} og
+    \href{http://tools.ietf.org/html/rfc6946}{RFC~6946}.
+  \item ICMPv6: \href{http://tools.ietf.org/html/rfc4443}{RFC~4443} og
+    \href{http://tools.ietf.org/html/rfc4884}{RFC~4884}.
+  \item Neighbor Discovery:
+    \href{http://tools.ietf.org/html/rfc4861}{RFC~4861},
+    \href{http://tools.ietf.org/html/rfc5942}{RFC~5942} og
+    \href{http://tools.ietf.org/html/rfc6980}{RFC~6980}.
+  \item Path MTU: \href{http://tools.ietf.org/html/rfc1981}{RFC~1981}.
+  \item DHCPv6: \href{http://tools.ietf.org/html/rfc3315}{RFC~3315},
+    \href{http://tools.ietf.org/html/rfc4361}{RFC~4361},
+    \href{http://tools.ietf.org/html/rfc5494}{RFC~5494},
+    \href{http://tools.ietf.org/html/rfc6221}{RFC~6221},
+    \href{http://tools.ietf.org/html/rfc6422}{RFC~6422} og
+    \href{http://tools.ietf.org/html/rfc6644}{RFC~6644}.
+  \item Overføring av IPv6-pakker over Ethernet:
+    \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} og
+    \href{http://tools.ietf.org/html/rfc6085}{RFC~6085}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{RFC-er om IPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item Adressearkitektur:
+    \href{http://tools.ietf.org/html/rfc4291}{RFC~4291},
+    \href{http://tools.ietf.org/html/rfc5952}{RFC~5952} og
+    \href{http://tools.ietf.org/html/rfc6052}{RFC~6052}.
+  \item Unicastadresser:
+    \href{http://tools.ietf.org/html/rfc3587}{RFC~3587}.
+  \item Autokonfigurering av adresser:
+    \href{http://tools.ietf.org/html/rfc4862}{RFC~4862}.
+  \item Random interface ID:
+    \href{http://tools.ietf.org/html/rfc4941}{RFC~4941}.
+  \item Prefiks-baserte multicastadresser:
+    \href{http://tools.ietf.org/html/rfc3306}{RFC~3306},
+    \href{http://tools.ietf.org/html/rfc3956}{RFC~3956} og
+    \href{http://tools.ietf.org/html/rfc4489}{RFC~4489}.
+  \item For programmerere av nettverksprogrammer:
+    \href{http://tools.ietf.org/html/rfc4038}{RFC~4038}
+  \end{itemize}
+\end{frame}
+
+\section{IPv6-header}
+\begin{frame}
+  \frametitle{IPv6-header}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{Adresser}
+\begin{frame}
+  \frametitle{Adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\end{document}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\section{}
+\begin{frame}
+  \frametitle{}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{}
+\begin{frame}
+  \frametitle{}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{}
+\begin{frame}
+  \frametitle{}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{}
+\begin{frame}
+  \frametitle{}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{}
+\begin{frame}
+  \frametitle{}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
 \end{frame}
 
 \section{Sammendrag}
@@ -81,8 +332,6 @@
   \item Bla, bla, bla
   \end{itemize}
 \end{frame}
-
-\end{document}
 
 Local Variables:
 TeX-PDF-mode:t
