@@ -49,8 +49,8 @@
   \titlepage
 \end{frame}
 
-\section*{Oversikt}
 \begin{frame}
+  \frametitle{Foredragets filer}
   \begin{itemize}
   \item Filene til foredraget er tilgjengelig gjennom:
     \begin{itemize}
@@ -62,6 +62,7 @@
   \end{itemize}
 \end{frame}
 
+\section*{Oversikt}
 \begin{frame}
   \tableofcontents
 \end{frame}
@@ -145,8 +146,10 @@
   \item Enklere planlegging av subnett sammenlignet med IPv4
     \begin{itemize}[<+->]
     \item De fleste IPv6-subnett bruker et 64-bit prefiks
+    \item Autokonfigurasjon \textit{krever\/} et 64-bit prefiks
     \item Fast prefikslengde på 64 bit er ikke et absolutt krav
-    \item Autokonfigurasjon \textit{krever\/} 64-bit prefiks
+    \item DHCPv6 eller manuell konfigurasjon (kan) brukes når
+      prefikslengda er ulik 64 bit
     \end{itemize}
   \item Kortere rutingtabeller
   \end{itemize}
@@ -222,6 +225,30 @@
       studentnett
     \item \texttt{128.39.194.0/24} brukes til datalab etter samme
       mønster som for \texttt{128.39.172.0/24}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{IPv6 ved Fagskolen Innlandet}
+  \pause
+  \begin{itemize}[<+->]
+  \item FSI-VLAN med offentlige IPv4-adresser bruker offentlige
+    IPv6-adresser fra \texttt{2001:700:1100::/48}-serien
+  \item FSI-VLAN med private IPv4-adresser
+    (\href{http://tools.ietf.org/html/rfc1918}{RFC~1918}) bruker
+    private IPv6-adresser fra \texttt{FD5C:14CF:C300::/48}-serien
+  \item Private adresser brukes for alt utstyr som ikke har behov for
+    internettforbindelse:
+    \begin{itemize}[<+->]
+    \item Switcher (med unntak av kjerneswitchen som er L3-router for
+      nettverket ved FSI)
+    \item Basestasjoner
+    \item WLAN-kontroller
+    \item UPS-er
+    \item Skrivere
+    \item VPN-klienter
     \end{itemize}
   \end{itemize}
 \end{frame}
