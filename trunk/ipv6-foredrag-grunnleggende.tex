@@ -58,7 +58,8 @@
   \begin{itemize}
   \item Filene til foredraget er tilgjengelig gjennom:
     \begin{itemize}
-    \item Subversion: \texttt{svn co \textbackslash\ \url{svn://svn.ximalas.info/ipv6-foredrag-grunnleggende}}
+    \item Subversion: \texttt{svn co \textbackslash\
+        \url{svn://svn.ximalas.info/ipv6-foredrag-grunnleggende}}
     \item Web: \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}{\texttt{svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}}
     \end{itemize}
   \item Hovedfila bærer denne identifikasjonen:\\
@@ -98,6 +99,26 @@
     \end{itemize}
   \item Ny versjon av DHCP: DHCPv6
   \item Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hva er IPv6?}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item En lag-3-protokoll ment å erstatte IPv4
+  \item Har eksistert siden desember 1995, \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
+  \item Enkel grunnheader med fast lengde
+  \item Flere utvidelsesheadere, riktig rekkefølge er viktig
+  \item \alert{128-bit adresser}
+  \item Ny versjon av ICMP: ICMPv6
+  \item ARP og RARP for IPv6 er en del av ICMPv6
+    \begin{itemize}%[<+->]
+    \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
+    \end{itemize}
+  \item Ny versjon av DHCP: DHCPv6
+  \item \alert{Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6}
   \end{itemize}
 \end{frame}
 
@@ -153,18 +174,8 @@
     støttebandasje med kort utløpstid
     \begin{itemize}[<+->]
     \item Glem det
-    \item Ende-til-ende-konnektivitet blir best oppnådd uten noen
-      former for adresseoversettelse
-    \end{itemize}
-  \item Hierarkisk adressestruktur
-  \item Enklere planlegging av subnett sammenlignet med IPv4
-    \begin{itemize}[<+->]
-    \item De fleste IPv6-subnett bruker et 64-bit prefiks
-    \item Autokonfigurasjon \textit{krever\/} et 64-bit prefiks
-    \item Fast prefikslengde på 64 bit er \textit{ikke\/} et absolutt
-      krav
-    \item DHCPv6 eller manuell konfigurasjon (kan) brukes når
-      prefikslengda er ulik 64 bit
+    \item Ende-til-ende-konnektivitet oppnås best uten noen former for
+      adresseoversettelse
     \end{itemize}
   \item Kortere rutingtabeller
   \end{itemize}
@@ -190,13 +201,36 @@
   \end{itemize}
 \end{frame}
 
+\subsection{Andre nyttige ting ved IPv6}
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Andre nyttige ting ved IPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item Fragmentering skal gjøres hos avsender
+  \item Avsender må sjekke veien og måle smaleste krøttersti
+  \item Path MTU
+  \item Sjekksum overlatt til høyere lag
+  \item Hierarkisk adressestruktur
+  \item Enklere planlegging av subnett sammenlignet med IPv4
+    \begin{itemize}[<+->]
+    \item De fleste IPv6-subnett bruker et 64-bit prefiks
+    \item Autokonfigurasjon \textit{krever\/} et 64-bit prefiks
+    \item Fast prefikslengde på 64 bit er \textit{ikke\/} et absolutt
+      krav
+    \item DHCPv6 eller manuell konfigurasjon (kan) brukes når
+      prefikslengda er ulik 64 bit
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \subsection{IPv6 ved Fagskolen Innlandet}
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   \pause
   \begin{itemize}[<+->]
-  \item 1994: Ble tildelt \texttt{128.39.174.0/24} av Uninett
+  \item 1994: Tildelt \texttt{128.39.174.0/24} av Uninett
   \item 1.~juni 2005: Ny IT-ansvarlig, yours truly
   \item Høsten 2005: Fikk reservert IPv4-serien
     \texttt{128.39.172.0/23}
@@ -227,7 +261,7 @@
     \item \texttt{2001:700:0:11D::1/64} brukes hos HiG
     \item \texttt{2001:700:0:11D::2/64} brukes hos FSI
     \end{itemize}
-  \item Samme dag ble IPv6-subnett innført for FSI-VLAN-ene 20, 30, 70 og 80.
+  \item Samme dag ble IPv6 innført for FSI-VLAN-ene 20, 30, 70 og 80.
     \begin{itemize}[<+->]
     \item FSI-VLAN 20: \texttt{2001:700:1100:1::/64}
     \item FSI-VLAN 30: \texttt{2001:700:1100:2::/64}
@@ -283,8 +317,7 @@
     \begin{itemize}[<+->]
     \item Switcher (med unntak av kjerneswitchen som er L3-router for
       nettverket ved FSI)
-    \item Basestasjoner
-    \item WLAN-kontroller
+    \item Basestasjoner og WLAN-kontroller
     \item UPS-er
     \item Skrivere
     \item VPN-klienter
@@ -292,10 +325,10 @@
   \end{itemize}
 \end{frame}
 
-\subsection{RFC-er om IPv6}
+\subsection{Noen RFC-er om IPv6}
 \begin{frame}
   \frametitle{Kort om IPv6}
-  \framesubtitle{RFC-er om IPv6}
+  \framesubtitle{Noen RFC-er om IPv6}
   \pause
   \begin{itemize}[<+->]
   \item IPv6-spesifikasjon:
@@ -328,7 +361,7 @@
 
 \begin{frame}
   \frametitle{Kort om IPv6}
-  \framesubtitle{RFC-er om IPv6}
+  \framesubtitle{Noen RFC-er om IPv6}
   \pause
   \begin{itemize}[<+->]
   \item Adressearkitektur:
@@ -360,9 +393,9 @@
   \end{itemize}
 \end{frame}
 
-\section{Adresser}
+\section{Grunnleggende om adresser}
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \pause
   \begin{itemize}[<+->]
   \item 128 bit
@@ -378,7 +411,7 @@
 
 \subsection{Adressedemo}
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo}
   \pause
   \begin{itemize}[<+->]
@@ -390,20 +423,20 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Hierarkisk struktur}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{\alert{2001:0700}:0000:0000:0000:0000:0000:0000\phantom{/32}}
-  \item FSI:\\\texttt{\alert{2001:0700:1100}:0000:0000:0000:0000:0000\phantom{/48}}
-  \item IT-avdelingen@FSI:\\\texttt{\alert{2001:0700:1100:0003}:0000:0000:0000:0000\phantom{/64}}
-  \item Tronds D531:\\\texttt{\alert{2001:0700:1100:0003:0221:70FF:FE73:686E}\phantom{/128}}
+  \item FSI:\\\texttt{2001:0700:\alert{1100}:0000:0000:0000:0000:0000\phantom{/48}}
+  \item IT-avdelingen@FSI:\\\texttt{2001:0700:1100:\alert{0003}:0000:0000:0000:0000\phantom{/64}}
+  \item Tronds D531:\\\texttt{2001:0700:1100:0003:\alert{0221:70FF:FE73:686E}\phantom{/128}}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: La oss forenkle adressene}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:0700:0000:0000:0000:0000:0000:0000\phantom{/32}}
@@ -414,8 +447,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Ledende nuller}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:\alert{0}700:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0\phantom{/32}}
@@ -426,8 +459,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Fjernet ledende nuller}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:\alert{700}:\alert{0}:\alert{0}:\alert{0}:\alert{0}:\alert{0}:\alert{0}\phantom{/32}}
@@ -438,8 +471,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: La oss forenkle litt til}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700:0:0:0:0:0:0\phantom{/32}}
@@ -450,8 +483,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: To eller flere sammenhengende 16-bitgrupper med bare 0}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700:\alert{0:0:0:0:0:0}\phantom{/32}}
@@ -462,8 +495,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Erstattet med dobbelkolon}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700\alert{::}\phantom{/32}}
@@ -474,8 +507,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Kompakt form}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700::\phantom{/32}}
@@ -486,8 +519,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Vis prefikslengde}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700::\alert{/32}}
@@ -498,8 +531,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressedemo}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Adressedemo: Kompakte adresser med prefikslengde}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700::/32}
@@ -511,7 +544,7 @@
 
 \subsection{MAC-48-adresser}
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{MAC-48-adresser}
   \pause
   \begin{itemize}[<+->]
@@ -532,12 +565,14 @@
       \texttt{C}- og \texttt{c}-sifrene løpenummer
     \item Bitet \texttt{g} angir med \texttt{0} at adressa angir ett
       individ, eller med \texttt{1} at adressa er en multicastgruppe
+    \item Når \texttt{g} settes lik \texttt{1}, så blir også
+      \texttt{u} satt lik \texttt{1}
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{MAC-48-adresser}
   \pause
   \begin{itemize}[<+->]
@@ -558,7 +593,7 @@
 
 \subsection{Modda IEEE EUI-64-format}
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   \pause
   \begin{itemize}[<+->]
@@ -574,12 +609,12 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   \pause
   \begin{itemize}[<+->]
-  \item Automatiske grensesnittidentifikatorer lages etter oppskriften
-    i \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}:
+  \item Grensesnittidentifikatorer lages fra MAC-48-adresser etter
+    oppskriften i \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}:
     \begin{itemize}[<+->]
     \item Gitt denne MAC-48-adressa: \texttt{00:21:70:73:68:6E}
     \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
@@ -594,7 +629,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   \pause
   \begin{itemize}[<+->]
@@ -612,25 +647,25 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   \pause
   \begin{itemize}[<+->]
   \item Manuell grensesnittidentifikator innebærer at
     universal/local-bitet er satt til \texttt{0}
   \item De øvrige 63 bitene kan være hva som helst, bare verdien ikke
-    skaper kollisjon
-  \item Normalt setter man en lav verdi for grensesnittidentifikatoren
+    skaper adressekollisjon i samme VLAN
+  \item Normalt setter man en lav verdi for manuelle
+    grensesnittidentifikatorer
   \item For eksempel \texttt{::53} (DNS-tjener, kanskje)
   \item Dermed er universal/local-bitet satt til \texttt{0} og dette
     indikerer en manuell adresse
   \end{itemize}
 \end{frame}
 
-\subsection{Adressetyper}
+\section{Adressetyper}
 \begin{frame}
-  \frametitle{Adresser}
-  \framesubtitle{Adressetyper}
+  \frametitle{Adressetyper}
   \pause
   \begin{itemize}[<+->]
   \item Det finnes flere adressetyper med forskjellige bruksområder:
@@ -642,21 +677,21 @@
     \item Anycast-adresser
     \item Multicast-adresser
     \end{itemize}
-  \item Merk at broadcast er avskaffa og er erstatta i stor grad med
+  \item Merk at broadcast er avskaffa og er i stor grad erstatta med
     link-local-multicast
   \end{itemize}
 \end{frame}
 
-%\subsection{Link-local-adresser}
+\subsection{Link-local-adresser}
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Adressetyper}
   \framesubtitle{Link-local-adresser}
   \pause
   \begin{itemize}[<+->]
   \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
   \item Bruksområde: lokal kommunikasjon internt i VLAN-et, sentral
-    for autokonfigurasjon, blir ikke videresendt til andre VLAN eller
-    til internett
+    for autokonfigurasjon, kan brukes i ad-hoc-nett, blir ikke
+    videresendt til andre VLAN eller til internett
   \item Prefiks: \texttt{FE80::/10}
   \item De 54 neste bitene skal settes til null
   \item De siste 64 bitene settes til MAC-48-adressa omformet til modda EUI-64-format
@@ -664,14 +699,14 @@
   \end{itemize}
 \end{frame}
 
-%\subsection{Site-local-adresser}
+\subsection{Site-local-adresser}
 \begin{frame}
-  \frametitle{Adresser}
+  \frametitle{Adressetyper}
   \framesubtitle{Site-local-adresser}
   \pause
   \begin{itemize}[<+->]
   \item Definert: \href{http://tools.ietf.org/html/rfc3513}{RFC~3513}
-  \item Bruksområde: privat, intern kommunikasjon på lik linje med
+  \item Bruksområde: private adresser på lik linje med
     \href{http://tools.ietf.org/html/rfc1918}{RFC~1918}
   \item Prefiks: \texttt{FEC0::/10}
   \item De 38 neste bitene settes til null
@@ -681,6 +716,87 @@
   \item Eksempel: \texttt{FEC0::DEAD:BEEF:1337}
   \item Ikke bruk site-local-adresser (\href{http://tools.ietf.org/html/rfc3879}{RFC~3879})
   \item Site-local-adresser er erstatta med ULA (\href{http://tools.ietf.org/html/rfc4193}{RFC~4193})
+  \end{itemize}
+\end{frame}
+
+\subsection{Offentlige unicast-adresser}
+\begin{frame}
+  \frametitle{Adressetyper}
+  \framesubtitle{Offentlige unicast-adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
+  \item Bruksområde: ende-til-ende-kommunikasjon på det offentlige internett
+  \item Prefiks: \texttt{2000::/3}
+  \item De neste bitene allokeres hierarkisk, minimum i 4-bitblokker,
+    men gjerne i 8- eller 16-bitblokker
+  \item Til slutt i adressa finner vi grensesnittidentifikator eller
+    maskinadresse
+  \item Eksempel: \texttt{2001:700:1100:1::1/128}
+  \end{itemize}
+\end{frame}
+
+\subsection{Unike, lokale, aggregerbare adresser}
+\begin{frame}
+  \frametitle{Adressetyper}
+  \framesubtitle{Unike, lokale, aggregerbare adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
+  \item Bruksområde: ende-til-ende-kommunikasjon internt i nettverket
+  \item Veldig praktisk å ha faste, interne adresser uavhengig av
+    offentlig prefiks tildelt av ISP
+  \item Prefiks: \texttt{FC00::/7}
+  \item Det åttende mest signifikante bitet skal settes til \texttt{1}
+    inntil videre
+  \item Det reelle prefikset er dermed
+    \texttt{\alert{FD}00::/\alert{8}}
+  \item Prefikset \texttt{\alert{FC}00::/\alert{8}} er reservert
+    inntil videre
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adressetyper}
+  \framesubtitle{Unike, lokale, aggregerbare adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Reelt prefiks: \texttt{FD00::/8}
+  \item De neste 40 bitene genereres tilfeldig, gjerne som beskrevet i
+    \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
+  \item De neste 16 bitene kan brukes til subnett
+  \item De siste 64 bitene angir grensesnittidentifikator eller
+    maskinadresse
+  \item Eksempel: \texttt{FD\alert{5C:14CF:C300}:31::1/128}
+  \end{itemize}
+\end{frame}
+
+\subsection{Anycast-adresser}
+\begin{frame}
+  \frametitle{Adressetyper}
+  \framesubtitle{Anycast-adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: 
+  \item Bruksområde: felles adresse for distribuerte tjenester
+  \item Prefiks: ingen, allokeres fra dine egne unicast-adresser
+  \item Eksempel: \texttt{2001:700:1100::/128 anycast}
+  \end{itemize}
+\end{frame}
+
+\subsection{Multicast-adresser}
+\begin{frame}
+  \frametitle{Adressetyper}
+  \framesubtitle{Multicast-adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: 
+  \item Bruksområde: en-til-mange-kommunikasjon
+  \item Prefiks: \texttt{FF::/8}
+  \item Flagg \texttt{\textit{f\/}} og rekkevidde
+    \texttt{\textit{r\/}} er innebygget i adressa:
+    \texttt{FF\textit{fr}::/16}
+  \item Eksempel: \texttt{FF0E::101/128}
   \end{itemize}
 \end{frame}
 
