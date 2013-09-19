@@ -129,7 +129,9 @@
     \begin{itemize}[<+->]
     \item \href{http://www.apnic.net/}{APNIC} gikk tom i \href{http://www.apnic.net/community/ipv4-exhaustion/graphical-information}{april 2011}
     \item \href{http://www.ripe.net/}{RIPE} gikk tom i \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september 2012}
-    \item Dersom disse oppfører seg pent:
+    \item Dersom disse
+      \href{http://en.wikipedia.org/wiki/Regional_Internet_registry}{RIR}-ene
+      oppfører seg pent:
       \begin{itemize}
       \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC} kan holde på til \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni 2014}
       \item \href{https://www.arin.net/}{ARIN} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
@@ -148,7 +150,7 @@
     (\href{http://tools.ietf.org/html/rfc6264}{RFC~6264}) og Shared
     Address Space
     (\href{http://tools.ietf.org/html/rfc6598}{RFC~6598}) er bare
-    støttebandasje
+    støttebandasje med kort utløpstid
     \begin{itemize}[<+->]
     \item Glem det
     \item Ende-til-ende-konnektivitet blir best oppnådd uten noen
@@ -159,7 +161,8 @@
     \begin{itemize}[<+->]
     \item De fleste IPv6-subnett bruker et 64-bit prefiks
     \item Autokonfigurasjon \textit{krever\/} et 64-bit prefiks
-    \item Fast prefikslengde på 64 bit er ikke et absolutt krav
+    \item Fast prefikslengde på 64 bit er \textit{ikke\/} et absolutt
+      krav
     \item DHCPv6 eller manuell konfigurasjon (kan) brukes når
       prefikslengda er ulik 64 bit
     \end{itemize}
@@ -200,7 +203,7 @@
   \item Påska 2006: Fikk reservert IPv6-serien
     \texttt{2001:700:1100::/48}
   \item Før og etter pinsehelga 2006: Fiberlinjer fra serverrommet og
-    til sentralt punkt i hver etasje i hovedetasjen
+    til sentrale punkter i hver etasje i hovedetasjen
   \item Sommeren 2006: Nytt Cisco-gear som Catalyst 3560G og 2960
     \begin{itemize}[<+->]
     \item \texttt{128.39.174.0/24} ble brukt til servernett og
@@ -506,6 +509,124 @@
   \end{itemize}
 \end{frame}
 
+\subsection{MAC-48-adresser}
+\begin{frame}
+  \frametitle{Adresser}
+  \framesubtitle{MAC-48-adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item MAC-48-adresser har følgende oppbygging:
+    \begin{itemize}[<+->]
+    \item \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
+    \item Den første halvparten er produsentnummer: \texttt{CC:cc:cc}
+    \item Den andre halvparten er løpenummer: \texttt{nn:nn:nn}
+    \end{itemize}
+  \item Den første oktetten i produsentnummeret, \texttt{CC}, har en
+    spesiell oppbygging:
+    \begin{itemize}[<+->]
+    \item \texttt{CCCCCC\alert{ug}} (binært)
+    \item Når \texttt{u}-bitet er satt til \texttt{0} (null), så
+      gjelder formatet som er oppgitt her, altså
+      \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
+    \item Når \texttt{u}-bitet er satt til \texttt{1}, så er alle
+      \texttt{C}- og \texttt{c}-sifrene løpenummer
+    \item Bitet \texttt{g} angir med \texttt{0} at adressa angir ett
+      individ, eller med \texttt{1} at adressa er en multicastgruppe
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adresser}
+  \framesubtitle{MAC-48-adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Gitt denne MAC-48-adressa: \texttt{\alert{00}:21:70:73:68:6E}
+  \item \texttt{CC}-oktetten har verdien \texttt{\alert{00}}
+    (heksadesimalt)
+  \item På binær form er dette \texttt{000000\alert{00}}
+    (\texttt{CCCCCC\alert{ug}})
+  \item Vi ser at både \texttt{u}- og \texttt{g}-bitene er satt til
+    \texttt{0}
+  \item Dette er en MAC-48-adresse som:
+    \begin{itemize}[<+->]
+    \item følger det vanlige mønsteret med produsent- og løpenummer
+    \item angir et enkeltindivid
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Modda IEEE EUI-64-format}
+\begin{frame}
+  \frametitle{Adresser}
+  \framesubtitle{Modda IEEE EUI-64-format}
+  \pause
+  \begin{itemize}[<+->]
+  \item Unicast-adresser består av 2 ting:
+    \begin{itemize}
+    \item Prefiks
+    \item Grensesnittidentifikator
+    \end{itemize}
+  \item Grensesnittidentifikatorer kan lages automatisk fra
+    MAC-48-adresser
+  \item Grensesnittidentifikatorer kan også angis manuelt
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adresser}
+  \framesubtitle{Modda IEEE EUI-64-format}
+  \pause
+  \begin{itemize}[<+->]
+  \item Automatiske grensesnittidentifikatorer lages etter oppskriften
+    i \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}:
+    \begin{itemize}[<+->]
+    \item Gitt denne MAC-48-adressa: \texttt{00:21:70:73:68:6E}
+    \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
+    \item Sett inn \texttt{FF:FE} på midten: \texttt{02:21:70:\alert{FF:FE}:73:68:6E}
+    \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
+    \item Høyreskift hele stasen: \texttt{::221:70FF:FE73:686E}
+    \item Nå er grensesnittidentifikatoren klar til å bli kombinert med ønsket prefiks
+    \item Prefiks fra router: \texttt{2001:700:1100:3::/64}
+    \item Fullstendig adresse: \texttt{2001:700:1100:3:221:70FF:FE73:686E}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adresser}
+  \framesubtitle{Modda IEEE EUI-64-format}
+  \pause
+  \begin{itemize}[<+->]
+  \item OBS! Arbeidsuhell!
+  \item Det skulle egentlig vært \texttt{FF:FF} i stedet for
+    \texttt{FF:FE}
+    \begin{itemize}
+    \item MAC-48 $\to$ EUI-64 skal bruke \texttt{FF:FF}
+    \item EUI-48 $\to$ EUI-64 skal bruke \texttt{FF:FE}
+    \end{itemize}
+  \item Siden IPv6 bruker universal/local-bitet med invertert
+    betydning/verdi, så er arbeidsuhellet akseptert
+  \item Se \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adresser}
+  \framesubtitle{Modda IEEE EUI-64-format}
+  \pause
+  \begin{itemize}[<+->]
+  \item Manuell grensesnittidentifikator innebærer at
+    universal/local-bitet er satt til \texttt{0}
+  \item De øvrige 63 bitene kan være hva som helst, bare verdien ikke
+    skaper kollisjon
+  \item Normalt setter man en lav verdi for grensesnittidentifikatoren
+  \item For eksempel \texttt{::53} (DNS-tjener, kanskje)
+  \item Dermed er universal/local-bitet satt til \texttt{0} og dette
+    indikerer en manuell adresse
+  \end{itemize}
+\end{frame}
+
 \subsection{Adressetyper}
 \begin{frame}
   \frametitle{Adresser}
@@ -521,14 +642,7 @@
     \item Anycast-adresser
     \item Multicast-adresser
     \end{itemize}
-  \item Adressene består som oftest av 2 deler:
-    \begin{itemize}[<+->]
-    \item Prefiks
-    \item Grensesnittadresse
-    \end{itemize}
-  \item Unntak gjelder for multicastadressene, som består av flere
-    deler
-  \item Merk at broadcast er avskaffet og er erstattet i stor grad med
+  \item Merk at broadcast er avskaffa og er erstatta i stor grad med
     link-local-multicast
   \end{itemize}
 \end{frame}
@@ -545,7 +659,7 @@
     til internett
   \item Prefiks: \texttt{FE80::/10}
   \item De 54 neste bitene skal settes til null
-  \item De siste 64 bitene settes til MAC48-adressa omformet til modda EUI64-format
+  \item De siste 64 bitene settes til MAC-48-adressa omformet til modda EUI-64-format
   \item Eksempel: \texttt{FE80::221:70FF:FE73:686E}
   \end{itemize}
 \end{frame}
@@ -562,8 +676,8 @@
   \item Prefiks: \texttt{FEC0::/10}
   \item De 38 neste bitene settes til null
   \item De 16 neste bitene kan brukes til subnet-ID
-  \item De siste 64 bitene kan settes til MAC48-adressa omformet til
-    modda EUI64-format eller settes manuelt
+  \item De siste 64 bitene kan settes til MAC-48-adressa omformet til
+    modda EUI-64-format eller settes manuelt
   \item Eksempel: \texttt{FEC0::DEAD:BEEF:1337}
   \item Ikke bruk site-local-adresser (\href{http://tools.ietf.org/html/rfc3879}{RFC~3879})
   \item Site-local-adresser er erstatta med ULA (\href{http://tools.ietf.org/html/rfc4193}{RFC~4193})
