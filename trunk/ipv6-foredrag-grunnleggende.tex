@@ -102,7 +102,7 @@
   \pause
   \begin{itemize}[<+->]
   \item En lag-3-protokoll ment å erstatte IPv4
-  \item Har eksistert siden desember 1995,
+  \item Har eksistert siden desember 1995, spesifisert i
     \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
@@ -123,7 +123,7 @@
   %\pause
   \begin{itemize}%[<+->]
   \item En lag-3-protokoll ment å erstatte IPv4
-  \item Har eksistert siden desember 1995,
+  \item Har eksistert siden desember 1995, spesifisert i
     \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
@@ -286,15 +286,15 @@
   \item Påska 2006: Fikk reservert IPv6-serien
     \texttt{2001:700:1100::/48}
   \item Før og etter pinsehelga 2006: Fiberlinjer fra serverrommet og
-    til sentrale punkter i hver etasje i hovedetasjen
+    til sentrale punkter i hver etasje i hovedbygningen
   \item Sommeren 2006: Nytt Cisco-gear som Catalyst 3560G og 2960
     \begin{itemize}[<+->]
-    \item \texttt{128.39.46.8/30} ble satt opp som linknett mellom HiG
-      og FSI
+    \item \texttt{128.39.46.8/30} ble satt opp som linknett mellom
+      HiG/Uninett og FSI
     \item \texttt{128.39.174.0/24} ble subnettet og satt opp som
       servernett og ansattnett, m.m.
-    \item \texttt{128.39.172.0/24} ble subnettet og satt opp som
-      datalab
+    \item \texttt{128.39.172.0/24} ble subnettet og satt opp som nett
+      for datalab
     \item \texttt{128.39.173.0/24} ble satt opp som klienter på
       trådløst studentnett
     \end{itemize}
@@ -321,7 +321,7 @@
     \item FSI-VLAN 80: \texttt{2001:700:1100:4::/64}
     \end{itemize}
   \item Sommeren 2007:
-    \href{http://www.sixxs.net/tools/grh/ula/}{Genererte} og
+    \href{http://www.sixxs.net/tools/grh/ula/}{Genererte} og frivillig
     \href{http://www.sixxs.net/tools/grh/ula/list/}{registrerte}
     ULA-serien
     \href{http://www.sixxs.net/tools/whois/?fd5c:14cf:c300::/48}{\texttt{FD5C:14CF:C300::/48}}
@@ -509,7 +509,21 @@
   \frametitle{Frakt av IPv6-datagrammer over Ethernet}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} definerer
+    frameformatet for IPv6-datagrammer over Ethernet
+  \item IPv6-datagrammer fraktes i standard Ethernetformat
+  \item Først angis mottakerens MAC-48-adresse
+  \item Deretter angis avsenders MAC-48-adresse
+  \item Frametypen settes til \texttt{86DD} heksadesimalt
+  \item Deretter følger IPv6-header og resten av datagrammet
+  \item Overføring av preamble og hale er vanligvis en oppgave for
+    lag~1
+  \item Standard MTU for IPv6 over Ethernet er 1500 oktetter
+  \item Minste tillate MTU for IPv6 er 1280 oktetter
+  \item Er største tilgjengelige MTU mindre enn 1280 oktetter, så må
+    lagene under IPv6 sørge for fragmentering og sammensetting av
+    IPv6-datagrammene
+    (\href{http://tools.ietf.org/html/rfc2460}{RFC~2460})
   \end{itemize}
 \end{frame}
 
@@ -785,6 +799,9 @@
   \item For eksempel \texttt{::53} (DNS-tjener, kanskje)
   \item Dermed er universal/local-bitet satt til \texttt{0} og dette
     indikerer en manuell grensesnittidentifikator
+  \item Uten invertering av universal/local-bitet, måtte vi bruke
+    manuelle grensesnittidentifikatorer på formen
+    \texttt{::0200:0:0:53}
   \end{itemize}
 \end{frame}
 
