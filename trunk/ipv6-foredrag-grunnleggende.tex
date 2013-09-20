@@ -13,8 +13,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[norsk]{babel}
 \usepackage{booktabs}
+\usepackage{multicol}
 
+%\usetheme{AnnArbor}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
 %\usetheme{Antibes}
+%\usetheme{Bergen}
 %\usetheme{Berkeley}
 %\usetheme{Berlin}
 %\usetheme{Copenhagen}
@@ -26,10 +32,13 @@
 %\usetheme{Ilmenau}
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
-\usetheme{Malmoe}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
 %\usetheme{Marburg}
 %\usetheme{Montpellier}
 %\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
@@ -42,6 +51,7 @@
 \author{Trond Endrestøl}
 %\institute{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}}
 \institute{Fagskolen Innlandet}
+\logo{\includegraphics[scale=.25]{fi_logo_50mm_tronds_transparent_bakgrunn.png}}
 \subject{Emne for bruk i egenskapene til PDF-fila}
 \keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
 \date{\today} % eller
@@ -60,7 +70,8 @@
     \begin{itemize}
     \item Subversion: \texttt{svn co \textbackslash\
         \url{svn://svn.ximalas.info/ipv6-foredrag-grunnleggende}}
-    \item Web: \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}{\texttt{svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}}
+    \item Web:
+      \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}{\texttt{svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}}
     \end{itemize}
   \item Hovedfila bærer denne identifikasjonen:\\
     \texttt{\$${}$Ximalas${}$\$}
@@ -75,10 +86,13 @@
   \end{itemize}
 \end{frame}
 
-%\section*{Oversikt}
-%\begin{frame}
-%  \tableofcontents
-%\end{frame}
+\section*{Oversikt}
+\begin{frame}
+  \frametitle{Oversikt}
+  \begin{multicols}{2}
+    \tableofcontents
+  \end{multicols}
+\end{frame}
 
 \section{Kort om IPv6}
 \subsection{Hva er IPv6?}
@@ -88,7 +102,8 @@
   \pause
   \begin{itemize}[<+->]
   \item En lag-3-protokoll ment å erstatte IPv4
-  \item Har eksistert siden desember 1995, \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
+  \item Har eksistert siden desember 1995,
+    \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
   \item 128-bit adresser
@@ -108,7 +123,8 @@
   %\pause
   \begin{itemize}%[<+->]
   \item En lag-3-protokoll ment å erstatte IPv4
-  \item Har eksistert siden desember 1995, \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
+  \item Har eksistert siden desember 1995,
+    \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
   \item \alert{128-bit adresser}
@@ -118,7 +134,8 @@
     \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
     \end{itemize}
   \item Ny versjon av DHCP: DHCPv6
-  \item \alert{Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6}
+  \item \alert{Automatisk adressekonfigurasjon \textit{uten\/} bruk av
+      DHCPv6}
   \end{itemize}
 \end{frame}
 
@@ -130,10 +147,13 @@
   \item Totalt antall IPv6-adresser:
   \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
   \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
-  \item $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
+  \item
+    $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
   \item Fortsatt mye mer enn det fullstendige IPv4-adresserommet:
-  \item $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
-  \item Bare $3.702.258.688$ IPv4-adresser kan bli brukt som offentlige IPv4-unicast-adresser
+  \item
+    $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
+  \item Bare $3.702.258.688$ IPv4-adresser kan bli brukt som
+    offentlige IPv4-unicast-adresser
   \item Se Tronds utregning fra 2012:
     \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
   \end{itemize}
@@ -146,17 +166,28 @@
   \pause
   \begin{itemize}[<+->]
   \item Verden går tom for offentlige IPv4-adresser
-  \item \href{http://www.iana.org/}{IANA} gikk tom i \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{februar 2011}
+  \item \href{http://www.iana.org/}{IANA} gikk tom i
+    \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{februar
+      2011}
     \begin{itemize}[<+->]
-    \item \href{http://www.apnic.net/}{APNIC} gikk tom i \href{http://www.apnic.net/community/ipv4-exhaustion/graphical-information}{april 2011}
-    \item \href{http://www.ripe.net/}{RIPE} gikk tom i \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september 2012}
+    \item \href{http://www.apnic.net/}{APNIC} gikk tom i
+      \href{http://www.apnic.net/community/ipv4-exhaustion/graphical-information}{april
+        2011}
+    \item \href{http://www.ripe.net/}{RIPE} gikk tom i
+      \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september
+        2012}
     \item Dersom disse
       \href{http://en.wikipedia.org/wiki/Regional_Internet_registry}{RIR}-ene
       oppfører seg pent:
       \begin{itemize}
-      \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC} kan holde på til \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni 2014}
-      \item \href{https://www.arin.net/}{ARIN} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
-      \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
+      \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC}
+        kan holde på til
+        \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni
+          2014}
+      \item \href{https://www.arin.net/}{ARIN} kan holde på til
+        \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
+      \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
+        \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
       \end{itemize}
     \end{itemize}
   \end{itemize}
@@ -274,7 +305,7 @@
     ULA-serien
     \href{http://www.sixxs.net/tools/whois/?fd5c:14cf:c300::/48}{\texttt{FD5C:14CF:C300::/48}}
     for FSI-VLAN som tidligere bare brukte
-    \href{http://tools.ietf.org/html/rfc1918}{RFC-1918}-adresser.
+    \href{http://tools.ietf.org/html/rfc1918}{RFC-1918}-adresser
   \end{itemize}
 \end{frame}
 
@@ -587,6 +618,10 @@
     \begin{itemize}[<+->]
     \item følger det vanlige mønsteret med produsent- og løpenummer
     \item angir et enkeltindivid
+    \item Dell Inc er produsenten i følge
+      \href{http://standards.ieee.org/develop/regauth/oui/oui.txt}{OUI-lista}
+      hos \href{http://www.ieee.org/index.html}{IEEE} (søk i fila
+      etter \texttt{00-21-70})
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -604,7 +639,8 @@
     \end{itemize}
   \item Grensesnittidentifikatorer kan lages automatisk fra
     MAC-48-adresser
-  \item Grensesnittidentifikatorer kan også angis manuelt
+  \item Grensesnittidentifikatorer kan også angis manuelt eller velges
+    tilfeldig (\href{http://tools.ietf.org/html/rfc4941}{RFC~4941})
   \end{itemize}
 \end{frame}
 
@@ -659,7 +695,30 @@
     grensesnittidentifikatorer
   \item For eksempel \texttt{::53} (DNS-tjener, kanskje)
   \item Dermed er universal/local-bitet satt til \texttt{0} og dette
-    indikerer en manuell adresse
+    indikerer en manuell grensesnittidentifikator
+  \end{itemize}
+\end{frame}
+
+\subsection{Spesialadresser}
+\begin{frame}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Spesialadresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Nulladressa: \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
+    \begin{itemize}[<+->]
+    \item Brukes av klienter som ennå ikke vet sin egen adresse
+      (DHCPv6)
+    \item Brukes av tjenester som godtar forespørsler fra alle
+      grensesnitt (sjekk ut
+      \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
+      i «Juniks»)
+    \end{itemize}
+  \item Loopbackadressa: \texttt{0:0:0:0:0:0:0:1/128} eller
+    \texttt{::1/128}
+    \begin{itemize}[<+->]
+    \item Velkjent adresse for å snakke med seg selv
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -693,8 +752,9 @@
     for autokonfigurasjon, kan brukes i ad-hoc-nett, blir ikke
     videresendt til andre VLAN eller til internett
   \item Prefiks: \texttt{FE80::/10}
-  \item De 54 neste bitene skal settes til null
-  \item De siste 64 bitene settes til MAC-48-adressa omformet til modda EUI-64-format
+  \item De neste 54 bitene skal settes til null
+  \item De siste 64 bitene er grensesnittidentifikator i modda
+    EUI-64-format
   \item Eksempel: \texttt{FE80::221:70FF:FE73:686E}
   \end{itemize}
 \end{frame}
@@ -709,13 +769,14 @@
   \item Bruksområde: private adresser på lik linje med
     \href{http://tools.ietf.org/html/rfc1918}{RFC~1918}
   \item Prefiks: \texttt{FEC0::/10}
-  \item De 38 neste bitene settes til null
-  \item De 16 neste bitene kan brukes til subnet-ID
-  \item De siste 64 bitene kan settes til MAC-48-adressa omformet til
-    modda EUI-64-format eller settes manuelt
+  \item De neste 54 bitene brukes til subnet-ID
+  \item De siste 64 bitene er grensesnittidentifikatoren i modda
+    EUI-64-format
   \item Eksempel: \texttt{FEC0::DEAD:BEEF:1337}
-  \item Ikke bruk site-local-adresser (\href{http://tools.ietf.org/html/rfc3879}{RFC~3879})
-  \item Site-local-adresser er erstatta med ULA (\href{http://tools.ietf.org/html/rfc4193}{RFC~4193})
+  \item Ikke bruk site-local-adresser
+    (\href{http://tools.ietf.org/html/rfc3879}{RFC~3879})
+  \item Site-local-adresser er erstatta med ULA
+    (\href{http://tools.ietf.org/html/rfc4193}{RFC~4193})
   \end{itemize}
 \end{frame}
 
@@ -726,12 +787,13 @@
   \pause
   \begin{itemize}[<+->]
   \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
+    og \href{http://tools.ietf.org/html/rfc3587}{RFC~3587}
   \item Bruksområde: ende-til-ende-kommunikasjon på det offentlige internett
   \item Prefiks: \texttt{2000::/3}
   \item De neste bitene allokeres hierarkisk, minimum i 4-bitblokker,
     men gjerne i 8- eller 16-bitblokker
-  \item Til slutt i adressa finner vi grensesnittidentifikator eller
-    maskinadresse
+  \item De siste 64 bitene er grensesnittidentifikator i modda
+    EUI-64-format
   \item Eksempel: \texttt{2001:700:1100:1::1/128}
   \end{itemize}
 \end{frame}
@@ -764,9 +826,9 @@
   \item Reelt prefiks: \texttt{FD00::/8}
   \item De neste 40 bitene genereres tilfeldig, gjerne som beskrevet i
     \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
-  \item De neste 16 bitene kan brukes til subnett
-  \item De siste 64 bitene angir grensesnittidentifikator eller
-    maskinadresse
+  \item De neste 16 bitene brukes til subnett-ID
+  \item De siste 64 bitene er grensesnittidentifikator i modda
+    EUI-64-format
   \item Eksempel: \texttt{FD\alert{5C:14CF:C300}:31::1/128}
   \end{itemize}
 \end{frame}
@@ -777,7 +839,7 @@
   \framesubtitle{Anycast-adresser}
   \pause
   \begin{itemize}[<+->]
-  \item Definert: 
+  \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
   \item Bruksområde: felles adresse for distribuerte tjenester
   \item Prefiks: ingen, allokeres fra dine egne unicast-adresser
   \item Eksempel: \texttt{2001:700:1100::/128 anycast}
@@ -790,13 +852,97 @@
   \framesubtitle{Multicast-adresser}
   \pause
   \begin{itemize}[<+->]
-  \item Definert: 
-  \item Bruksområde: en-til-mange-kommunikasjon
+  \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
+  \item Bruksområde: én-til-mange-kommunikasjon
   \item Prefiks: \texttt{FF::/8}
   \item Flagg \texttt{\textit{f\/}} og rekkevidde
     \texttt{\textit{r\/}} er innebygget i adressa:
     \texttt{FF\textit{fr}::/16}
   \item Eksempel: \texttt{FF0E::101/128}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adressetyper}
+  \framesubtitle{Multicast-adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Flaggene heter \texttt{0RPT}\hfill(null, err, pe, te)
+  \item Flagget \texttt{T} angir med \texttt{0} at adressa er velkjent
+    (definert av \href{http://www.iana.org/}{IANA}), og med \texttt{1}
+    at adressa er midlertidig (lokalt definert)
+  \item Flagget \texttt{P} angir med \texttt{1} at adressa inneholder
+    et unicast-prefiks og skal følge reglene i
+    \href{http://tools.ietf.org/html/rfc3306}{RFC~3306}
+  \item Flagget \texttt{R} angir med \texttt{1} at adressa også
+    inneholder et møtepunkt («rendezvous point») og skal følge reglene
+    i \href{http://tools.ietf.org/html/rfc3956}{RFC~3956}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Adressetyper}
+  \framesubtitle{Multicast-adresser}
+  \pause
+  \begin{multicols}{2}
+    \begin{itemize}[<+->]
+    \item Følgende rekkevidder er definert i
+      \href{http://tools.ietf.org/html/rfc4291}{RFC~4921}:
+    \item \texttt{0}: reservert
+    \item \texttt{1}: interface-local
+    \item \texttt{2}: link-local
+    \item \texttt{3}: reservert
+    \item \texttt{4}: admin-local
+    \item \texttt{5}: site-local
+    \item \texttt{6}: ikke definert
+    \item \texttt{7}: ikke definert
+    \item \texttt{8}: organization-local
+    \item \texttt{9}: ikke definert
+    \item \texttt{A}: ikke definert, brukt av Uninett til å
+      \href{http://drift.uninett.no/nett/ip-nett/ipv6-multicastadresser.html}{begrense}
+      trafikken innenfor «Uninettet»
+    \item \texttt{B}: ikke definert
+    \item \texttt{C}: ikke definert
+    \item \texttt{D}: ikke definert
+    \item \texttt{E}: global
+    \item \texttt{F}: reservert
+    \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\section{ICMPv6}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{DHCPv6}
+\begin{frame}
+  \frametitle{DHCPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{OS-konfig}
+\begin{frame}
+  \frametitle{OS-konfig}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{Tunneloppsett}
+\begin{frame}
+  \frametitle{Tunneloppsett}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
@@ -813,36 +959,10 @@
   \end{itemize}
 \end{frame}
 
-\section{}
+\subsection{}
 \begin{frame}
   \frametitle{}
-  \pause
-  \begin{itemize}[<+->]
-  \item Bla, bla, bla
-  \end{itemize}
-\end{frame}
-
-\section{}
-\begin{frame}
-  \frametitle{}
-  \pause
-  \begin{itemize}[<+->]
-  \item Bla, bla, bla
-  \end{itemize}
-\end{frame}
-
-\section{}
-\begin{frame}
-  \frametitle{}
-  \pause
-  \begin{itemize}[<+->]
-  \item Bla, bla, bla
-  \end{itemize}
-\end{frame}
-
-\section{}
-\begin{frame}
-  \frametitle{}
+  \framesubtitle{}
   \pause
   \begin{itemize}[<+->]
   \item Bla, bla, bla
