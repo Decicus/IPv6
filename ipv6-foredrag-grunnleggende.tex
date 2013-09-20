@@ -51,7 +51,7 @@
 \author{Trond Endrestøl}
 %\institute{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}}
 \institute{Fagskolen Innlandet}
-\logo{\includegraphics[scale=.25]{fi_logo_50mm_tronds_transparent_bakgrunn.png}}
+\logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
 \subject{Emne for bruk i egenskapene til PDF-fila}
 \keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
 \date{\today} % eller
@@ -238,10 +238,28 @@
   \framesubtitle{Andre nyttige ting ved IPv6}
   \pause
   \begin{itemize}[<+->]
+  \item IPsec ble utviklet som en del av IPv6
+    \begin{itemize}[<+->]
+    \item Må konfigureres før den begynner å virke
+    \item Tilbyr kryptert overføring (ESP), og bekreftelse av
+      avsenders identitet og beskyttelse mot gjentakelse («replay»)
+      (AH)
+    \item Finnes også for IPv4
+    \item Ble omgjort fra krav til anbefaling av
+      \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
+    \end{itemize}
   \item Fragmentering skal gjøres hos avsender
   \item Avsender må sjekke veien og måle smaleste krøttersti
   \item Path MTU
   \item Sjekksum er overlatt til høyere lag
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Andre nyttige ting ved IPv6}
+  \pause
+  \begin{itemize}[<+->]
   \item Hierarkisk adressestruktur
   \item Enklere planlegging av subnett sammenlignet med IPv4
     \begin{itemize}[<+->]
@@ -271,11 +289,14 @@
     til sentrale punkter i hver etasje i hovedetasjen
   \item Sommeren 2006: Nytt Cisco-gear som Catalyst 3560G og 2960
     \begin{itemize}[<+->]
-    \item \texttt{128.39.174.0/24} ble brukt til servernett og
-      ansattnett, m.m.
-    \item \texttt{128.39.172.0/24} ble brukt til datalab
-    \item \texttt{128.39.173.0/24} ble brukt til klienter på trådløst
-      studentnett
+    \item \texttt{128.39.46.8/30} ble satt opp som linknett mellom HiG
+      og FSI
+    \item \texttt{128.39.174.0/24} ble subnettet og satt opp som
+      servernett og ansattnett, m.m.
+    \item \texttt{128.39.172.0/24} ble subnettet og satt opp som
+      datalab
+    \item \texttt{128.39.173.0/24} ble satt opp som klienter på
+      trådløst studentnett
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -377,6 +398,8 @@
     \href{http://tools.ietf.org/html/rfc4861}{RFC~4861},
     \href{http://tools.ietf.org/html/rfc5942}{RFC~5942} og
     \href{http://tools.ietf.org/html/rfc6980}{RFC~6980}
+  \item Krav til IPv6-noder:
+    \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
   \item Path MTU: \href{http://tools.ietf.org/html/rfc1981}{RFC~1981}
   \item DHCPv6: \href{http://tools.ietf.org/html/rfc3315}{RFC~3315},
     \href{http://tools.ietf.org/html/rfc4361}{RFC~4361},
@@ -410,6 +433,16 @@
     \href{http://tools.ietf.org/html/rfc3306}{RFC~3306},
     \href{http://tools.ietf.org/html/rfc3956}{RFC~3956} og
     \href{http://tools.ietf.org/html/rfc4489}{RFC~4489}
+  \item IPsec: \href{http://tools.ietf.org/html/rfc4301}{RFC~4301},
+    \href{http://tools.ietf.org/html/rfc4302}{RFC~4302},
+    \href{http://tools.ietf.org/html/rfc4303}{RFC~4303},
+    \href{http://tools.ietf.org/html/rfc4304}{RFC~4304},
+    \href{http://tools.ietf.org/html/rfc4307}{RFC~4307},
+    \href{http://tools.ietf.org/html/rfc4308}{RFC~4308},
+    \href{http://tools.ietf.org/html/rfc4309}{RFC~4309},
+    \href{http://tools.ietf.org/html/rfc4312}{RFC~4312},
+    \href{http://tools.ietf.org/html/rfc4835}{RFC~4835} og
+    \href{http://tools.ietf.org/html/rfc5996}{RFC~5996}
   \item For programmerere av nettverksprogrammer:
     \href{http://tools.ietf.org/html/rfc4038}{RFC~4038}
   \end{itemize}
@@ -418,6 +451,62 @@
 \section{IPv6-header}
 \begin{frame}
   \frametitle{IPv6-header}
+  \pause
+  \begin{center}
+    \includegraphics[scale=.333]{CCNP-108.png}
+  \end{center}
+
+  Hentet fra
+  \texttt{\url{http://www.tekkom.dk/mediawiki/images/5/5e/CCNP-108.png}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{IPv6-header}
+  \pause
+  \begin{multicols}{2}
+    \includegraphics[scale=.2]{CCNP-108.png}
+
+    \begin{itemize}[<+->]
+    \item Versjonsfeltet (4 bit) settes til \texttt{0110}
+    \item Traffic Class (8 bit) er det samme som Type of Service i
+      IPv4
+    \item Flow Label (20 bit) er et nytt felt og foreløpig
+      eksperimentell
+    \item Payload Length (16 bit) er det samme som Total Length i IPv4
+    \item Next Header (8 bit) er det samme som Protocol i IPv4
+    \item Hop Limit (8 bit) er det samme som Time To Live i IPv4
+    \item Avsender og mottaker er 128-bit IPv6-adresser
+    \item IPv4-feltene Internet Header Length (IHL), Identification,
+      Flags, Fragment Offset, Header Checksum, Options og Padding, er
+      enten fjernet for godt eller flyttet til egne utvidelsesheadere
+    \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}
+  \frametitle{IPv6-header}
+  \pause
+  \begin{itemize}[<+->]
+  \item Utvidelsesheaderne finnes i stort antall:
+    \begin{itemize}[<+->]
+    \item Hop-by-hop options
+    \item Destination options
+    \item Routing
+    \item Fragment
+    \item Authentication Header
+    \item Encapsulating Security Payload
+    \item Mobility
+    \end{itemize}
+  \item Se \href{http://tools.ietf.org/html/rfc2460}{RFC~2460},
+    \href{http://tools.ietf.org/html/rfc4302}{RFC~4302},
+    \href{http://tools.ietf.org/html/rfc4303}{RFC~4303} og
+    \href{http://tools.ietf.org/html/rfc6275}{RFC~6275}
+  \end{itemize}
+\end{frame}
+
+\section{Frakt av IPv6-datagrammer over Ethernet}
+\begin{frame}
+  \frametitle{Frakt av IPv6-datagrammer over Ethernet}
   \pause
   \begin{itemize}[<+->]
   \item Bla, bla, bla
@@ -618,7 +707,7 @@
     \begin{itemize}[<+->]
     \item følger det vanlige mønsteret med produsent- og løpenummer
     \item angir et enkeltindivid
-    \item Dell Inc er produsenten i følge
+    \item Dell Inc er produsenten ifølge
       \href{http://standards.ieee.org/develop/regauth/oui/oui.txt}{OUI-lista}
       hos \href{http://www.ieee.org/index.html}{IEEE} (søk i fila
       etter \texttt{00-21-70})
