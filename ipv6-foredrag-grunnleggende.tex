@@ -73,6 +73,15 @@
     \item Web:
       \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}{\texttt{svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}}
     \end{itemize}
+  \item
+    \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.foredrag.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.foredrag.pdf}}
+    vises på lerretet
+  \item
+    \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.handout.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.handout.pdf}}
+    er mye bedre for publikum å se på
+  \item
+    \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.handout.2on1.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.handout.2on1.pdf}}
+    er velegnet til utskrift
   \item Hovedfila bærer denne identifikasjonen:\\
     \texttt{\$${}$Ximalas${}$\$}
   \item Foredraget er mekket ved hjelp av
@@ -87,11 +96,11 @@
 \end{frame}
 
 \section*{Oversikt}
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \frametitle{Oversikt}
-  \begin{multicols}{2}
-    \tableofcontents[pausesections]
-  \end{multicols}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
 \end{frame}
 
 \section{Kort om IPv6}
@@ -142,7 +151,7 @@
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{Hva er IPv6?}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Totalt antall IPv6-adresser:
   \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
@@ -176,28 +185,20 @@
     \item \href{http://www.ripe.net/}{RIPE} gikk tom i
       \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{september
         2012}
-    \item Dersom disse
-      \href{http://en.wikipedia.org/wiki/Regional_Internet_registry}{RIR}-ene
-      oppfører seg pent:
-      \begin{itemize}
-      \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC}
-        kan holde på til
-        \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni
-          2014}
-      \item \href{https://www.arin.net/}{ARIN} kan holde på til
-        \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
-      \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
-        \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
-      \end{itemize}
     \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Hvorfor trenger vi IPv6?}
-  \pause
-  \begin{itemize}[<+->]
+  \item Dersom disse
+    \href{http://en.wikipedia.org/wiki/Regional_Internet_registry}{RIR}-ene
+    oppfører seg pent:
+    \begin{itemize}
+    \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC}
+      kan holde på til
+      \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni
+        2014}
+    \item \href{https://www.arin.net/}{ARIN} kan holde på til
+      \href{http://www.potaroo.net/tools/ipv4/}{desember 2014}
+    \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
+      \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
+    \end{itemize}
   \item NAT (\href{http://tools.ietf.org/html/rfc2663}{RFC~2663}), CGN
     (\href{http://tools.ietf.org/html/rfc6264}{RFC~6264}) og Shared
     Address Space
@@ -208,15 +209,15 @@
     \item Ende-til-ende-konnektivitet oppnås best uten noen former for
       adresseoversettelse
     \end{itemize}
-  \item Kortere rutingtabeller
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{Hvorfor trenger vi IPv6?}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
+  \item Kortere rutingtabeller
   \item Uninett annonserer disse IPv4-subnettene med BGP:
   \item \texttt{78.91.0.0/16}, \hfill\texttt{128.39.0.0/16},
       \hfill\texttt{129.177.0.0/16}, \hfill\texttt{129.240.0.0/15},
@@ -258,7 +259,7 @@
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{Andre nyttige ting ved IPv6}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Hierarkisk adressestruktur
   \item Enklere planlegging av subnett sammenlignet med IPv4
@@ -291,6 +292,10 @@
     \begin{itemize}[<+->]
     \item \texttt{128.39.46.8/30} ble satt opp som linknett mellom
       HiG/Uninett og FSI
+%      \begin{itemize}[<+->]
+%      \item \texttt{128.39.46.9\phantom{0}} brukes ved HiG
+%      \item \texttt{128.39.46.10} brukes ved FSI
+%      \end{itemize}
     \item \texttt{128.39.174.0/24} ble subnettet og satt opp som
       servernett og ansattnett, m.m.
     \item \texttt{128.39.172.0/24} ble subnettet og satt opp som nett
@@ -304,7 +309,7 @@
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item 6.~september 2006: IPv6-linknettet
     \texttt{2001:700:0:11D::/64} ble aktivert mellom HiG/Uninett og
@@ -333,7 +338,7 @@
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Høsten 2010: Enda en IPv4-serie ble innført:
     \texttt{128.39.194.0/24}
@@ -344,8 +349,8 @@
       mønster som for \texttt{128.39.172.0/24}
     \end{itemize}
   \item I dag er de fleste brukere kasta over til OFK-nettene
-  \item Dette skjedde etter ombyggingen i 2011--2012
-  \item Andreklasse data er velsignet med å kunne velge mellom FSI- og
+  \item Dette skjedde etter ombygginga i 2011--2012
+  \item Andreklasse data er velsigna med å kunne velge mellom FSI- og
     OFK-nettene
   \item Andreklasse data velger som regel det førstnevnte, vanligvis
     FSI-VLAN 48, \texttt{128.39.194.192/27} og
@@ -356,7 +361,7 @@
 \begin{frame}
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Alle FSI-VLAN har både IPv4- og IPv6-adresser
   \item FSI-VLAN med offentlige IPv4-adresser bruker offentlige
@@ -377,77 +382,6 @@
   \end{itemize}
 \end{frame}
 
-\subsection{Noen RFC-er om IPv6}
-\begin{frame}
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Noen RFC-er om IPv6}
-  \pause
-  \begin{itemize}[<+->]
-  \item IPv6-spesifikasjon:
-    \href{http://tools.ietf.org/html/rfc2460}{RFC~2460},
-    \href{http://tools.ietf.org/html/rfc5095}{RFC~5095},
-    \href{http://tools.ietf.org/html/rfc5722}{RFC~5722},
-    \href{http://tools.ietf.org/html/rfc5871}{RFC~5871},
-    \href{http://tools.ietf.org/html/rfc6437}{RFC~6437},
-    \href{http://tools.ietf.org/html/rfc6564}{RFC~6564},
-    \href{http://tools.ietf.org/html/rfc6935}{RFC~6935} og
-    \href{http://tools.ietf.org/html/rfc6946}{RFC~6946}
-  \item ICMPv6: \href{http://tools.ietf.org/html/rfc4443}{RFC~4443} og
-    \href{http://tools.ietf.org/html/rfc4884}{RFC~4884}
-  \item Neighbor Discovery:
-    \href{http://tools.ietf.org/html/rfc4861}{RFC~4861},
-    \href{http://tools.ietf.org/html/rfc5942}{RFC~5942} og
-    \href{http://tools.ietf.org/html/rfc6980}{RFC~6980}
-  \item Krav til IPv6-noder:
-    \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
-  \item Path MTU: \href{http://tools.ietf.org/html/rfc1981}{RFC~1981}
-  \item DHCPv6: \href{http://tools.ietf.org/html/rfc3315}{RFC~3315},
-    \href{http://tools.ietf.org/html/rfc4361}{RFC~4361},
-    \href{http://tools.ietf.org/html/rfc5494}{RFC~5494},
-    \href{http://tools.ietf.org/html/rfc6221}{RFC~6221},
-    \href{http://tools.ietf.org/html/rfc6422}{RFC~6422} og
-    \href{http://tools.ietf.org/html/rfc6644}{RFC~6644}
-  \item Overføring av IPv6-pakker over Ethernet:
-    \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} og
-    \href{http://tools.ietf.org/html/rfc6085}{RFC~6085}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Noen RFC-er om IPv6}
-  \pause
-  \begin{itemize}[<+->]
-  \item Adressearkitektur:
-    \href{http://tools.ietf.org/html/rfc4291}{RFC~4291},
-    \href{http://tools.ietf.org/html/rfc5952}{RFC~5952} og
-    \href{http://tools.ietf.org/html/rfc6052}{RFC~6052}
-  \item Unicastadresser:
-    \href{http://tools.ietf.org/html/rfc3587}{RFC~3587}
-  \item ULA: \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
-  \item Autokonfigurering av adresser:
-    \href{http://tools.ietf.org/html/rfc4862}{RFC~4862}
-  \item Random interface ID:
-    \href{http://tools.ietf.org/html/rfc4941}{RFC~4941}
-  \item Prefiks-baserte multicastadresser:
-    \href{http://tools.ietf.org/html/rfc3306}{RFC~3306},
-    \href{http://tools.ietf.org/html/rfc3956}{RFC~3956} og
-    \href{http://tools.ietf.org/html/rfc4489}{RFC~4489}
-  \item IPsec: \href{http://tools.ietf.org/html/rfc4301}{RFC~4301},
-    \href{http://tools.ietf.org/html/rfc4302}{RFC~4302},
-    \href{http://tools.ietf.org/html/rfc4303}{RFC~4303},
-    \href{http://tools.ietf.org/html/rfc4304}{RFC~4304},
-    \href{http://tools.ietf.org/html/rfc4307}{RFC~4307},
-    \href{http://tools.ietf.org/html/rfc4308}{RFC~4308},
-    \href{http://tools.ietf.org/html/rfc4309}{RFC~4309},
-    \href{http://tools.ietf.org/html/rfc4312}{RFC~4312},
-    \href{http://tools.ietf.org/html/rfc4835}{RFC~4835} og
-    \href{http://tools.ietf.org/html/rfc5996}{RFC~5996}
-  \item For programmerere av nettverksprogrammer:
-    \href{http://tools.ietf.org/html/rfc4038}{RFC~4038}
-  \end{itemize}
-\end{frame}
-
 \section{IPv6-header}
 \begin{frame}
   \frametitle{IPv6-header}
@@ -462,7 +396,23 @@
 
 \begin{frame}
   \frametitle{IPv6-header}
-  \pause
+  %\pause
+  \begin{center}
+    \includegraphics[scale=.25]{CCNP-108.png}
+  \end{center}
+
+  \begin{itemize}
+  \item IPv6-headeren er dobbelt så stor som IPv4-headeren
+    (20~oktetter)
+  \item IPv6-headeren har færre felter enn IPv4-headeren
+  \item De utelatte feltene er i stor grad flyttet over til egne
+    utvidelsesheadere
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{IPv6-header}
+  %\pause
   \begin{multicols}{2}
     \includegraphics[scale=.2]{CCNP-108.png}
 
@@ -485,7 +435,7 @@
 
 \begin{frame}
   \frametitle{IPv6-header}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Utvidelsesheaderne finnes i stort antall:
     \begin{itemize}[<+->]
@@ -504,22 +454,22 @@
   \end{itemize}
 \end{frame}
 
-\section{Frakt av IPv6-datagrammer over Ethernet}
+\section{IPv6 over Ethernet}
 \begin{frame}
-  \frametitle{Frakt av IPv6-datagrammer over Ethernet}
+  \frametitle{IPv6 over Ethernet}
   \pause
   \begin{itemize}[<+->]
   \item \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} definerer
     frameformatet for IPv6-datagrammer over Ethernet
-  \item IPv6-datagrammer fraktes i standard Ethernetformat
+  \item IPv6-datagrammer fraktes i standard Ethernetformat,
+    \href{http://tools.ietf.org/html/rfc894}{RFC~894}
   \item Først angis mottakerens MAC-48-adresse
   \item Deretter angis avsenders MAC-48-adresse
   \item Frametypen settes til \texttt{86DD} heksadesimalt
   \item Deretter følger IPv6-header og resten av datagrammet
-  \item Overføring av preamble og hale er vanligvis en oppgave for
-    lag~1
+  \item Overføring av hode og hale er vanligvis en oppgave for lag~1
   \item Standard MTU for IPv6 over Ethernet er 1500 oktetter
-  \item Minste tillate MTU for IPv6 er 1280 oktetter
+  \item Minste tillatte MTU for IPv6 er 1280 oktetter
   \item Er største tilgjengelige MTU mindre enn 1280 oktetter, så må
     lagene under IPv6 sørge for fragmentering og sammensetting av
     IPv6-datagrammene
@@ -696,11 +646,14 @@
       gjelder formatet som er oppgitt her, altså
       \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
     \item Når \texttt{u}-bitet er satt til \texttt{1}, så er alle
-      \texttt{C}- og \texttt{c}-sifrene løpenummer
-    \item Bitet \texttt{g} angir med \texttt{0} at adressa angir ett
-      individ, eller med \texttt{1} at adressa er en multicastgruppe
-    \item Når \texttt{g} settes lik \texttt{1}, så blir også
-      \texttt{u} satt lik \texttt{1}
+      \texttt{C}- og \texttt{c}-sifrene løpenummer, mens \texttt{u}-
+      og \texttt{g}-bitene beholder sine spesielle betydninger
+    \item Når \texttt{g}-bitet er \texttt{0} så angir adressa en
+      individuell node, og når \texttt{g}-bitet er \texttt{1} så er
+      adressa en multicastgruppe
+    \item Når \texttt{g}-bitet settes lik \texttt{1}, så blir også
+      \texttt{u}-bitet satt lik \texttt{1}
+    \item Kombinasjonen \texttt{ug} = \texttt{01} er høyst uvanlig
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -708,7 +661,7 @@
 \begin{frame}
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{MAC-48-adresser}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Gitt denne MAC-48-adressa: \texttt{\alert{00}:21:70:73:68:6E}
   \item \texttt{CC}-oktetten har verdien \texttt{\alert{00}}
@@ -720,7 +673,7 @@
   \item Dette er en MAC-48-adresse som:
     \begin{itemize}[<+->]
     \item følger det vanlige mønsteret med produsent- og løpenummer
-    \item angir et enkeltindivid
+    \item angir en individuell node
     \item Dell Inc er produsenten ifølge
       \href{http://standards.ieee.org/develop/regauth/oui/oui.txt}{OUI-lista}
       hos \href{http://www.ieee.org/index.html}{IEEE} (søk i fila
@@ -740,23 +693,45 @@
     \item Prefiks
     \item Grensesnittidentifikator
     \end{itemize}
+  \item Grensesnittidentifikatorer er på 64 bit
   \item Grensesnittidentifikatorer kan lages automatisk fra
     MAC-48-adresser
   \item Grensesnittidentifikatorer kan også angis manuelt eller velges
     tilfeldig (\href{http://tools.ietf.org/html/rfc4941}{RFC~4941})
+  \item Angis grensesnittidentifikatoren manuelt, så angis som regel
+    hele IPv6-adressa manuelt
+  \item Grensesnittidentifikatorer følger
+    \href{http://www.ieee.org/index.html}{IEEE}
+    \href{http://grouper.ieee.org/groups/msc/MSC200407/OnlineTutorialsD/EUI64.htm}{EUI-64}-formatet
+    med to unntak:
+    \begin{itemize}[<+->]
+    \item universal/local-bitet brukes med \textit{invertert\/}
+      betydning/verdi
+      \begin{itemize}[<+->]
+      \item (gruppebitet beholder sin vanlige betydning)
+      \end{itemize}
+    \item oktettene på midten er \texttt{FF:FE} ved automatisk
+      konvertering fra MAC-48 til EUI-64
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Grensesnittidentifikatorer lages fra MAC-48-adresser etter
     oppskriften i \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}:
     \begin{itemize}[<+->]
     \item Gitt denne MAC-48-adressa: \texttt{00:21:70:73:68:6E}
+      \begin{itemize}[<+->]
+      \item \texttt{0\alert{0}} (heksadesimalt) $\to$ \texttt{000000\alert{0}0} (binært)
+      \end{itemize}
     \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
+      \begin{itemize}[<+->]
+      \item \texttt{0\alert{2}} (heksadesimalt) $\to$ \texttt{000000\alert{1}0} (binært)
+      \end{itemize}
     \item Sett inn \texttt{FF:FE} på midten: \texttt{02:21:70:\alert{FF:FE}:73:68:6E}
     \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
     \item Høyreskift hele stasen: \texttt{::221:70FF:FE73:686E}
@@ -770,10 +745,10 @@
 \begin{frame}
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item OBS! Arbeidsuhell!
-  \item Det skulle egentlig vært \texttt{FF:FF} i stedet for
+  \item Det skulle egentlig ha vært \texttt{FF:FF} i stedet for
     \texttt{FF:FE}
     \begin{itemize}
     \item MAC-48 $\to$ EUI-64 skal bruke \texttt{FF:FF}
@@ -788,7 +763,7 @@
 \begin{frame}
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Manuell grensesnittidentifikator innebærer at
     universal/local-bitet er satt til \texttt{0}
@@ -797,11 +772,14 @@
   \item Normalt setter man en lav verdi for manuelle
     grensesnittidentifikatorer
   \item For eksempel \texttt{::53} (DNS-tjener, kanskje)
-  \item Dermed er universal/local-bitet satt til \texttt{0} og dette
-    indikerer en manuell grensesnittidentifikator
-  \item Uten invertering av universal/local-bitet, måtte vi bruke
-    manuelle grensesnittidentifikatorer på formen
-    \texttt{::0200:0:0:53}
+  \item \texttt{::53} (heksadesimalt) $\to$ \texttt{::\alert{0}:0:0:53} (heksadesimalt) $\to$
+    \texttt{::000000\alert{0}000000000:00\dots00:0000000001010011} (binært)
+  \item Uten \textit{invertering\/} av universal/local-bitet, måtte vi
+    bruke manuelle grensesnittidentifikatorer på formen
+    \texttt{::0\alert{2}00:0:0:53} (heksadesimalt)
+  \item \texttt{::0\alert{2}00:0:0:53} (heksadesimalt) $\to$
+    \texttt{::000000\alert{1}000000000:00\dots00:0000000001010011}
+    (binært)
   \end{itemize}
 \end{frame}
 
@@ -824,6 +802,39 @@
     \texttt{::1/128}
     \begin{itemize}[<+->]
     \item Velkjent adresse for å snakke med seg selv
+    \end{itemize}
+  \item Dokumentasjonsprefiks: \texttt{2001:db8::/32}
+    \begin{itemize}[<+->]
+    \item Brukes for generell beskrivelse av IPv6-oppsett i lærebøker
+      og annen generell dokumentasjon
+    \item Forbudt å bruke på det offentlige internettet
+    \item Bør blokkeres i \textit{inngående\/} og utgående ACL-er for
+      internettgrensesnittet til routere
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Spesialadresser}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item IPv4-mapped IPv6 addresses:
+    \texttt{::FFFF:\textit{w}.\textit{x}.\textit{y}.\textit{z}}
+    \begin{itemize}[<+->]
+    \item Hvor \texttt{\textit{w}.\textit{x}.\textit{y}.\textit{z}} er
+      den opprinnelige IPv4-adressa skrevet på vanlige måte for IPv4-adresser
+    \item Eksempel: \texttt{::FFFF:128.39.174.1}
+    \item Brukes i systemer som har både IPv4- og IPv6-adresser, men
+      hvor den enkelte tjeneste bare bruker IPv6-socketer og har slått
+      av \texttt{IPV6\_V6ONLY} med
+      \href{http://www.freebsd.org/cgi/man.cgi?query=setsockopt&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{setsockopt}(2)}
+      for lyttesocketen
+    \item Forbudt av sikkerhetshensyn i enkelte OS-er som
+      \href{http://www.openbsd.org/}{OpenBSD}, se OpenBSDs
+      \href{http://www.openbsd.org/cgi-bin/man.cgi?query=ip6&sektion=4}{\texttt{ip6}(4)}
+    \item Tjenestene må da åpne separate lyttesocketer for IPv4 og
+      IPv6
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -927,7 +938,7 @@
 \begin{frame}
   \frametitle{Adressetyper}
   \framesubtitle{Unike, lokale, aggregerbare adresser}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Reelt prefiks: \texttt{FD00::/8}
   \item De neste 40 bitene genereres tilfeldig, gjerne som beskrevet i
@@ -967,14 +978,15 @@
   \item Flagg \texttt{\textit{f\/}} og rekkevidde
     \texttt{\textit{r\/}} er innebygget i adressa:
     \texttt{FF\textit{fr}::/16}
-  \item Eksempel: \texttt{FF0E::101/128}
+  \item Eksempel: \texttt{FF0E::101/128}\hfill(global multicast-adresse
+    for NTP)
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
-  \pause
+  %\pause
   \begin{itemize}[<+->]
   \item Flaggene heter \texttt{0RPT}\hfill(null, err, pe, te)
   \item Flagget \texttt{T} angir med \texttt{0} at adressa er velkjent
@@ -992,7 +1004,7 @@
 \begin{frame}[fragile]
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
-  \pause
+  %\pause
   \begin{multicols}{2}
     \begin{itemize}[<+->]
     \item Følgende rekkevidder er definert i
@@ -1007,7 +1019,7 @@
     \item \texttt{7}: ikke definert
     \item \texttt{8}: organization-local
     \item \texttt{9}: ikke definert
-    \item \texttt{A}: ikke definert, brukt av Uninett til å
+    \item \texttt{A}: ikke definert,\\ brukt av Uninett til å
       \href{http://drift.uninett.no/nett/ip-nett/ipv6-multicastadresser.html}{begrense}
       trafikken innenfor «Uninettet»
     \item \texttt{B}: ikke definert
@@ -1024,7 +1036,246 @@
   \frametitle{ICMPv6}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Feilrapportering- og feilsøkingstjeneste for IPv6
+  \item Definert: \href{http://tools.ietf.org/html/rfc4443}{RFC~4443}
+    og \href{http://tools.ietf.org/html/rfc4844}{RFC~4844}
+  \item ICMPv6-meldinger inneholder to tall som forteller om
+    budskapets mening og innhold:
+    \begin{itemize}[<+->]
+    \item Type: hovednummer
+    \item Code: undernummer, settes til 0 når det ikke er definert
+      noen undernummer
+    \end{itemize}
+  \item I tillegg kommer felter for sjekksum og opplysninger som er
+    unike for hver type (og undertype) av meldingene
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{ICMPv6}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Feilmeldinger:
+    \begin{itemize}[<+->]
+    \item 1: Destination Unreachable
+    \item 2: Packet Too Big
+    \item 3: Time Exceeded
+    \item 4: Parameter Problem
+    \item 100: Private eksperimenter
+    \item 101: Private eksperimenter
+    \item 127: Reservert for utvidelse av feilmeldingene
+    \end{itemize}
+  \item Informative meldinger:
+    \begin{itemize}[<+->]
+    \item 128: Echo request\hfill(ping)
+    \item 129: Echo reply\hfill(pong)
+    \item 200: Private eksperimenter
+    \item 201: Private eksperimenter
+    \item 255: Reservert for utvidelse av informative meldinger
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Multicast Listener Discovery}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Multicast Listener Discovery}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc2710}{RFC~2710}
+  \item Angir tre nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 130: Multicast Listener Query
+    \item 131: Multicast Listener Report
+    \item 132: Multicast Listener Done
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Neighbor Discovery}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Neighbor Discovery}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc4861}{RFC~4861}
+  \item Angir fem nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 133: Router Solicitation
+    \item 134: Router Advertisement
+    \item 135: Neighbor Solicitation
+    \item 136: Neighbor Advertisement
+    \item 137: Redirect
+    \end{itemize}
+  \item Sentral ved autokonfigurering av adresser
+  \item Brukes for å bekrefte at nodene er oppegående og bestemme
+    lag~2-adressene til mottakere
+  \item Neighbor Discovery vil bli gjennomgått i detalj i foredraget
+    for de viderekomne
+  \end{itemize}
+\end{frame}
+
+\subsection{Router Renumbering}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Router Renumbering}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert:
+    \texttt{\url{http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml}}
+    oppgir \href{mailto:crawdad@gungnir.fnal.gov}{Matt Crawford} som
+    referanse
+  \item Angir én ny ICMPv6-melding:
+    \begin{itemize}[<+->]
+    \item 138: Router Renumbering
+    \end{itemize}
+  \item
+    \texttt{\url{http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml}}
+    angir følgende undertyper:
+    \begin{itemize}[<+->]
+    \item 0: Router Renumbering Command
+    \item 1: Router Renumbering Result
+    \item 255: Sequence Number Reset
+    \end{itemize}
+  \item Jeg har hittil ikke klart å finne ut noe mer om denne
+    ICMPv6-meldinga
+  \end{itemize}
+\end{frame}
+
+\subsection{Inverse Neighbor Discovery}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Inverse Neighbor Discovery}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc3122}{RFC~3122}
+  \item Angir to nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 141: Inverse Neighbor Discovery Solicitation
+    \item 142: Inverse Neighbor Discovery Advertisement
+    \end{itemize}
+  \item Gjør det mulig for én node å lære IPv6-adressen(e) til en
+    annen node i samme VLAN, når man bare vet lag~2-adressa til den
+    andre noden
+  \end{itemize}
+\end{frame}
+
+\subsection{Version 2 Multicast Listener Report}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Version 2 Multicast Listener Report}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc3810}{RFC~3810}
+  \item Angir én ny ICMPv6-melding:
+    \begin{itemize}[<+->]
+    \item 143: Version 2 Multicast Listener Report
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Mobile IPv6}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Mobile IPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc6275}{RFC~6275}
+  \item Angir fire nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 144: Home Agent Address Discovery Request
+    \item 145: Home Agent Address Discovery Reply
+    \item 146: Mobile Prefix Solicitation
+    \item 147: Mobile Prefix Advertisement
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{SEcure Neighbor Discovery (SEND)}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{SEcure Neighbor Discovery (SEND)}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc3971}{RFC~3971}
+  \item Angir to nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 148: Certification Path Solicitation
+    \item 149: Certification Path Advertisement
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Multicast Router Discovery}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Multicast Router Discovery}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc4286}{RFC~4286}
+  \item Angir tre nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 151: Multicast Router Advertisement
+    \item 152: Multicast Router Solicitation
+    \item 153: Multicast Router Termination
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{FMIPv6}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{FMIPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc5568}{RFC~5568}
+  \item Angir én ny ICMPv6-melding:
+    \begin{itemize}[<+->]
+    \item 154: FMIPv6
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{RPL Control Message}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{RPL Control Message}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc6550}{RFC~6550}
+  \item Angir én ny ICMPv6-melding:
+    \begin{itemize}[<+->]
+    \item 155: RPL Control Message
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{ILNPv6 Locator Update Message}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{ILNPv6 Locator Update Message}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc6743}{RFC~6743}
+  \item Angir én ny ICMPv6-melding:
+    \begin{itemize}[<+->]
+    \item 156: ILNPv6 Locator Update Message
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Duplicate Address}
+\begin{frame}
+  \frametitle{ICMPv6}
+  \framesubtitle{Duplicate Address}
+  \pause
+  \begin{itemize}[<+->]
+  \item Definert: \href{http://tools.ietf.org/html/rfc6775}{RFC~6775}
+  \item Angir to nye ICMPv6-meldinger:
+    \begin{itemize}[<+->]
+    \item 157: Duplicate Address Request
+    \item 158: Duplicate Address Confirmation
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -1052,6 +1303,75 @@
   \pause
   \begin{itemize}[<+->]
   \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{Noen RFC-er om IPv6}
+\begin{frame}
+  \frametitle{Noen RFC-er om IPv6}
+  \pause
+  \begin{itemize}[<+->]
+  \item IPv6-spesifikasjon:
+    \href{http://tools.ietf.org/html/rfc2460}{RFC~2460},
+    \href{http://tools.ietf.org/html/rfc5095}{RFC~5095},
+    \href{http://tools.ietf.org/html/rfc5722}{RFC~5722},
+    \href{http://tools.ietf.org/html/rfc5871}{RFC~5871},
+    \href{http://tools.ietf.org/html/rfc6437}{RFC~6437},
+    \href{http://tools.ietf.org/html/rfc6564}{RFC~6564},
+    \href{http://tools.ietf.org/html/rfc6935}{RFC~6935} og
+    \href{http://tools.ietf.org/html/rfc6946}{RFC~6946}
+  \item ICMPv6: \href{http://tools.ietf.org/html/rfc4443}{RFC~4443} og
+    \href{http://tools.ietf.org/html/rfc4884}{RFC~4884}
+  \item Neighbor Discovery:
+    \href{http://tools.ietf.org/html/rfc4861}{RFC~4861},
+    \href{http://tools.ietf.org/html/rfc5942}{RFC~5942} og
+    \href{http://tools.ietf.org/html/rfc6980}{RFC~6980}
+  \item Krav til IPv6-noder:
+    \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
+  \item Path MTU: \href{http://tools.ietf.org/html/rfc1981}{RFC~1981}
+  \item DHCPv6: \href{http://tools.ietf.org/html/rfc3315}{RFC~3315},
+    \href{http://tools.ietf.org/html/rfc4361}{RFC~4361},
+    \href{http://tools.ietf.org/html/rfc5494}{RFC~5494},
+    \href{http://tools.ietf.org/html/rfc6221}{RFC~6221},
+    \href{http://tools.ietf.org/html/rfc6422}{RFC~6422} og
+    \href{http://tools.ietf.org/html/rfc6644}{RFC~6644}
+  \item Overføring av IPv6-pakker over Ethernet:
+    \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} og
+    \href{http://tools.ietf.org/html/rfc6085}{RFC~6085}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Noen RFC-er om IPv6}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Adressearkitektur:
+    \href{http://tools.ietf.org/html/rfc4291}{RFC~4291},
+    \href{http://tools.ietf.org/html/rfc5952}{RFC~5952} og
+    \href{http://tools.ietf.org/html/rfc6052}{RFC~6052}
+  \item Unicastadresser:
+    \href{http://tools.ietf.org/html/rfc3587}{RFC~3587}
+  \item ULA: \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
+  \item Autokonfigurering av adresser:
+    \href{http://tools.ietf.org/html/rfc4862}{RFC~4862}
+  \item Random interface ID:
+    \href{http://tools.ietf.org/html/rfc4941}{RFC~4941}
+  \item Prefiks-baserte multicastadresser:
+    \href{http://tools.ietf.org/html/rfc3306}{RFC~3306},
+    \href{http://tools.ietf.org/html/rfc3956}{RFC~3956} og
+    \href{http://tools.ietf.org/html/rfc4489}{RFC~4489}
+  \item IPsec: \href{http://tools.ietf.org/html/rfc4301}{RFC~4301},
+    \href{http://tools.ietf.org/html/rfc4302}{RFC~4302},
+    \href{http://tools.ietf.org/html/rfc4303}{RFC~4303},
+    \href{http://tools.ietf.org/html/rfc4304}{RFC~4304},
+    \href{http://tools.ietf.org/html/rfc4307}{RFC~4307},
+    \href{http://tools.ietf.org/html/rfc4308}{RFC~4308},
+    \href{http://tools.ietf.org/html/rfc4309}{RFC~4309},
+    \href{http://tools.ietf.org/html/rfc4312}{RFC~4312},
+    \href{http://tools.ietf.org/html/rfc4835}{RFC~4835} og
+    \href{http://tools.ietf.org/html/rfc5996}{RFC~5996}
+  \item For programmerere av nettverksprogrammer:
+    \href{http://tools.ietf.org/html/rfc4038}{RFC~4038}
   \end{itemize}
 \end{frame}
 
