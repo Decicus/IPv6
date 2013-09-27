@@ -239,7 +239,7 @@
   \framesubtitle{Andre nyttige ting ved IPv6}
   \pause
   \begin{itemize}[<+->]
-  \item IPsec ble utviklet som en del av IPv6
+  \item IPsec ble spesifisert som en del av IPv6
     \begin{itemize}[<+->]
     \item Må konfigureres før den begynner å virke
     \item Tilbyr kryptert overføring (ESP), og bekreftelse av
@@ -839,6 +839,178 @@
   \end{itemize}
 \end{frame}
 
+\subsection{DNS}
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  \pause
+  \begin{itemize}[<+->]
+  \item Navn-til-IPv6-adresser bruker AAAA-poster
+    \begin{itemize}[<+->]
+    \item Eksempel:
+\begin{verbatim}
+$ORIGIN fig.ol.no.
+svabu IN AAAA 2001:700:1100:1::4
+\end{verbatim}
+    \end{itemize}
+  \item IPv6-adresser-til-navn bruker PTR-poster plassert i \texttt{ip6.arpa}
+    \begin{itemize}[<+->]
+    \item Eksempel:
+\begin{verbatim}
+$ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
+4.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN PTR svabu.fig.ol.no.
+\end{verbatim}
+    \end{itemize}
+  \item Se \href{http://tools.ietf.org/html/rfc3596}{RFC~3596}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}[<+->]
+  \item A6-poster var foreslått som erstatning for AAAA-poster av
+    \href{http://tools.ietf.org/html/rfc2874}{RFC~2874}, men merket
+    som eksperimentell av
+    \href{http://tools.ietf.org/html/rfc3363}{RFC~3363}
+  \item \href{http://tools.ietf.org/html/rfc3364}{RFC~3364} diskuterer
+    fordeler og ulemper med AAAA og A6
+  \item En A6-post består av 2--3 ting:
+    \begin{itemize}[<+->]
+    \item Prefikslengde
+    \item Utdrag av IPv6-adressa
+    \item Navn som henviser til resten av adressa
+    \end{itemize}
+  \item Er prefikslengda satt til $0$, så er det ikke lov å oppgi henvisning
+  \item Er prefikslengda satt til $128$, så kan man utelate utdraget av IPv6-adressa
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Et tenkt eksempel med A6:
+\begin{verbatim}
+$ORIGIN ip6.uninett.no.
+uninett IN A6  0 2001:700::
+fig     IN A6 32 0:0:1100:: uninett
+
+$ORIGIN fig.ol.no.
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+\end{verbatim}
+  \item Vi vil vite IPv6-adressa for \texttt{svabu.fig.ol.no.} og vi
+    vil bruke A6-poster
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+\begin{verbatim}
+$ORIGIN ip6.uninett.no.
+uninett IN A6  0 2001:700::
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item Kjeden starter med \texttt{uninett.ip6.uninett.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+\begin{verbatim}
+$ORIGIN ip6.uninett.no.
+uninett IN A6  0 2001:700::
+fig     IN A6 32 0:0:1100:: uninett
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item \texttt{fig.ip6.uninett.no.} mangler de 32 mest signifikante bitene og henviser til \texttt{uninett.ip6.uninett.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+\begin{verbatim}
+$ORIGIN ip6.uninett.no.
+uninett IN A6  0 2001:700::
+fig     IN A6 32 0:0:1100:: uninett
+
+$ORIGIN fig.ol.no.
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item \texttt{ext-servere.ip6.fig.ol.no.} mangler de 48 mest signifikante bitene og henviser til \texttt{fig.ip6.uninett.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+\begin{verbatim}
+$ORIGIN ip6.uninett.no.
+uninett IN A6  0 2001:700::
+fig     IN A6 32 0:0:1100:: uninett
+
+$ORIGIN fig.ol.no.
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item \texttt{svabu.fig.ol.no.} mangler de 64 mest signifikante bitene og henviser til \texttt{ext-servere.ip6.fig.ol.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+\begin{verbatim}
+$ORIGIN ip6.uninett.no.
+uninett IN A6  0 2001:700::
+fig     IN A6 32 0:0:1100:: uninett
+
+$ORIGIN fig.ol.no.
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+\end{verbatim}
+    \item Vi får bygd opp følgende adressekjede:
+      \begin{itemize}%[<+->]
+      \item \texttt{::4}\hfill\texttt{svabu.fig.ol.no.}
+      \item \texttt{0:0:0:1::}\hfill\texttt{ext-servere.ip6.fig.ol.no.}
+      \item \texttt{0:0:1100::}\hfill\texttt{fig.ip6.uninett.no.}
+      \item \texttt{2001:700::}\hfill\texttt{uninett.ip6.uninett.no.}
+      \end{itemize}
+    \item Bitvis-\texttt{OR} gir den sammensatte adressa \texttt{2001:700:1100:1::4}
+  \end{itemize}
+\end{frame}
+
 \section{Adressetyper}
 \begin{frame}
   \frametitle{Adressetyper}
@@ -846,10 +1018,13 @@
   \begin{itemize}[<+->]
   \item Det finnes flere adressetyper med forskjellige bruksområder:
     \begin{itemize}[<+->]
-    \item Link-local-adresser
-    \item Site-local-adresser
-    \item Offentlige unicast-adresser
-    \item Unike, lokale, aggregerbare adresser
+    \item Unicast-adresser:
+      \begin{itemize}[<+->]
+      \item Link-local-adresser
+      \item Site-local-adresser
+      \item Offentlige unicast-adresser
+      \item Unike, lokale, aggregerbare adresser
+      \end{itemize}
     \item Anycast-adresser
     \item Multicast-adresser
     \end{itemize}
@@ -865,9 +1040,13 @@
   \pause
   \begin{itemize}[<+->]
   \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
-  \item Bruksområde: lokal kommunikasjon internt i VLAN-et, sentral
-    for autokonfigurasjon, kan brukes i ad-hoc-nett, blir ikke
-    videresendt til andre VLAN eller til internett
+  \item Bruksområde:
+    \begin{itemize}[<+->]
+    \item Lokal kommunikasjon internt i VLAN-et
+    \item Sentral for autokonfigurasjon
+    \item Blir ikke videresendt av routere til andre VLAN eller til internett
+    \item Kan brukes i ad-hoc-nett
+    \end{itemize}
   \item Prefiks: \texttt{FE80::/10}
   \item De neste 54 bitene skal settes til null
   \item De siste 64 bitene er grensesnittidentifikator i modda
@@ -911,6 +1090,12 @@
     men gjerne i 8- eller 16-bitblokker
   \item De siste 64 bitene er grensesnittidentifikator i modda
     EUI-64-format
+  \item Det er vanlig at kundene blir tildelt \texttt{/48}- eller
+    \texttt{/56}-bits prefiks av ISP-ene
+    \begin{itemize}[<+->]
+    \item \texttt{/48}-bits prefiks gir $64-48=16$ subnetbit $\to$ $2^{16}=65536$ subnett
+    \item \texttt{/56}-bits prefiks gir $64-54=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=256$ subnett
+    \end{itemize}
   \item Eksempel: \texttt{2001:700:1100:1::1/128}
   \end{itemize}
 \end{frame}
@@ -942,7 +1127,27 @@
   \begin{itemize}[<+->]
   \item Reelt prefiks: \texttt{FD00::/8}
   \item De neste 40 bitene genereres tilfeldig, gjerne som beskrevet i
-    \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
+    \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}:
+    \begin{itemize}[<+->]
+    \item Uttrykk nåværende øyeblikk som et 64-bit heltall i
+      NTP-format
+      (\href{http://tools.ietf.org/html/rfc5905}{RFC~5905}).
+    \item Bruk en EUI-64-identifikator fra systemet som kjører denne
+      algoritmen.
+      \begin{itemize}[<+->]
+      \item Mangler du en EUI-64-identifikator, kan du lage en fra en
+        48-bit MAC-adresse som angitt i
+        \href{http://tools.ietf.org/html/rfc3513}{RFC~3513}.
+      \item Kan du ikke lage en EUI-64-identifikator, så bruk en annen
+        unik verdi som serienummeret til systemet.
+      \end{itemize}
+    \item Sett sammen de to 64-bit heltallene til et 128-bit heltall.
+    \item Beregn en SHA-1-hash som beskrevet i
+      \href{http://tools.ietf.org/html/rfc3174}{RFC~3174}.  Resultatet
+      er et heltall på 160 bit.
+    \item Bruk de 40 minst signifikante bitene som global
+      identifikator.
+    \end{itemize}
   \item De neste 16 bitene brukes til subnett-ID
   \item De siste 64 bitene er grensesnittidentifikator i modda
     EUI-64-format
@@ -998,6 +1203,8 @@
   \item Flagget \texttt{R} angir med \texttt{1} at adressa også
     inneholder et møtepunkt («rendezvous point») og skal følge reglene
     i \href{http://tools.ietf.org/html/rfc3956}{RFC~3956}
+  \item Flaggene \texttt{P} og \texttt{R} gjør det mulig å enkelt lage
+    egne multicast-adresser for internt bruk i organisasjonen
   \end{itemize}
 \end{frame}
 
