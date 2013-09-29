@@ -47,10 +47,10 @@
 
 \title{\textbf{IPv6-foredrag}}
 \subtitle{Grunnleggende}
-%\author{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
-\author[T.~Endrestøl]{Trond Endrestøl}
-%\institute{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}}
-\institute[FSI/IT]{Fagskolen Innlandet, IT-avdelingen}
+\author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
+%\author[T.~Endrestøl]{Trond Endrestøl}
+\institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}}
+%\institute[FSI/IT]{Fagskolen Innlandet, IT-avdelingen}
 \logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
 \subject{Emne for bruk i egenskapene til PDF-fila}
 \keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
@@ -853,7 +853,7 @@ $ORIGIN fig.ol.no.
 svabu IN AAAA 2001:700:1100:1::4
 \end{verbatim}
     \end{itemize}
-  \item IPv6-adresser-til-navn bruker PTR-poster plassert i \texttt{ip6.arpa}
+  \item IPv6-adresser-til-navn bruker PTR-poster plassert i \texttt{ip6.arpa.}
     \begin{itemize}[<+->]
     \item Eksempel:
 \begin{verbatim}
@@ -871,19 +871,29 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   %\pause
   \begin{itemize}[<+->]
   \item A6-poster var foreslått som erstatning for AAAA-poster av
-    \href{http://tools.ietf.org/html/rfc2874}{RFC~2874}, men merket
-    som eksperimentell av
+    \href{http://tools.ietf.org/html/rfc2874}{RFC~2874}, men endret
+    til eksperimentell av
     \href{http://tools.ietf.org/html/rfc3363}{RFC~3363}
   \item \href{http://tools.ietf.org/html/rfc3364}{RFC~3364} diskuterer
     fordeler og ulemper med AAAA og A6
   \item En A6-post består av 2--3 ting:
     \begin{itemize}[<+->]
-    \item Prefikslengde
+    \item Prefikslengde fra og med $0$ til og med $128$
     \item Utdrag av IPv6-adressa
     \item Navn som henviser til resten av adressa
     \end{itemize}
-  \item Er prefikslengda satt til $0$, så er det ikke lov å oppgi henvisning
-  \item Er prefikslengda satt til $128$, så kan man utelate utdraget av IPv6-adressa
+  \item Settes prefikslengda til:
+    \begin{itemize}[<+->]
+    \item $0$, så er det \alert{ikke} lov å oppgi noen henvisning,
+      fordi dette navnet er det øverste eller det eneste nivået i en
+      kjede
+    \item $128$, så er det \alert{ikke} lov å oppgi noen IPv6-adresse,
+      fordi man henviser til et helt annet navn, tydeligvis et
+      alternativ til \texttt{CNAME}
+    \end{itemize}
+  \item Avsnittene 3.1.1 og 3.1.3 i
+    \href{http://tools.ietf.org/html/rfc2874}{RFC~2874} er ikke enige
+    med seg selv når prefikslengda settes til $128$
   \end{itemize}
 \end{frame}
 
@@ -893,6 +903,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   %\pause
   \begin{itemize}[<+->]
   \item Et tenkt eksempel med A6:
+  \item 
 \begin{verbatim}
 $ORIGIN ip6.uninett.no.
 uninett IN A6  0 2001:700::
@@ -903,7 +914,7 @@ ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
 svabu           IN A6 64       ::4 ext-servere.ip6
 \end{verbatim}
   \item Vi vil vite IPv6-adressa for \texttt{svabu.fig.ol.no.} og vi
-    vil bruke A6-poster
+    vil bruke A6-poster for å finne svaret
   \end{itemize}
 \end{frame}
 
@@ -913,6 +924,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   %\pause
   \begin{itemize}%[<+->]
   \item Et tenkt eksempel med A6:
+  \item 
 \begin{verbatim}
 $ORIGIN ip6.uninett.no.
 uninett IN A6  0 2001:700::
@@ -930,6 +942,7 @@ uninett IN A6  0 2001:700::
   %\pause
   \begin{itemize}%[<+->]
   \item Et tenkt eksempel med A6:
+  \item 
 \begin{verbatim}
 $ORIGIN ip6.uninett.no.
 uninett IN A6  0 2001:700::
@@ -948,6 +961,7 @@ fig     IN A6 32 0:0:1100:: uninett
   %\pause
   \begin{itemize}%[<+->]
   \item Et tenkt eksempel med A6:
+  \item 
 \begin{verbatim}
 $ORIGIN ip6.uninett.no.
 uninett IN A6  0 2001:700::
@@ -969,6 +983,7 @@ ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
   %\pause
   \begin{itemize}%[<+->]
   \item Et tenkt eksempel med A6:
+  \item 
 \begin{verbatim}
 $ORIGIN ip6.uninett.no.
 uninett IN A6  0 2001:700::
@@ -991,6 +1006,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   %\pause
   \begin{itemize}%[<+->]
   \item Et tenkt eksempel med A6:
+  \item 
 \begin{verbatim}
 $ORIGIN ip6.uninett.no.
 uninett IN A6  0 2001:700::
@@ -1094,7 +1110,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
     \texttt{/56}-bits prefiks av ISP-ene
     \begin{itemize}[<+->]
     \item \texttt{/48}-bits prefiks gir $64-48=16$ subnetbit $\to$ $2^{16}=65536$ subnett
-    \item \texttt{/56}-bits prefiks gir $64-54=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=256$ subnett
+    \item \texttt{/56}-bits prefiks gir $64-56=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=\phantom{65}256$ subnett
     \end{itemize}
   \item Eksempel: \texttt{2001:700:1100:1::1/128}
   \end{itemize}
@@ -1203,8 +1219,8 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \item Flagget \texttt{R} angir med \texttt{1} at adressa også
     inneholder et møtepunkt («rendezvous point») og skal følge reglene
     i \href{http://tools.ietf.org/html/rfc3956}{RFC~3956}
-  \item Flaggene \texttt{P} og \texttt{R} gjør det mulig å enkelt lage
-    egne multicast-adresser for internt bruk i organisasjonen
+  \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
+    multicast-adresser for internt bruk i organisasjonen
   \end{itemize}
 \end{frame}
 
