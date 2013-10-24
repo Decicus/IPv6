@@ -45,6 +45,8 @@
 
 \hypersetup{colorlinks,linkcolor=,urlcolor=blue}
 
+\newcommand{\Textbackslash}{\textbackslash\penalty\exhyphenpenalty}
+
 \title{\textbf{IPv6-foredrag}}
 \subtitle{Grunnleggende}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
@@ -63,12 +65,12 @@
   \titlepage
 \end{frame}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \frametitle{Foredragets filer}
   \begin{itemize}
   \item Filene til foredraget er tilgjengelig gjennom:
     \begin{itemize}
-    \item Subversion: \texttt{svn co \textbackslash\
+    \item Subversion: \texttt{svn co
         \url{svn://svn.ximalas.info/ipv6-foredrag-grunnleggende}}
     \item Web:
       \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}{\texttt{svnweb.ximalas.info/ipv6-foredrag-grunnleggende/}}
@@ -82,6 +84,7 @@
   \item
     \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.handout.2on1.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.handout.2on1.pdf}}
     er velegnet til utskrift
+  \item \texttt{*.169.pdf}-filene er i 16:9-format, mens \texttt{*.1610.pdf}-filene er i 16:10-format
   \item Hovedfila bærer denne identifikasjonen:\\
     \texttt{\$${}$Ximalas${}$\$}
   \item Foredraget er mekket ved hjelp av
@@ -105,7 +108,7 @@
 
 \section{Kort om IPv6}
 \subsection{Hva er IPv6?}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{Hva er IPv6?}
   \pause
@@ -115,40 +118,18 @@
     \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
-  \item 128-bit adresser
+  \item \alert<12>{128-bit adresser}
   \item Ny versjon av ICMP: ICMPv6
   \item ARP og RARP for IPv6 er en del av ICMPv6
     \begin{itemize}[<+->]
     \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
     \end{itemize}
   \item Ny versjon av DHCP: DHCPv6
-  \item Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6
+  \item \alert<12>{Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6}
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Hva er IPv6?}
-  %\pause
-  \begin{itemize}%[<+->]
-  \item En lag-3-protokoll ment å erstatte IPv4
-  \item Har eksistert siden desember 1995, spesifisert i
-    \href{http://tools.ietf.org/html/rfc1883}{RFC~1883}
-  \item Enkel grunnheader med fast lengde
-  \item Flere utvidelsesheadere, riktig rekkefølge er viktig
-  \item \alert{128-bit adresser}
-  \item Ny versjon av ICMP: ICMPv6
-  \item ARP og RARP for IPv6 er en del av ICMPv6
-    \begin{itemize}%[<+->]
-    \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
-    \end{itemize}
-  \item Ny versjon av DHCP: DHCPv6
-  \item \alert{Automatisk adressekonfigurasjon \textit{uten\/} bruk av
-      DHCPv6}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{Hva er IPv6?}
   %\pause
@@ -158,7 +139,7 @@
   \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
   \item
     $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
-  \item Fortsatt mye mer enn det fullstendige IPv4-adresserommet:
+  \item Fortsatt mange adresser enn det fullstendige IPv4-adresserommet:
   \item
     $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
   \item Bare $3.702.258.688$ IPv4-adresser kan bli brukt som
@@ -169,7 +150,7 @@
 \end{frame}
 
 \subsection{Hvorfor trenger vi IPv6?}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{Hvorfor trenger vi IPv6?}
   \pause
@@ -212,7 +193,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{Hvorfor trenger vi IPv6?}
   %\pause
@@ -234,7 +215,7 @@
 \end{frame}
 
 \subsection{Andre nyttige ting ved IPv6}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{Andre nyttige ting ved IPv6}
   \pause
@@ -256,7 +237,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{Andre nyttige ting ved IPv6}
   %\pause
@@ -275,7 +256,7 @@
 \end{frame}
 
 \subsection{IPv6 ved Fagskolen Innlandet}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   \pause
@@ -306,7 +287,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
@@ -335,7 +316,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
@@ -358,7 +339,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
@@ -383,7 +364,7 @@
 \end{frame}
 
 \section{IPv6-header}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
   \pause
   \begin{center}
@@ -394,7 +375,7 @@
   \texttt{\url{http://www.tekkom.dk/mediawiki/images/5/5e/CCNP-108.png}}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
   %\pause
   \begin{center}
@@ -410,7 +391,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
   %\pause
   \begin{multicols}{2}
@@ -433,7 +414,7 @@
   \end{multicols}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
   %\pause
   \begin{itemize}[<+->]
@@ -455,7 +436,7 @@
 \end{frame}
 
 \section{IPv6 over Ethernet}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{IPv6 over Ethernet}
   \pause
   \begin{itemize}[<+->]
@@ -478,7 +459,7 @@
 \end{frame}
 
 \section{Grunnleggende om adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \pause
   \begin{itemize}[<+->]
@@ -494,7 +475,7 @@
 \end{frame}
 
 \subsection{Adressedemo}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo}
   \pause
@@ -506,7 +487,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Hierarkisk struktur}
   %\pause
@@ -518,7 +499,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: La oss forenkle adressene}
   %\pause
@@ -530,7 +511,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Ledende nuller}
   %\pause
@@ -542,7 +523,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Fjernet ledende nuller}
   %\pause
@@ -554,7 +535,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: La oss forenkle litt til}
   %\pause
@@ -566,7 +547,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: To eller flere sammenhengende 16-bitgrupper med bare 0}
   %\pause
@@ -578,7 +559,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Erstattet med dobbelkolon}
   %\pause
@@ -590,7 +571,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Kompakt form}
   %\pause
@@ -602,7 +583,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Vis prefikslengde}
   %\pause
@@ -614,7 +595,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Adressedemo: Kompakte adresser med prefikslengde}
   %\pause
@@ -627,12 +608,13 @@
 \end{frame}
 
 \subsection{MAC-48-adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{MAC-48-adresser}
   \pause
   \begin{itemize}[<+->]
-  \item MAC-48-adresser har følgende oppbygging:
+  \item MAC-48-adresser har følgende oppbygging, gitt av
+    \href{http://standards.ieee.org/getieee802/download/802-2001.pdf}{IEEE~802-2001}:
     \begin{itemize}[<+->]
     \item \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
     \item Den første halvparten er produsentnummer: \texttt{CC:cc:cc}
@@ -658,7 +640,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{MAC-48-adresser}
   %\pause
@@ -683,7 +665,7 @@
 \end{frame}
 
 \subsection{Modda IEEE EUI-64-format}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   \pause
@@ -716,7 +698,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   %\pause
@@ -742,7 +724,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   %\pause
@@ -760,7 +742,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Modda IEEE EUI-64-format}
   %\pause
@@ -784,7 +766,7 @@
 \end{frame}
 
 \subsection{Spesialadresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Spesialadresser}
   \pause
@@ -814,7 +796,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Spesialadresser}
   %\pause
@@ -840,7 +822,7 @@
 \end{frame}
 
 \subsection{DNS}
-\begin{frame}[fragile]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{DNS}
   \pause
@@ -865,7 +847,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{DNS}
   %\pause
@@ -897,7 +879,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{DNS}
   %\pause
@@ -918,7 +900,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{DNS}
   %\pause
@@ -926,71 +908,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \item Et tenkt eksempel med A6:
   \item 
 \begin{verbatim}
-$ORIGIN ip6.uninett.no.
-uninett IN A6  0 2001:700::
-\end{verbatim}
-  \item Forklaring:
-    \begin{itemize}%[<+->]
-    \item Kjeden starter med \texttt{uninett.ip6.uninett.no.}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{DNS}
-  %\pause
-  \begin{itemize}%[<+->]
-  \item Et tenkt eksempel med A6:
-  \item 
-\begin{verbatim}
-$ORIGIN ip6.uninett.no.
-uninett IN A6  0 2001:700::
-fig     IN A6 32 0:0:1100:: uninett
-\end{verbatim}
-  \item Forklaring:
-    \begin{itemize}%[<+->]
-    \item \texttt{fig.ip6.uninett.no.} mangler de 32 mest signifikante bitene og henviser til \texttt{uninett.ip6.uninett.no.}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{DNS}
-  %\pause
-  \begin{itemize}%[<+->]
-  \item Et tenkt eksempel med A6:
-  \item 
-\begin{verbatim}
-$ORIGIN ip6.uninett.no.
-uninett IN A6  0 2001:700::
-fig     IN A6 32 0:0:1100:: uninett
-
 $ORIGIN fig.ol.no.
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
-\end{verbatim}
-  \item Forklaring:
-    \begin{itemize}%[<+->]
-    \item \texttt{ext-servere.ip6.fig.ol.no.} mangler de 48 mest signifikante bitene og henviser til \texttt{fig.ip6.uninett.no.}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{DNS}
-  %\pause
-  \begin{itemize}%[<+->]
-  \item Et tenkt eksempel med A6:
-  \item 
-\begin{verbatim}
-$ORIGIN ip6.uninett.no.
-uninett IN A6  0 2001:700::
-fig     IN A6 32 0:0:1100:: uninett
-
-$ORIGIN fig.ol.no.
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
 svabu           IN A6 64       ::4 ext-servere.ip6
 \end{verbatim}
   \item Forklaring:
@@ -1000,7 +918,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{DNS}
   %\pause
@@ -1008,13 +926,77 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \item Et tenkt eksempel med A6:
   \item 
 \begin{verbatim}
-$ORIGIN ip6.uninett.no.
-uninett IN A6  0 2001:700::
-fig     IN A6 32 0:0:1100:: uninett
-
 $ORIGIN fig.ol.no.
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
 svabu           IN A6 64       ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item \texttt{ext-servere.ip6.fig.ol.no.} mangler de 48 mest signifikante bitene og henviser til \texttt{fig.ip6.uninett.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+  \item 
+\begin{verbatim}
+$ORIGIN fig.ol.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+
+$ORIGIN ip6.uninett.no.
+fig     IN A6 32 0:0:1100:: uninett
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item \texttt{fig.ip6.uninett.no.} mangler de 32 mest signifikante bitene og henviser til \texttt{uninett.ip6.uninett.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+  \item 
+\begin{verbatim}
+$ORIGIN fig.ol.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+
+$ORIGIN ip6.uninett.no.
+fig     IN A6 32 0:0:1100:: uninett
+uninett IN A6  0 2001:700::
+\end{verbatim}
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item Kjeden slutter med \texttt{uninett.ip6.uninett.no.}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{DNS}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med A6:
+  \item 
+\begin{verbatim}
+$ORIGIN fig.ol.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+
+$ORIGIN ip6.uninett.no.
+fig     IN A6 32 0:0:1100:: uninett
+uninett IN A6  0 2001:700::
 \end{verbatim}
     \item Vi får bygd opp følgende adressekjede:
       \begin{itemize}%[<+->]
@@ -1028,7 +1010,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{Adressetyper}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \pause
   \begin{itemize}[<+->]
@@ -1050,7 +1032,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Link-local-adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Link-local-adresser}
   \pause
@@ -1072,7 +1054,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Site-local-adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Site-local-adresser}
   \pause
@@ -1093,7 +1075,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Offentlige unicast-adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Offentlige unicast-adresser}
   \pause
@@ -1117,7 +1099,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Unike, lokale, aggregerbare adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Unike, lokale, aggregerbare adresser}
   \pause
@@ -1136,7 +1118,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Unike, lokale, aggregerbare adresser}
   %\pause
@@ -1175,7 +1157,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Anycast-adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Anycast-adresser}
   \pause
@@ -1188,7 +1170,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Multicast-adresser}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
   \pause
@@ -1204,7 +1186,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
   %\pause
@@ -1224,7 +1206,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
   %\pause
@@ -1255,7 +1237,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{ICMPv6}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \pause
   \begin{itemize}[<+->]
@@ -1274,7 +1256,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   %\pause
   \begin{itemize}[<+->]
@@ -1300,7 +1282,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Multicast Listener Discovery}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Multicast Listener Discovery}
   \pause
@@ -1316,7 +1298,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Neighbor Discovery}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Neighbor Discovery}
   \pause
@@ -1339,7 +1321,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Router Renumbering}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Router Renumbering}
   \pause
@@ -1366,7 +1348,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Inverse Neighbor Discovery}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Inverse Neighbor Discovery}
   \pause
@@ -1384,7 +1366,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Version 2 Multicast Listener Report}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Version 2 Multicast Listener Report}
   \pause
@@ -1398,7 +1380,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Mobile IPv6}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Mobile IPv6}
   \pause
@@ -1415,7 +1397,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{SEcure Neighbor Discovery (SEND)}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{SEcure Neighbor Discovery (SEND)}
   \pause
@@ -1430,7 +1412,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Multicast Router Discovery}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Multicast Router Discovery}
   \pause
@@ -1446,7 +1428,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{FMIPv6}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{FMIPv6}
   \pause
@@ -1460,7 +1442,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{RPL Control Message}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{RPL Control Message}
   \pause
@@ -1474,7 +1456,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{ILNPv6 Locator Update Message}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{ILNPv6 Locator Update Message}
   \pause
@@ -1488,7 +1470,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Duplicate Address}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Duplicate Address}
   \pause
@@ -1503,16 +1485,113 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{DHCPv6}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{DHCPv6}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item DHCPv6 er definert i
+    \href{http://tools.ietf.org/html/rfc3315}{RFC~3315} med
+    oppdateringer fra
+    \href{http://tools.ietf.org/html/rfc4361}{RFC~4361},
+    \href{http://tools.ietf.org/html/rfc5494}{RFC~5494},
+    \href{http://tools.ietf.org/html/rfc6221}{RFC~6221},
+    \href{http://tools.ietf.org/html/rfc6422}{RFC~6422} og
+    \href{http://tools.ietf.org/html/rfc6644}{RFC~6644}
+  \item Kommunikasjonen foregår først med multicast og UDP, senere
+    unicast og UDP
+  \item Klientene bruker port 546 og serverne/relay bruker 547
+  \item Klientene bruker sin egen link-local-adresse som avsender og
+    multicast-adressa \texttt{ff02::1:2} som mottaker
+  \item Serverne svarer med sin link-local-adresser som avsender og
+    klientens link-local-adresse som mottaker
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Klientene identifiseres med DHCP Unique Identifier, DUID, som
+    har variabel lengde og format
+  \item Klientene kan ha flere nettverksgrensesnitt
+  \item Hvert grensesnitt har i tillegg sin Identity Association
+    Identifier, IAID, lengde 32 bit
+  \item Klientene oppgir aktuell DUID og IAID i forespørslene
+  \item DHCPv6-serverne har, og oppgir, sine egne DUID og IAID i
+    svarene
+  \end{itemize}
+\end{frame}
+
+\subsection{DHCP Unique Identifier}
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{DHCP Unique Identifier, DUID}
+  \pause
+  \begin{itemize}[<+->]
+  \item DUID finnes i tre varianter:
+    \begin{itemize}[<+->]
+    \item Type 1: Linklagsadresse med tidspunkt for generering,
+      \texttt{DUID-LLT}
+    \item Type 2: Unik identifikator basert på Enterprise-nummer
+      utdelt av IANA
+    \item Type 3: Linklagsadresse, \texttt{DUID-LL}
+    \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{DHCP Unique Identifier, DUID}
+  \pause
+  \begin{itemize}[<+->]
+  \item Type 1 kan se slik ut: \texttt{\color{red}00 01
+      \color{violet}00 01 \color{brown}13 10 43 9B \color{black}00 26
+      18 F2 72 40}
+    \begin{itemize}[<+->]
+    \item \texttt{\color{red}00 01} angir at dette er DUID type 1.
+    \item \texttt{\color{violet}00 01} angir at det kommer en
+      MAC-48-adresse til slutt
+    \item \texttt{\color{brown}13 10 43 9B} angir klokkeslettet målt i
+      sekunder siden 1.~januar 2000, i dette tilfellet
+      \texttt{0x1310439B}~s, 319832987~s, 10,1351038909~år etter 2000,
+      altså år 2010,1351038909, midtvinter i 2010
+    \item \texttt{00 26 18 F2 72 40} er MAC-48-adressa for systemet
+      som dette eksempelet er hentet fra
+    \end{itemize} 
+  \item Type 3 kan se slik ut: \texttt{\color{red}00 03
+      \color{violet}00 01 \color{black}00 26 18 F2 72 40}
+    \begin{itemize}[<+->]
+    \item \texttt{\color{red}00 03} angir at dette er DUID type 3.
+    \item \texttt{\color{violet}00 01} angir at det kommer en
+      MAC-48-adresse til slutt
+    \item \texttt{00 26 18 F2 72 40} er MAC-48-adressa for systemet
+      som dette eksempelet er hentet fra
+    \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{DHCP Unique Identifier, DUID}
+  \pause
+  \begin{itemize}[<+->]
+  \item Type 1 er vanlig i Windows, og lagres i \texttt{Dhcpv6DUID} i
+    \texttt{HKEY\_LOCAL\_MACHINE\Textbackslash SYSTEM\Textbackslash
+      CurrentControlSet\Textbackslash services\Textbackslash
+      TCPIP6\Textbackslash Parameters}
+  \item Type 3 er enklere og mer forutsigbart, og det beste valget for
+    statisk tildeling av IPv6-adresse
+  \item Jeg har ikke funnet noen måte å tvinge en bestemt DUID-type i
+    Windows, annet enn å sette \texttt{Dhcpv6DUID} manuelt eller
+    gjennom skript, og naturlig nok restarte Windows etterpå
+  \item \href{http://klub.com.pl/dhcpv6/}{Dibbler} og Unix-systemer er
+    tradisjonelt langt snillere, og lar oss angi at vi ønsker
+    \texttt{DUID-LL} istedet for \texttt{DUID-LLT}
   \end{itemize}
 \end{frame}
 
 \section{OS-konfig}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{OS-konfig}
   \pause
   \begin{itemize}[<+->]
@@ -1521,7 +1600,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{Tunneloppsett}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Tunneloppsett}
   \pause
   \begin{itemize}[<+->]
@@ -1530,7 +1609,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{Noen RFC-er om IPv6}
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \frametitle{Noen RFC-er om IPv6}
   \pause
   \begin{itemize}[<+->]
@@ -1561,13 +1640,13 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \item Overføring av IPv6-pakker over Ethernet:
     \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} og
     \href{http://tools.ietf.org/html/rfc6085}{RFC~6085}
-  \end{itemize}
-\end{frame}
+%  \end{itemize}
+%\end{frame}
 
-\begin{frame}
-  \frametitle{Noen RFC-er om IPv6}
+%\begin{frame}%[allowframebreaks]
+%  \frametitle{Noen RFC-er om IPv6}
   %\pause
-  \begin{itemize}[<+->]
+%  \begin{itemize}[<+->]
   \item Adressearkitektur:
     \href{http://tools.ietf.org/html/rfc4291}{RFC~4291},
     \href{http://tools.ietf.org/html/rfc5952}{RFC~5952} og
@@ -1603,7 +1682,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 \section{}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{}
   \pause
   \begin{itemize}[<+->]
@@ -1612,7 +1691,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{}
   \framesubtitle{}
   \pause
@@ -1622,7 +1701,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{Sammendrag}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Sammendrag}
   \pause
   \begin{itemize}[<+->]
@@ -1631,7 +1710,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \section{Emne 1}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Emne 1}
   \pause
   \begin{itemize}[<+->]
@@ -1640,7 +1719,7 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{frame}
 
 \subsection{Underemne 1a}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Emne 1}
   \framesubtitle{Underemne 1a}
   \pause
