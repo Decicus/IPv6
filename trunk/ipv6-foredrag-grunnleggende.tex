@@ -14,6 +14,7 @@
 \usepackage[norsk]{babel}
 \usepackage{booktabs}
 \usepackage{multicol}
+\usepackage{fancyvrb}
 
 %\usetheme{AnnArbor}
 %\usetheme{Boadilla}
@@ -96,6 +97,26 @@
     \href{http://tortoisesvn.net/}{TortoiseSVN} og
     \href{http://get.adobe.com/no/reader/}{Adobe Reader}
   \end{itemize}
+\end{frame}
+
+\section*{Oversikt for hele foredraget}
+\begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents[part=1]%[pausesections]
+    \tableofcontents[part=2]%[pausesections]
+    \tableofcontents[part=3]%[pausesections]
+    \tableofcontents[part=4]%[pausesections]
+    \tableofcontents[part=5]%[pausesections]
+    \tableofcontents[part=6]%[pausesections]
+    \tableofcontents[part=7]%[pausesections]
+%  \end{multicols}
+\end{frame}
+
+\part{Kort om IPv6}
+
+\begin{frame}
+  \partpage
 \end{frame}
 
 \section*{Oversikt}
@@ -233,7 +254,7 @@
   \item Fragmentering skal gjøres hos avsender
   \item Avsender må sjekke veien og måle smaleste krøttersti
   \item Path MTU
-  \item Sjekksum er overlatt til høyere lag
+  \item Sjekksum er overlatt til høyere og lavere lag
   \end{itemize}
 \end{frame}
 
@@ -363,6 +384,20 @@
   \end{itemize}
 \end{frame}
 
+\part{IPv6-header}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt}
+\begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
+\end{frame}
+
 \section{IPv6-header}
 \begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
@@ -435,6 +470,20 @@
   \end{itemize}
 \end{frame}
 
+\part{IPv6 over Ethernet}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt}
+\begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
+\end{frame}
+
 \section{IPv6 over Ethernet}
 \begin{frame}%[allowframebreaks]
   \frametitle{IPv6 over Ethernet}
@@ -446,7 +495,7 @@
     \href{http://tools.ietf.org/html/rfc894}{RFC~894}
   \item Først angis mottakerens MAC-48-adresse
   \item Deretter angis avsenders MAC-48-adresse
-  \item Frametypen settes til \texttt{86DD} heksadesimalt
+  \item Frametypen settes til \texttt{86DD} (heksadesimalt)
   \item Deretter følger IPv6-header og resten av datagrammet
   \item Overføring av hode og hale er vanligvis en oppgave for lag~1
   \item Standard MTU for IPv6 over Ethernet er 1500 oktetter
@@ -456,6 +505,52 @@
     IPv6-datagrammene
     (\href{http://tools.ietf.org/html/rfc2460}{RFC~2460})
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{IPv6 over Ethernet}
+  \pause
+  \noindent
+  \href{http://www.wireshark.org/}{Wireshark} fremstilte følgende
+  lag~2-informasjon om en utsendt IPv6-pakke:
+
+\begin{Verbatim}[fontsize=\tiny]
+Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00:17:e0:77:14:57)
+    Destination: Cisco_77:14:57 (00:17:e0:77:14:57)
+        Address: Cisco_77:14:57 (00:17:e0:77:14:57)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: AsustekC_f2:72:40 (00:26:18:f2:72:40)
+        Address: AsustekC_f2:72:40 (00:26:18:f2:72:40)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv6 (0x86dd)
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Presentert som heksadesimale oktetter/byter:
+  \item \texttt{\color{red}00 17 E0 77 14 57 \color{violet}00 26 18 F2 72 40 \color{black}86 DD}
+    \begin{itemize}[<+->]
+    \item \texttt{\color{red}00 17 E0 77 14 57} er MAC-48-adressa til mottakeren, routeren
+    \item \texttt{\color{violet}00 26 18 F2 72 40} er MAC-48-adressa til avsenderen, klienten
+    \item \texttt{86 DD} angir at et IPv6-datagram følger
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\part{Grunnleggende om adresser}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt}
+\begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
 \end{frame}
 
 \section{Grunnleggende om adresser}
@@ -614,7 +709,8 @@
   \pause
   \begin{itemize}[<+->]
   \item MAC-48-adresser har følgende oppbygging, gitt av
-    \href{http://standards.ieee.org/getieee802/download/802-2001.pdf}{IEEE~802-2001}:
+    \href{http://www.ieee.org/index.html}{IEEE}
+    \href{http://standards.ieee.org/getieee802/download/802-2001.pdf}{802-2001}:
     \begin{itemize}[<+->]
     \item \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
     \item Den første halvparten er produsentnummer: \texttt{CC:cc:cc}
@@ -707,12 +803,10 @@
     oppskriften i \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}:
     \begin{itemize}[<+->]
     \item Gitt denne MAC-48-adressa: \texttt{00:21:70:73:68:6E}
-      \begin{itemize}[<+->]
-      \item \texttt{0\alert{0}} (heksadesimalt) $\to$ \texttt{000000\alert{0}0} (binært)
-      \end{itemize}
     \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
       \begin{itemize}[<+->]
-      \item \texttt{0\alert{2}} (heksadesimalt) $\to$ \texttt{000000\alert{1}0} (binært)
+      \item Før: \texttt{0\alert{0}} (heksadesimalt) $\to$ \texttt{000000\alert{0}0} (binært)
+      \item Etter: \texttt{000000\alert{1}0} (binært)$\to$ \texttt{0\alert{2}} (heksadesimalt)
       \end{itemize}
     \item Sett inn \texttt{FF:FE} på midten: \texttt{02:21:70:\alert{FF:FE}:73:68:6E}
     \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
@@ -747,21 +841,45 @@
   \framesubtitle{Modda IEEE EUI-64-format}
   %\pause
   \begin{itemize}[<+->]
+  \item Skriv om tilfeldig IFID,
+    \href{http://tools.ietf.org/html/rfc4941}{RFC~4941}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Modda IEEE EUI-64-format}
+  %\pause
+  \begin{itemize}[<+->]
   \item Manuell grensesnittidentifikator innebærer at
-    universal/local-bitet er satt til \texttt{0}
-  \item De øvrige 63 bitene kan være hva som helst, bare verdien ikke
+    universal/local-bitet som regel er satt til \texttt{0}
+  \item De øvrige 62 bitene kan være hva som helst, bare verdien ikke
     skaper adressekollisjon i samme VLAN
   \item Normalt setter man en lav verdi for manuelle
     grensesnittidentifikatorer
-  \item For eksempel \texttt{::53} (DNS-tjener, kanskje)
-  \item \texttt{::53} (heksadesimalt) $\to$ \texttt{::\alert{0}:0:0:53} (heksadesimalt) $\to$
-    \texttt{::000000\alert{0}000000000:00\dots00:0000000001010011} (binært)
+  \item For eksempel \texttt{::53} \hfill(DNS-tjener, kanskje)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Modda IEEE EUI-64-format}
+  %\pause
+  \begin{itemize}[<+->]
+  \item \texttt{::53} (heksadesimalt)
+  \item $\to$ \texttt{::\alert{0}:0:0:53} (heksadesimalt)
+  \item $\to$
+    \texttt{::000000\alert{0}000000000:00\dots00:0000000001010011}
+    (binært)
   \item Uten \textit{invertering\/} av universal/local-bitet, måtte vi
     bruke manuelle grensesnittidentifikatorer på formen
     \texttt{::0\alert{2}00:0:0:53} (heksadesimalt)
-  \item \texttt{::0\alert{2}00:0:0:53} (heksadesimalt) $\to$
+  \item \texttt{::0\alert{2}00:0:0:53} (heksadesimalt)
+  \item $\to$
     \texttt{::000000\alert{1}000000000:00\dots00:0000000001010011}
     (binært)
+  \item \texttt{2001:700:1100:1:0200:0:0:53} vs
+    \texttt{2001:700:1100:1::53}
   \end{itemize}
 \end{frame}
 
@@ -871,7 +989,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
       kjede
     \item $128$, så er det \alert{ikke} lov å oppgi noen IPv6-adresse,
       fordi man henviser til et helt annet navn, tydeligvis et
-      alternativ til \texttt{CNAME}
+      overflødig alternativ til \texttt{CNAME}
     \end{itemize}
   \item Avsnittene 3.1.1 og 3.1.3 i
     \href{http://tools.ietf.org/html/rfc2874}{RFC~2874} er ikke enige
@@ -1236,6 +1354,20 @@ uninett IN A6  0 2001:700::
   \end{multicols}
 \end{frame}
 
+\part{ICMPv6}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt}
+\begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
+\end{frame}
+
 \section{ICMPv6}
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
@@ -1328,8 +1460,8 @@ uninett IN A6  0 2001:700::
   \begin{itemize}[<+->]
   \item Definert:
     \texttt{\url{http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml}}
-    oppgir \href{mailto:crawdad@gungnir.fnal.gov}{Matt Crawford} som
-    referanse
+    som oppgir \href{mailto:crawdad@gungnir.fnal.gov}{Matt Crawford}
+    som referanse
   \item Angir én ny ICMPv6-melding:
     \begin{itemize}[<+->]
     \item 138: Router Renumbering
@@ -1484,6 +1616,20 @@ uninett IN A6  0 2001:700::
   \end{itemize}
 \end{frame}
 
+\part{DHCPv6}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt}
+\begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
+\end{frame}
+
 \section{DHCPv6}
 \begin{frame}%[allowframebreaks]
   \frametitle{DHCPv6}
@@ -1507,9 +1653,72 @@ uninett IN A6  0 2001:700::
   \end{itemize}
 \end{frame}
 
+\subsection{Meldinger}
+\begin{frame}[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Meldinger}
+  \pause
+  \begin{itemize}[<+->]
+  \item Solicit
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \end{itemize}
+  \item Advertise
+    \begin{itemize}[<+->]
+    \item Fra server/relay til klient
+    \end{itemize}
+  \item Request
+    \begin{itemize}[<+->]
+    \item Fra klient til spesifikk server
+    \end{itemize}
+  \item Confirm
+    \begin{itemize}[<+->]
+    \item Fra server/relay til klient
+    \end{itemize}
+  \item Renew
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \end{itemize}
+  \item Rebind
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \end{itemize}
+  \item Reply
+    \begin{itemize}[<+->]
+    \item Fra server til klient
+    \end{itemize}
+  \item Release
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \end{itemize}
+  \item Decline
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \end{itemize}
+  \item Reconfigure
+    \begin{itemize}[<+->]
+    \item Fra server til klient
+    \end{itemize}
+  \item Information-request
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \end{itemize}
+  \item Relay-forward
+    \begin{itemize}[<+->]
+    \item Fra relay til relay/server
+    \end{itemize}
+  \item Relay-reply
+    \begin{itemize}[<+->]
+    \item Fra server/relay til relay
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{DHCP Unique Identifier}
 \begin{frame}%[allowframebreaks]
   \frametitle{DHCPv6}
-  %\pause
+  \framesubtitle{DHCP Unique Identifier, DUID}
+  \pause
   \begin{itemize}[<+->]
   \item Klientene identifiseres med DHCP Unique Identifier, DUID, som
     har variabel lengde og format
@@ -1522,7 +1731,6 @@ uninett IN A6  0 2001:700::
   \end{itemize}
 \end{frame}
 
-\subsection{DHCP Unique Identifier}
 \begin{frame}%[allowframebreaks]
   \frametitle{DHCPv6}
   \framesubtitle{DHCP Unique Identifier, DUID}
@@ -1544,7 +1752,7 @@ uninett IN A6  0 2001:700::
   \framesubtitle{DHCP Unique Identifier, DUID}
   \pause
   \begin{itemize}[<+->]
-  \item Type 1 kan se slik ut: \texttt{\color{red}00 01
+  \item Type 1 kan se slik ut:\newline \texttt{\color{red}00 01
       \color{violet}00 01 \color{brown}13 10 43 9B \color{black}00 26
       18 F2 72 40}
     \begin{itemize}[<+->]
@@ -1552,13 +1760,16 @@ uninett IN A6  0 2001:700::
     \item \texttt{\color{violet}00 01} angir at det kommer en
       MAC-48-adresse til slutt
     \item \texttt{\color{brown}13 10 43 9B} angir klokkeslettet målt i
-      sekunder siden 1.~januar 2000, i dette tilfellet
-      \texttt{0x1310439B}~s, 319832987~s, 10,1351038909~år etter 2000,
-      altså år 2010,1351038909, midtvinter i 2010
+      sekunder siden 1.~januar 2000 UTC
+      \begin{itemize}[<+->]
+      \item I dette tilfellet: \texttt{0x1310439B}~s, 319832987~s,
+        10.1351038909~år etter 1.~januar 2000 UTC, altså 18.~februar
+        2010, kl.~18:29:47 UTC
+      \end{itemize}
     \item \texttt{00 26 18 F2 72 40} er MAC-48-adressa for systemet
       som dette eksempelet er hentet fra
     \end{itemize} 
-  \item Type 3 kan se slik ut: \texttt{\color{red}00 03
+  \item Type 3 kan se slik ut:\newline \texttt{\color{red}00 03
       \color{violet}00 01 \color{black}00 26 18 F2 72 40}
     \begin{itemize}[<+->]
     \item \texttt{\color{red}00 03} angir at dette er DUID type 3.
@@ -1580,13 +1791,14 @@ uninett IN A6  0 2001:700::
       CurrentControlSet\Textbackslash services\Textbackslash
       TCPIP6\Textbackslash Parameters}
   \item Type 3 er enklere og mer forutsigbart, og det beste valget for
-    statisk tildeling av IPv6-adresse
+    statisk tildeling av IPv6-adresse med tanke på reinstallasjon av
+    OS
   \item Jeg har ikke funnet noen måte å tvinge en bestemt DUID-type i
     Windows, annet enn å sette \texttt{Dhcpv6DUID} manuelt eller
     gjennom skript, og naturlig nok restarte Windows etterpå
   \item \href{http://klub.com.pl/dhcpv6/}{Dibbler} og Unix-systemer er
-    tradisjonelt langt snillere, og lar oss angi at vi ønsker
-    \texttt{DUID-LL} istedet for \texttt{DUID-LLT}
+    tradisjonelt langt snillere, og lar oss angi i konfigurasjonen de
+    gangene vi ønsker \texttt{DUID-LL} istedet for \texttt{DUID-LLT}
   \end{itemize}
 \end{frame}
 
@@ -1608,8 +1820,22 @@ uninett IN A6  0 2001:700::
   \end{itemize}
 \end{frame}
 
-\section{Noen RFC-er om IPv6}
+\part{Noen RFC-er om IPv6}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt}
 \begin{frame}[allowframebreaks]
+  \frametitle{Oversikt}
+%  \begin{multicols}{2}
+    \tableofcontents%[pausesections]
+%  \end{multicols}
+\end{frame}
+
+\section{Noen RFC-er om IPv6}
+\begin{frame}%[allowframebreaks]
   \frametitle{Noen RFC-er om IPv6}
   \pause
   \begin{itemize}[<+->]
@@ -1640,13 +1866,6 @@ uninett IN A6  0 2001:700::
   \item Overføring av IPv6-pakker over Ethernet:
     \href{http://tools.ietf.org/html/rfc2464}{RFC~2464} og
     \href{http://tools.ietf.org/html/rfc6085}{RFC~6085}
-%  \end{itemize}
-%\end{frame}
-
-%\begin{frame}%[allowframebreaks]
-%  \frametitle{Noen RFC-er om IPv6}
-  %\pause
-%  \begin{itemize}[<+->]
   \item Adressearkitektur:
     \href{http://tools.ietf.org/html/rfc4291}{RFC~4291},
     \href{http://tools.ietf.org/html/rfc5952}{RFC~5952} og
@@ -1654,6 +1873,13 @@ uninett IN A6  0 2001:700::
   \item Unicastadresser:
     \href{http://tools.ietf.org/html/rfc3587}{RFC~3587}
   \item ULA: \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Noen RFC-er om IPv6}
+  %\pause
+  \begin{itemize}[<+->]
   \item Autokonfigurering av adresser:
     \href{http://tools.ietf.org/html/rfc4862}{RFC~4862}
   \item Random interface ID:
