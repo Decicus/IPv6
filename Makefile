@@ -51,3 +51,4 @@ clean:
 	$(RM) $(NAVN).out
 	$(RM) $(NAVN).snm
 	$(RM) $(NAVN).toc
+	$(RM) $(NAVN).vrb
