@@ -85,7 +85,8 @@
   \item
     \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.handout.2on1.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.handout.2on1.pdf}}
     er velegnet til utskrift
-  \item \texttt{*.169.pdf}-filene er i 16:9-format, mens \texttt{*.1610.pdf}-filene er i 16:10-format
+  \item \texttt{*.169.pdf}-filene er i 16:9-format
+  \item \texttt{*.1610.pdf}-filene er i 16:10-format
   \framebreak
   \item Foredraget er mekket ved hjelp av
     \href{http://www.gnu.org/software/emacs/}{GNU~Emacs},
@@ -234,6 +235,9 @@
   \pause
   \begin{itemize}[<+->]
   \item Verden går tom for offentlige IPv4-adresser
+  \item
+    «\href{http://www.potaroo.net/presentations/2012-05-22-terena.pdf}{IPokalypsen}»
+    er her!
   \item \href{http://www.iana.org/}{IANA} gikk tom i
     \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{februar
       2011}
@@ -278,14 +282,12 @@
   \begin{itemize}[<+->]
   \item Kortere rutingtabeller
   \item Uninett annonserer disse IPv4-subnettene med BGP:
-  \item \texttt{78.91.0.0/16}, \hfill\texttt{128.39.0.0/16},
-      \hfill\texttt{129.177.0.0/16}, \hfill\texttt{129.240.0.0/15},
-      \hfill\texttt{129.242.0.0/16}, \hfill\texttt{144.164.0.0/16},
-      \hfill\texttt{151.157.0.0/16}, \hfill\texttt{152.94.0.0/16},
-      \hfill\texttt{156.116.0.0/16}, \hfill\texttt{157.249.0.0/16},
-      \hfill\texttt{158.36.0.0/14}, \hfill\texttt{161.4.0.0/16},
-      \hfill\texttt{193.156.0.0/15}, \hfill\texttt{192.111.33.0/24},
-      \hfill\texttt{192.133.32.0/24}, \hfill\texttt{192.146.238.0/23}
+  \item \texttt{78.91.0.0/16}, \hfill\texttt{128.39.0.0/16}, \hfill\texttt{129.177.0.0/16},\\
+      \texttt{129.240.0.0/15}, \hfill\texttt{129.242.0.0/16}, \hfill\texttt{144.164.0.0/16},\\
+      \texttt{151.157.0.0/16}, \hfill\texttt{152.94.0.0/16}, \hfill\texttt{156.116.0.0/16},\\
+      \texttt{157.249.0.0/16}, \hfill\texttt{158.36.0.0/14}, \hfill\texttt{161.4.0.0/16},\\
+      \texttt{193.156.0.0/15}, \hfill\texttt{192.111.33.0/24}, \hfill\texttt{192.133.32.0/24},\\
+      \hfill\texttt{192.146.238.0/23}\hfill\null
     \item Til gjengjeld trenger Uninett bare å annonsere dette
       IPv6-prefikset:
     \item \texttt{2001:700::/32}
@@ -301,16 +303,19 @@
   \item IPsec ble spesifisert som en del av IPv6
     \begin{itemize}[<+->]
     \item Må konfigureres før den begynner å virke
-    \item Tilbyr kryptert overføring (ESP), og bekreftelse av
-      avsenders identitet og beskyttelse mot gjentakelse («replay»)
-      (AH)
+    \item Tilbyr:
+      \begin{itemize}[<+->]
+      \item Kryptert overføring (ESP), og
+      \item Bekreftelse av avsenders identitet og beskyttelse mot
+        gjentakelse («replay») (AH)
+      \end{itemize}
     \item Finnes også for IPv4
     \item Ble omgjort fra krav til anbefaling av
       \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
     \end{itemize}
-  \item Fragmentering skal gjøres hos avsender
+  \item Fragmentering skal gjøres hos avsender, ikke underveis
   \item Avsender må sjekke veien og måle smaleste krøttersti
-  \item Path MTU
+  \item Path Maximum Transmission Unit (Path MTU)
   \item Sjekksum er overlatt til høyere og lavere lag
   \end{itemize}
 \end{frame}
@@ -407,7 +412,11 @@
     \item \texttt{128.39.194.0/24} brukes til datalab etter samme
       mønster som for \texttt{128.39.172.0/24}
     \end{itemize}
-  \item I dag er de fleste brukere kasta over til OFK-nettene
+  \item \href{http://www.oppland.no/}{Oppland FK} (OFK) har ingen
+    planer om å innføre IPv6
+  \item \href{http://www.hordaland.no/}{Hordaland FK} har satt en
+    IPv6-adresse på webserveren deres, \texttt{2a02:20a0:0:3::81:130}
+  \item I dag er de fleste brukere ved FSI kasta over til OFK-nettene
   \item Dette skjedde etter ombygginga i 2011--2012
   \item Andreklasse data er velsigna med å kunne velge mellom FSI- og
     OFK-nettene
@@ -564,8 +573,8 @@
   \frametitle{IPv6 over Ethernet}
   \pause
   \noindent
-  \href{http://www.wireshark.org/}{Wireshark} fremstilte følgende
-  lag~2-informasjon om en utsendt IPv6-pakke:
+  Programmet \href{http://www.wireshark.org/}{Wireshark} fremstilte
+  følgende lag-2-informasjon om en utsendt IPv6-pakke:
 
 \begin{Verbatim}[fontsize=\tiny]
 Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00:17:e0:77:14:57)
@@ -587,7 +596,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \begin{itemize}[<+->]
     \item \texttt{\color{red}00 17 E0 77 14 57} er MAC-48-adressa til mottakeren, routeren
     \item \texttt{\color{violet}00 26 18 F2 72 40} er MAC-48-adressa til avsenderen, klienten
-    \item \texttt{86 DD} angir at et IPv6-datagram følger
+    \item \texttt{86 DD} angir at et IPv6-datagram følger i lag~3
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -611,12 +620,13 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item 128 bit
   \item Heksadesimal notasjon
-  \item 16 bit grupperes, adskilt med kolon
+  \item 16 og 16 bit grupperes og adskilles med kolon
   \item Ledende nuller kan sløyfes
-  \item To eller flere 16-bit-blokker med nuller kan slås sammen til
-    \texttt{::} (dobbelkolon), bare én gang pr.\ adresse
-  \item Prefikslengde angis ved å slenge på en skråstrek og antall
-    signifikante bit fra venstre mot høyre
+  \item To eller flere \textit{sammenhengende\/} 16-bitblokker med
+    nuller kan slås sammen til \texttt{::} (dobbelkolon), bare én gang
+    pr.\ adresse
+  \item Prefikslengde angis ved å sette på en skråstrek og oppgi
+    riktig antall av signifikante bit fra venstre mot høyre i adressa
   \end{itemize}
 \end{frame}
 
@@ -695,7 +705,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Adressedemo: To eller flere sammenhengende 16-bitgrupper med bare 0}
+  \framesubtitle{Adressedemo: To eller flere sammenhengende 16-bitblokker med bare 0}
   %\pause
   \begin{itemize}%[<+->]
   \item Uninett:\\\texttt{2001:700:\alert{0:0:0:0:0:0}\phantom{/32}}
@@ -763,17 +773,17 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \href{http://www.ieee.org/index.html}{IEEE}
     \href{http://standards.ieee.org/getieee802/download/802-2001.pdf}{802-2001}:
     \begin{itemize}[<+->]
-    \item \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
+    \item \texttt{CC:cc:cc:nn:nn:nn}\hfill(heksadesimalt)
     \item Den første halvparten er produsentnummer: \texttt{CC:cc:cc}
     \item Den andre halvparten er løpenummer: \texttt{nn:nn:nn}
     \end{itemize}
   \item Den første oktetten i produsentnummeret, \texttt{CC}, har en
     spesiell oppbygging:
     \begin{itemize}[<+->]
-    \item \texttt{CCCCCC\alert{ug}} (binært)
+    \item \texttt{CCCCCC\alert{ug}}\hfill(binært)
     \item Når \texttt{u}-bitet er satt til \texttt{0} (null), så
       gjelder formatet som er oppgitt her, altså
-      \texttt{CC:cc:cc:nn:nn:nn} (heksadesimalt)
+      \texttt{CC:cc:cc:nn:nn:nn}\hfill(heksadesimalt)
     \item Når \texttt{u}-bitet er satt til \texttt{1}, så er alle
       \texttt{C}- og \texttt{c}-sifrene løpenummer, mens \texttt{u}-
       og \texttt{g}-bitene beholder sine spesielle betydninger
@@ -794,16 +804,16 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item Gitt denne MAC-48-adressa: \texttt{\alert{00}:21:70:73:68:6E}
   \item \texttt{CC}-oktetten har verdien \texttt{\alert{00}}
-    (heksadesimalt)
+    \hfill(heksadesimalt)
   \item På binær form er dette \texttt{000000\alert{00}}
-    (\texttt{CCCCCC\alert{ug}})
+    \hfill(\texttt{CCCCCC\alert{ug}})
   \item Vi ser at både \texttt{u}- og \texttt{g}-bitene er satt til
     \texttt{0}
   \item Dette er en MAC-48-adresse som:
     \begin{itemize}[<+->]
     \item følger det vanlige mønsteret med produsent- og løpenummer
     \item angir en individuell node
-    \item Dell Inc er produsenten ifølge
+    \item «Dell Inc» er produsenten ifølge
       \href{http://standards.ieee.org/develop/regauth/oui/oui.txt}{OUI-lista}
       hos \href{http://www.ieee.org/index.html}{IEEE} (søk i fila
       etter \texttt{00-21-70})
@@ -833,15 +843,16 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \href{http://www.ieee.org/index.html}{IEEE}
     \href{http://grouper.ieee.org/groups/msc/MSC200407/OnlineTutorialsD/EUI64.htm}{EUI-64}-formatet
     med to unntak:
-    \begin{itemize}[<+->]
-    \item universal/local-bitet brukes med \textit{invertert\/}
+    \begin{enumerate}[<+->]
+    \item Universal/local-bitet brukes med \textit{invertert\/}
       betydning/verdi
       \begin{itemize}[<+->]
-      \item (gruppebitet mister sin vanlige betydning)
+      \item Gruppebitet mister sin vanlige betydning i denne
+        sammenhengen
       \end{itemize}
-    \item oktettene på midten er \texttt{FF:FE} ved automatisk
+    \item Oktettene på midten skal være \texttt{FF:FE} ved automatisk
       konvertering fra MAC-48 til EUI-64
-    \end{itemize}
+    \end{enumerate}
   \end{itemize}
 \end{frame}
 
@@ -863,7 +874,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
     \item Høyreskift hele stasen: \texttt{::221:70FF:FE73:686E}
     \item Nå er grensesnittidentifikatoren klar til å bli kombinert med ønsket prefiks
-    \item Prefiks fra router: \texttt{2001:700:1100:3::/64}
+    \item Prefiks annonsert av router: \texttt{2001:700:1100:3::/64}
     \item Fullstendig adresse: \texttt{2001:700:1100:3:221:70FF:FE73:686E}
     \end{itemize}
   \end{itemize}
@@ -881,7 +892,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item MAC-48 $\to$ EUI-64 skal bruke \texttt{FF:FF}
     \item EUI-48 $\to$ EUI-64 skal bruke \texttt{FF:FE}
     \end{itemize}
-  \item Siden IPv6 bruker universal/local-bitet med invertert
+  \item Fordi IPv6 bruker universal/local-bitet med invertert
     betydning/verdi, så er arbeidsuhellet akseptert
   \item Se \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
   \end{itemize}
@@ -891,7 +902,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 \begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Manuell grensesnittidentifikator}
-  %\pause
+  \pause
   \begin{itemize}[<+->]
   \item Manuell grensesnittidentifikator innebærer at
     universal/local-bitet som regel er satt til \texttt{0}
@@ -908,6 +919,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Manuell grensesnittidentifikator}
   %\pause
   \begin{itemize}[<+->]
+  \item Lav verdi for grensesnittidentifikatorer medfører at
+    universal/local-bitet er satt til null:
   \item \texttt{::53}\hfill(heksadesimalt)
   \item \texttt{::\alert{0}:0:0:53}\hfill(heksadesimalt)
   \item \texttt{::000000\alert{0}000000000:00\dots00:0000000001010011}
@@ -917,7 +930,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item \texttt{::0\alert{2}00:0:0:53}\hfill(heksadesimalt)
   \item \texttt{::000000\alert{1}000000000:00\dots00:0000000001010011}
     \hfill(binært)
-  \item \texttt{2001:700:1100:1:0200:0:0:53} vs\\
+  \item Se her:\\
+    \texttt{2001:700:1100:1:0200:0:0:53} vs\\
     \texttt{2001:700:1100:1::53}
   \end{itemize}
 \end{frame}
@@ -926,7 +940,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 \begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Tilfeldig grensesnittidentifikator}
-  %\pause
+  \pause
   \begin{itemize}[<+->]
   \item Konstant grensesnittidentifikator truer personvernet
   \item Eksempel med Tronds lappis:
@@ -937,14 +951,15 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item \href{http://tools.ietf.org/html/rfc4941}{RFC~4941} beskriver
     tilfeldig grensesnittidentifikator
   \item Generér to autokonfigurerte IPv6-adresser:
-    \begin{itemize}[<+->]
-    \item Konstant grensesnittidentifikator
-    \item Tilfeldig grensesnittidentifikator
-    \end{itemize}
+    \begin{enumerate}[<+->]
+    \item Konstant grensesnittidentifikator (\href{http://tools.ietf.org/html/rfc4291}{RFC~4291})
+    \item Tilfeldig grensesnittidentifikator (\href{http://tools.ietf.org/html/rfc4941}{RFC~4941})
+    \end{enumerate}
   \item Velg å bruke adressa med tilfeldig grensesnittidentifikator i
     størst mulig grad
   \item Aksepter også innkommende trafikk for adressa med konstant
     grensesnittidentifikator
+  \item Send svarene tilbake med riktig adresse
   \end{itemize}
 \end{frame}
 
@@ -958,23 +973,44 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \begin{enumerate}[<+->]
     \item Sett sammen historisk verdi fra forrige runde (eller et
       tilfeldig 64-bit heltall) med den konstante
-      grensesnittidentifikatoren
+      grensesnittidentifikatoren til et 128-bit heltall
     \item Beregn MD5-hash av resultatet fra trinn 1
     \item Bruk de 64 \textit{mest\/} signifikante bitene og sett det
-      sjette mest signifikante bitet til null (indikerer lokalgitt
-      grensesnittidentifikator)
+      sjuende mest signifikante bitet til null (dette indikerer en
+      lokalgitt grensesnittidentifikator)
     \item Sammenlign den nye tilfeldige grensesnittidentifikatoren med
       lista over reserverte identifikatorer; oppdages en uakseptabel
       identifikator, gå til trinn 1 og bruk de 64 \textit{minst\/}
       signifikante bitene fra trinn 2 som historisk verdi
     \item Ta i bruk den nye tilfeldige grensesnittidentifikatoren
     \item Lagre de 64 \textit{minst\/} signifikante bitene fra trinn 2
-      som historisk verdi for bruk den neste gangen algoritmen brukes
+      som historisk verdi for bruk den neste gangen denne algoritmen
+      brukes
     \end{enumerate}
   \end{itemize}
 \end{frame}
 
 % Bør ha med en egen slide som viser tilfeldig ifid i praksis.
+
+\section{Duplicate Address Detection --- DAD}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Duplicate Address Detection --- DAD}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{Livsløpet til en adresse}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Livsløpet til en adresse}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
 
 \section{Spesialadresser}
 \begin{frame}%[allowframebreaks]
@@ -994,7 +1030,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Loopbackadressa: \texttt{0:0:0:0:0:0:0:1/128} eller
     \texttt{::1/128}
     \begin{itemize}[<+->]
-    \item Velkjent adresse for å snakke med seg selv
+    \item Velkjent adresse for å snakke med tjenester i samme node
     \end{itemize}
   \item Dokumentasjonsprefiks: \texttt{2001:db8::/32}
     \begin{itemize}[<+->]
@@ -1099,7 +1135,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \href{http://tools.ietf.org/html/rfc1918}{RFC~1918}
   \item Prefiks: \texttt{FEC0::/10}
   \item De neste 54 bitene brukes til subnet-ID
-  \item De siste 64 bitene er grensesnittidentifikatoren i modda
+  \item De siste 64 bitene er grensesnittidentifikator i modda
     EUI-64-format
   \item Eksempel: \texttt{FEC0::DEAD:BEEF:1337}
   \item Ikke bruk site-local-adresser
@@ -1124,7 +1160,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item De siste 64 bitene er grensesnittidentifikator i modda
     EUI-64-format
   \item Det er vanlig at kundene blir tildelt \texttt{/48}- eller
-    \texttt{/56}-bits prefiks av ISP-ene
+    \texttt{/56}-bits prefiks av ISP-ene:
     \begin{itemize}[<+->]
     \item \texttt{/48}-bits prefiks gir $64-48=16$ subnetbit $\to$ $2^{16}=65536$ subnett
     \item \texttt{/56}-bits prefiks gir $64-56=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=\phantom{65}256$ subnett
@@ -1150,13 +1186,6 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \texttt{\alert{FD}00::/\alert{8}}
   \item Prefikset \texttt{\alert{FC}00::/\alert{8}} er reservert
     inntil videre
-  \item \href{http://www.sixxs.net/}{SixXS} tilbyr:
-    \begin{itemize}[<+->]
-    \item Generering av ULA-prefiks:
-      \texttt{\url{http://www.sixxs.net/tools/grh/ula/}}
-    \item Registrering av ULA-prefiks:
-      \texttt{\url{http://www.sixxs.net/tools/grh/ula/list/}}
-    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -1167,34 +1196,67 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item Reelt prefiks: \texttt{FD00::/8}
   \item De neste 40 bitene genereres tilfeldig, gjerne som beskrevet i
-    \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}:
-    \begin{itemize}[<+->]
-    \item Uttrykk nåværende øyeblikk som et 64-bit heltall i
-      NTP-format
-      (\href{http://tools.ietf.org/html/rfc5905}{RFC~5905}).
-    \item Bruk en EUI-64-identifikator fra systemet som kjører denne
-      algoritmen.
-      \begin{itemize}[<+->]
-      \item Mangler du en EUI-64-identifikator, kan du lage en fra en
-        48-bit MAC-adresse som angitt i
-        \href{http://tools.ietf.org/html/rfc3513}{RFC~3513}.
-      \item Kan du ikke lage en EUI-64-identifikator, så bruk en annen
-        unik verdi som serienummeret til systemet.
-      \end{itemize}
-    \item Sett sammen de to 64-bit heltallene til et 128-bit heltall.
-    \item Beregn en SHA-1-hash som beskrevet i
-      \href{http://tools.ietf.org/html/rfc3174}{RFC~3174}.  Resultatet
-      er et heltall på 160 bit.
-    \item Bruk de 40 minst signifikante bitene som global
-      identifikator.
-    \end{itemize}
+    \href{http://tools.ietf.org/html/rfc4193}{RFC~4193}
   \item De neste 16 bitene brukes til subnett-ID
   \item De siste 64 bitene er grensesnittidentifikator i modda
     EUI-64-format
   \item Eksempel: \texttt{FD\alert{5C:14CF:C300}:31::1/128}
-% Geoff Huston, forsker ved APNIC, har oppdaget ULA-adresser ute på internett.
-% Tydeligvis klarer ikke folk å lese RFC-ene og holde seg til de fastsatte reglene.
-% http://www.sixxs.net/archive/docs/IEPG2013_ULA_in_the_wild.pdf
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Adressetyper}
+  \framesubtitle{Unike, lokale, aggregerbare adresser}
+  %\pause
+  \begin{itemize}[<+->]
+  \item \href{http://www.sixxs.net/}{SixXS} tilbyr bl.a.:
+    \begin{itemize}[<+->]
+    \item Generering av ULA-prefiks:
+      \texttt{\url{http://www.sixxs.net/tools/grh/ula/}}
+    \item Registrering av ULA-prefiks:
+      \texttt{\url{http://www.sixxs.net/tools/grh/ula/list/}}
+    \end{itemize}
+  \item
+    \href{http://www.apnic.net/publications/research-and-insights/geoff-huston}{Geoff
+      Huston}, seniorforsker ved \href{http://www.apnic.net/}{APNIC},
+    har oppdaget ULA-adresser i fri dressur ute på internett:
+    \begin{itemize}[<+->]
+    \item Tydeligvis klarer ikke folk å lese RFC-ene og holde seg til
+      de fastsatte reglene
+    \item
+      \texttt{\url{http://www.sixxs.net/archive/docs/IEPG2013_ULA_in_the_wild.pdf}}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Adressetyper}
+  \framesubtitle{Unike, lokale, aggregerbare adresser}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Her er algoritmen fra
+    \href{http://tools.ietf.org/html/rfc4193}{RFC~4193} for å generere
+    de 40 tilfeldige bitene:
+    \begin{enumerate}[<+->]
+    \item Uttrykk nåværende øyeblikk som et 64-bit heltall i
+      NTP-format
+      (\href{http://tools.ietf.org/html/rfc5905}{RFC~5905})
+    \item Bruk en EUI-64-identifikator fra systemet som kjører denne
+      algoritmen
+      \begin{itemize}[<+->]
+      \item Mangler du en EUI-64-identifikator, så kan du lage en fra
+        en 48-bit MAC-adresse som angitt i
+        \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
+      \item Kan du ikke lage en EUI-64-identifikator, så bruk en annen
+        unik verdi som serienummeret til systemet
+      \end{itemize}
+    \item Sett sammen de to 64-bit heltallene til et 128-bit heltall
+    \item Beregn en SHA-1-hash som beskrevet i
+      \href{http://tools.ietf.org/html/rfc3174}{RFC~3174}.  Resultatet
+      er et heltall på 160 bit
+    \item Bruk de 40 minst signifikante bitene som global
+      identifikator
+    \end{enumerate}
   \end{itemize}
 \end{frame}
 
@@ -1205,9 +1267,17 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \pause
   \begin{itemize}[<+->]
   \item Definert: \href{http://tools.ietf.org/html/rfc4291}{RFC~4291}
-  \item Bruksområde: felles adresse for distribuerte tjenester
-  \item Prefiks: ingen, allokeres fra dine egne unicast-adresser
-  \item Eksempel: \texttt{2001:700:1100::/128 anycast}
+  \item Bruksområde: felles adresse for distribuerte tjenester,
+    routerne bestemmer hvilken server som er nærmest og sender
+    trafikken dit
+  \item Prefiks: ingen, allokeres fra dine egne unicast-adresser og
+    markeres som en anycast-adresse hos routerne og serverne
+  \item Alle IPv6-adresser hvor alle bit i grensesnittidentifikatoren
+    satt til null, er reservert som «Subnet-Router anycast address»
+  \item Denne anycast-adressa brukes når man vil kontakte én av
+    potensielt flere routere i subnettet der du er
+  \item Eksempel: \texttt{2001:700:1100:1::/128 \alert{anycast}}
+  \item Se også \href{http://tools.ietf.org/html/rfc2526}{RFC~2526}
   \end{itemize}
 \end{frame}
 
@@ -1245,6 +1315,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     i \href{http://tools.ietf.org/html/rfc3956}{RFC~3956}
   \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
     multicast-adresser for internt bruk i organisasjonen
+  \item Bruk av flaggene \texttt{R}, \texttt{P} og \texttt{T}
+    gjennomgås i detalj i foredraget for de viderekomne
   \end{itemize}
 \end{frame}
 
@@ -1320,7 +1392,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{DNS}
   \framesubtitle{\texttt{A6}}
-  %\pause
+  \pause
   \begin{itemize}[<+->]
   \item \texttt{A6}-poster var foreslått som erstatning for
     \texttt{AAAA}-poster av
@@ -1500,15 +1572,15 @@ uninett IN A6  0 2001:700::
   \item Feilrapportering- og feilsøkingstjeneste for IPv6
   \item Definert: \href{http://tools.ietf.org/html/rfc4443}{RFC~4443}
     og \href{http://tools.ietf.org/html/rfc4844}{RFC~4844}
-  \item ICMPv6-meldinger inneholder to tall som forteller om
+  \item ICMPv6-meldinger inneholder to tall som forteller noe om
     budskapets mening og innhold:
     \begin{itemize}[<+->]
     \item Type: hovednummer
     \item Code: undernummer, settes til 0 når det ikke er definert
       noen undernummer
     \end{itemize}
-  \item I tillegg kommer felter for sjekksum og opplysninger som er
-    unike for hver type (og undertype) av meldingene
+  \item I tillegg er det felter for sjekksum og andre opplysninger som
+    er unike for hver type (og undertype) av meldingene
   \end{itemize}
 \end{frame}
 
@@ -1570,8 +1642,8 @@ uninett IN A6  0 2001:700::
     \end{itemize}
   \item Sentral ved autokonfigurering av adresser
   \item Brukes for å bekrefte at nodene er oppegående og bestemme
-    lag~2-adressene til mottakere
-  \item Neighbor Discovery vil bli gjennomgått i detalj i foredraget
+    lag-2-adressene til mottakere
+  \item Neighbor Discovery gjennomgås i detalj i foredraget
     for de viderekomne
   \end{itemize}
 \end{frame}
@@ -1616,7 +1688,7 @@ uninett IN A6  0 2001:700::
     \item 142: Inverse Neighbor Discovery Advertisement
     \end{itemize}
   \item Gjør det mulig for én node å lære IPv6-adressen(e) til en
-    annen node i samme VLAN, når man bare vet lag~2-adressa til den
+    annen node i samme VLAN, når man bare vet lag-2-adressa til den
     andre noden
   \end{itemize}
 \end{frame}
@@ -1767,7 +1839,7 @@ uninett IN A6  0 2001:700::
     \end{itemize}
   \item Sentral ved autokonfigurering av adresser
   \item Brukes for å bekrefte at nodene er oppegående og bestemme
-    lag~2-adressene til mottakere
+    lag-2-adressene til mottakere
   \end{itemize}
 \end{frame}
 
@@ -1777,7 +1849,7 @@ uninett IN A6  0 2001:700::
   \framesubtitle{Router Solititation}
   \pause
   \begin{itemize}[<+->]
-  \item 
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
@@ -1787,7 +1859,7 @@ uninett IN A6  0 2001:700::
   \framesubtitle{Router Advertisement}
   \pause
   \begin{itemize}[<+->]
-  \item 
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
@@ -1797,7 +1869,7 @@ uninett IN A6  0 2001:700::
   \framesubtitle{Neighbor Solititation}
   \pause
   \begin{itemize}[<+->]
-  \item 
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
@@ -1807,7 +1879,7 @@ uninett IN A6  0 2001:700::
   \framesubtitle{Neighbor Solititation}
   \pause
   \begin{itemize}[<+->]
-  \item 
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
@@ -1817,7 +1889,7 @@ uninett IN A6  0 2001:700::
   \framesubtitle{Redirect}
   \pause
   \begin{itemize}[<+->]
-  \item 
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
@@ -1850,12 +1922,13 @@ uninett IN A6  0 2001:700::
     unicast og UDP
   \item Klientene bruker port 546 og serverne/relay bruker 547
   \item Klientene bruker sin egen link-local-adresse som avsender og
-    multicast-adressa \texttt{ff02::1:2} som mottaker
+    multicast-adressa \texttt{FF02::1:2} som mottaker
   \item Serverne svarer med sin link-local-adresser som avsender og
     klientens link-local-adresse som mottaker
   \end{itemize}
 \end{frame}
 
+% Husk å ta bort allowframebreaks og dele teksten inn i enkeltframes, for underpunktene forsvinner i foredrags-filene. :-O
 \section{Meldinger}
 \begin{frame}[allowframebreaks]
   \frametitle{DHCPv6}
@@ -1886,6 +1959,7 @@ uninett IN A6  0 2001:700::
     \begin{itemize}[<+->]
     \item Fra klient til server/relay
     \end{itemize}
+  \framebreak
   \item Reply
     \begin{itemize}[<+->]
     \item Fra server til klient
@@ -1910,6 +1984,7 @@ uninett IN A6  0 2001:700::
     \begin{itemize}[<+->]
     \item Fra relay til relay/server
     \end{itemize}
+  \framebreak
   \item Relay-reply
     \begin{itemize}[<+->]
     \item Fra server/relay til relay
@@ -2156,7 +2231,7 @@ uninett IN A6  0 2001:700::
   \begin{itemize}[<+->]
   \item Autokonfigurering av adresser:
     \href{http://tools.ietf.org/html/rfc4862}{RFC~4862}
-  \item Random interface ID:
+  \item Tilfeldig grensesnittidentifikator:
     \href{http://tools.ietf.org/html/rfc4941}{RFC~4941}
   \item Prefiks-baserte multicastadresser:
     \href{http://tools.ietf.org/html/rfc3306}{RFC~3306},
