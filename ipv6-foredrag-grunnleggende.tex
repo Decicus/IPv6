@@ -15,6 +15,8 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{fancyvrb}
+%\usepackage{epstopdf}
+%\epstopdfsetup{update}
 
 %\usetheme{AnnArbor}
 %\usetheme{Boadilla}
@@ -96,6 +98,12 @@
     \href{http://get.adobe.com/no/reader/}{Adobe Reader}
   \item Hovedfila bærer denne identifikasjonen:\\
     \texttt{\$${}$Ximalas${}$\$}
+  \item Copyright \copyright\ 2013 Trond Endrestøl
+  \item Dette verket er lisensiert med:
+    \href{http://creativecommons.org/}{Creative Commons},
+    \href{http://creativecommons.org/licenses/by-sa/3.0/no/}{Navngivelse-DelPåSammeVilkår
+      3.0 Norge} (CC BY-SA
+    3.0)\hfill\includegraphics[scale=.25]{by-sa.pdf}
   \end{itemize}
 \end{frame}
 
@@ -1441,11 +1449,11 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   \item \href{http://tools.ietf.org/html/rfc3364}{RFC~3364} diskuterer
     fordeler og ulemper med \texttt{AAAA} og \texttt{A6}
   \item En \texttt{A6}-post består av 2--3 ting:
-    \begin{itemize}[<+->]
+    \begin{enumerate}[<+->]
     \item Prefikslengde fra og med $0$ til og med $128$
     \item Utdrag av IPv6-adressa
     \item Navn som henviser til resten av adressa
-    \end{itemize}
+    \end{enumerate}
   \item Settes prefikslengda til:
     \begin{itemize}[<+->]
     \item $0$, så er det \alert{ikke} lov å oppgi noen henvisning,
