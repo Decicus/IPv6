@@ -51,9 +51,7 @@
 \title{\textbf{IPv6-foredrag}}
 \subtitle{Grunnleggende og viderekomne}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
-%\author[T.~Endrestøl]{Trond Endrestøl}
-\institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}}
-%\institute[FSI/IT]{Fagskolen Innlandet, IT-avdelingen}
+\institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
 \logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
 \subject{Emne for bruk i egenskapene til PDF-fila}
 \keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
@@ -262,11 +260,8 @@
     \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
       \href{http://www.potaroo.net/tools/ipv4/}{oktober 2020}
     \end{itemize}
-  \item NAT (\href{http://tools.ietf.org/html/rfc2663}{RFC~2663}), CGN
-    (\href{http://tools.ietf.org/html/rfc6264}{RFC~6264}) og Shared
-    Address Space
-    (\href{http://tools.ietf.org/html/rfc6598}{RFC~6598}) er bare
-    støttebandasje med kort utløpstid
+  \item Network Address Translation, Carrier-Grade NAT og Shared
+    Address Space er bare støttebandasje med kort utløpstid
     \begin{itemize}[<+->]
     \item Glem det
     \item Ende-til-ende-konnektivitet oppnås best uten noen former for
@@ -300,31 +295,6 @@
   \framesubtitle{Andre nyttige ting ved IPv6}
   \pause
   \begin{itemize}[<+->]
-  \item IPsec ble spesifisert som en del av IPv6
-    \begin{itemize}[<+->]
-    \item Må konfigureres før den begynner å virke
-    \item Tilbyr:
-      \begin{itemize}[<+->]
-      \item Kryptert overføring (ESP), og
-      \item Bekreftelse av avsenders identitet og beskyttelse mot
-        gjentakelse («replay») (AH)
-      \end{itemize}
-    \item Finnes også for IPv4
-    \item Ble omgjort fra krav til anbefaling av
-      \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
-    \end{itemize}
-  \item Fragmentering skal gjøres hos avsender, ikke underveis
-  \item Avsender må sjekke veien og måle smaleste krøttersti
-  \item Path Maximum Transmission Unit (Path MTU)
-  \item Sjekksum er overlatt til høyere og lavere lag
-  \end{itemize}
-\end{frame}
-
-\begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Andre nyttige ting ved IPv6}
-  %\pause
-  \begin{itemize}[<+->]
   \item Hierarkisk adressestruktur
   \item Enklere planlegging av subnett sammenlignet med IPv4
     \begin{itemize}[<+->]
@@ -335,6 +305,65 @@
     \item DHCPv6 eller manuell konfigurasjon (kan) brukes når
       prefikslengda er ulik 64 bit
     \end{itemize}
+  \item Sjekksum er overlatt til høyere og lavere lag
+  \item Fragmentering skal gjøres hos avsender, ikke underveis
+    \begin{itemize}[<+->]
+    \item Avsender må sjekke veien lengre fremme og måle smaleste krøttersti
+    \item Path Maximum Transmission Unit (Path MTU)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Andre nyttige ting ved IPv6}
+  %\pause
+  \begin{itemize}[<+->]
+  \item IPsec ble spesifisert som en del av IPv6
+    \begin{itemize}[<+->]
+    \item Finnes også for IPv4
+    \item Må konfigureres før den begynner å virke
+    \item Tilbyr:
+      \begin{itemize}[<+->]
+      \item Kryptert overføring (ESP), og/eller
+      \item Bekreftelse av avsenders identitet og beskyttelse mot
+        gjentakelse («replay») (AH)
+      \end{itemize}
+    \item Ble omgjort fra krav til anbefaling for IPv6 av
+      \href{http://tools.ietf.org/html/rfc6434}{RFC~6434}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Hvorfor brukes ikke IPv6?}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hvorfor brukes ikke IPv6?}
+  \pause
+  \begin{itemize}[<+->]
+  \item Markedskreftene råder
+  \item «Vente-og-se»-holdning
+  \item Store selskaper:
+    \begin{itemize}[<+->]
+    \item Kjøper opp små selskaper og hamstrer IPv4-blokker
+    \item Kjøper IPv4-blokker på ettermarkedet:
+      \begin{itemize}[<+->]
+      \item
+        \href{http://www.computerworld.com/s/article/9215055/Microsoft_offers_7.5M_for_666_624_IPv4_addresses}{Microsoft
+          $\to$ \$7,5 mill.\ $\to$ Nortel $\to$ 666.624 IPv4-adresser}
+      \end{itemize}
+    \item Stikker hodet ned i sanda
+    \end{itemize}
+  \item Telebransjen satser fortsatt hardt på IPv4:
+    \begin{itemize}[<+->]
+    \item (Edge) NAT i CPE (\href{http://tools.ietf.org/html/rfc1631}{RFC~1631})
+    \item Carrier-Grade NAT i stamnett (\href{http://tools.ietf.org/html/rfc6264}{RFC~6264})
+    \item Shared Address Space etter behov i stamnett (\href{http://tools.ietf.org/html/rfc6598}{RFC~6598})
+    \item HTTP/S-tunnelering av rubb og stubb
+    \end{itemize}
+  \item Før eller siden blir CGN for kostbar og komplisert å vedlikeholde
+  \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset (\href{http://tools.ietf.org/html/rfc6459}{RFC~6459})
+  \item IPv6 er det eneste tilgjengelige og realistiske alternativet
   \end{itemize}
 \end{frame}
 
@@ -354,12 +383,12 @@
     til sentrale punkter i hver etasje i hovedbygningen
   \item Sommeren 2006: Nytt Cisco-gear som Catalyst 3560G og 2960
     \begin{itemize}[<+->]
-    \item \texttt{128.39.46.8/30} ble satt opp som linknett mellom
-      HiG/Uninett og FSI
-%      \begin{itemize}[<+->]
-%      \item \texttt{128.39.46.9\phantom{0}} brukes ved HiG
-%      \item \texttt{128.39.46.10} brukes ved FSI
-%      \end{itemize}
+    \item \texttt{128.39.46.8/30} ble linknettet mellom HiG/Uninett og
+      FSI
+      \begin{itemize}[<+->]
+      \item \texttt{128.39.46.9\phantom{0}} brukes ved HiG
+      \item \texttt{128.39.46.10} brukes ved FSI
+      \end{itemize}
     \item \texttt{128.39.174.0/24} ble subnettet og satt opp som
       servernett og ansattnett, m.m.
     \item \texttt{128.39.172.0/24} ble subnettet og satt opp som nett
@@ -396,6 +425,12 @@
     \href{http://www.sixxs.net/tools/whois/?fd5c:14cf:c300::/48}{\texttt{FD5C:14CF:C300::/48}}
     for FSI-VLAN som tidligere bare brukte
     \href{http://tools.ietf.org/html/rfc1918}{RFC-1918}-adresser
+    \begin{itemize}[<+->]
+    \item Fikk første HP-skriver med IPv6 og ville bruke IPv6
+    \item Senere: IPv6-adresser på kantswitchene med
+      \href{http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_40_se/release/notes/OL13860.html}{Cisco
+        IOS 12.2(40)SE}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -407,10 +442,10 @@
   \item Høsten 2010: Enda en IPv4-serie ble innført:
     \texttt{128.39.194.0/24}
     \begin{itemize}[<+->]
-    \item \texttt{128.39.172.0/23} brukes til klienter på trådløst
+    \item \texttt{128.39.172.0/23} brukes nå til klienter på trådløst
       studentnett
-    \item \texttt{128.39.194.0/24} brukes til datalab etter samme
-      mønster som for \texttt{128.39.172.0/24}
+    \item \texttt{128.39.194.0/24} brukes nå til datalab etter samme
+      mønster som for den gamle \texttt{128.39.172.0/24}
     \end{itemize}
   \item \href{http://www.oppland.no/}{Oppland FK} (OFK) har ingen
     planer om å innføre IPv6
@@ -813,7 +848,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \begin{itemize}[<+->]
     \item følger det vanlige mønsteret med produsent- og løpenummer
     \item angir en individuell node
-    \item «Dell Inc» er produsenten ifølge
+    \item er produsert av «Dell Inc» ifølge
       \href{http://standards.ieee.org/develop/regauth/oui/oui.txt}{OUI-lista}
       hos \href{http://www.ieee.org/index.html}{IEEE} (søk i fila
       etter \texttt{00-21-70})
@@ -868,7 +903,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
       \begin{itemize}[<+->]
       \item Før: \texttt{0\alert{0}} (heksadesimalt) $\to$ \texttt{000000\alert{0}0} (binært)
-      \item Etter: \texttt{000000\alert{1}0} (binært)$\to$ \texttt{0\alert{2}} (heksadesimalt)
+      \item Etter: \texttt{000000\alert{1}0} (binært) $\to$ \texttt{0\alert{2}} (heksadesimalt)
       \end{itemize}
     \item Sett inn \texttt{FF:FE} på midten: \texttt{02:21:70:\alert{FF:FE}:73:68:6E}
     \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
@@ -908,9 +943,12 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     universal/local-bitet som regel er satt til \texttt{0}
   \item De øvrige 63 bitene kan være hva som helst, bare verdien ikke
     skaper adressekollisjon i samme VLAN
-  \item Normalt setter man en lav verdi for manuelle
-    grensesnittidentifikatorer
+  \item Normalt bruker man manuelle grensesnittidentifikatorer med
+    lave verdier
   \item For eksempel \texttt{::53} \hfill(DNS-tjener, kanskje)
+  \item Det er ingenting i veien for å «kode» IPv4-adressa inn i
+    IPv6-adressa: \texttt{2001:700:1100:3:\alert{128:39:174:67}}
+  \item Man må bare passe på verdien til universal/local-bitet
   \end{itemize}
 \end{frame}
 
@@ -952,8 +990,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     tilfeldig grensesnittidentifikator
   \item Generér to autokonfigurerte IPv6-adresser:
     \begin{enumerate}[<+->]
-    \item Konstant grensesnittidentifikator (\href{http://tools.ietf.org/html/rfc4291}{RFC~4291})
-    \item Tilfeldig grensesnittidentifikator (\href{http://tools.ietf.org/html/rfc4941}{RFC~4941})
+    \item Konstant grensesnittidentifikator\hfill(\href{http://tools.ietf.org/html/rfc4291}{RFC~4291})
+    \item Tilfeldig grensesnittidentifikator\hfill(\href{http://tools.ietf.org/html/rfc4941}{RFC~4941})
     \end{enumerate}
   \item Velg å bruke adressa med tilfeldig grensesnittidentifikator i
     størst mulig grad
@@ -968,7 +1006,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Tilfeldig grensesnittidentifikator}
   %\pause
   \begin{itemize}[<+->]
-  \item \href{http://tools.ietf.org/html/rfc4941}{RFC~4941} angir
+  \item \href{http://tools.ietf.org/html/rfc4941}{RFC~4941} angir en
     metode for generering av tilfeldig grensesnittidentifikator:
     \begin{enumerate}[<+->]
     \item Sett sammen historisk verdi fra forrige runde (eller et
@@ -1036,6 +1074,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \begin{itemize}[<+->]
     \item Brukes for generell beskrivelse av IPv6-oppsett i lærebøker
       og annen generell dokumentasjon
+      (\href{http://tools.ietf.org/html/rfc3849}{RFC~3849})
     \item Forbudt å bruke på det offentlige internettet
     \item Bør blokkeres i \textit{inngående\/} og utgående ACL-er for
       internettgrensesnittet til routere
@@ -1548,7 +1587,7 @@ uninett IN A6  0 2001:700::
       \item \texttt{0:0:1100::}\hfill\texttt{fig.ip6.uninett.no.}
       \item \texttt{2001:700::}\hfill\texttt{uninett.ip6.uninett.no.}
       \end{itemize}
-    \item Bitvis-\texttt{OR} gir den sammensatte adressa \texttt{2001:700:1100:1::4}
+    \item Bitvis-\texttt{OR} gir den fulstendige adressa \texttt{2001:700:1100:1::4}
   \end{itemize}
 \end{frame}
 
@@ -1654,24 +1693,18 @@ uninett IN A6  0 2001:700::
   \framesubtitle{Router Renumbering}
   \pause
   \begin{itemize}[<+->]
-  \item Definert:
-    \texttt{\url{http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml}}
-    som oppgir \href{mailto:crawdad@gungnir.fnal.gov}{Matt Crawford}
-    som referanse
+  \item Definert: \href{http://tools.ietf.org/html/rfc2894}{RFC~2894}
   \item Angir én ny ICMPv6-melding:
     \begin{itemize}[<+->]
     \item 138: Router Renumbering
     \end{itemize}
-  \item
-    \texttt{\url{http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml}}
-    angir følgende undertyper:
+  \item \href{http://tools.ietf.org/html/rfc2894}{RFC~2894} angir
+    følgende undertyper:
     \begin{itemize}[<+->]
     \item 0: Router Renumbering Command
     \item 1: Router Renumbering Result
     \item 255: Sequence Number Reset
     \end{itemize}
-  \item Jeg har hittil ikke klart å finne ut noe mer om denne
-    ICMPv6-meldinga
   \end{itemize}
 \end{frame}
 
