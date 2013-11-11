@@ -174,7 +174,7 @@
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 11: OS-konfig og tunneloppsett}
+  \framesubtitle{Del 11: Konfigurasjon av IPv6}
   \tableofcontents[part=11]%[pausesections]
 \end{frame}
 
@@ -2160,21 +2160,23 @@ uninett IN A6  0 2001:700::
 
 \section{Cisco IOS}
 \subsection{IPv6-routing}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
   \framesubtitle{Cisco IOS: IPv6-routing}
   \pause
-  \begin{enumerate}[<+->]
+  \begin{enumerate}%[<+->]
   \item \texttt{configure terminal}
   \item \texttt{sdm prefer dual-ipv4-and-ipv6 default}\hfill(Rekonfigurere \href{http://en.wikipedia.org/wiki/Content-addressable_memory}{TCAM})
   \item \texttt{end}
   \item \texttt{reload}
+  \framebreak
   \item \texttt{configure terminal}
   \item \texttt{interface \textit{interface-id}}
   \item \texttt{no switchport}\hfill(Aktuelt for routergrensesnitt)
   \item \alert{\texttt{ipv6 address \textit{ipv6-address}}}
   \item \texttt{ipv6 nd ra suppress}\hfill(Aktuelt for routergrensesnitt)
   \item \texttt{exit}
+  \framebreak
   \item \alert{\texttt{ip routing}}\hfill(Nødvendig for IP-routing i det hele tatt)
   \item \alert{\texttt{ipv6 unicast-routing}}
   \item \texttt{no ipv6 source-route}
@@ -2214,32 +2216,52 @@ uninett IN A6  0 2001:700::
     \{\texttt{\textit{source-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{source-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
+    [\texttt{\textit{operator~port-number}}]
     \{\texttt{\textit{destination-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{destination-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
+    [\texttt{\textit{operator~port-number}}]
+    [\texttt{\textbf{dest-option}}]
+    [\texttt{\textbf{dest-option-type}~\textit{value}}]
     [\texttt{\textbf{dscp}~\textit{value}}]
-    [\texttt{\textbf{fragments}}] [\texttt{\textbf{log}}]
+    [\texttt{\textbf{flow-label}~\textit{value}}]
+    [\texttt{\textbf{fragments}}]
+    [\texttt{\textbf{hbh}}]
+    [\texttt{\textbf{log}}]
     [\texttt{\textbf{log-input}}]
+    [\texttt{\textbf{mobility}}]
+    [\texttt{\textbf{mobility-type}~\textit{value}}]
+    [\texttt{\textbf{reflect}~\textit{access-list-name}}]
+    [\texttt{\textbf{routing}}]
+    [\texttt{\textbf{routing-type}~\textit{value}}]
     [\texttt{\textbf{sequence}~\textit{value}}]
-    [\texttt{\textbf{time-range}~\textit{value}}]
+    [\texttt{\textbf{time-range}~\textit{name}}]
   \item \texttt{\textbf{deny}} | \texttt{\textbf{permit} tcp}
     \{\texttt{\textit{source-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{source-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
+    [\texttt{\textit{operator~port-number}}]
     \{\texttt{\textit{destination-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{destination-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
-    [\texttt{\textbf{ack}}] [\texttt{\textbf{dscp}~\textit{value}}]
-    [\texttt{\textbf{established}}] [\texttt{\textbf{fin}}]
-    [\texttt{\textbf{log}}] [\texttt{\textbf{log-input}}]
-    [\texttt{\textbf{neq}} \{\texttt{\textit{port}} |
-    \texttt{\textit{protocol}}\}] [\texttt{\textbf{psh}}]
-    [\texttt{\textbf{range}} {\texttt{\textit{port}} |
-      \texttt{\textit{protocol}}}] [\texttt{\textbf{rst}}]
+    [\texttt{\textit{operator~port-number}}]
+    [\texttt{\textbf{ack}}]
+    [\texttt{\textbf{dest-option}}]
+    [\texttt{\textbf{dest-option-type}~\textit{value}}]
+    [\texttt{\textbf{dscp}~\textit{value}}]
+    [\texttt{\textbf{established}}]
+    [\texttt{\textbf{fin}}]
+    [\texttt{\textbf{flow-label}~\textit{value}}]
+    [\texttt{\textbf{hbh}}]
+    [\texttt{\textbf{log}}]
+    [\texttt{\textbf{log-input}}]
+    [\texttt{\textbf{mobility}}]
+    [\texttt{\textbf{mobility-type}~\textit{value}}]
+    [\texttt{\textbf{psh}}]
+    [\texttt{\textbf{reflect}~\textit{access-list-name}}]
+    [\texttt{\textbf{routing}}]
+    [\texttt{\textbf{routing-type}~\textit{value}}]
+    [\texttt{\textbf{rst}}]
     [\texttt{\textbf{sequence}~\textit{value}}]
     [\texttt{\textbf{syn}}]
     [\texttt{\textbf{time-range}~\textit{name}}]
@@ -2248,34 +2270,55 @@ uninett IN A6  0 2001:700::
     \{\texttt{\textit{source-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{source-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
+    [\texttt{\textit{operator~port-number}}]
     \{\texttt{\textit{destination-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{destination-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
-    [\texttt{\textbf{dscp}~\textit{value}}] [\texttt{\textbf{log}}]
-    [\texttt{\textbf{log-input}}] [\texttt{neq}
-    \{\texttt{\textit{port}} | \texttt{\textit{protocol}}\}]
-    [\texttt{\textbf{range}} \{\texttt{\textit{port}} |
-    \texttt{\textit{protocol}}\}]
+    [\texttt{\textit{operator~port-number}}]
+    [\texttt{\textbf{dest-option}}]
+    [\texttt{\textbf{dest-option-type}~\textit{value}}]
+    [\texttt{\textbf{dscp}~\textit{value}}]
+    [\texttt{\textbf{flow-label}~\textit{value}}]
+    [\texttt{\textbf{hbh}}]
+    [\texttt{\textbf{log}}]
+    [\texttt{\textbf{log-input}}]
+    [\texttt{\textbf{mobility}}]
+    [\texttt{\textbf{mobility-type}~\textit{value}}]
+    [\texttt{\textbf{reflect}~\textit{access-list-name}}]
+    [\texttt{\textbf{routing}}]
+    [\texttt{\textbf{routing-type}~\textit{value}}]
     [\texttt{\textbf{sequence}~\textit{value}}]
     [\texttt{\textbf{time-range}~\textit{name}}]
   \item \texttt{\textbf{deny}} | \texttt{\textbf{permit} icmp}
     \{\texttt{\textit{source-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{source-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
     \{\texttt{\textit{destination-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
     \texttt{\textbf{host}~\textit{destination-ipv6-address}}\}
-    [\texttt{\textit{operator}} [\texttt{\textit{port-number}}]]
-    [\texttt{\textbf{icmp-type}} [\texttt{\textit{icmp-code}}] |
-    \texttt{\textit{icmp-message}}]
-    [\texttt{\textbf{dscp}~\textit{value}}] [\texttt{\textbf{log}}]
+    [\{\texttt{\textit{icmp-type}} [\texttt{\textit{icmp-code}}]\} | \texttt{\textit{icmp-message}}]
+    [\texttt{\textbf{dest-option}}]
+    [\texttt{\textbf{dest-option-type}~\textit{value}}]
+    [\texttt{\textbf{dscp}~\textit{value}}]
+    [\texttt{\textbf{flow-label}~\textit{value}}]
+    [\texttt{\textbf{log}}]
     [\texttt{\textbf{log-input}}]
+    [\texttt{\textbf{mobility}}]
+    [\texttt{\textbf{mobility-type}~\textit{value}}]
+    [\texttt{\textbf{reflect}~\textit{access-list-name}}]
+    [\texttt{\textbf{routing}}]
+    [\texttt{\textbf{routing-type}~\textit{value}}]
     [\texttt{\textbf{sequence}~\textit{value}}]
     [\texttt{\textbf{time-range}~\textit{name}}]
-  \item \texttt{exit}
+  \item \texttt{\textbf{evaluate} \textit{reflexive-access-list-name}}
+    [\texttt{\textbf{sequence}~\textit{value}}]
+  \item \texttt{\textbf{remark} \textit{comment}}
+  \item \texttt{exit}\\
+    Husk:\\
+    \texttt{\textit{operator}} $\in$ \{\texttt{\textbf{gt}} |
+    \texttt{\textbf{lt}} | \texttt{\textbf{neq}} |
+    \texttt{\textbf{eq}} | \texttt{\textbf{range}}\}\\
+    \texttt{\textbf{reflect}} er bare gyldig for \texttt{\textbf{permit}}-regler
   \framebreak
   \item \texttt{interface \textit{interface-id}}
   \item \texttt{\textbf{ipv6 traffic-filter} \textit{access-list-name} \{\textbf{in} | \textbf{out}\}}
@@ -2296,7 +2339,24 @@ uninett IN A6  0 2001:700::
     annen IPv6-trafikk
   \item Dine egne regler kommer \textit{alltid\/} før de 5 reglene
     over, og kanskje må du kopiere de innebygde reglene og gjøre dine
-    egne justeringer
+    egne justeringer, for eksempel slå på logging av blokkert trafikk
+  \framebreak
+  \item Ønsker du logging av blokkert trafikk, men vil samtidig ikke
+    blokkere Neighbor Discovery, så må du gjøre slik:
+    \begin{enumerate}
+    \item \texttt{\textbf{remark} Øvrige regler kommer før denne linja}
+    \item \texttt{\textbf{permit} icmp \textbf{any any} nd-na}
+    \item \texttt{\textbf{permit} icmp \textbf{any any} nd-ns}
+    \item \texttt{\textbf{permit} icmp \textbf{any any} router-advertisement}
+    \item \texttt{\textbf{permit} icmp \textbf{any any} router-solicitation}
+    \item \texttt{\textbf{deny\phantom{it}} ipv6 \textbf{any any \alert{log}}}
+    \item \texttt{\textbf{remark} Her kommer de skjulte, implisitte reglene}
+    \item \texttt{\textit{\textbf{permit} icmp \textbf{any} \textbf{any} nd-na}}
+    \item \texttt{\textit{\textbf{permit} icmp \textbf{any} \textbf{any} nd-ns}}
+    \item \texttt{\textit{\textbf{permit} icmp \textbf{any} \textbf{any} router-advertisement}}
+    \item \texttt{\textit{\textbf{permit} icmp \textbf{any} \textbf{any} router-solicitation}}
+    \item \texttt{\textit{\textbf{deny\phantom{it}} ipv6 \textbf{any} \textbf{any}}}
+    \end{enumerate}
   \end{itemize}
 \end{frame}
 
