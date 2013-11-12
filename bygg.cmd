@@ -30,5 +30,14 @@ pdflatex %NAVN%.handout.2on1.169.tex
 pdflatex %NAVN%.handout.2on1.1610.tex
 pdflatex %NAVN%.handout.2on1.1610.tex
 
+pdflatex %NAVN%.handout.4on1.tex
+pdflatex %NAVN%.handout.4on1.tex
+
+pdflatex %NAVN%.handout.4on1.169.tex
+pdflatex %NAVN%.handout.4on1.169.tex
+
+pdflatex %NAVN%.handout.4on1.1610.tex
+pdflatex %NAVN%.handout.4on1.1610.tex
+
 echo.
 echo Ferdig.
