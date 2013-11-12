@@ -86,7 +86,9 @@
     er mye bedre for publikum å se på
   \item
     \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.handout.2on1.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.handout.2on1.pdf}}
-    er velegnet til utskrift
+    og
+    \href{http://svnweb.ximalas.info/ipv6-foredrag-grunnleggende/trunk/ipv6-foredrag-grunnleggende.handout.4on1.pdf?view=co}{\texttt{ipv6-foredrag-grunnleggende.handout.4on1.pdf}}
+    er begge velegnet til utskrift
   \item \texttt{*.169.pdf}-filene er i 16:9-format
   \item \texttt{*.1610.pdf}-filene er i 16:10-format
   \framebreak
@@ -203,7 +205,7 @@
   \pause
   \begin{itemize}[<+->]
   \item En lag-3-protokoll ment å erstatte IPv4
-  \item Har eksistert siden desember 1995, spesifisert i \rfc{1883}
+  \item Har eksistert siden desember 1995, først spesifisert i \rfc{1883}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
   \item \alert<12>{128-bit adresser}
@@ -243,6 +245,7 @@
   \framesubtitle{Hvorfor trenger vi IPv6?}
   \pause
   \begin{itemize}[<+->]
+  \item Mobilmarkedet viser en enorm vekst: smarttelefoner m.m.
   \item Verden går tom for offentlige IPv4-adresser
   \item
     «\href{http://www.potaroo.net/presentations/2012-05-22-terena.pdf}{IPokalypsen}»
@@ -421,7 +424,7 @@
     \item \texttt{2001:700:0:11D::1/64} brukes hos HiG
     \item \texttt{2001:700:0:11D::2/64} brukes hos FSI
     \end{itemize}
-  \item Samme dag ble IPv6 innført for FSI-VLAN-ene 20, 30, 70 og 80.
+  \item Samme dag ble IPv6 innført for FSI-VLAN-ene 20, 30, 70 og 80:
     \begin{itemize}[<+->]
     \item FSI-VLAN 20: \texttt{2001:700:1100:1::/64}
     \item FSI-VLAN 30: \texttt{2001:700:1100:2::/64}
@@ -1038,7 +1041,41 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Duplicate Address Detection --- DAD}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Når en unicast-adresse er generert skal man alltid sjekke at
+    ingen andre bruker den samme adressa\hfill\prfc{4862}
+  \item Dette gjøres ved å sende en «ICMPv6 Neighbor
+    Solicitation-melding» til den genererte adressas «Solicited-node
+    multicast address»
+  \item ICMPv6-meldinga inneholder den genererte adressa i feltet for
+    «Target Address»\hfill\prfc{4861}
+  \item En «Solicited-node multicast address» er på formen
+    \texttt{FF02::1:FF\alert<8->{\textit{aa}}:\alert<8->{\textit{bbcc}}},
+    hvor \alert<8->{\texttt{\textit{aabbcc}}} er de 24 minst
+    signifikante bitene fra den opprinnelige adressa\hfill\prfc{4291}
+  \item Sett at den genererte adressa er
+    \texttt{2001:700:1100:3:221:70FF:FE\alert<8->{73:686E}}
+  \item «Solicited-node multicast address» vil da være
+    \texttt{FF02::1:FF\alert<8->{73:686E}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Duplicate Address Detection --- DAD}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Vanligvis kommer det ikke noe svar på slike ICMPv6-meldinger
+    \dots
+  \item \dots\ trodde vi \dots
+  \item «\href{http://en.wikipedia.org/wiki/Danger,_Will_Robinson}{Danger, Will Robinson!}»
+  \item Det er et stort potensiale for Denial of Service --- DoS
+  \item En «slabbedask» kan velge å svare på DAD og nekte oss å bruke
+    \textit{enhver\/} adresse
+  \item Svaret kommer i form av en «ICMPv6 Neighbor
+    Advertisement»-melding som forteller oss at en annen node bruker
+    den samme adressa\hfill\prfc{4862}
+  \item Resultat: «slabbedasken» kan bruke nettverket uforstyrra
+  \item Dersom det er 2 eller flere «slabbedasker», hva da?
   \end{itemize}
 \end{frame}
 
@@ -1048,7 +1085,18 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Livsløpet til en adresse}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item En generert adresse vil først være i tilstanden «tentative»\hfill\prfc{4862}
+  \item Deretter gjennomføres DAD
+  \item Går alt bra, så sjekker man om én eller flere routere er tilstede
+  \item «ICMPv6 Router Solicitation»
+  \item «ICMPv6 Router Advertisement»
+  \item Routeren annonserer:
+    \begin{itemize}[<+->]
+    \item IPv6-prefiks
+    \item «Preferred lifetime»
+    \item «Valid lifetime»
+    \item Routerens lag-2-adresse
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -1066,11 +1114,13 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
       grensesnitt (sjekk ut
       \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
       i «Juniks»)
+    \item Tilsvarer \texttt{0.0.0.0/0} eller \texttt{0/0} i IPv4
     \end{itemize}
   \item Loopbackadressa: \texttt{0:0:0:0:0:0:0:1/128} eller
     \texttt{::1/128}
     \begin{itemize}[<+->]
     \item Velkjent adresse for å snakke med tjenester i samme node
+    \item Tilsvarer \texttt{127.0.0.1/32} i IPv4
     \end{itemize}
   \item Dokumentasjonsprefiks: \texttt{2001:db8::/32}
     \begin{itemize}[<+->]
