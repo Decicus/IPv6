@@ -2160,23 +2160,21 @@ uninett IN A6  0 2001:700::
 
 \section{Cisco IOS}
 \subsection{IPv6-routing}
-\begin{frame}[allowframebreaks]
+\begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
   \framesubtitle{Cisco IOS: IPv6-routing}
   \pause
-  \begin{enumerate}%[<+->]
+  \begin{enumerate}[<+->]
   \item \texttt{configure terminal}
-  \item \texttt{sdm prefer dual-ipv4-and-ipv6 default}\hfill(Rekonfigurere \href{http://en.wikipedia.org/wiki/Content-addressable_memory}{TCAM})
+  \item \alert{\texttt{sdm prefer dual-ipv4-and-ipv6 default}}\hfill(Rekonfigurere \href{http://en.wikipedia.org/wiki/Content-addressable_memory}{TCAM})
   \item \texttt{end}
   \item \texttt{reload}
-  \framebreak
   \item \texttt{configure terminal}
   \item \texttt{interface \textit{interface-id}}
   \item \texttt{no switchport}\hfill(Aktuelt for routergrensesnitt)
   \item \alert{\texttt{ipv6 address \textit{ipv6-address}}}
   \item \texttt{ipv6 nd ra suppress}\hfill(Aktuelt for routergrensesnitt)
   \item \texttt{exit}
-  \framebreak
   \item \alert{\texttt{ip routing}}\hfill(Nødvendig for IP-routing i det hele tatt)
   \item \alert{\texttt{ipv6 unicast-routing}}
   \item \texttt{no ipv6 source-route}
@@ -2236,6 +2234,7 @@ uninett IN A6  0 2001:700::
     [\texttt{\textbf{routing-type}~\textit{value}}]
     [\texttt{\textbf{sequence}~\textit{value}}]
     [\texttt{\textbf{time-range}~\textit{name}}]
+    [\texttt{\textbf{undetermined-transport}}]
   \item \texttt{\textbf{deny}} | \texttt{\textbf{permit} tcp}
     \{\texttt{\textit{source-ipv6-prefix/prefix-length}} |
     \texttt{\textbf{any}} |
