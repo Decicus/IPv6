@@ -291,12 +291,13 @@
   \begin{itemize}[<+->]
   \item Kortere rutingtabeller
   \item Uninett annonserer disse IPv4-subnettene med BGP:
-  \item \texttt{78.91.0.0/16}, \hfill\texttt{128.39.0.0/16}, \hfill\texttt{129.177.0.0/16},\\
+  \item \texttt{78.91.0.0/16}, \hfill\alert<4>{\texttt{128.39.0.0/16}}, \hfill\texttt{129.177.0.0/16},\\
       \texttt{129.240.0.0/15}, \hfill\texttt{129.242.0.0/16}, \hfill\texttt{144.164.0.0/16},\\
       \texttt{151.157.0.0/16}, \hfill\texttt{152.94.0.0/16}, \hfill\texttt{156.116.0.0/16},\\
       \texttt{157.249.0.0/16}, \hfill\texttt{158.36.0.0/14}, \hfill\texttt{161.4.0.0/16},\\
       \texttt{193.156.0.0/15}, \hfill\texttt{192.111.33.0/24}, \hfill\texttt{192.133.32.0/24},\\
       \hfill\texttt{192.146.238.0/23}\hfill\null
+    \pause
     \item Til gjengjeld trenger Uninett bare å annonsere dette
       IPv6-prefikset:
     \item \texttt{2001:700::/32}
@@ -376,7 +377,7 @@
     \end{itemize}
   \item Før eller siden blir CGN for kostbar og komplisert å vedlikeholde
   \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
-  \item IPv6 er det eneste tilgjengelige og realistiske alternativet
+  \item \alert<17>{IPv6 er det eneste tilgjengelige og realistiske alternativet}
   \end{itemize}
 \end{frame}
 
@@ -395,6 +396,8 @@
   \item Før og etter pinsehelga 2006: Fiberlinjer fra serverrommet og
     til sentrale punkter i hver etasje i hovedbygningen
   \item Sommeren 2006: Nytt Cisco-gear som Catalyst 3560G og 2960
+    (\href{http://www.cisco.com/en/US/docs/switches/lan/catalyst3560/software/release/12.2_25_seb/release/notes/OL7189.html}{Cisco
+      IOS 12.2(25)SEB4})
     \begin{itemize}[<+->]
     \item \texttt{128.39.46.8/30} ble linknettet mellom HiG/Uninett og
       FSI
@@ -831,9 +834,6 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Når \texttt{g}-bitet er \texttt{0} så angir adressa en
       individuell node, og når \texttt{g}-bitet er \texttt{1} så er
       adressa en multicastgruppe
-    \item Når \texttt{g}-bitet settes lik \texttt{1}, så blir også
-      \texttt{u}-bitet satt lik \texttt{1}
-    \item Kombinasjonen \texttt{ug} = \texttt{01} er høyst uvanlig
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -873,11 +873,15 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Prefiks
     \item Grensesnittidentifikator
     \end{itemize}
+  \item Bestemt av \rfc{4941}
   \item Grensesnittidentifikatorer er på 64 bit
+    \begin{itemize}[<+->]
+    \item Unntatt fra denne regelen er adresser som starter på $(000)_2$
+    \end{itemize}
   \item Grensesnittidentifikatorer kan lages automatisk fra
     MAC-48-adresser
   \item Grensesnittidentifikatorer kan også angis manuelt eller velges
-    tilfeldig \prfc{4941}
+    tilfeldig
   \item Angis grensesnittidentifikatoren manuelt, så angis som regel
     hele IPv6-adressa manuelt
   \item Grensesnittidentifikatorer følger
@@ -952,9 +956,6 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Normalt bruker man manuelle grensesnittidentifikatorer med
     lave verdier
   \item For eksempel \texttt{::53} \hfill(DNS-tjener, kanskje)
-  \item Det er ingenting i veien for å «kode» IPv4-adressa inn i
-    IPv6-adressa: \texttt{2001:700:1100:3:\alert{128:39:174:67}}
-  \item Man må bare passe på verdien til universal/local-bitet
   \end{itemize}
 \end{frame}
 
@@ -965,18 +966,38 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item Lav verdi for grensesnittidentifikatorer medfører at
     universal/local-bitet er satt til null:
-  \item \texttt{::53}\hfill(heksadesimalt)
-  \item \texttt{::\alert{0}:0:0:53}\hfill(heksadesimalt)
-  \item \texttt{::000000\alert{0}000000000:00\dots00:0000000001010011}
-    \hfill(binært)
+    \begin{itemize}[<+->]
+    \item \texttt{::53}\hfill(heksadesimalt)
+    \item \texttt{::\alert{0}:0:0:53}\hfill(heksadesimalt)
+    \item \texttt{::000000\alert{0}000000000:00~\dots~00:0000000001010011}
+      \hfill(binært)
+    \end{itemize}
   \item Uten \textit{invertering\/} av universal/local-bitet, måtte vi
     bruke manuelle grensesnittidentifikatorer på denne måten:
-  \item \texttt{::0\alert{2}00:0:0:53}\hfill(heksadesimalt)
-  \item \texttt{::000000\alert{1}000000000:00\dots00:0000000001010011}
-    \hfill(binært)
-  \item Se her:\\
-    \texttt{2001:700:1100:1:0200:0:0:53} vs\\
-    \texttt{2001:700:1100:1::53}
+    \begin{itemize}[<+->]
+    \item \texttt{::0\alert{2}00:0:0:53}\hfill(heksadesimalt)
+    \item \texttt{::000000\alert{1}000000000:00~\dots~00:0000000001010011}
+      \hfill(binært)
+    \end{itemize}
+  \item Se her:
+    \begin{itemize}[<+->]
+    \item \texttt{2001:700:1100:1:0200:0:0:53} vs
+    \item \texttt{2001:700:1100:1::53}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Manuell grensesnittidentifikator}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Det er ingenting i veien for å «kode» IPv4-adressa inn i
+    IPv6-adressa:
+  \item \texttt{2001:700:1100:3:\alert{128:39:174:67}}
+  \item Man må bare passe på verdien til universal/local-bitet
+  \item \texttt{128} $=$ \texttt{0128} $=$ \texttt{000000\alert{0}100101000}\hfill(heks, heks, bin)
+  \item Dette gikk bra!
   \end{itemize}
 \end{frame}
 
@@ -992,17 +1013,18 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item \texttt{2001:700:1100:3:\alert{221:70FF:FE73:686E}}\hfill(IT-avdelingen@FSI)
     \item \texttt{2001:700:1D00:8:\alert{221:70FF:FE73:686E}}\hfill(public-nettet@HiG)
     \end{itemize}
-  \item \rfc{4941} beskriver tilfeldig grensesnittidentifikator
-  \item Generér to autokonfigurerte IPv6-adresser:
-    \begin{enumerate}[<+->]
-    \item Konstant grensesnittidentifikator\hfill\prfc{4291}
-    \item Tilfeldig grensesnittidentifikator\hfill\prfc{4941}
-    \end{enumerate}
-  \item Velg å bruke adressa med tilfeldig grensesnittidentifikator i
-    størst mulig grad
-  \item Aksepter også innkommende trafikk for adressa med konstant
-    grensesnittidentifikator
-  \item Send svarene tilbake med riktig adresse
+  \item \rfc{4941} beskriver bruk av tilfeldig grensesnittidentifikator
+  \item Med tilfeldig grensesnittidentifikator:
+    \begin{itemize}[<+->]
+    \item \texttt{2001:700:1100:3:\alert{B9D9:B729:6CDD:4E5}}\hfill(IT-avdelingen@FSI)
+    \item \texttt{2001:700:1D00:8:\alert{B9D9:B729:6CDD:4E5}}\hfill(public-nettet@HiG)
+    \end{itemize}
+  \item Disse byttes ut typisk hver dag:
+    \begin{itemize}[<+->]
+    \item \texttt{2001:700:1100:3:\alert{F503:1E6F:5F2F:F5F2}}\hfill(IT-avdelingen@FSI)
+    \item \texttt{2001:700:1D00:8:\alert{F503:1E6F:5F2F:F5F2}}\hfill(public-nettet@HiG)
+    \end{itemize}
+  \item Man må bare passe på u/l-bitet og passe seg for adressekollisjon
   \end{itemize}
 \end{frame}
 
@@ -1088,16 +1110,108 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item En generert adresse vil først være i tilstanden «tentative»\hfill\prfc{4862}
   \item Deretter gjennomføres DAD
   \item Går alt bra, så sjekker man om én eller flere routere er tilstede
-  \item «ICMPv6 Router Solicitation»
-  \item «ICMPv6 Router Advertisement»
+  \item Sender «ICMPv6 Router Solicitation»
+  \item Mottar «ICMPv6 Router Advertisement»
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Livsløpet til en adresse}
+  %\pause
+  \begin{itemize}[<+->]
   \item Routeren annonserer:
     \begin{itemize}[<+->]
-    \item IPv6-prefiks
-    \item «Preferred lifetime»
-    \item «Valid lifetime»
+    \item «Hop limit»
+    \item Annonseringsflagg:
+      \begin{itemize}[<+->]
+      \item Om autokonf eller DHCPv6 skal brukes hos klienten
+      \item Om DHCPv6 skal brukes for andre opplysninger
+      \item «Home Agent» eller ikke «Home Agent»
+      \item Preferansenivå for denne routeren, Low, Medium, eller High
+      \end{itemize}
+    \item Routerannonseringens gyldighet (levetid)
     \item Routerens lag-2-adresse
+    \item Linkens MTU
+    \item Informasjon om prefiks:
+      \begin{itemize}[<+->]
+      \item Flagg: «On-link», «Autonomous», «Router address»
+      \item «Valid lifetime»
+      \item «Preferred lifetime»
+      \item IPv6-prefiks
+      \end{itemize}
     \end{itemize}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Livsløpet til en adresse}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+Internet Control Message Protocol v6
+    Type: Router Solicitation (133)
+    Code: 0
+    Checksum: 0xc065 [correct]
+    Reserved: 00000000
+    ICMPv6 Option (Source link-layer address : 00:21:70:73:68:6e)
+        Type: Source link-layer address (1)
+        Length: 1 (8 bytes)
+        Link-layer address: Dell_73:68:6e (00:21:70:73:68:6e)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Livsløpet til en adresse}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+Internet Control Message Protocol v6
+    Type: Router Advertisement (134)
+    Code: 0
+    Checksum: 0xfa8c [correct]
+    Cur hop limit: 64
+    Flags: 0x48
+        0... .... = Managed address configuration: Not set
+        .1.. .... = Other configuration: Set
+        ..0. .... = Home Agent: Not set
+        ...0 1... = Prf (Default Router Preference): High (1)
+        .... .0.. = Proxy: Not set
+        .... ..0. = Reserved: 0
+    Router lifetime (s): 1800
+    Reachable time (ms): 0
+    Retrans timer (ms): 0
+    ICMPv6 Option (Source link-layer address : 00:17:e0:77:14:57)
+        Type: Source link-layer address (1)
+        Length: 1 (8 bytes)
+        Link-layer address: Cisco_77:14:57 (00:17:e0:77:14:57)
+    ICMPv6 Option (MTU : 1500)
+        Type: MTU (5)
+        Length: 1 (8 bytes)
+        Reserved
+        MTU: 1500
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Livsløpet til en adresse}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+    ICMPv6 Option (Prefix information : 2001:700:1100:3::/64)
+        Type: Prefix information (3)
+        Length: 4 (32 bytes)
+        Prefix Length: 64
+        Flag: 0xc0
+            1... .... = On-link flag(L): Set
+            .1.. .... = Autonomous address-configuration flag(A): Set
+            ..0. .... = Router address flag(R): Not set
+            ...0 0000 = Reserved: 0
+        Valid Lifetime: 2592000
+        Preferred Lifetime: 604800
+        Reserved
+        Prefix: it.ip6.fig.ol.no (2001:700:1100:3::)
+\end{Verbatim}
 \end{frame}
 
 \section{Spesialadresser}
