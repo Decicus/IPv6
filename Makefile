@@ -1,6 +1,6 @@
 # $Ximalas$
 
-NAVN=		ipv6-foredrag-grunnleggende
+NAVN=		ipv6-foredrag
 PDFLATEX=	pdflatex
 RM=		rm -f
 
