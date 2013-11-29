@@ -1,7 +1,7 @@
 @echo off
 rem $Ximalas$
 
-set NAVN=ipv6-foredrag-grunnleggende
+set NAVN=ipv6-foredrag
 
 pdflatex %NAVN%.foredrag.tex
 pdflatex %NAVN%.foredrag.tex
