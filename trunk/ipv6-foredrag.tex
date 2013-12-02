@@ -1055,7 +1055,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \end{itemize}
 \end{frame}
 
-% Bør ha med en egen slide som viser tilfeldig ifid i praksis.
+% Bør ha med en egen slide som viser (generering av) tilfeldig ifid i praksis.
 
 \section{Duplicate Address Detection --- DAD}
 \begin{frame}%[allowframebreaks]
@@ -1814,11 +1814,11 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Multicast Listener Discovery}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{2710}
   \item Angir tre nye ICMPv6-meldinger:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 130: Multicast Listener Query
     \item 131: Multicast Listener Report
     \item 132: Multicast Listener Done
@@ -1853,11 +1853,11 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Router Renumbering}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{2894}
   \item Angir én ny ICMPv6-melding:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 138: Router Renumbering
     \end{itemize}
   \item \rfc{2894} angir
@@ -1874,11 +1874,11 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Inverse Neighbor Discovery}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{3122}
   \item Angir to nye ICMPv6-meldinger:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 141: Inverse Neighbor Discovery Solicitation
     \item 142: Inverse Neighbor Discovery Advertisement
     \end{itemize}
@@ -1892,11 +1892,11 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Version 2 Multicast Listener Report}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{3810}
   \item Angir én ny ICMPv6-melding:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 143: Version 2 Multicast Listener Report
     \end{itemize}
   \end{itemize}
@@ -1906,11 +1906,11 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Mobile IPv6}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{6275}
   \item Angir fire nye ICMPv6-meldinger:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 144: Home Agent Address Discovery Request
     \item 145: Home Agent Address Discovery Reply
     \item 146: Mobile Prefix Solicitation
@@ -1923,14 +1923,18 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{SEcure Neighbor Discovery (SEND)}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{3971}
   \item Angir to nye ICMPv6-meldinger:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 148: Certification Path Solicitation
     \item 149: Certification Path Advertisement
     \end{itemize}
+  \item Med SEND unngås DoS-problemene til Neighbor Discovery
+  \item Routerne deler ut kryptografisk genererte adresser \rfc{3972}
+  \item Dette krever sertifikatstruktur (RPKI, \rfc{6494}) i routere og klienter
+  \item Ikke implementert i Cisco IOS 12.2(55)SE for Catalyst 3560G
   \end{itemize}
 \end{frame}
 
@@ -1938,15 +1942,17 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Multicast Router Discovery}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{4286}
   \item Angir tre nye ICMPv6-meldinger:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 151: Multicast Router Advertisement
     \item 152: Multicast Router Solicitation
     \item 153: Multicast Router Termination
     \end{itemize}
+  \item Catalyst 3560G har ikke støtte for annet enn IPv4-multicast
+  \item Ved FSI har vi ikke fått testet IPv6-multicast
   \end{itemize}
 \end{frame}
 
@@ -1954,12 +1960,12 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{FMIPv6}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{5568}
   \item Angir én ny ICMPv6-melding:
-    \begin{itemize}[<+->]
-    \item 154: FMIPv6
+    \begin{itemize}%[<+->]
+    \item 154: FMIPv6, Fast handovers, Mobile IPv6
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1968,13 +1974,14 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{RPL Control Message}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{6550}
   \item Angir én ny ICMPv6-melding:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 155: RPL Control Message
     \end{itemize}
+  \item IPv6 Routing Protocol for Low-Power and Lossy Networks
   \end{itemize}
 \end{frame}
 
@@ -1982,13 +1989,15 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{ILNPv6 Locator Update Message}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{6743}
   \item Angir én ny ICMPv6-melding:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 156: ILNPv6 Locator Update Message
     \end{itemize}
+  \item Identifier-Locator Network Protocol
+  \item En eksperimentell måte å håndtere digitale nomader
   \end{itemize}
 \end{frame}
 
@@ -1996,14 +2005,16 @@ uninett IN A6  0 2001:700::
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
   \framesubtitle{Duplicate Address}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Definert: \rfc{6775}
   \item Angir to nye ICMPv6-meldinger:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 157: Duplicate Address Request
     \item 158: Duplicate Address Confirmation
     \end{itemize}
+  \item Neighbor Discovery Optimization for IPv6 over Low-Power
+    Wireless Personal Area Networks (6LoWPANs)
   \end{itemize}
 \end{frame}
 
@@ -2604,7 +2615,20 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: DHCPv6}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item \texttt{ipv6 dhcp pool offisiell}
+    \begin{itemize}[<+->]
+    \item \texttt{dns-server 2001:700:1100:1::3}
+    \item \texttt{dns-server 2001:700:1100:1::2}
+    \item \texttt{domain-name fig.ol.no}
+    \item \texttt{sntp address 2001:700:1100:1::2}
+    \item \texttt{sntp address 2001:700:1100:1::3}
+    \item \texttt{sntp address 2001:700:1100:1::4}
+    \item \texttt{information refresh 0 2}
+    \end{itemize}
+  \item \texttt{interface Vlan48}
+    \begin{itemize}[<+->]
+    \item \texttt{ipv6 dhcp server offisiell}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -2618,20 +2642,20 @@ Internet Control Message Protocol v6
   \item Windows 2000 har en eksperimentell IPv6-protokoll, men mangler
     DNS-oppslag for \texttt{AAAA}
   \item IPv6 må installeres manuelt i Windows XP/2003, men DNS-oppslag
-    sendes over IPv4(!)
+    sendes alltid over IPv4(!)
   \item IPv6 er påskrudd i Windows Vista/2008 og nyere versjoner
-  \item Autokonfig med tilfeldig grensesnittidentifikator er mest
-    vanlig
-  \end{itemize}
-\end{frame}
-
-\section{Tunneloppsett}
-\begin{frame}%[allowframebreaks]
-  \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Tunneloppsett}
-  \pause
-  \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Linux og *BSD har hatt IPv6-støtte i lang tid
+  \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
+    vanlige for skrivebordssystemer
+  \item Manuell konfigurasjon er mest vanlig for serversystemer
+  \item Windows: \texttt{netsh interface ipv6 set address "\textit{navn-på-grensesnitt}" \textit{IPv6-adresse}}
+    \begin{itemize}[<+->]
+    \item \texttt{netsh interface ipv6 set address "Lokal tilkobling" 2001:700:1100:8008::1337}
+    \end{itemize}
+  \item *BSD: \texttt{ifconfig \textit{navn-på-grensesnitt} inet6 \textit{IPv6-adresse} prefixlen \textit{prefikslengde}}
+    \begin{itemize}[<+->]
+    \item \texttt{ifconfig em0 inet6 2001:700:1100:8008::1337 prefixlen 64}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
