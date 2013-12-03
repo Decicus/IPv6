@@ -53,12 +53,12 @@
 \newcommand{\prfc}[1]{(\rfc{#1})}
 
 \title{\textbf{IPv6-foredrag}}
-\subtitle{Grunnleggende og viderekomne}
+\subtitle{Pent brukt 18-åring}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
 \institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
 \logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
-\subject{Emne for bruk i egenskapene til PDF-fila}
-\keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
+%\subject{Emne for bruk i egenskapene til PDF-fila}
+%\keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
 \date{\today} % eller
 %\date{18.\ september 2013}
 
@@ -220,26 +220,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Hva er IPv6?}
-  %\pause
-  \begin{itemize}[<+->]
-  \item Totalt antall IPv6-adresser:
-  \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
-  \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
-  \item
-    $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
-  \item Fortsatt mange adresser enn det fullstendige IPv4-adresserommet:
-  \item
-    $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
-  \item Mindre enn $3.702.258.688$ IPv4-adresser kan bli brukt som
-    offentlige IPv4-unicast-adresser
-  \item Se Tronds utregning fra juli 2012:
-    \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
-  \end{itemize}
-\end{frame}
-
 \section{Hvorfor trenger vi IPv6?}
 \begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
@@ -286,6 +266,27 @@
   \end{itemize}
 \end{frame}
 
+\section{Antall adresser}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Antall adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Totalt antall IPv6-adresser:
+  \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
+  \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
+  \item
+    $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
+  \item Fortsatt mange adresser enn det fullstendige IPv4-adresserommet:
+  \item
+    $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
+  \item Mindre enn \alert<9>{$3.702.258.688$} IPv4-adresser kan bli brukt som
+    offentlige IPv4-unicast-adresser
+  \item Se Tronds utregning fra juli 2012:
+    \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
+  \end{itemize}
+\end{frame}
+
 \section{Andre nyttige ting ved IPv6}
 \begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
@@ -299,8 +300,8 @@
     \item Autokonfigurasjon \textit{krever\/} et 64-bit prefiks
     \item Fast prefikslengde på 64 bit er \textit{ikke\/} et absolutt
       krav
-    \item DHCPv6 eller manuell konfigurasjon (kan) brukes når
-      prefikslengda er ulik 64 bit
+    \item DHCPv6 eller manuell konfigurasjon brukes når prefikslengda
+      er ulik 64 bit
     \end{itemize}
   \item Kortere rutingtabeller
     \begin{itemize}[<+->]
@@ -328,7 +329,7 @@
   \item Fragmentering skal gjøres hos avsender, ikke underveis
     \begin{itemize}[<+->]
     \item Avsender må sjekke veien lengre fremme og måle smaleste krøttersti
-    \item Path Maximum Transmission Unit (Path MTU)
+    \item Path Maximum Transmission Unit Discovery (Path MTU)
     \end{itemize}
   \item IPsec ble spesifisert som en del av IPv6
     \begin{itemize}[<+->]
@@ -373,7 +374,7 @@
     \end{itemize}
   \item Før eller siden blir CGN for kostbar og komplisert å vedlikeholde
   \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
-  \item \alert<16>{IPv6 er det eneste tilgjengelige og realistiske alternativet}
+  \item \alert<16>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
   \end{itemize}
 \end{frame}
 
@@ -401,10 +402,10 @@
       \item \texttt{128.39.46.9\phantom{0}} brukes ved HiG
       \item \texttt{128.39.46.10} brukes ved FSI
       \end{itemize}
-    \item \texttt{128.39.174.0/24} ble subnettet og satt opp som
-      servernett og ansattnett, m.m.
-    \item \texttt{128.39.172.0/24} ble subnettet og satt opp som nett
-      for datalab
+    \item \texttt{128.39.174.0/24} ble delt opp i subnett og satt opp
+      som servernett og ansattnett, m.m.
+    \item \texttt{128.39.172.0/24} ble delt opp i subnett og satt opp
+      som nett for datalab
     \item \texttt{128.39.173.0/24} ble satt opp som klienter på
       trådløst studentnett
     \end{itemize}
@@ -420,27 +421,29 @@
     \texttt{2001:700:0:11D::/64} ble aktivert mellom HiG/Uninett og
     FSI
     \begin{itemize}[<+->]
-    \item \texttt{2001:700:0:11D::1/64} brukes hos HiG
-    \item \texttt{2001:700:0:11D::2/64} brukes hos FSI
+    \item \texttt{2001:700:0:11D::1} brukes hos HiG
+    \item \texttt{2001:700:0:11D::2} brukes hos FSI
     \end{itemize}
   \item Samme dag ble IPv6 innført for FSI-VLAN-ene 20, 30, 70 og 80:
     \begin{itemize}[<+->]
-    \item FSI-VLAN 20: \texttt{2001:700:1100:1::/64}
-    \item FSI-VLAN 30: \texttt{2001:700:1100:2::/64}
-    \item FSI-VLAN 70: \texttt{2001:700:1100:3::/64}
-    \item FSI-VLAN 80: \texttt{2001:700:1100:4::/64}
+    \item FSI-VLAN 20:\quad\texttt{2001:700:1100:1::/64}\hfill(ytre servernett)
+    \item FSI-VLAN 30:\quad\texttt{2001:700:1100:2::/64}\hfill(indre servernett)
+    \item FSI-VLAN 70:\quad\texttt{2001:700:1100:3::/64}\hfill(IT-kontornett)
+    \item FSI-VLAN 80:\quad\texttt{2001:700:1100:4::/64}\hfill(IT-lekenett)
     \end{itemize}
   \item Sommeren 2007:
     \href{http://www.sixxs.net/tools/grh/ula/}{Genererte} og frivillig
     \href{http://www.sixxs.net/tools/grh/ula/list/}{registrerte}
     ULA-serien
     \href{http://www.sixxs.net/tools/whois/?fd5c:14cf:c300::/48}{\texttt{FD5C:14CF:C300::/48}}
-    for FSI-VLAN som tidligere bare brukte \rfc{1918}-adresser
     \begin{itemize}[<+->]
-    \item Fikk første HP-skriver med IPv6-støtte og ville bruke IPv6
-    \item Noen år senere: IPv6-adresser på kantswitchene med
-      \href{http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_40_se/release/notes/OL13860.html}{Cisco
-        IOS 12.2(40)SE}
+    \item Brukes i interne FSI-VLAN som tidligere bare brukte \rfc{1918}-adresser
+      \begin{itemize}[<+->]
+      \item Fikk første HP-skriver med IPv6-støtte og ville bruke IPv6
+      \item Noen år senere: IPv6-adresser på kantswitchene med
+        \href{http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_40_se/release/notes/OL13860.html}{Cisco
+          IOS 12.2(40)SE}
+      \end{itemize}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -469,7 +472,7 @@
   \item Andreklasse data velger som regel det førstnevnte, vanligvis
     FSI-VLAN 48, \texttt{128.39.194.192/27} og
     \texttt{2001:700:1100:8008::/64}
-  \item Førsteklasse data ønsker det samme tilbudet
+  \item Førsteklasse data ønsker det samme tilbudet; så vi får se \dots
   \end{itemize}
 \end{frame}
 
@@ -486,9 +489,15 @@
   \item Private adresser brukes for alt utstyr som ikke har behov for
     internettforbindelse:
     \begin{itemize}[<+->]
-    \item Switcher (med unntak av kjerneswitchen som er L3-router for
-      nettverket ved FSI)
-    \item Basestasjoner og WLAN-kontroller\hfill(Før omlegginga)
+    \item Switcher
+      \begin{itemize}[<+->]
+      \item Med unntak for kjerneswitchen som er L3-router for
+        nettverket ved FSI
+      \end{itemize}
+    \item Basestasjoner og WLAN-kontroller
+      \begin{itemize}[<+->]
+      \item Før omlegginga
+      \end{itemize}
     \item UPS-er
     \item Skrivere
     \item VPN-klienter
@@ -564,7 +573,7 @@
   %\pause
   \begin{itemize}[<+->]
   \item Utvidelsesheaderne finnes i stort antall:
-    \begin{itemize}[<+->]
+    \begin{enumerate}[<+->]
     \item Hop-by-hop options
     \item Destination options
     \item Routing
@@ -572,7 +581,7 @@
     \item Authentication Header
     \item Encapsulating Security Payload
     \item Mobility
-    \end{itemize}
+    \end{enumerate}
   \item Se \rfc{2460}, \rfc{4302}, \rfc{4303} og \rfc{6275}
   \end{itemize}
 \end{frame}
@@ -641,6 +650,24 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \end{itemize}
 \end{frame}
 
+\section{IPv6 over andre lag-2-typer}
+\begin{frame}%[allowframebreaks]
+  \frametitle{IPv6 over andre lag-2-typer}
+  \pause
+  \begin{itemize}[<+->]
+  \item FDDI: \rfc{2467}
+  \item Token Ring: \rfc{2470}
+  \item Point-to-point protocol (PPP): \rfc{2472}
+  \item Non-Broadcast Multiple Access (NBMA) networks: \rfc{2491}
+  \item ATM: \rfc{2492}
+  \item ARCnet: \rfc{2497}
+  \item Frame Relay: \rfc{2590}
+  \item IEEE 1394 (FireWire): \rfc{3146}
+  \item Low-Power Wireless Personal Area Networks (6LoWPAN): \rfc{4919}
+  \item Brevduer: \rfc{6214}, basert på \rfc{1149}
+  \end{itemize}
+\end{frame}
+
 \part{Grunnleggende om adresser}
 
 \begin{frame}
@@ -667,6 +694,9 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     pr.\ adresse
   \item Prefikslengde angis ved å sette på en skråstrek og oppgi
     riktig antall av signifikante bit fra venstre mot høyre i adressa
+    \begin{itemize}[<+->]
+    \item Dette er helt likt CIDR-notasjon for IPv4 \prfc{4632}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -936,6 +966,10 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Fordi IPv6 bruker universal/local-bitet med invertert
     betydning/verdi, så er arbeidsuhellet akseptert
   \item Se \rfc{4291}
+  \item \href{http://en.wikipedia.org/wiki/IEEE_802.15}{IEEE 802.15
+      WPAN}, \href{http://en.wikipedia.org/wiki/IEEE_1394}{IEEE 1394
+      FireWire}, og \href{http://en.wikipedia.org/wiki/ZigBee}{ZigBee}
+    bruker EUI-64-adresser i lag~2
   \end{itemize}
 \end{frame}
 
@@ -952,6 +986,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Normalt bruker man manuelle grensesnittidentifikatorer med
     lave verdier
   \item For eksempel \texttt{::53} \hfill(DNS-tjener, kanskje)
+  \item Med et vilkårlig prefiks: \texttt{2001:db8:1234:1::\alert{53}}
   \end{itemize}
 \end{frame}
 
@@ -979,8 +1014,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \end{itemize}
   \item Se her:
     \begin{itemize}[<+->]
-    \item \texttt{2001:700:1100:1:0200:0:0:53}\quad vs
-    \item \texttt{2001:700:1100:1::53}
+    \item \texttt{2001:db8:1234:1:0200:0:0:53}\quad vs
+    \item \texttt{2001:db8:1234:1::53}
     \item Ja til den siste, nei til den forrige
     \end{itemize}
   \end{itemize}
@@ -993,11 +1028,31 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item Det er ingenting i veien for å «kode» IPv4-adressa inn i
     IPv6-adressa:
-  \item \texttt{2001:700:1100:3:\alert{128:39:174:67}}
+  \item \texttt{2001:700:1100:3:\alert{128:39:174:67}}\hfill(\texttt{excelsior.fig.ol.no})
   \item Man må bare passe på verdien til universal/local-bitet
   \item \texttt{128} $=$ \texttt{0 1 2 8} $=$ \texttt{0000 00\alert{0}1 0010 1000}\hfill(heks, heks, bin)
   \item \texttt{u}-bitet er $0$, altså en lokalgitt adresse
   \item Dette gikk bra!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Manuell grensesnittidentifikator}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Verdiene
+    \begin{itemize}[<+->]
+    \item \texttt{00\alert{0}0} $=$ \texttt{0},
+    \item \texttt{00\alert{0}1} $=$ \texttt{1},
+    \item \texttt{01\alert{0}0} $=$ \texttt{4},
+    \item \texttt{01\alert{0}1} $=$ \texttt{5},
+    \item \texttt{10\alert{0}0} $=$ \texttt{8},
+    \item \texttt{10\alert{0}1} $=$ \texttt{9},
+    \item \texttt{11\alert{0}0} $=$ \texttt{C} og
+    \item \texttt{11\alert{0}1} $=$ \texttt{D},
+    \end{itemize}
+  \item gir alle $0$ i \texttt{u}-bitet
   \end{itemize}
 \end{frame}
 
@@ -1057,173 +1112,6 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 
 % Bør ha med en egen slide som viser (generering av) tilfeldig ifid i praksis.
 
-\section{Duplicate Address Detection --- DAD}
-\begin{frame}%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Duplicate Address Detection --- DAD}
-  \pause
-  \begin{itemize}[<+->]
-  \item Når en unicast-adresse er generert skal man alltid sjekke at
-    ingen andre bruker den samme adressa\hfill\prfc{4862}
-  \item Dette gjøres ved å sende en «ICMPv6 Neighbor
-    Solicitation-melding» til den genererte adressas «Solicited-node
-    multicast address»
-  \item ICMPv6-meldinga inneholder den genererte adressa i feltet for
-    «Target Address»\hfill\prfc{4861}
-  \item En «Solicited-node multicast address» er på formen
-    \texttt{FF02::1:FF\alert<8->{\textit{aa}}:\alert<8->{\textit{bbcc}}},
-    hvor \alert<8->{\texttt{\textit{aabbcc}}} er de 24 minst
-    signifikante bitene fra den opprinnelige adressa\hfill\prfc{4291}
-  \item Sett at den genererte adressa er
-    \texttt{2001:700:1100:3:221:70FF:FE\alert<8->{73}:\alert<8->{686E}}
-  \item «Solicited-node multicast address» vil da være
-    \texttt{FF02::1:FF\alert<8->{73}:\alert<8->{686E}}
-  \item Vanligvis kommer det ikke noe svar på slike ICMPv6-meldinger
-    \dots
-  \end{itemize}
-\end{frame}
-
-\begin{frame}%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Duplicate Address Detection --- DAD}
-  %\pause
-  \begin{itemize}[<+->]
-  \item \dots\ trodde vi \dots
-  \item «\href{http://en.wikipedia.org/wiki/Danger,_Will_Robinson}{Danger, Will Robinson!}»
-  \item Det er et stort potensiale for Denial of Service --- DoS\hfill\prfc{3756}
-  \item En «slabbedask» kan velge å svare på DAD og nekte oss å bruke
-    \textit{enhver\/} adresse
-  \item Svaret kommer i form av en «ICMPv6 Neighbor
-    Advertisement»-melding som forteller oss at en annen node bruker
-    den samme adressa\hfill\prfc{4862}
-  \item Resultat: «slabbedasken» kan bruke nettverket uforstyrra
-  \item Dersom det er 2 eller flere «slabbedasker» i samme nettverk, hva da?
-  \item Problemet kan løses med «SEcure Neighbor Discovery» (SEND), \rfc{3971}
-  \end{itemize}
-\end{frame}
-
-\section{Livsløpet til en adresse}
-\begin{frame}%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Livsløpet til en adresse}
-  \pause
-  \begin{itemize}[<+->]
-  \item En generert adresse vil først være i tilstanden «tentative»\hfill\prfc{4862}
-  \item Deretter gjennomføres DAD
-  \item Går alt bra, så sjekker man om én eller flere routere er tilstede
-  \item Sender «ICMPv6 Router Solicitation»
-  \item Mottar «ICMPv6 Router Advertisement»
-  \end{itemize}
-\end{frame}
-
-\begin{frame}%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Livsløpet til en adresse}
-  %\pause
-  \begin{itemize}[<+->]
-  \item Routeren annonserer:
-    \begin{itemize}[<+->]
-    \item «Hop limit»
-    \item Annonseringsflagg:
-      \begin{itemize}[<+->]
-      \item Om autokonf eller DHCPv6 skal brukes hos klienten
-      \item Om DHCPv6 skal brukes for andre opplysninger (DNS-servere, -domene, m.m.)
-      \item «Home Agent» eller ikke «Home Agent»
-      \item Preferanse for denne routeren (Low, Medium, eller High)
-      \end{itemize}
-    \item Routerannonseringens gyldighet (levetid)
-    \item Routerens lag-2-adresse
-    \item Linkens MTU
-    \item Informasjon om prefiks:
-      \begin{itemize}[<+->]
-      \item Flagg: «On-link», «Autonomous», «Router address»
-      \item «Valid lifetime»
-      \item «Preferred lifetime»
-      \item IPv6-prefiks
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Livsløpet til en adresse}
-  %\pause
-  \begin{itemize}[<+->]
-  \item Bla, bla, bla
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Livsløpet til en adresse}
-  %\pause
-\begin{Verbatim}[fontsize=\tiny]
-Internet Control Message Protocol v6
-    Type: Router Solicitation (133)
-    Code: 0
-    Checksum: 0xc065 [correct]
-    Reserved: 00000000
-    ICMPv6 Option (Source link-layer address : 00:21:70:73:68:6e)
-        Type: Source link-layer address (1)
-        Length: 1 (8 bytes)
-        Link-layer address: Dell_73:68:6e (00:21:70:73:68:6e)
-\end{Verbatim}
-\end{frame}
-
-\begin{frame}[fragile]%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Livsløpet til en adresse}
-  %\pause
-\begin{Verbatim}[fontsize=\tiny]
-Internet Control Message Protocol v6
-    Type: Router Advertisement (134)
-    Code: 0
-    Checksum: 0xfa8c [correct]
-    Cur hop limit: 64
-    Flags: 0x48
-        0... .... = Managed address configuration: Not set
-        .1.. .... = Other configuration: Set
-        ..0. .... = Home Agent: Not set
-        ...0 1... = Prf (Default Router Preference): High (1)
-        .... .0.. = Proxy: Not set
-        .... ..0. = Reserved: 0
-    Router lifetime (s): 1800
-    Reachable time (ms): 0
-    Retrans timer (ms): 0
-    ICMPv6 Option (Source link-layer address : 00:17:e0:77:14:57)
-        Type: Source link-layer address (1)
-        Length: 1 (8 bytes)
-        Link-layer address: Cisco_77:14:57 (00:17:e0:77:14:57)
-    ICMPv6 Option (MTU : 1500)
-        Type: MTU (5)
-        Length: 1 (8 bytes)
-        Reserved
-        MTU: 1500
-\end{Verbatim}
-\end{frame}
-
-\begin{frame}[fragile]%[allowframebreaks]
-  \frametitle{Grunnleggende om adresser}
-  \framesubtitle{Livsløpet til en adresse}
-  %\pause
-\begin{Verbatim}[fontsize=\tiny]
-    ICMPv6 Option (Prefix information : 2001:700:1100:3::/64)
-        Type: Prefix information (3)
-        Length: 4 (32 bytes)
-        Prefix Length: 64
-        Flag: 0xc0
-            1... .... = On-link flag(L): Set
-            .1.. .... = Autonomous address-configuration flag(A): Set
-            ..0. .... = Router address flag(R): Not set
-            ...0 0000 = Reserved: 0
-        Valid Lifetime: 2592000
-        Preferred Lifetime: 604800
-        Reserved
-        Prefix: it.ip6.fig.ol.no (2001:700:1100:3::)
-\end{Verbatim}
-\end{frame}
-
 \section{Spesialadresser}
 \begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
@@ -1279,6 +1167,52 @@ Internet Control Message Protocol v6
     \item Tjenestene må da åpne separate lyttesocketer for IPv4 og
       IPv6
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Duplicate Address Detection --- DAD}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Duplicate Address Detection --- DAD}
+  \pause
+  \begin{itemize}[<+->]
+  \item Når en unicast-adresse er generert skal man alltid sjekke at
+    ingen andre bruker den samme adressa\hfill\prfc{4862}
+  \item Dette gjøres ved å sende en «ICMPv6 Neighbor
+    Solicitation-melding» til den genererte adressas «Solicited-node
+    multicast address»
+  \item ICMPv6-meldinga inneholder den genererte adressa i feltet for
+    «Target Address»\hfill\prfc{4861}
+  \item En «Solicited-node multicast address» er på formen
+    \texttt{FF02::1:FF\alert<8->{\textit{aa}}:\alert<8->{\textit{bbcc}}},
+    hvor \alert<8->{\texttt{\textit{aabbcc}}} er de 24 minst
+    signifikante bitene fra den opprinnelige adressa\hfill\prfc{4291}
+  \item Sett at den genererte adressa er
+    \texttt{2001:700:1100:3:221:70FF:FE\alert<8->{73}:\alert<8->{686E}}
+  \item «Solicited-node multicast address» vil da være
+    \texttt{FF02::1:FF\alert<8->{73}:\alert<8->{686E}}
+  \pause
+  \item Vanligvis kommer det ikke noe svar på slike ICMPv6-meldinger
+    \dots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Duplicate Address Detection --- DAD}
+  %\pause
+  \begin{itemize}[<+->]
+  \item \dots\ trodde vi \dots
+  \item «\href{http://en.wikipedia.org/wiki/Danger,_Will_Robinson}{Danger, Will Robinson!}»
+  \item Det er et stort potensiale for Denial of Service --- DoS\hfill\prfc{3756}
+  \item En «slabbedask» kan velge å svare på DAD og nekte oss å bruke
+    \textit{enhver\/} adresse
+  \item Svaret kommer i form av en «ICMPv6 Neighbor
+    Advertisement»-melding som forteller oss at en annen node bruker
+    den samme adressa\hfill\prfc{4862}
+  \item Resultat: «slabbedasken» kan bruke nettverket uforstyrra
+  \item Dersom det er 2 eller flere «slabbedasker» i samme nettverk, hva da?
+  \item Problemet kan løses med «SEcure Neighbor Discovery» (SEND), \rfc{3971}
   \end{itemize}
 \end{frame}
 
@@ -1372,8 +1306,8 @@ Internet Control Message Protocol v6
   \item Det er vanlig at kundene blir tildelt \texttt{/48}- eller
     \texttt{/56}-bits prefiks av ISP-ene:
     \begin{itemize}[<+->]
-    \item \texttt{/48}-bits prefiks gir $64-48=16$ subnetbit $\to$ $2^{16}=65536$ subnett
-    \item \texttt{/56}-bits prefiks gir $64-56=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=\phantom{65}256$ subnett
+    \item \texttt{/48}-bits prefiks gir $128-64-48=16$ subnetbit $\to$ $2^{16}=65536$ subnett
+    \item \texttt{/56}-bits prefiks gir $128-64-56=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=\phantom{65}256$ subnett
     \end{itemize}
   \item Eksempel: \texttt{2001:700:1100:1::1/128}
   \end{itemize}
@@ -1464,6 +1398,8 @@ Internet Control Message Protocol v6
     \item Bruk de 40 minst signifikante bitene som global
       identifikator
     \end{enumerate}
+  \item Har man tilgang på tilfeldige tall av god kvalitet, så kan man
+    bruke de i stedet for metoden over
   \end{itemize}
 \end{frame}
 
@@ -1522,7 +1458,7 @@ Internet Control Message Protocol v6
   \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
     multicast-adresser for internt bruk i organisasjonen
   \item Bruk av flaggene \texttt{R}, \texttt{P} og \texttt{T}
-    gjennomgås i detalj i foredraget for de viderekomne
+    gjennomgås i detalj i del~10
   \end{itemize}
 \end{frame}
 
@@ -1750,7 +1686,7 @@ uninett IN A6  0 2001:700::
       \item \texttt{0:0:1100::}\hfill\texttt{fig.ip6.uninett.no.}
       \item \texttt{2001:700::}\hfill\texttt{uninett.ip6.uninett.no.}
       \end{itemize}
-    \item Bitvis-\texttt{OR} gir den fulstendige adressa \texttt{2001:700:1100:1::4}
+    \item Bitvis-\texttt{OR} gir den fullstendige adressa \texttt{2001:700:1100:1::4}
   \end{itemize}
 \end{frame}
 
@@ -1862,7 +1798,7 @@ uninett IN A6  0 2001:700::
     \end{itemize}
   \item \rfc{2894} angir
     følgende undertyper:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item 0: Router Renumbering Command
     \item 1: Router Renumbering Result
     \item 255: Sequence Number Reset
@@ -1933,7 +1869,7 @@ uninett IN A6  0 2001:700::
     \end{itemize}
   \item Med SEND unngås DoS-problemene til Neighbor Discovery
   \item Routerne deler ut kryptografisk genererte adresser \rfc{3972}
-  \item Dette krever sertifikatstruktur (RPKI, \rfc{6494}) i routere og klienter
+  \item Dette krever sertifikatstruktur (RPKI, \rfc{6494}) i routere og i klienter
   \item Ikke implementert i Cisco IOS 12.2(55)SE for Catalyst 3560G
   \end{itemize}
 \end{frame}
@@ -2632,6 +2568,28 @@ Internet Control Message Protocol v6
   \end{itemize}
 \end{frame}
 
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: DHCPv6}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item \texttt{ipv6 dhcp pool ULA}
+    \begin{itemize}%[<+->]
+    \item \texttt{dns-server 2001:700:1100:1::3}
+    \item \texttt{dns-server 2001:700:1100:1::2}
+    \item \texttt{domain-name fig.netlocal}
+    \item \texttt{sntp address 2001:700:1100:1::2}
+    \item \texttt{sntp address 2001:700:1100:1::3}
+    \item \texttt{sntp address 2001:700:1100:1::4}
+    \item \texttt{information refresh 0 2}
+    \end{itemize}
+  \item \texttt{interface Vlan31}
+    \begin{itemize}%[<+->]
+    \item \texttt{ipv6 dhcp server ULA}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \section{OS-konfig}
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
@@ -2641,21 +2599,33 @@ Internet Control Message Protocol v6
   \item De fleste moderne operativsystemer har IPv6-støtte
   \item Windows 2000 har en eksperimentell IPv6-protokoll, men mangler
     DNS-oppslag for \texttt{AAAA}
-  \item IPv6 må installeres manuelt i Windows XP/2003, men DNS-oppslag
-    sendes alltid over IPv4(!)
-  \item IPv6 er påskrudd i Windows Vista/2008 og nyere versjoner
+  \item IPv6 må installeres manuelt i Windows XP og Server 2003
+    \begin{itemize}[<+->]
+    \item DNS-oppslag sendes alltid over \alert{IPv4}
+    \end{itemize}
+  \item IPv6 er påskrudd i Windows Vista, Server 2008 og nyere versjoner
   \item Linux og *BSD har hatt IPv6-støtte i lang tid
   \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
     vanlige for skrivebordssystemer
   \item Manuell konfigurasjon er mest vanlig for serversystemer
-  \item Windows: \texttt{netsh interface ipv6 set address "\textit{navn-på-grensesnitt}" \textit{IPv6-adresse}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{OS-konfig}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Windows: \texttt{netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
     \begin{itemize}[<+->]
-    \item \texttt{netsh interface ipv6 set address "Lokal tilkobling" 2001:700:1100:8008::1337}
+    \item \texttt{netsh interface ipv6 set address\ "Lokal tilkobling"\ 2001:700:1100:8008::1337}
     \end{itemize}
+  \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
   \item *BSD: \texttt{ifconfig \textit{navn-på-grensesnitt} inet6 \textit{IPv6-adresse} prefixlen \textit{prefikslengde}}
     \begin{itemize}[<+->]
     \item \texttt{ifconfig em0 inet6 2001:700:1100:8008::1337 prefixlen 64}
     \end{itemize}
+  \item Vanligvis lagres slike innstillingene permanent, for eksempel i \texttt{/etc/rc.conf}
   \end{itemize}
 \end{frame}
 
@@ -2674,8 +2644,8 @@ Internet Control Message Protocol v6
 \section{Noen RFC-er om IPv6}
 \begin{frame}%[allowframebreaks]
   \frametitle{Noen RFC-er om IPv6}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item IPv6-spesifikasjon: \rfc{2460}, \rfc{5095}, \rfc{5722},
     \rfc{5871}, \rfc{6437}, \rfc{6564}, \rfc{6935} og \rfc{6946}
   \item ICMPv6: \rfc{4443} og \rfc{4884}
@@ -2695,7 +2665,7 @@ Internet Control Message Protocol v6
 \begin{frame}%[allowframebreaks]
   \frametitle{Noen RFC-er om IPv6}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Autokonfigurering av adresser: \rfc{4862}
   \item Tilfeldig grensesnittidentifikator: \rfc{4941}
   \item Prefiks-baserte multicastadresser: \rfc{3306}, \rfc{3956} og
@@ -2704,6 +2674,7 @@ Internet Control Message Protocol v6
     \rfc{4307}, \rfc{4308}, \rfc{4309}, \rfc{4312}, \rfc{4835} og
     \rfc{5996}
   \item For programmerere av nettverksprogrammer: \rfc{4038}
+  \item Grunnleggende krav til IPv6-routere hos sluttbrukere (CER): \rfc{7084}
   \end{itemize}
 \end{frame}
 
