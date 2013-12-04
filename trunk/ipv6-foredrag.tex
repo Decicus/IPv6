@@ -48,37 +48,6 @@
 
 \hypersetup{colorlinks,linkcolor=,urlcolor=blue}
 
-\svnidlong
-{$HeadURL$}
-{$LastChangedDate$}
-{$LastChangedRevision$}
-{$LastChangedBy$}
-
-\makeatletter
-\renewcommand{\svnrevisionsname}{Revisjoner}
-
-\renewcommand{\svnbeforetable}{\noindent Filene som utgjør dette
-  dokumentet er registrert i revisjonssystemet Subversion.  Under
-  vises katalogstrukturen og de enkelte filene, deres nyeste
-  revisjonsnummer, hvem som sist endret filene og når siste
-  endring ble registrert.\par\bigskip}
-
-\renewcommand{\svntable}{\svntablebooktabsbegin}
-\renewcommand{\endsvntable}{\svntablebooktabsend}
-%\newcommand{\svntablebooktabsbegin}{\begin{tabular}{p{0.425\textwidth}rll}\toprule}
-\newcommand{\svntablebooktabsbegin}{\begin{tabular}{p{0.7\textwidth}rll}\toprule}
-%\newcommand{\svntablebooktabsbegin}{\begin{tabular}{lrll}\toprule}
-\newcommand{\svntablebooktabsend}{\bottomrule\end{tabular}}
-\renewcommand{\svntablehead}{Navn & Revisjon & Forfatter & Dato \\\midrule}
-\renewcommand{\svntabglobal}{Dokument}
-%\renewcommand{\svntabglobal}{Hovedfil}
-\renewcommand{\svntabgroup}[1]{Gruppe «#1»}
-\renewcommand{\svn@tabsubgroup}[1]{\endgroup Undergruppe «\texttt{\small #1}»}
-\renewcommand{\svn@tabfile}[1]{\endgroup Filen «\texttt{\small #1}»}
-\makeatother
-
-\svnRegisterAuthor{trond}{Trond Endrestøl}
-
 \newcommand{\Textbackslash}{\textbackslash\penalty\exhyphenpenalty}
 \newcommand{\rfc}[1]{\href{http://tools.ietf.org/html/rfc#1}{RFC~#1}}
 \newcommand{\prfc}[1]{(\rfc{#1})}
@@ -136,6 +105,8 @@
     \href{http://get.adobe.com/no/reader/}{Adobe Reader}
   \item Hovedfila bærer denne identifikasjonen:\\
     \texttt{\$${}$Ximalas${}$\$}
+  \item Driverfila for denne PDF-fila bærer denne identifikasjonen:\\
+    \svndriverfil
   \item Copyright \copyright\ 2013 Trond Endrestøl
   \item Dette verket er lisensiert med:
     \href{http://creativecommons.org/}{Creative Commons},
@@ -143,10 +114,6 @@
       3.0 Norge} (CC BY-SA
     3.0)\hfill\includegraphics[scale=.25]{by-sa.pdf}
   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \tableofrevisions
 \end{frame}
 
 \section*{Oversikt av hele foredraget}
