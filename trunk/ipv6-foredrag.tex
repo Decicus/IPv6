@@ -48,6 +48,7 @@
 
 \hypersetup{colorlinks,linkcolor=,urlcolor=blue}
 
+\newcommand{\Alert}[2]{\alert<#1>{#2}}
 \newcommand{\Textbackslash}{\textbackslash\penalty\exhyphenpenalty}
 \newcommand{\rfc}[1]{\href{http://tools.ietf.org/html/rfc#1}{RFC~#1}}
 \newcommand{\prfc}[1]{(\rfc{#1})}
@@ -260,8 +261,8 @@
   \item Network Address Translation, Carrier-Grade NAT og Shared
     Address Space
     \begin{itemize}[<+->]
-    \item Bare støttebandasje med kort utløpstid
-    \item Glem det
+    \item Er bare støttebandasje med kort utløpstid
+    \item Glem det!
     \item Ende-til-ende-konnektivitet oppnås best uten noen former for
       adresseoversettelse
     \end{itemize}
@@ -331,7 +332,7 @@
   \item Fragmentering skal gjøres hos avsender, ikke underveis
     \begin{itemize}[<+->]
     \item Avsender må sjekke veien lengre fremme og måle smaleste krøttersti
-    \item Path Maximum Transmission Unit Discovery (Path MTU)
+    \item Path Maximum Transmission Unit Discovery (Path MTU, PMTUD)
     \end{itemize}
   \item IPsec ble spesifisert som en del av IPv6
     \begin{itemize}[<+->]
@@ -659,13 +660,13 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item FDDI: \rfc{2467}
   \item Token Ring: \rfc{2470}
-  \item Point-to-point protocol (PPP): \rfc{2472}
   \item Non-Broadcast Multiple Access (NBMA) networks: \rfc{2491}
   \item ATM: \rfc{2492}
   \item ARCnet: \rfc{2497}
   \item Frame Relay: \rfc{2590}
   \item IEEE 1394 (FireWire): \rfc{3146}
   \item Low-Power Wireless Personal Area Networks (6LoWPAN): \rfc{4919}
+  \item Point-to-point protocol (PPP): \rfc{5072}
   \item Brevduer: \rfc{6214}, basert på \rfc{1149}
   \end{itemize}
 \end{frame}
@@ -920,8 +921,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Universal/local-bitet brukes med \textit{invertert\/}
       betydning/verdi
       \begin{itemize}[<+->]
-      \item Gruppebitet mister sin vanlige betydning i denne
-        sammenhengen
+      \item Gruppebitet mister sin vanlige betydning i forbindelse med
+        grensesnittidentifikatorer
       \end{itemize}
     \item Oktettene på midten skal være \texttt{FF:FE} ved automatisk
       konvertering fra MAC-48 til EUI-64
@@ -1493,6 +1494,58 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \end{multicols}
 \end{frame}
 
+\begin{frame}%[allowframebreaks]
+  \frametitle{Adressetyper}
+  \framesubtitle{Multicast-adresser}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Noen kjente IPv6-multicastadresser:
+    \begin{itemize}[<+->]
+    \item \texttt{FF02::1}\quad All nodes on the local network segment
+    \item \texttt{FF02::2}\quad All routers on the local network segment
+    \item \texttt{FF02::5}\quad OSPFv3 All SPF routers
+    \item \texttt{FF02::6}\quad OSPFv3 All DR routers
+    \item \texttt{FF02::8}\quad IS-IS for IPv6 routers
+    \item \texttt{FF02::9}\quad RIP routers
+    \item \texttt{FF02::A}\quad EIGRP routers
+    \item \texttt{FF02::D}\quad PIM routers
+    \item \texttt{FF02::16}\quad MLDv2 reports
+    \item \texttt{FF02::1:2}\quad All DHCP servers and relay agents on the local network segment
+    \item \texttt{FF02::1:3}\quad All LLMNR hosts on the local network segment
+    \item \texttt{FF05::1:3}\quad All DHCP servers on the local network site
+    \item \texttt{FF0\textit{x}::C}\quad Simple Service Discovery Protocol
+    \item \texttt{FF0\textit{x}::FB}\quad Multicast DNS
+    \item \texttt{FF0\textit{x}::101}\quad Network Time Protocol
+    \item \texttt{FF0\textit{x}::108}\quad Network Information Service
+    \item \texttt{FF0\textit{x}::114}\quad Used for experiments
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Adressetyper}
+  \framesubtitle{Multicast-adresser}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Kobling av multicast-adresser til lag-2-adresser:
+    \begin{itemize}[<+->]
+    \item Eksempel:
+      \begin{itemize}[<+->]
+      \item IPv6: \texttt{FF02::1} $=$
+        \texttt{FF02::\alert<5->{0000}:\alert<5->{0001}}
+      \item MAC-48:
+        \texttt{33:33:\alert<5->{00}:\alert<5->{00}:\alert<5->{00}:\alert<5->{01}}
+      \item De 32 minst signifikante bitene kopieres fra IPv6-adressa
+        og til MAC-48-adressa
+      \item Dette gir en viss overlapp for de multicast-adresser som
+        tilfeldigvis slutter på de samme 32 bitene
+      \item Det går ganske bra i praksis
+      \item Se \rfc{2464} og \rfc{6085}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \part{DNS}
 
 \begin{frame}
@@ -1705,7 +1758,7 @@ uninett IN A6  0 2001:700::
 \end{frame}
 
 \section{ICMPv6}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{ICMPv6}
   \pause
   \begin{itemize}[<+->]
@@ -1719,7 +1772,19 @@ uninett IN A6  0 2001:700::
       noen undernummer
     \end{itemize}
   \item I tillegg er det felter for sjekksum og andre opplysninger som
-    er unike for hver type (og undertype) av meldingene
+    er unike for hver type (og underkode) av meldingene
+  \item Den generelle formen for ICMPv6-meldinger vises under
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Type      |     Code      |          Checksum             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++                         Message Body                          +
+|                                                               |
+\end{Verbatim}
   \end{itemize}
 \end{frame}
 
@@ -1727,6 +1792,7 @@ uninett IN A6  0 2001:700::
   \frametitle{ICMPv6}
   %\pause
   \begin{itemize}[<+->]
+  \item Fra \rfc{4443}
   \item Feilmeldinger:
     \begin{itemize}[<+->]
     \item 1: Destination Unreachable
@@ -1761,6 +1827,8 @@ uninett IN A6  0 2001:700::
     \item 131: Multicast Listener Report
     \item 132: Multicast Listener Done
     \end{itemize}
+  \item Brukes for å fortelle routere hvilke multicastadresser man vil
+    motta trafikk for
   \end{itemize}
 \end{frame}
 
@@ -1782,8 +1850,7 @@ uninett IN A6  0 2001:700::
   \item Sentral ved autokonfigurering av adresser
   \item Brukes for å bekrefte at nodene er oppegående og bestemme
     lag-2-adressene til mottakere
-  \item Neighbor Discovery gjennomgås i detalj i foredraget
-    for de viderekomne
+  \item Neighbor Discovery gjennomgås i detalj i del~8
   \end{itemize}
 \end{frame}
 
@@ -1799,11 +1866,40 @@ uninett IN A6  0 2001:700::
     \item 138: Router Renumbering
     \end{itemize}
   \item \rfc{2894} angir
-    følgende undertyper:
+    følgende underkoder:
     \begin{itemize}%[<+->]
     \item 0: Router Renumbering Command
     \item 1: Router Renumbering Result
     \item 255: Sequence Number Reset
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Node Information}
+\begin{frame}%[allowframebreaks]
+  \frametitle{ICMPv6}
+  \framesubtitle{Node Information}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Definert: \rfc{4620}
+  \item Angir to nye ICMPv6-meldinger:
+    \begin{itemize}%[<+->]
+    \item 139: Node Information Query
+    \item 140: Node Information Reply
+    \end{itemize}
+  \item \rfc{4620} angir
+    følgende underkoder for type 139:
+    \begin{itemize}%[<+->]
+    \item 0: Datafeltet inneholder en IPv6-adresse
+    \item 1: Datafeltet inneholder et navn
+    \item 2: Datafeltet inneholder en IPv4-adresse
+    \end{itemize}
+  \item \rfc{4620} angir
+    følgende underkoder for type 140:
+    \begin{itemize}%[<+->]
+    \item 0: Vellykket svar
+    \item 1: Svaret vil ikke bli avslørt
+    \item 2: Underkoden i forespørselen er ukjent
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1837,6 +1933,8 @@ uninett IN A6  0 2001:700::
     \begin{itemize}%[<+->]
     \item 143: Version 2 Multicast Listener Report
     \end{itemize}
+  \item Utvider MLDv1 \prfc{2710} med slik at bare bestemte avsendere
+    er interessante (Source-Specific Multicast, \rfc{3569})
   \end{itemize}
 \end{frame}
 
@@ -1854,6 +1952,7 @@ uninett IN A6  0 2001:700::
     \item 146: Mobile Prefix Solicitation
     \item 147: Mobile Prefix Advertisement
     \end{itemize}
+  \item Brukes for å tilrettelegge for digitale nomader
   \end{itemize}
 \end{frame}
 
@@ -1873,6 +1972,26 @@ uninett IN A6  0 2001:700::
   \item Routerne deler ut kryptografisk genererte adresser \rfc{3972}
   \item Dette krever sertifikatstruktur (RPKI, \rfc{6494}) i routere og i klienter
   \item Ikke implementert i Cisco IOS 12.2(55)SE for Catalyst 3560G
+  \item Ikke spesielt aktuelt for FSI, for annet enn ansattnett, på
+    grunn av den administrative byrden
+  \end{itemize}
+\end{frame}
+
+\section{Experimental Mobility Type}
+\begin{frame}%[allowframebreaks]
+  \frametitle{ICMPv6}
+  \framesubtitle{Experimental Mobility Type}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Definert: \rfc{4065}
+  \item Angir én ny ICMPv6-melding:
+    \begin{itemize}%[<+->]
+    \item 150: Experimental Mobility Type
+    \end{itemize}
+  \item «The Seamoby Candidate Access Router Discovery (CARD) protocol
+    [\rfc{4066}] and the Context Transfer Protocol (CXTP) [\rfc{4067}]
+    are experimental protocols designed to accelerate IP handover
+    between wireless access routers»
   \end{itemize}
 \end{frame}
 
@@ -1965,7 +2084,7 @@ uninett IN A6  0 2001:700::
 \section*{Oversikt over del~8: Neighbor Discovery}
 \begin{frame}[allowframebreaks]
   \frametitle{Oversikt over del~8: Neighbor Discovery}
-    \tableofcontents%[pausesections]
+  \tableofcontents%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
@@ -2003,9 +2122,13 @@ Internet Control Message Protocol v6
         Length: 1 (8 bytes)
         Link-layer address: Dell_73:68:6e (00:21:70:73:68:6e)
 \end{Verbatim}
-\pause
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Avsenders IPv6-adresse er enten \texttt{::/0} eller en av
+    utgående grensesnitts IPv6-adresser
+  \item Mottakers IPv6-adresse er vanligvis \texttt{FF02::2}
+  \item «Hop Limit» i IPv6-headeren skal settes til \texttt{255}
+  \item Det er god sedvane å angi sin egen lag-2-adresse i ICMPv6-meldinga
   \end{itemize}
 \end{frame}
 
@@ -2014,6 +2137,7 @@ Internet Control Message Protocol v6
   \frametitle{Neighbor Discovery}
   \framesubtitle{Router Advertisement}
   \pause
+  \begin{multicols}{2}
 \begin{Verbatim}[fontsize=\tiny]
 Internet Control Message Protocol v6
     Type: Router Advertisement (134)
@@ -2040,16 +2164,72 @@ Internet Control Message Protocol v6
         Reserved
         MTU: 1500
 \end{Verbatim}
-\pause
+  \columnbreak
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Avsenders IPv6-adresse må være routerens link-local-adresse
+    for utgående grensesnitt
+  \item Mottakers IPv6-adresse er enten adressa til den noden som
+    sendte «Router Solicitation» eller til \texttt{FF02::1} for
+    generell annonsering
+  \item «Hop Limit» i IPv6-headeren skal settes til \texttt{255}
   \end{itemize}
+  \end{multicols}
 \end{frame}
 
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Neighbor Discovery}
   \framesubtitle{Router Advertisement}
-  \pause
+  %\pause
+  \begin{multicols}{2}
+\begin{Verbatim}[fontsize=\tiny]
+Internet Control Message Protocol v6
+    Type: Router Advertisement (134)
+    Code: 0
+    Checksum: 0xfa8c [correct]
+    Cur hop limit: 64
+    Flags: 0x48
+        0... .... = Managed address configuration: Not set
+        .1.. .... = Other configuration: Set
+        ..0. .... = Home Agent: Not set
+        ...0 1... = Prf (Default Router Preference): High (1)
+        .... .0.. = Proxy: Not set
+        .... ..0. = Reserved: 0
+    Router lifetime (s): 1800
+    Reachable time (ms): 0
+    Retrans timer (ms): 0
+    ICMPv6 Option (Source link-layer address : 00:17:e0:77:14:57)
+        Type: Source link-layer address (1)
+        Length: 1 (8 bytes)
+        Link-layer address: Cisco_77:14:57 (00:17:e0:77:14:57)
+    ICMPv6 Option (MTU : 1500)
+        Type: MTU (5)
+        Length: 1 (8 bytes)
+        Reserved
+        MTU: 1500
+\end{Verbatim}
+  \columnbreak
+  %\pause
+  \begin{itemize}[<+->]
+  \item Routeren er snill og oppgir:
+    \begin{itemize}[<+->]
+    \item Autokonfigurasjon av adresser skal utføres
+    \item Andre opplysninger er tilgjengelig med DHCPv6
+    \item Dette er ingen «Home Agent»
+    \item Routerens preferansenivå er «High»
+    \item Annonseringens levetid er 1800~s $=$ 30~min
+    \item Routerens lag-2-adresse
+    \item Linkens MTU-verdi
+    \end{itemize}
+  \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Neighbor Discovery}
+  \framesubtitle{Router Advertisement}
+  %\pause
+  \begin{multicols}{2}
 \begin{Verbatim}[fontsize=\tiny]
     ICMPv6 Option (Prefix information : 2001:700:1100:3::/64)
         Type: Prefix information (3)
@@ -2065,39 +2245,119 @@ Internet Control Message Protocol v6
         Reserved
         Prefix: it.ip6.fig.ol.no (2001:700:1100:3::)
 \end{Verbatim}
-\pause
+  \columnbreak
+  %\pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Routeren opppgir følgende om \texttt{2001:700:1100:3::/64}
+    \begin{itemize}[<+->]
+    \item Prefikset er direkte tilgjengelig
+    \item Autokonfigurasjon er tillatt
+    \item Genererte adresser er gyldige i 30~dager, med foretrukket
+      levetid på 7~dager
+    \end{itemize}
   \end{itemize}
+  \end{multicols}
 \end{frame}
 
 \section{Neighbor Solicitation}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Neighbor Discovery}
   \framesubtitle{Neighbor Solititation}
   \pause
+\begin{Verbatim}[fontsize=\tiny]
+Internet Control Message Protocol v6
+    Type: Neighbor Solicitation (135)
+    Code: 0
+    Checksum: 0x4571 [correct]
+    Reserved: 00000000
+    Target Address: monitor2.fig.ol.no (2001:700:1100:3:20b:dbff:fe52:67e2)
+    ICMPv6 Option (Source link-layer address : 00:26:18:f2:72:40)
+        Type: Source link-layer address (1)
+        Length: 1 (8 bytes)
+        Link-layer address: AsustekC_f2:72:40 (00:26:18:f2:72:40)
+\end{Verbatim}
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item I dette tilfellet ville
+    \begin{enumerate}[<+->]
+    \item \texttt{2001:700:1100:3:226:18FF:FEF2:7240} sjekke om
+    \item \texttt{2001:700:1100:3:20B:DBFF:FE\alert<7>{52}:\alert<7>{67E2}}
+      fortsatt var i live
+    \end{enumerate}
+  \item Forespørselen ble sendt til «Solicited-node multicast-adressa»
+    \texttt{FF02::1:FF\alert<7>{52}:\alert<7>{67E2}}
   \end{itemize}
 \end{frame}
 
-\section{Neighbor Solicitation}
-\begin{frame}%[allowframebreaks]
+\section{Neighbor Advertisement}
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Neighbor Discovery}
-  \framesubtitle{Neighbor Solititation}
+  \framesubtitle{Neighbor Advertisement}
+  \pause
+\begin{Verbatim}[fontsize=\tiny]
+Internet Control Message Protocol v6
+    Type: Neighbor Advertisement (136)
+    Code: 0
+    Checksum: 0x157e [correct]
+    Flags: 0x60000000
+        0... .... .... .... .... .... .... .... = Router: Not set
+        .1.. .... .... .... .... .... .... .... = Solicited: Set
+        ..1. .... .... .... .... .... .... .... = Override: Set
+        ...0 0000 0000 0000 0000 0000 0000 0000 = Reserved: 0
+    Target Address: monitor2.fig.ol.no (2001:700:1100:3:20b:dbff:fe52:67e2)
+    ICMPv6 Option (Target link-layer address : 00:0b:db:52:67:e2)
+        Type: Target link-layer address (2)
+        Length: 1 (8 bytes)
+        Link-layer address: DellEsgP_52:67:e2 (00:0b:db:52:67:e2)
+\end{Verbatim}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item \texttt{2001:700:1100:3:20B:DBFF:FE52:67E2} sendte svar
+    tilbake til \texttt{2001:700:1100:3:226:18FF:FEF2:7240} med klar beskjed at
+    \begin{itemize}[<+->]
+    \item Den er ikke en router
+    \item Dette er et svar på en forespørsel og ikke en tilfeldig annonsering
+    \item Gamle opplysninger om \texttt{2001:700:1100:3:20B:DBFF:FE52:67E2} skal slettes
+    \item Lag-2-adressa er stadig \texttt{00:0B:DB:52:67:E2}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \section{Redirect}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Neighbor Discovery}
   \framesubtitle{Redirect}
   \pause
+\begin{Verbatim}[fontsize=\tiny]
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Type      |     Code      |          Checksum             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                           Reserved                            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++                                                               +
+|                                                               |
++                       Target Address                          +
+|                                                               |
++                                                               +
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++                                                               +
+|                                                               |
++                     Destination Address                       +
+|                                                               |
++                                                               +
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Options ...
++-+-+-+-+-+-+-+-+-+-+-+-
+\end{Verbatim}
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Jeg har hittil ikke sett en eneste ICMPv6 redirect-melding
   \end{itemize}
 \end{frame}
 
@@ -2119,77 +2379,145 @@ Internet Control Message Protocol v6
   \pause
   \begin{itemize}[<+->]
   \item DHCPv6 er definert i \rfc{3315} med oppdateringer fra
-    \rfc{4361}, \rfc{5494}, \rfc{6221}, \rfc{6422} og \rfc{6644}
-  \item Kommunikasjonen foregår først med multicast og UDP, senere
-    unicast og UDP
-  \item Klientene bruker port 546 og serverne/relay bruker 547
+    \rfc{3319}, \rfc{3633}, \rfc{3646}, \rfc{3736}, \rfc{4361},
+    \rfc{5007}, \rfc{5494}, \rfc{6221}, \rfc{6422}, \rfc{6603},
+    \rfc{6644} og \rfc{7083}
+  \item Kommunikasjonen foregår først med multicast og UDP, og kan
+    senere bytte til unicast og UDP
+  \item Klientene bruker port 546 og serverne/relay-agentene bruker
+    port 547
   \item Klientene bruker sin egen link-local-adresse som avsender og
     multicast-adressa \texttt{FF02::1:2} som mottaker
+  \item Relay-agentene videresender til multicast-adressa
+    \texttt{FF05::1:3}, med mindre de kjenner og vil bruke
+    unicast-adressa til serveren
   \item Serverne svarer med sin link-local-adresser som avsender og
     klientens link-local-adresse som mottaker
   \end{itemize}
 \end{frame}
 
-% Husk å ta bort allowframebreaks og dele teksten inn i enkeltframes, for underpunktene forsvinner i foredrags-filene. :-O
 \section{Meldinger}
-\begin{frame}[allowframebreaks]
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Meldinger}
+  \pause
+  \begin{itemize}[<+->]
+  \item Solicit
+    \begin{itemize}[<+->]
+    \item Fra klient til server/relay
+    \item Brukes for å oppdage servere
+    \end{itemize}
+  \item Advertise
+    \begin{itemize}[<+->]
+    \item Fra server/relay til klient
+    \item Brukes for å varsle klienten om tjenestetilbudet
+    \end{itemize}
+  \item Request
+    \begin{itemize}[<+->]
+    \item Fra klient til spesifikk server
+    \item Bruker for å etterspørre om adresser og andre opplysninger
+      fra en bestemt server
+    \end{itemize}
+  \item Confirm
+    \begin{itemize}[<+->]
+    \item Fra server/relay til klient
+    \item Brukes for å bestemme om tidligere oppgitt adresse fortsatt
+      er gyldig
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
   \frametitle{DHCPv6}
   \framesubtitle{Meldinger}
   %\pause
-  \begin{itemize}%[<+->]
-  \item Solicit
-    \begin{itemize}%[<+->]
-    \item Fra klient til server/relay
-    \end{itemize}
-  \item Advertise
-    \begin{itemize}%[<+->]
-    \item Fra server/relay til klient
-    \end{itemize}
-  \item Request
-    \begin{itemize}%[<+->]
-    \item Fra klient til spesifikk server
-    \end{itemize}
-  \item Confirm
-    \begin{itemize}%[<+->]
-    \item Fra server/relay til klient
-    \end{itemize}
+  \begin{itemize}[<+->]
   \item Renew
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra klient til server/relay
+    \item Brukes for å fornye leieavtalen og oppdatere andre
+      opplysninger
     \end{itemize}
   \item Rebind
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra klient til server/relay
+    \item Brukes til annonsering i etterkant av en renew-melding,
+      dersom det ikke kom noe svar på fornyelsen
     \end{itemize}
-  \framebreak
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Meldinger}
+  %\pause
+  \begin{itemize}[<+->]
   \item Reply
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra server til klient
+    \item Serveren sender tildelt adresse og andre opplysninger i en
+      reply-melding som svar på solicit-, request-, renew- og
+      rebind-meldinger
+    \item Serveren sender konfigurasjonsparametre i en reply-melding
+      som svar på en information-request-melding
+    \item Serveren sender en reply-melding som svar på en
+      confirm-melding for å bekrefte eller avkrefte at adressa
+      tilordnet klienten er gyldig eller ikke
+    \item Serveren sender en reply-melding for å kvittere for mottatt
+      release- eller decline-meldinger
     \end{itemize}
   \item Release
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra klient til server/relay
+    \item Brukes for å frigjøre en utleid adresse
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Meldinger}
+  %\pause
+  \begin{itemize}[<+->]
   \item Decline
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra klient til server/relay
+    \item Brukes for å fortelle at en eller flere utdelte adresser
+      allerede er tatt i bruk i nabolaget til klienten
     \end{itemize}
   \item Reconfigure
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra server til klient
+    \item Brukes for å gjøre klienten oppmerksom på nye opplysninger
+      og at klienten må gjennomføre renew/reply- eller
+      information-request/reply-transaksjoner for å få de nye
+      opplysningene
     \end{itemize}
   \item Information-request
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra klient til server/relay
+    \item Brukes for å be om konfigurasjonsparametre uten å bli
+      tildelt en adresse
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Meldinger}
+  %\pause
+  \begin{itemize}[<+->]
   \item Relay-forward
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra relay til relay/server
+    \item Brukes av relay for å videresende forespørsler fra klienter
+      eller andre relay til en ny relay eller server
     \end{itemize}
-  \framebreak
   \item Relay-reply
-    \begin{itemize}%[<+->]
+    \begin{itemize}[<+->]
     \item Fra server/relay til relay
+    \item Brukes av server for å videresende svar tilbake til klienter
+      gjennom relay(kjeden)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -2206,7 +2534,7 @@ Internet Control Message Protocol v6
   \item Hvert grensesnitt har i tillegg sin Identity Association
     Identifier, IAID, lengde 32 bit
   \item Klientene oppgir aktuell DUID og IAID i forespørslene
-  \item DHCPv6-serverne har, og oppgir, sine egne DUID og IAID i
+  \item DHCPv6-serverne har sine egne DUID og IAID, og oppgir disse i
     svarene
   \end{itemize}
 \end{frame}
@@ -2221,7 +2549,7 @@ Internet Control Message Protocol v6
     \item Type 1: Linklagsadresse med tidspunkt for generering,
       \texttt{DUID-LLT}
     \item Type 2: Unik identifikator basert på Enterprise-nummer
-      utdelt av IANA
+      utdelt av IANA, \texttt{DUID-EN}
     \item Type 3: Linklagsadresse, \texttt{DUID-LL}
     \end{itemize}
  \end{itemize}
@@ -2273,8 +2601,8 @@ Internet Control Message Protocol v6
   \item Type 3 er enklere og mer forutsigbart, og det beste valget for
     statisk tildeling av IPv6-adresse med tanke på reinstallasjon av
     OS
-  \item Jeg har ikke funnet noen måte å tvinge en bestemt DUID-type i
-    Windows, annet enn å sette \texttt{Dhcpv6DUID} manuelt eller
+  \item Jeg har ikke funnet noen annen måte å tvinge en bestemt
+    DUID-type i Windows, enn å sette \texttt{Dhcpv6DUID} manuelt eller
     gjennom skript, og naturlig nok restarte Windows etterpå
   \item \href{http://klub.com.pl/dhcpv6/}{Dibbler} og Unix-systemer er
     tradisjonelt langt snillere, og lar oss angi i konfigurasjonen de
@@ -2300,37 +2628,146 @@ Internet Control Message Protocol v6
   \framesubtitle{Multicastflaggene}
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Flaggene heter \texttt{0RPT}\hfill(null, err, pe, te)
+  \item Flagget \texttt{T} angir med \texttt{0} at adressa er velkjent
+    (definert av \href{http://www.iana.org/}{IANA}), og med \texttt{1}
+    at adressa er midlertidig (lokalt definert)
+  \item Flagget \texttt{P} angir med \texttt{1} at adressa inneholder
+    et unicast-prefiks og skal følge reglene i \rfc{3306}
+  \item Flagget \texttt{R} angir med \texttt{1} at adressa også
+    inneholder et møtepunkt («rendezvous point») og skal følge reglene
+    i \rfc{3956}
+  \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
+    multicast-adresser for internt bruk i organisasjonen
   \end{itemize}
 \end{frame}
 
 \section{Når \texttt{T} er satt til \texttt{1}}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{T} er satt til \texttt{1}}
   \pause
+\begin{Verbatim}[fontsize=\tiny]
+|   8    |  4 |  4 |                  112 bits                   |
++--------+----+----+---------------------------------------------+
+|11111111|0001|scop|                  group ID                   |
++--------+----+----+---------------------------------------------+
+\end{Verbatim}
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Adresseformatet er gitt av \rfc{4291}
+  \item De 12 mest signifikante bitene må beholdes som vist
+  \item Rekkevidden settes til ønsket, lovlig verdi
+  \item De 112 øvrige bitene kan settes fritt
+  \item Eksempel:
+    \begin{itemize}[<+->]
+    \item \texttt{FF12::DEAD:BEEF:CAFE:0:FACE:B00C:1}
+    \item En link-local, midlertidig multicast-adresse
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \section{Når \texttt{PT} er satt til \texttt{11}}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{PT} er satt til \texttt{11}}
   \pause
+\begin{Verbatim}[fontsize=\tiny]
+|   8    |  4 |  4 |   8    |    8   |       64       |    32    |
++--------+----+----+--------+--------+----------------+----------+
+|11111111|0011|scop|reserved|  plen  | network prefix | group ID |
++--------+----+----+--------+--------+----------------+----------+
+\end{Verbatim}
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Adresseformatet er gitt av \rfc{3306}
+  \item De 12 mest signifikante bitene må beholdes som vist
+  \item Rekkevidden settes til ønsket, lovlig verdi, og rekkevidden
+    skal ikke overskride \textit{utbredelsen\/} av det angitte
+    nettverksprefikset
+  \item Feltet «plen» settes til prefikslengden til nettverksprefikset
+  \item Nettverksprefikset er ditt eget unicast-prefiks
+  \item «Group ID» settes i tråd med retningslinjene til \rfc{3307}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Avansert multicast}
+  \framesubtitle{Når \texttt{PT} er satt til \texttt{11}}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+|   8    |  4 |  4 |   8    |    8   |       64       |    32    |
++--------+----+----+--------+--------+----------------+----------+
+|11111111|0011|scop|reserved|  plen  | network prefix | group ID |
++--------+----+----+--------+--------+----------------+----------+
+\end{Verbatim}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Eksempel:
+    \begin{itemize}[<+->]
+    \item \texttt{FF3F:0030:2001:700:1100:0:8000:1337}
+    \item Den første adressa er begrenset til internett (global, 48-bit)
+    \item \texttt{FF38:0030:2001:700:1100:0:8000:1337}
+    \item Den andre adressa er begrenset til FSI (organizational-local, 48-bit)
+    \item \texttt{FF32:0040:2001:700:1100:3:8000:1337}
+    \item Den tredje adressa er begrenset til IT-avdelingen ved FSI (link-local, 64-bit)
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \section{Når \texttt{RPT} er satt til \texttt{111}}
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{RPT} er satt til \texttt{111}}
   \pause
+\begin{Verbatim}[fontsize=\tiny]
+|   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
++--------+----+----+----+----+----+----------------+----------+
+|11111111|0111|scop|rsvd|RIID|plen| network prefix | group ID |
++--------+----+----+----+----+----+----------------+----------+
+\end{Verbatim}
+  \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Adresseformatet er gitt av \rfc{3956}
+  \item De 12 mest signifikante bitene må beholdes som vist
+  \item Rekkevidden settes til ønsket, lovlig verdi, og rekkevidden
+    skal ikke overskride \textit{utbredelsen\/} av det angitte
+    nettverksprefikset
+  \item Feltet «RIID» settes til møtepunktets grensesnittidentifikator
+    \begin{itemize}[<+->]
+    \item RIID kan ikke være $0$, for dette skaper konflikt med
+      «Subnet-Router Anycast Address» fra \rfc{3513}
+    \end{itemize}
+  \item Feltet «plen» settes til prefikslengden til nettverksprefikset
+  \item Nettverksprefikset er ditt eget unicast-prefiks
+  \item «Group ID» settes i tråd med retningslinjene til \rfc{3307}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Avansert multicast}
+  \framesubtitle{Når \texttt{RPT} er satt til \texttt{111}}
+  %pause
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
+|   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
++--------+----+----+----+----+----+----------------+----------+
+|11111111|0111|\Alert{3}{scop}|rsvd|\Alert{5}{RIID}|\Alert{4}{plen}| \Alert{4-5}{network prefix} | group ID |
++--------+----+----+----+----+----+----------------+----------+
+\end{Verbatim}
+  %pause
+  \begin{itemize}[<+->]
+  \item Eksempler:
+    \begin{itemize}[<+->]
+    \item \texttt{FF7\alert<3>{8}:0\alert<5>{1}\alert<4>{30}:\alert<4-5>{2001}:\alert<4-5>{700}:\alert<4-5>{1100}:\alert<4-5>{0}:8000:1337}
+      \begin{itemize}[<+->]
+      \item Denne adressa er begrenset til organization-local
+      \item Nettverksprefikset er \texttt{\alert<4>{2001:700:1100}::/\alert<4>{48}}
+      \item Møtetpunktets adresse er \alert<6>{\texttt{\alert<5>{2001:700:1100}::\alert<5>{1}}}
+      \item Møtetpunktets adresse må konfigureres på et
+        loopbackgrensesnitt i Fagskolens ytterste
+        IPv6-multicast-router
+      \end{itemize}
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -2373,6 +2810,7 @@ Internet Control Message Protocol v6
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
   \framesubtitle{Cisco IOS: IPv6-routing}
+  %\pause
   \begin{enumerate}[<+->]
   \item \alert{\texttt{interface GigabitEthernet0/49}}
   \item \texttt{description Linknett mellom FiG og Uninett/HiG}
@@ -2386,6 +2824,26 @@ Internet Control Message Protocol v6
   \item \alert{\texttt{ipv6 nd ra suppress}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Inn in}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Ut out}}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-routing}
+  %\pause
+  \begin{enumerate}[<+->]
+  \item \alert{\texttt{interface Vlan48}}
+  \item \texttt{description Datarom 129}
+  \item \texttt{ip address 128.39.194.193 255.255.255.224}
+  \item \texttt{ip access-group Vlan48IPv4UtTil out}
+  \item \texttt{ip helper-address 128.39.174.42}
+  \item \texttt{ip pim sparse-dense-mode}
+  \item \texttt{ip igmp version 3}
+  \item \alert{\texttt{ipv6 address 2001:700:1100:8008::1/64}}
+  \item \alert{\texttt{ipv6 nd other-config-flag}}
+  \item \alert{\texttt{ipv6 nd router-preference High}}
+  \item \alert{\texttt{ipv6 dhcp server offisiell}}
+  \item \alert{\texttt{ipv6 traffic-filter Vlan48IPv6UtTil out}}
   \end{enumerate}
 \end{frame}
 
@@ -2618,16 +3076,18 @@ Internet Control Message Protocol v6
   \framesubtitle{OS-konfig}
   %\pause
   \begin{itemize}[<+->]
-  \item Windows: \texttt{netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
+  \item Windows:
     \begin{itemize}[<+->]
-    \item \texttt{netsh interface ipv6 set address\ "Lokal tilkobling"\ 2001:700:1100:8008::1337}
+    \item \texttt{netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
+    \item \texttt{netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1337}
+    \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
     \end{itemize}
-  \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
-  \item *BSD: \texttt{ifconfig \textit{navn-på-grensesnitt} inet6 \textit{IPv6-adresse} prefixlen \textit{prefikslengde}}
+  \item *BSD:
     \begin{itemize}[<+->]
+    \item \texttt{ifconfig \textit{navn-på-grensesnitt} inet6 \textit{IPv6-adresse} prefixlen \textit{prefikslengde}}
     \item \texttt{ifconfig em0 inet6 2001:700:1100:8008::1337 prefixlen 64}
+    \item Vanligvis lagres slike innstillingene permanent, for eksempel i \texttt{/etc/rc.conf}
     \end{itemize}
-  \item Vanligvis lagres slike innstillingene permanent, for eksempel i \texttt{/etc/rc.conf}
   \end{itemize}
 \end{frame}
 
@@ -2654,8 +3114,9 @@ Internet Control Message Protocol v6
   \item Neighbor Discovery: \rfc{4861}, \rfc{5942} og \rfc{6980}
   \item Krav til IPv6-noder: \rfc{6434}
   \item Path MTU: \rfc{1981}
-  \item DHCPv6: \rfc{3315}, \rfc{4361}, \rfc{5494}, \rfc{6221},
-    \rfc{6422} og \rfc{6644}
+  \item DHCPv6: \rfc{3315}, \rfc{3319}, \rfc{3633}, \rfc{3646},
+    \rfc{3736}, \rfc{4361}, \rfc{5494}, \rfc{6221}, \rfc{6422},
+    \rfc{6644} og \rfc{7083}
   \item Overføring av IPv6-pakker over Ethernet: \rfc{2464} og
     \rfc{6085}
   \item Adressearkitektur: \rfc{4291}, \rfc{5952} og \rfc{6052}
@@ -2675,8 +3136,10 @@ Internet Control Message Protocol v6
   \item IPsec: \rfc{4301}, \rfc{4302}, \rfc{4303}, \rfc{4304},
     \rfc{4307}, \rfc{4308}, \rfc{4309}, \rfc{4312}, \rfc{4835} og
     \rfc{5996}
-  \item For programmerere av nettverksprogrammer: \rfc{4038}
-  \item Grunnleggende krav til IPv6-routere hos sluttbrukere (CER): \rfc{7084}
+  \item For programmerere av nettverksprogrammer: \rfc{3493},
+    \rfc{3542} og \rfc{4038}
+  \item Grunnleggende krav til IPv6-routere hos sluttbrukere (CER):
+    \rfc{7084}
   \end{itemize}
 \end{frame}
 
