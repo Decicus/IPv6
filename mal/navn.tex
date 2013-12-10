@@ -1,3 +1,4 @@
+% -*- coding: utf-8 -*-
 % $Ximalas$
 %\documentclass{beamer}
 %\documentclass[handout]{beamer}
@@ -6,15 +7,24 @@
 %\pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=5mm]
 %\setbeameroption{show notes} % on second screen}
 
-\def\jobname{navn} % Sett riktig navn på presentasjonen her.
+\def\jobname{navn} % Sett riktig navn pÃ¥ presentasjonen her.
 \setjobnamebeamerversion{\jobname}
 
-\usepackage[cp1252]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[norsk]{babel}
 \usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+%\usepackage{epstopdf}
+%\epstopdfsetup{update}
 
+%\usetheme{AnnArbor}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
 %\usetheme{Antibes}
+%\usetheme{Bergen}
 %\usetheme{Berkeley}
 %\usetheme{Berlin}
 %\usetheme{Copenhagen}
@@ -26,20 +36,30 @@
 %\usetheme{Ilmenau}
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
-\usetheme{Malmoe}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
 %\usetheme{Marburg}
 %\usetheme{Montpellier}
 %\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
 
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
+
+\newcommand{\Alert}[2]{\alert<#1>{#2}}
+\newcommand{\Textbackslash}{\textbackslash\penalty\exhyphenpenalty}
+\newcommand{\rfc}[1]{\href{http://tools.ietf.org/html/rfc#1}{RFC~#1}}
+\newcommand{\prfc}[1]{(\rfc{#1})}
+
 \title{\textbf{Tittel}}
 \subtitle{Undertittel}
-\author{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
-\institute{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}}
+\author[T.~EndrestÃ¸l]{\href{http://fig.ol.no/~trond/}{Trond EndrestÃ¸l}}
+\institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
 \subject{Emne for bruk i egenskapene til PDF-fila}
-\keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
+\keywords{NÃ¸kkelord for bruk i egenskapene til PDF-fila}
 \date{\today} % eller
 %\date{18.\ september 2013}
 
@@ -49,13 +69,33 @@
   \titlepage
 \end{frame}
 
-\section*{Oversikt}
+\section*{Oversikt av hele foredraget}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Oversikt av hele foredraget}
+  \framesubtitle{Del 1: Bla, bla, bla}
+  \tableofcontents[part=1]%[pausesections]
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Oversikt av hele foredraget}
+  \framesubtitle{Del 2: Bla, bla, bla}
+  \tableofcontents[part=2]%[pausesections]
+\end{frame}
+
+\part{Del 1}
+
 \begin{frame}
-  \tableofcontents
+  \partpage
+\end{frame}
+
+\section*{Oversikt over del~1: Bla, bla, bla}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Oversikt over del~1: Bla, bla, bla}
+    \tableofcontents%[pausesections]
 \end{frame}
 
 \section{Sammendrag}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Sammendrag}
   \pause
   \begin{itemize}[<+->]
@@ -64,7 +104,7 @@
 \end{frame}
 
 \section{Emne 1}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Emne 1}
   \pause
   \begin{itemize}[<+->]
@@ -73,9 +113,49 @@
 \end{frame}
 
 \subsection{Underemne 1a}
-\begin{frame}
+\begin{frame}%[allowframebreaks]
   \frametitle{Emne 1}
   \framesubtitle{Underemne 1a}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\part{Del 2}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt over del~2: Bla, bla, bla}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Oversikt over del~2: Bla, bla, bla}
+    \tableofcontents%[pausesections]
+\end{frame}
+
+\section{Sammendrag}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Sammendrag}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\section{Emne 2}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Emne 2}
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Underemne 2a}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Emne 2}
+  \framesubtitle{Underemne 2a}
   \pause
   \begin{itemize}[<+->]
   \item Bla, bla, bla
