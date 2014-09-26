@@ -55,7 +55,7 @@
 \newcommand{\prfc}[1]{(\rfc{#1})}
 
 \title{\textbf{IPv6-foredrag}}
-\subtitle{Pent brukt 18-åring}
+\subtitle{Pent brukt 19-åring}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
 \institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
 \logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
@@ -109,7 +109,7 @@
     \texttt{\$${}$Ximalas${}$\$}
   \item Driverfila for denne PDF-fila bærer denne identifikasjonen:\\
     \svndriverfil
-  \item Copyright \copyright\ 2013 Trond Endrestøl
+  \item Copyright \copyright\ 2014 Trond Endrestøl
   \item Dette verket er lisensiert med:
     \href{http://creativecommons.org/}{Creative Commons},
     \href{http://creativecommons.org/licenses/by-sa/3.0/no/}{Navngivelse-DelPåSammeVilkår
@@ -281,7 +281,8 @@
   \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
   \item
     $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
-  \item Fortsatt mange adresser enn det fullstendige IPv4-adresserommet:
+  \item Fortsatt er det mange flere adresser enn i det fullstendige
+    IPv4-adresserommet:
   \item
     $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
   \item Mindre enn \alert<9>{$3.702.258.688$} IPv4-adresser kan bli brukt som
@@ -376,7 +377,7 @@
     \item Shared Address Space etter behov i stamnett\hfill\prfc{6598}
 %    \item HTTP/S-tunnelering av rubb og stubb
     \end{itemize}
-  \item Før eller siden blir CGN for kostbar og komplisert å vedlikeholde
+  \item Før eller siden blir CGN for kostbart og komplisert å vedlikeholde
   \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
   \item \alert<16>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
   \end{itemize}
@@ -465,6 +466,28 @@
     \item \texttt{128.39.194.0/24} brukes nå til datalab etter samme
       mønster som for den gamle \texttt{128.39.172.0/24}
     \end{itemize}
+  \item Sommeren 2014: Tok i bruk nye linknett fordi \texttt{fig-gsw}
+    ble tilkoblet \texttt{gjovik-gw1}
+    \begin{itemize}[<+->]
+    \item IPv4-linknett: \texttt{128.39.70.168/30}
+      \begin{itemize}[<+->]
+      \item \texttt{128.39.70.169} brukes ved HiG
+      \item \texttt{128.39.70.170} brukes ved FSI
+      \end{itemize}
+    \item IPv6-linknett: \texttt{2001:700:0:8074::/64}
+      \begin{itemize}[<+->]
+      \item \texttt{2001:700:0:8074::1} brukes hos HiG
+      \item \texttt{2001:700:0:8074::2} brukes hos FSI
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{IPv6 ved Fagskolen Innlandet}
+  %\pause
+  \begin{itemize}[<+->]
   \item \href{http://www.oppland.no/}{Oppland FK} (OFK) har ingen
     planer om å innføre IPv6
   \item \href{http://www.hordaland.no/}{Hordaland FK} har satt en
@@ -987,10 +1010,11 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     universal/local-bitet som regel er satt til \texttt{0}
   \item De øvrige 63 bitene kan være hva som helst, bare verdien ikke
     skaper adressekollisjon i samme VLAN
-  \item Normalt bruker man manuelle grensesnittidentifikatorer med
-    lave verdier
+  \item Normalt bruker man manuelle grensesnittidentifikatorer satt
+    til lave verdier
   \item For eksempel \texttt{::53} \hfill(DNS-tjener, kanskje)
-  \item Med et vilkårlig prefiks: \texttt{2001:db8:1234:1::\alert{53}}
+  \item Samme eksempel, men med et vilkårlig prefiks:
+    \texttt{2001:db8:1234:1::\alert{53}}
   \end{itemize}
 \end{frame}
 
@@ -1122,15 +1146,17 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Spesialadresser}
   \pause
   \begin{itemize}[<+->]
-  \item Nulladressa: \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
+  \item Nulladressa:
     \begin{itemize}[<+->]
+    \item \texttt{0:0:0:0:0:0:0:0/128} eller \texttt{::/128}
+    \item \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
     \item Brukes av klienter som ennå ikke vet sin egen adresse
-      (DHCPv6)
+      (DHCPv6, \texttt{::/0})
     \item Brukes av tjenester som godtar forespørsler fra alle
-      grensesnitt (sjekk ut
+      grensesnitt (\texttt{::/128}, sjekk ut
       \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
       i «Juniks»)
-    \item Tilsvarer \texttt{0.0.0.0/0} eller \texttt{0/0} i IPv4
+    \item Tilsvarer \texttt{0.0.0.0/32} og \texttt{0/32}, og \texttt{0.0.0.0/0} og \texttt{0/0} i IPv4
     \end{itemize}
   \item Loopbackadressa: \texttt{0:0:0:0:0:0:0:1/128} eller
     \texttt{::1/128}
@@ -2813,15 +2839,15 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: IPv6-routing}
   %\pause
   \begin{enumerate}[<+->]
-  \item \alert{\texttt{interface GigabitEthernet0/49}}
+  \item \alert{\texttt{interface GigabitEthernet0/50}}
   \item \texttt{description Linknett mellom FiG og Uninett/HiG}
   \item \alert{\texttt{no switchport}}
-  \item \texttt{ip address 128.39.46.10 255.255.255.252}
+  \item \texttt{ip address 128.39.70.170 255.255.255.252}
   \item \texttt{ip access-group InetIPv4Inn in}
   \item \texttt{ip access-group InetIPv4Ut out}
   \item \texttt{ip pim sparse-mode}
   \item \texttt{ip igmp version 3}
-  \item \alert{\texttt{ipv6 address 2001:700:0:11D::2/64}}
+  \item \alert{\texttt{ipv6 address 2001:700:0:8074::2/64}}
   \item \alert{\texttt{ipv6 nd ra suppress}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Inn in}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Ut out}}
