@@ -2855,11 +2855,6 @@ Internet Control Message Protocol v6
   \item \texttt{end}
   \item \texttt{reload}
   \item \texttt{configure terminal}
-  \item \texttt{interface \textit{interface-id}}
-  \item \texttt{no switchport}\hfill(Aktuelt for routergrensesnitt)
-  \item \alert{\texttt{ipv6 address \textit{ipv6-address}}}
-  \item \texttt{ipv6 nd ra suppress}\hfill(Aktuelt for routergrensesnitt)
-  \item \texttt{exit}
   \item \alert{\texttt{ip routing}}\hfill(Nødvendig for IP-routing i det hele tatt)
   \item \alert{\texttt{ipv6 unicast-routing}}
   \item \texttt{no ipv6 source-route}
@@ -2884,6 +2879,20 @@ Internet Control Message Protocol v6
   \item \alert{\texttt{ipv6 nd ra suppress}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Inn in}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Ut out}}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-routing}
+  %\pause
+  \begin{enumerate}[<+->]
+  \item Default route:\\
+    \alert{\texttt{ipv6 route ::/0 GigabitEthernet0/50 2001:700:0:8074::1}}
+  \item Nullroute linknettet, og offisielle og private adresser:\\
+    \alert{\texttt{ipv6 route 2001:700:0:8074::/64 Null0}}\\
+    \alert{\texttt{ipv6 route 2001:700:1100::/48\ \ \ Null0}}\\
+    \alert{\texttt{ipv6 route FD5C:14CF:C300::/48\ \  Null0}}
   \end{enumerate}
 \end{frame}
 
