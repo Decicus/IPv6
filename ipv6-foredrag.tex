@@ -86,7 +86,7 @@
     vises på lerretet
   \item
     \href{http://svnweb.ximalas.info/ipv6-foredrag/trunk/ipv6-foredrag.handout.pdf?view=co}{\texttt{ipv6-foredrag.handout.pdf}}
-    er mye bedre for publikum å se på
+    er mye bedre for publikum å se på egenhånd
   \item
     \href{http://svnweb.ximalas.info/ipv6-foredrag/trunk/ipv6-foredrag.handout.2on1.pdf?view=co}{\texttt{ipv6-foredrag.handout.2on1.pdf}}
     og
@@ -245,19 +245,19 @@
     \item \href{http://www.ripe.net/}{RIPE} gikk tom
       \href{http://www.ripe.net/internet-coordination/ipv4-exhaustion}{14.~september
         2012}
+    \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC}
+      gikk tom
+      \href{http://www.lacnic.net/en/web/lacnic/agotamiento-ipv4}{10.~juni
+        2014}
     \end{itemize}
   \item Dersom disse
     \href{http://en.wikipedia.org/wiki/Regional_Internet_registry}{RIR}-ene
     oppfører seg pent:
     \begin{itemize}
-    \item \href{http://www.lacnic.net/en/web/lacnic/inicio}{LACNIC}
-      kan holde på til
-      \href{http://www.lacnic.net/web/lacnic/reporte-direcciones-ipv4}{juni
-        2014}
     \item \href{https://www.arin.net/}{ARIN} kan holde på til
-      \href{http://www.potaroo.net/tools/ipv4/}{februar 2015}
+      \href{http://www.potaroo.net/tools/ipv4/}{mars 2015}
     \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
-      \href{http://www.potaroo.net/tools/ipv4/}{juni 2022}(!)
+      \href{http://www.potaroo.net/tools/ipv4/}{juni 2019}(!)
     \end{itemize}
   \item Network Address Translation, Carrier-Grade NAT og Shared
     Address Space
@@ -331,7 +331,7 @@
   %\pause
   \begin{itemize}[<+->]
   \item Sjekksum er overlatt til høyere og lavere lag
-  \item Fragmentering skal gjøres hos avsender, ikke underveis
+  \item Fragmentering skal gjøres hos avsender, og ikke underveis
     \begin{itemize}[<+->]
     \item Avsender må sjekke veien lengre fremme og måle smaleste krøttersti
     \item Path Maximum Transmission Unit Discovery (Path MTU, PMTUD)
@@ -367,7 +367,8 @@
       \begin{itemize}[<+->]
       \item
         \href{http://www.computerworld.com/s/article/9215055/Microsoft_offers_7.5M_for_666_624_IPv4_addresses}{Microsoft
-          $\to$ \$7,5 mill.\ $\to$ Nortel $\to$ 666.624 IPv4-adresser}
+          $\to$ \$7,5 mill.\ $\to$ Nortel $\to$ 666.624 IPv4-adresser
+          $\to$ Microsoft}
       \end{itemize}
     \end{itemize}
   \item Telebransjen satser fortsatt hardt på IPv4:
@@ -407,10 +408,10 @@
       \item \texttt{128.39.46.9\phantom{0}} brukes ved HiG
       \item \texttt{128.39.46.10} brukes ved FSI
       \end{itemize}
-    \item \texttt{128.39.174.0/24} ble delt opp i subnett og satt opp
-      som servernett og ansattnett, m.m.
-    \item \texttt{128.39.172.0/24} ble delt opp i subnett og satt opp
-      som nett for datalab
+    \item \texttt{128.39.174.0/24} ble delt opp i flere subnett og
+      satt opp som servernett og ansattnett, m.m.
+    \item \texttt{128.39.172.0/24} ble delt opp i flere subnett og
+      satt opp som nett for datalab
     \item \texttt{128.39.173.0/24} ble satt opp for klienter på
       trådløst studentnett
     \end{itemize}
@@ -426,8 +427,8 @@
     \texttt{2001:700:0:11D::/64} ble aktivert mellom HiG/Uninett og
     FSI
     \begin{itemize}[<+->]
-    \item \texttt{2001:700:0:11D::1} brukes hos HiG
-    \item \texttt{2001:700:0:11D::2} brukes hos FSI
+    \item \texttt{2001:700:0:11D::1} brukes ved HiG
+    \item \texttt{2001:700:0:11D::2} brukes ved FSI
     \end{itemize}
   \item Samme dag ble IPv6 innført for FSI-VLAN-ene 20, 30, 70 og 80:
     \begin{itemize}[<+->]
@@ -436,6 +437,7 @@
     \item FSI-VLAN 70:\quad\texttt{2001:700:1100:3::/64}\hfill(IT-kontornett)
     \item FSI-VLAN 80:\quad\texttt{2001:700:1100:4::/64}\hfill(IT-lekenett)
     \end{itemize}
+  \item Andre FSI-VLAN fikk IPv6 i ukene og månedene etterpå
   \item Sommeren 2007:
     \href{http://www.sixxs.net/tools/grh/ula/}{Genererte} og frivillig
     \href{http://www.sixxs.net/tools/grh/ula/list/}{registrerte}
@@ -461,13 +463,14 @@
   \item Høsten 2010: Enda en IPv4-serie ble innført:
     \texttt{128.39.194.0/24}
     \begin{itemize}[<+->]
-    \item \texttt{128.39.172.0/23} brukes nå til klienter på trådløst
-      studentnett
     \item \texttt{128.39.194.0/24} brukes nå til datalab etter samme
       mønster som for den gamle \texttt{128.39.172.0/24}
+    \item \texttt{128.39.172.0/\alert{23}} brukes nå for inntil 508
+      IPv4-klienter på trådløst studentnett
     \end{itemize}
-  \item Sommeren 2014: Tok i bruk nye linknett fordi \texttt{fig-gsw}
-    ble tilkoblet \texttt{gjovik-gw1}
+  \item Sommeren 2014: Tok i bruk nye linknett fordi
+    \texttt{fig-gsw.fig.ol.no} ble tilkoblet
+    \texttt{gjovik-gw1.uninett.no}
     \begin{itemize}[<+->]
     \item IPv4-linknett: \texttt{128.39.70.168/30}
       \begin{itemize}[<+->]
@@ -476,8 +479,8 @@
       \end{itemize}
     \item IPv6-linknett: \texttt{2001:700:0:8074::/64}
       \begin{itemize}[<+->]
-      \item \texttt{2001:700:0:8074::1} brukes hos HiG
-      \item \texttt{2001:700:0:8074::2} brukes hos FSI
+      \item \texttt{2001:700:0:8074::1} brukes ved HiG
+      \item \texttt{2001:700:0:8074::2} brukes ved FSI
       \end{itemize}
     \end{itemize}
   \end{itemize}
@@ -497,7 +500,7 @@
   \item Andreklasse data er velsigna med å kunne velge mellom FSI- og
     OFK-nettene
   \item Andreklasse data velger som regel det førstnevnte, vanligvis
-    FSI-VLAN 48, \texttt{128.39.194.192/27} og
+    FSI-VLAN 48 som tilbyr \texttt{128.39.194.192/27} og
     \texttt{2001:700:1100:8008::/64}
   \item Førsteklasse data ønsker det samme tilbudet; så vi får se \dots
   \end{itemize}
@@ -523,7 +526,7 @@
       \end{itemize}
     \item Basestasjoner og WLAN-kontroller
       \begin{itemize}[<+->]
-      \item Før omlegginga
+      \item Før omlegginga til OFK-nettene
       \end{itemize}
     \item UPS-er
     \item Skrivere
@@ -672,7 +675,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \begin{itemize}[<+->]
     \item \texttt{\color{red}00 17 E0 77 14 57} er MAC-48-adressa til mottakeren, routeren
     \item \texttt{\color{violet}00 26 18 F2 72 40} er MAC-48-adressa til avsenderen, klienten
-    \item \texttt{86 DD} angir at et IPv6-datagram følger i lag~3
+    \item \texttt{86 DD} angir at et IPv6-datagram følger etter i lag~3
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1032,7 +1035,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
       \hfill(binært)
     \item Veldig praktisk for lokalgitte adresser, ikke sant?
     \end{itemize}
-  \item Uten \textit{invertering\/} av universal/local-bitet, måtte vi
+  \item \textit{Uten\/} invertering av universal/local-bitet, måtte vi
     bruke manuelle grensesnittidentifikatorer på denne måten:
     \begin{itemize}[<+->]
     \item \texttt{::0\alert{2}00:0:0:53}\hfill(heksadesimalt)
@@ -1149,13 +1152,17 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Nulladressa:
     \begin{itemize}[<+->]
     \item \texttt{0:0:0:0:0:0:0:0/128} eller \texttt{::/128}
+      \begin{itemize}[<+->]
+      \item Brukes av klienter som ennå ikke vet sin egen adresse
+        (DHCPv6)
+      \end{itemize}
     \item \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
-    \item Brukes av klienter som ennå ikke vet sin egen adresse
-      (DHCPv6, \texttt{::/0})
-    \item Brukes av tjenester som godtar forespørsler fra alle
-      grensesnitt (\texttt{::/128}, sjekk ut
-      \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
-      i «Juniks»)
+      \begin{itemize}[<+->]
+      \item Brukes av tjenester som godtar forespørsler fra alle
+        grensesnitt (sjekk ut
+        \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
+        i «Juniks»)
+      \end{itemize}
     \item Tilsvarer \texttt{0.0.0.0/32} og \texttt{0/32}, og \texttt{0.0.0.0/0} og \texttt{0/0} i IPv4
     \end{itemize}
   \item Loopbackadressa: \texttt{0:0:0:0:0:0:0:1/128} eller
@@ -1197,6 +1204,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Tjenestene må da åpne separate lyttesocketer for IPv4 og
       IPv6
     \end{itemize}
+  \item \rfc{6890} inneholder en oversikt over alle spesialadresser
+    for både IPv4 og IPv6
   \end{itemize}
 \end{frame}
 
@@ -2637,6 +2646,28 @@ Internet Control Message Protocol v6
   \end{itemize}
 \end{frame}
 
+\section{Identity association}
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Identity association, IA}
+  \pause
+  \begin{itemize}[<+->]
+  \item \rfc{3315}
+  \item Bla, bla, bla
+ \end{itemize}
+\end{frame}
+
+\section{Identity association identifier}
+\begin{frame}%[allowframebreaks]
+  \frametitle{DHCPv6}
+  \framesubtitle{Identity association identifier, IAID}
+  \pause
+  \begin{itemize}[<+->]
+  \item \rfc{3315}
+  \item Bla, bla, bla
+ \end{itemize}
+\end{frame}
+
 \part{Avansert multicast}
 
 \begin{frame}
@@ -2789,10 +2820,12 @@ Internet Control Message Protocol v6
       \begin{itemize}[<+->]
       \item Denne adressa er begrenset til organization-local
       \item Nettverksprefikset er \texttt{\alert<4>{2001:700:1100}::/\alert<4>{48}}
-      \item Møtetpunktets adresse er \alert<6>{\texttt{\alert<5>{2001:700:1100}::\alert<5>{1}}}
-      \item Møtetpunktets adresse må konfigureres på et
+      \item Møtepunktets adresse er \alert<6>{\texttt{\alert<5>{2001:700:1100}::\alert<5>{1}}}
+      \item Møtepunktets adresse må konfigureres på et
         loopbackgrensesnitt i Fagskolens ytterste
         IPv6-multicast-router
+      \item \texttt{interface Loopback0}\\
+        \texttt{ipv6 address 2001:700:1100::1}
       \end{itemize}
     \end{itemize}
   \end{itemize}
