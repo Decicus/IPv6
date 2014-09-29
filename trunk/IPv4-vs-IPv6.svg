@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="66cm" height="26cm" viewBox="98 43 1303 510" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #1e90ff" x="100" y="180" width="160" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="180" width="160" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="100" y="300" width="640" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="300" width="640" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="420" y="180" width="320" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="420" y="180" width="320" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="480" y="140" width="260" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="480" y="140" width="260" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="100" y="260" width="640" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="260" width="640" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="100" y="220" width="640" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="220" width="640" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #1e90ff" x="260" y="180" width="160" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="260" y="180" width="160" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="100" y="100" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="100" width="80" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="100" y="140" width="320" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="140" width="320" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="180" y="100" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="180" y="100" width="80" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="420" y="140" width="60" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="420" y="140" width="60" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #1e90ff" x="420" y="100" width="320" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="420" y="100" width="320" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #1e90ff" x="260" y="100" width="160" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="260" y="100" width="160" height="40"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="140" y="126.25">
+    <tspan x="140" y="126.25">Version</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="220" y="126.25">
+    <tspan x="220" y="126.25">IHL</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="340" y="126.25">
+    <tspan x="340" y="126.25">Type of Service</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="580" y="126.25">
+    <tspan x="580" y="126.25">Total Length</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="260" y="166.25">
+    <tspan x="260" y="166.25">Identification</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="450" y="166.25">
+    <tspan x="450" y="166.25">Flags</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="610" y="166.25">
+    <tspan x="610" y="166.25">Fragment Offset</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="180" y="206.25">
+    <tspan x="180" y="206.25">Time To Live</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="340" y="206.25">
+    <tspan x="340" y="206.25">Protocol</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="580" y="206.25">
+    <tspan x="580" y="206.25">Header Checksum</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="246.25">
+    <tspan x="420" y="246.25">Source Address</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="286.25">
+    <tspan x="420" y="286.25">Destination Address</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="326.25">
+    <tspan x="420" y="326.25">Options &amp; Padding</tspan>
+  </text>
+  <g>
+    <rect style="fill: #1e90ff" x="840" y="100" width="160" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="840" y="100" width="160" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffa500" x="760" y="100" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="760" y="100" width="80" height="40"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="800" y="126.25">
+    <tspan x="800" y="126.25">Version</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="920" y="126.25">
+    <tspan x="920" y="126.25">Traffic Class</tspan>
+  </text>
+  <g>
+    <rect style="fill: #1e90ff" x="760" y="140" width="320" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="760" y="140" width="320" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #54b03d" x="1000" y="100" width="400" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1000" y="100" width="400" height="40"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1200" y="126.25">
+    <tspan x="1200" y="126.25">Flow Label</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="920" y="166.25">
+    <tspan x="920" y="166.25">Payload Length</tspan>
+  </text>
+  <g>
+    <rect style="fill: #1e90ff" x="1080" y="140" width="160" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1080" y="140" width="160" height="40"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="166.25">
+    <tspan x="1160" y="166.25">Next Header</tspan>
+  </text>
+  <g>
+    <rect style="fill: #1e90ff" x="1240" y="140" width="160" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1240" y="140" width="160" height="40"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1320" y="166.25">
+    <tspan x="1320" y="166.25">Hop Limit</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffa500" x="760" y="180" width="640" height="160"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="760" y="180" width="640" height="160"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1080" y="266.25">
+    <tspan x="1080" y="266.25">Source Address</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffa500" x="760" y="340" width="640" height="160"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="760" y="340" width="640" height="160"/>
+  </g>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1080" y="426.25">
+    <tspan x="1080" y="426.25">Destination Address</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffa500" x="100" y="360" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="360" width="80" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #bfbfbf" x="100" y="410" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="410" width="80" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #1e90ff" x="100" y="460" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="460" width="80" height="40"/>
+  </g>
+  <g>
+    <rect style="fill: #54b03d" x="100" y="512" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="512" width="80" height="40"/>
+  </g>
+  <text font-size="28.2222" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="69.775">
+    <tspan x="420" y="69.775">IPv4-header</tspan>
+  </text>
+  <text font-size="28.2222" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1080" y="69.775">
+    <tspan x="1080" y="69.775">IPv6-header</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="386.25">
+    <tspan x="188" y="386.25">Felter som er beholdt i IPv6</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="436.25">
+    <tspan x="188" y="436.25">Felter som er fjernet fra IPv6</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="486.25">
+    <tspan x="188" y="486.25">Navn og plassering er forskjellig for IPv6</tspan>
+  </text>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="538.25">
+    <tspan x="188" y="538.25">Nytt felt i IPv6</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="1400" y="524.45">
+    <tspan x="1400" y="524.45">$Ximalas$</tspan>
+  </text>
+</svg>
