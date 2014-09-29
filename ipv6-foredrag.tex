@@ -552,18 +552,15 @@
   \frametitle{IPv6-header}
   \pause
   \begin{center}
-    \includegraphics[scale=.333]{CCNP-108.png}
+    \includegraphics[scale=.18]{IPv4-vs-IPv6.pdf}
   \end{center}
-
-  Hentet fra
-  \texttt{\url{http://www.tekkom.dk/mediawiki/images/5/5e/CCNP-108.png}}
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
   %\pause
   \begin{center}
-    \includegraphics[scale=.25]{CCNP-108.png}
+    \includegraphics[scale=.16]{IPv4-vs-IPv6.pdf}
   \end{center}
 
   \begin{itemize}
@@ -579,7 +576,7 @@
   \frametitle{IPv6-header}
   %\pause
   \begin{multicols}{2}
-    \includegraphics[scale=.2]{CCNP-108.png}
+    \includegraphics[scale=.09]{IPv4-vs-IPv6.pdf}
 
     \begin{itemize}[<+->]
     \item Versjonsfeltet (4 bit) settes til \texttt{0110}
@@ -1158,6 +1155,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
       \end{itemize}
     \item \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
       \begin{itemize}[<+->]
+      \item Brukes for å angi default route
       \item Brukes av tjenester som godtar forespørsler fra alle
         grensesnitt (sjekk ut
         \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
@@ -1165,16 +1163,32 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
       \end{itemize}
     \item Tilsvarer \texttt{0.0.0.0/32} og \texttt{0/32}, og \texttt{0.0.0.0/0} og \texttt{0/0} i IPv4
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Spesialadresser}
+  %\pause
+  \begin{itemize}[<+->]
   \item Loopbackadressa: \texttt{0:0:0:0:0:0:0:1/128} eller
     \texttt{::1/128}
     \begin{itemize}[<+->]
     \item Velkjent adresse for å snakke med tjenester i samme node
     \item Tilsvarer \texttt{127.0.0.1/32} i IPv4
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Grunnleggende om adresser}
+  \framesubtitle{Spesialadresser}
+  %\pause
+  \begin{itemize}[<+->]
   \item Dokumentasjonsprefiks: \texttt{2001:db8::/32}
     \begin{itemize}[<+->]
-    \item Brukes for generell beskrivelse av IPv6-oppsett i lærebøker
-      og annen generell dokumentasjon \prfc{3849}
+    \item Brukes for beskrivelse av IPv6-oppsett i lærebøker og annen
+      generell dokumentasjon \prfc{3849}
     \item Forbudt å bruke på det offentlige internettet
     \item Bør blokkeres i \textit{inngående\/} og utgående ACL-er for
       internettgrensesnittet til routere
@@ -1530,7 +1544,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \end{multicols}
 \end{frame}
 
-\begin{frame}%[allowframebreaks]
+\begin{frame}[shrink=13]%[allowframebreaks]
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
   %\pause
