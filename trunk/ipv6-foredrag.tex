@@ -54,6 +54,48 @@
 \newcommand{\rfc}[1]{\href{http://tools.ietf.org/html/rfc#1}{RFC~#1}}
 \newcommand{\prfc}[1]{(\rfc{#1})}
 
+% Kopiert fra http://tex.stackexchange.com/questions/123106/detect-aspect-ratio-in-beamer
+% Bearbeidet av Trond Endrestøl for også å sjekke 1610.
+\makeatletter
+\newcommand\ifratio[3]{%
+\ifnum#1=169%
+    \ifdim\beamer@paperwidth=16.00cm\relax%
+        \ifdim\beamer@paperheight=9.00cm\relax%
+            #2%
+        \else%
+            #3%
+        \fi%
+    \else%
+        #3%
+    \fi%
+\else%
+    \ifnum#1=1610%
+        \ifdim\beamer@paperwidth=16.00cm\relax%
+            \ifdim\beamer@paperheight=10.00cm\relax%
+                #2%
+            \else%
+                #3%
+            \fi%
+        \else%
+            #3%
+        \fi%
+    \else
+        \ifnum#1=43%
+            \ifdim\beamer@paperwidth=12.80cm\relax%
+                \ifdim\beamer@paperheight=9.60cm\relax%
+                    #2%
+                \else%
+                    #3%
+                \fi%
+            \else%
+                #3%
+            \fi%
+        \fi%
+    \fi%
+\fi%
+}
+\makeatother
+
 \title{\textbf{IPv6-foredrag}}
 \subtitle{Pent brukt 19-åring}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
@@ -104,6 +146,7 @@
     \href{https://bitbucket.org/rivanvx/beamer/wiki/Home}{beamer},
     \href{https://wiki.gnome.org/Apps/Dia/}{Dia},
     \href{http://www.inkscape.org/en/}{Inkscape},
+    \href{http://www.wireshark.org/}{Wireshark},
     \href{http://subversion.apache.org/}{Subversion},
     \href{http://tortoisesvn.net/}{TortoiseSVN} og
     \href{http://get.adobe.com/no/reader/}{Adobe Reader}
@@ -261,14 +304,25 @@
     \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
       \href{http://www.potaroo.net/tools/ipv4/}{juni 2019}(!)
     \end{itemize}
-  \item Network Address Translation, Carrier-Grade NAT og Shared
-    Address Space
+  \end{itemize}
+\end{frame}
+
+\section{Midlertidige tiltak}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Midlertidige tiltak}
+  \pause
+  \begin{itemize}[<+->]
+  \item Midlertidige tiltak:
     \begin{itemize}[<+->]
-    \item Er bare støttebandasje med kort utløpstid
-    \item Glem det!
-    \item Ende-til-ende-konnektivitet oppnås best uten noen former for
-      adresseoversettelse
+    \item Network Address Translation,
+    \item Carrier-Grade NAT, og
+    \item Shared Address Space (\texttt{100.64.0.0/10})
     \end{itemize}
+  \item Dette er bare støttebandasje med kort utløpstid
+  \item Glem det!
+  \item Ende-til-ende-konnektivitet oppnås best uten noen former for
+    adresseoversettelse
   \end{itemize}
 \end{frame}
 
@@ -283,8 +337,8 @@
   \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
   \item
     $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
-  \item Fortsatt er det mange flere adresser enn i det fullstendige
-    IPv4-adresserommet:
+  \item Fortsatt er det mange flere IPv6-unicast-adresser enn det er
+    IPv4-adresser:
   \item
     $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
   \item Mindre enn \alert<9>{$3.702.258.688$} IPv4-adresser kan bli brukt som
@@ -310,18 +364,25 @@
     \item DHCPv6 eller manuell konfigurasjon brukes når prefikslengda
       er ulik 64 bit
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Andre nyttige ting ved IPv6}
+  %\pause
+  \begin{itemize}[<+->]
   \item Kortere rutingtabeller
     \begin{itemize}[<+->]
     \item Uninett annonserer disse IPv4-subnettene med BGP:
-    \item \texttt{78.91.0.0/16}, \hfill\alert<11>{\texttt{128.39.0.0/16}}, \hfill\texttt{129.177.0.0/16},\\
+    \item \texttt{78.91.0.0/16}, \hfill\alert<4>{\texttt{128.39.0.0/16}}, \hfill\texttt{129.177.0.0/16},\\
       \texttt{129.240.0.0/15}, \hfill\texttt{129.242.0.0/16}, \hfill\texttt{144.164.0.0/16},\\
       \texttt{151.157.0.0/16}, \hfill\texttt{152.94.0.0/16}, \hfill\texttt{156.116.0.0/16},\\
       \texttt{157.249.0.0/16}, \hfill\texttt{158.36.0.0/14}, \hfill\texttt{161.4.0.0/16},\\
       \texttt{193.156.0.0/15}, \hfill\texttt{192.111.33.0/24}, \hfill\texttt{192.133.32.0/24},\\
       \hfill\texttt{192.146.238.0/23}\hfill\null
       \pause
-    \item Til gjengjeld trenger Uninett bare å annonsere dette
-      IPv6-prefikset:
+    \item Uninett trenger bare å annonsere dette IPv6-prefikset:
     \item \texttt{2001:700::/32}
     \end{itemize}
   \end{itemize}
@@ -373,6 +434,14 @@
           $\to$ Microsoft}
       \end{itemize}
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Hvorfor brukes ikke IPv6?}
+  %\pause
+  \begin{itemize}[<+->]
   \item Telebransjen satser fortsatt hardt på IPv4:
     \begin{itemize}[<+->]
     \item (Edge) NAT i CPE\hfill\prfc{1631}
@@ -554,7 +623,8 @@
   \frametitle{IPv6-header}
   \pause
   \begin{center}
-    \includegraphics[scale=.18]{IPv4-vs-IPv6.pdf}
+    \ifratio{43}{\includegraphics[scale=.18]{IPv4-vs-IPv6.pdf}}%
+      {\includegraphics[scale=.2274]{IPv4-vs-IPv6.pdf}}
   \end{center}
 \end{frame}
 
@@ -562,12 +632,13 @@
   \frametitle{IPv6-header}
   %\pause
   \begin{center}
-    \includegraphics[scale=.16]{IPv4-vs-IPv6.pdf}
+    \ifratio{1610}{\includegraphics[scale=.190]{IPv4-vs-IPv6.pdf}}%
+      {\includegraphics[scale=.17]{IPv4-vs-IPv6.pdf}}
   \end{center}
 
   \begin{itemize}
   \item IPv6-headeren er dobbelt så stor som IPv4-headeren
-    (20~oktetter)
+    (40/20~oktetter)
   \item IPv6-headeren har færre felter enn IPv4-headeren
   \item De utelatte feltene er i stor grad flyttet over til egne
     utvidelsesheadere
@@ -578,14 +649,14 @@
   \frametitle{IPv6-header}
   %\pause
   \begin{multicols}{2}
-    \includegraphics[scale=.09]{IPv4-vs-IPv6.pdf}
+    \ifratio{43}{\includegraphics[scale=.0975]{IPv4-vs-IPv6.pdf}}%
+      {\includegraphics[scale=.1225]{IPv4-vs-IPv6.pdf}}
 
     \begin{itemize}[<+->]
     \item Versjonsfeltet (4 bit) settes til \texttt{0110}
     \item Traffic Class (8 bit) er det samme som Type of Service i
       IPv4
-    \item Flow Label (20 bit) er et nytt felt og foreløpig
-      eksperimentell
+    \item Flow Label (20 bit) er et nytt felt, se neste slide
     \item Payload Length (16 bit) er det samme som Total Length i IPv4
     \item Next Header (8 bit) er det samme som Protocol i IPv4
     \item Hop Limit (8 bit) er det samme som Time To Live i IPv4
@@ -597,21 +668,217 @@
   \end{multicols}
 \end{frame}
 
+\subsection{Flow Label}
 \begin{frame}%[allowframebreaks]
   \frametitle{IPv6-header}
-  %\pause
+  \framesubtitle{Flow Label}
+  \pause
+  \begin{itemize}[<+->]
+  \item Flow Label-feltet kan brukes av sanntidsapplikasjoner
+  \item Flow Label-verdien angir pakker som tilhører samme sesjon
+  \item Routere bør videresende pakker med samme verdi i Flow
+    Label-feltet fra samme avsender på samme grensesnitt, slik at
+    rekkefølgen bevares
+  \item Verdien 0 (null) brukes for individuelle pakker
+  \item Routere bør videresende pakker med 0 i Flow Label-feltet fra
+    samme avsender på samme grensesnitt, slik at rekkefølgen bevares
+  \item Tilfeldig valgte verdier brukes for pakker som hører sammen
+  \item Flow Label-feltet kan også brukes til å smugle data sammen med
+    legitim trafikk, eller merke slik trafikk, se avsnitt 6.1 i
+    \rfc{6437}
+  \item Se \rfc{2460}, \rfc{3595}, \rfc{6294}, \rfc{6436} og \rfc{6437}
+  \end{itemize}
+\end{frame}
+
+\section{Utvidelsesheadere}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \pause
   \begin{itemize}[<+->]
   \item Utvidelsesheaderne finnes i stort antall:
     \begin{enumerate}[<+->]
-    \item Hop-by-hop options
-    \item Destination options
-    \item Routing
-    \item Fragment
+    \item Hop-by-hop Options Header
+    \item Destination Options Header
+    \item Routing Header
+    \item Fragment Header
     \item Authentication Header
     \item Encapsulating Security Payload
-    \item Mobility
+    \item Mobility Header
     \end{enumerate}
   \item Se \rfc{2460}, \rfc{4302}, \rfc{4303} og \rfc{6275}
+  \end{itemize}
+\end{frame}
+
+\subsection{Hop-by-hop Options Header}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Hop-by-hop Options Header}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Next Header  |  Hdr Ext Len  |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +
+|                                                               |
+.                                                               .
+.                            Options                            .
+.                                                               .
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Destination Options Header}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Destination Options Header}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Next Header  |  Hdr Ext Len  |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +
+|                                                               |
+.                                                               .
+.                            Options                            .
+.                                                               .
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Routing Header}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Routing Header}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Next Header  |  Hdr Ext Len  |  Routing Type | Segments Left |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+.                                                               .
+.                       type-specific data                      .
+.                                                               .
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Fragment Header}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Fragment Header}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Next Header  |   Reserved    |      Fragment Offset    |Res|M|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                         Identification                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Autentication Header}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Authentication Header}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Next Header   |  Payload Len  |          RESERVED             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                 Security Parameters Index (SPI)               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Sequence Number Field                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
++                Integrity Check Value-ICV (variable)           |
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Encapsulating Security Payload}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Encapsulating Security Payload}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|               Security Parameters Index (SPI)                 |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      Sequence Number                          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Payload Data* (variable)                   |
+~                                                               ~
+|                                                               |
++               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|               |     Padding (0-255 bytes)                     |
++-+-+-+-+-+-+-+-+               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                               |  Pad Length   | Next Header   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|         Integrity Check Value-ICV   (variable)                |
+~                                                               ~
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
+  \end{itemize}
+\end{frame}
+
+\subsection{Mobility Header}
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Mobility Header}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Payload Proto |  Header Len   |   MH Type     |   Reserved    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               |
+|                                                               |
+.                                                               .
+.                       Message Data                            .
+.                                                               .
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+\end{Verbatim}
+
+  \pause
+  \begin{itemize}[<+->]
+  \item Bla, bla, bla
   \end{itemize}
 \end{frame}
 
