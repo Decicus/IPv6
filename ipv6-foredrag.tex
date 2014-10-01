@@ -16,6 +16,7 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{fancyvrb}
+\usepackage{bookmark}
 %\usepackage{epstopdf}
 %\epstopdfsetup{update}
 
@@ -107,6 +108,11 @@
 %\date{18.\ september 2013}
 
 \begin{document}
+
+% Jeg dytter like godt inn et bokmerke for forsida.
+\makeatletter
+\bookmark[page=\the\c@page,level=1]{IPv6-foredrag}
+\makeatother
 
 \begin{frame}
   \titlepage
@@ -238,6 +244,13 @@
 
 \part{Kort om IPv6}
 
+% Av en eller annen grunn klarer ikke beamer 2013/12/02 3.33 å dytte
+% den første delen inn blant bokmerkene i PDF-filene.  Kanskje kommer
+% det av at det er noen frames før den aller første \part-kommandoen.
+\makeatletter
+\bookmark[page=\the\c@page,level=1]{Kort om IPv6}
+\makeatother
+
 \begin{frame}
   \partpage
 \end{frame}
@@ -333,16 +346,16 @@
   \pause
   \begin{itemize}[<+->]
   \item Totalt antall IPv6-adresser:
-  \item $2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456$
-  \item Bare $1/8$ kan brukes til offentlige unicast-adresser:
+  \item \(2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456\)
+  \item Bare \(1/8\) kan brukes til offentlige unicast-adresser:
   \item
-    $2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432$
+    \(2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432\)
   \item Fortsatt er det mange flere IPv6-unicast-adresser enn det er
     IPv4-adresser:
   \item
-    $2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296$
-  \item Mindre enn \alert<9>{$3.702.258.688$} IPv4-adresser kan bli brukt som
-    offentlige IPv4-unicast-adresser
+    \(2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296\)
+  \item Mindre enn \alert<9>{\(3.702.258.688\)} IPv4-adresser kan bli
+    brukt som offentlige IPv4-unicast-adresser
   \item Se Tronds utregning fra juli 2012:
     \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
   \end{itemize}
@@ -430,8 +443,8 @@
       \begin{itemize}[<+->]
       \item
         \href{http://www.computerworld.com/s/article/9215055/Microsoft_offers_7.5M_for_666_624_IPv4_addresses}{Microsoft
-          $\to$ \$7,5 mill.\ $\to$ Nortel $\to$ 666.624 IPv4-adresser
-          $\to$ Microsoft}
+          \(\to\) \$7,5 mill.\ \(\to\) Nortel \(\to\) 666.624 IPv4-adresser
+          \(\to\) Microsoft}
       \end{itemize}
     \end{itemize}
   \end{itemize}
@@ -451,7 +464,7 @@
     \end{itemize}
   \item Før eller siden blir CGN for kostbart og komplisert å vedlikeholde
   \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
-  \item \alert<16>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
+  \item \alert<8>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
   \end{itemize}
 \end{frame}
 
@@ -515,7 +528,7 @@
     ULA-serien
     \href{http://www.sixxs.net/tools/whois/?fd5c:14cf:c300::/48}{\texttt{FD5C:14CF:C300::/48}}
     \begin{itemize}[<+->]
-    \item Brukes i interne FSI-VLAN som tidligere bare brukte \rfc{1918}-adresser
+    \item Brukes i FSI-VLAN for internt bruk
       \begin{itemize}[<+->]
       \item Fikk første HP-skriver med IPv6-støtte og ville bruke IPv6
       \item Noen år senere: IPv6-adresser på kantswitchene med
@@ -534,8 +547,9 @@
   \item Høsten 2010: Enda en IPv4-serie ble innført:
     \texttt{128.39.194.0/24}
     \begin{itemize}[<+->]
-    \item \texttt{128.39.194.0/24} brukes nå til datalab etter samme
-      mønster som for den gamle \texttt{128.39.172.0/24}
+    \item \texttt{128.39.194.0/24} brukes nå til datalab med samme
+      subnetting (inndeling) som den gamle
+      \texttt{128.39.172.0/24}-serien
     \item \texttt{128.39.172.0/\alert{23}} brukes nå for inntil 508
       IPv4-klienter på trådløst studentnett
     \end{itemize}
@@ -713,7 +727,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Hop-by-hop Options Header}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |  Hdr Ext Len  |                               |
@@ -736,7 +750,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Destination Options Header}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |  Hdr Ext Len  |                               |
@@ -759,7 +773,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Routing Header}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |  Hdr Ext Len  |  Routing Type | Segments Left |
@@ -782,7 +796,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Fragment Header}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |   Reserved    |      Fragment Offset    |Res|M|
@@ -801,7 +815,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Authentication Header}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -828,7 +842,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Encapsulating Security Payload}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -861,7 +875,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Mobility Header}
-  %\pause
+  \pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Payload Proto |  Header Len   |   MH Type     |   Reserved    |
@@ -902,10 +916,12 @@
   \item \rfc{2464} definerer frameformatet for IPv6-datagrammer over
     Ethernet
   \item IPv6-datagrammer fraktes i standard Ethernetformat, \rfc{894}
-  \item Først angis mottakerens MAC-48-adresse
-  \item Deretter angis avsenders MAC-48-adresse
-  \item Frametypen settes til \texttt{86DD} (heksadesimalt)
-  \item Deretter følger IPv6-header og resten av datagrammet
+    \begin{itemize}[<+->]
+    \item Først angis mottakerens MAC-48-adresse
+    \item Deretter angis avsenders MAC-48-adresse
+    \item Frametypen settes til \texttt{86DD} (heksadesimalt)
+    \item Deretter følger IPv6-header og resten av datagrammet
+    \end{itemize}
   \item Standard MTU for IPv6 over Ethernet er 1500 oktetter
   \item Minste tillatte MTU for IPv6 er 1280 oktetter
   \item Er største tilgjengelige MTU mindre enn 1280 oktetter, så må
@@ -950,7 +966,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 \begin{frame}%[allowframebreaks]
   \frametitle{IPv6 over andre lag-2-typer}
   \pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item FDDI: \rfc{2467}
   \item Token Ring: \rfc{2470}
   \item Non-Broadcast Multiple Access (NBMA) networks: \rfc{2491}
@@ -1234,8 +1250,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Gitt denne MAC-48-adressa: \texttt{00:21:70:73:68:6E}
     \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
       \begin{itemize}[<+->]
-      \item Før: \texttt{0\alert{0}} (heksadesimalt) $\to$ \texttt{000000\alert{0}0} (binært)
-      \item Etter: \texttt{000000\alert{1}0} (binært) $\to$ \texttt{0\alert{2}} (heksadesimalt)
+      \item Før: \texttt{0\alert{0}} (heksadesimalt) \(\to\) \texttt{000000\alert{0}0} (binært)
+      \item Etter: \texttt{000000\alert{1}0} (binært) \(\to\) \texttt{0\alert{2}} (heksadesimalt)
       \end{itemize}
     \item Sett inn \texttt{FF:FE} på midten: \texttt{02:21:70:\alert{FF:FE}:73:68:6E}
     \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
@@ -1256,8 +1272,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Det skulle egentlig ha vært \texttt{FF:FF} i stedet for
     \texttt{FF:FE}
     \begin{itemize}
-    \item MAC-48 $\to$ EUI-64 skal bruke \texttt{FF:FF}
-    \item EUI-48 $\to$ EUI-64 skal bruke \texttt{FF:FE}
+    \item MAC-48 \(\to\) EUI-64 skal bruke \texttt{FF:FF}
+    \item EUI-48 \(\to\) EUI-64 skal bruke \texttt{FF:FE}
     \end{itemize}
   \item Fordi IPv6 bruker universal/local-bitet med invertert
     betydning/verdi, så er arbeidsuhellet akseptert
@@ -1327,8 +1343,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     IPv6-adressa:
   \item \texttt{2001:700:1100:3:\alert{128:39:174:67}}\hfill(\texttt{excelsior.fig.ol.no})
   \item Man må bare passe på verdien til universal/local-bitet
-  \item \texttt{128} $=$ \texttt{0 1 2 8} $=$ \texttt{0000 00\alert{0}1 0010 1000}\hfill(heks, heks, bin)
-  \item \texttt{u}-bitet er $0$, altså en lokalgitt adresse
+  \item \texttt{128} \(=\) \texttt{0 1 2 8} \(=\) \texttt{0000 00\alert{0}1 0010 1000}\hfill(heks, heks, bin)
+  \item \texttt{u}-bitet er \(0\), altså en lokalgitt adresse
   \item Dette gikk bra!
   \end{itemize}
 \end{frame}
@@ -1340,16 +1356,16 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item Verdiene
     \begin{itemize}[<+->]
-    \item \texttt{00\alert{0}0} $=$ \texttt{0},
-    \item \texttt{00\alert{0}1} $=$ \texttt{1},
-    \item \texttt{01\alert{0}0} $=$ \texttt{4},
-    \item \texttt{01\alert{0}1} $=$ \texttt{5},
-    \item \texttt{10\alert{0}0} $=$ \texttt{8},
-    \item \texttt{10\alert{0}1} $=$ \texttt{9},
-    \item \texttt{11\alert{0}0} $=$ \texttt{C} og
-    \item \texttt{11\alert{0}1} $=$ \texttt{D},
+    \item \texttt{00\alert{0}0} \(=\) \texttt{0},
+    \item \texttt{00\alert{0}1} \(=\) \texttt{1},
+    \item \texttt{01\alert{0}0} \(=\) \texttt{4},
+    \item \texttt{01\alert{0}1} \(=\) \texttt{5},
+    \item \texttt{10\alert{0}0} \(=\) \texttt{8},
+    \item \texttt{10\alert{0}1} \(=\) \texttt{9},
+    \item \texttt{11\alert{0}0} \(=\) \texttt{C} og
+    \item \texttt{11\alert{0}1} \(=\) \texttt{D},
     \end{itemize}
-  \item gir alle $0$ i \texttt{u}-bitet
+  \item gir alle \(0\) i \texttt{u}-bitet
   \end{itemize}
 \end{frame}
 
@@ -1628,8 +1644,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Det er vanlig at kundene blir tildelt \texttt{/48}- eller
     \texttt{/56}-bits prefiks av ISP-ene:
     \begin{itemize}[<+->]
-    \item \texttt{/48}-bits prefiks gir $128-64-48=16$ subnetbit $\to$ $2^{16}=65536$ subnett
-    \item \texttt{/56}-bits prefiks gir $128-64-56=\phantom{1}8$ subnetbit $\to$ $2^{8\phantom{6}}=\phantom{65}256$ subnett
+    \item \texttt{/48}-bits prefiks gir \(128-64-48=16\) subnetbit \(\to\) \(2^{16}=65536\) subnett
+    \item \texttt{/56}-bits prefiks gir \(128-64-56=\phantom{1}8\) subnetbit \(\to\) \(2^{8\phantom{6}}=\phantom{65}256\) subnett
     \end{itemize}
   \item Eksempel: \texttt{2001:700:1100:1::1/128}
   \end{itemize}
@@ -1813,7 +1829,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \end{multicols}
 \end{frame}
 
-\begin{frame}[shrink=13]%[allowframebreaks]
+\newcommand{\multicastadresser}{
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
   %\pause
@@ -1839,7 +1855,23 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item \texttt{FF0\textit{x}::114}\quad Used for experiments
     \end{itemize}
   \end{itemize}
-\end{frame}
+}
+
+\ifratio{43}{% 4:3
+\begin{frame}[shrink=12.73]%[allowframebreaks]
+\multicastadresser%
+\end{frame}%
+}{%
+\ifratio{169}{% 16:9
+\begin{frame}[shrink=15.60]%[allowframebreaks]
+\multicastadresser%
+\end{frame}%
+}{% 16:10
+\begin{frame}%[allowframebreaks]
+\multicastadresser%
+\end{frame}%
+}%
+}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
@@ -1850,7 +1882,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \begin{itemize}[<+->]
     \item Eksempel:
       \begin{itemize}[<+->]
-      \item IPv6: \texttt{FF02::1} $=$
+      \item IPv6: \texttt{FF02::1} \(=\)
         \texttt{FF02::\alert<5->{0000}:\alert<5->{0001}}
       \item MAC-48:
         \texttt{33:33:\alert<5->{00}:\alert<5->{00}:\alert<5->{00}:\alert<5->{01}}
@@ -1904,7 +1936,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
 \end{frame}
 
 \section{\texttt{A6}}
-\begin{frame}[fragile]%[allowframebreaks]
+\begin{frame}%[allowframebreaks]
   \frametitle{DNS}
   \framesubtitle{\texttt{A6}}
   \pause
@@ -1916,21 +1948,41 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
     fordeler og ulemper med \texttt{AAAA} og \texttt{A6}
   \item En \texttt{A6}-post består av 2--3 ting:
     \begin{enumerate}[<+->]
-    \item Prefikslengde fra og med $0$ til og med $128$
+    \item Prefikslengde fra og med \(0\) til og med \(128\)
     \item Utdrag av IPv6-adressa
     \item Navn som henviser til resten av adressa
     \end{enumerate}
   \item Settes prefikslengda til:
     \begin{itemize}[<+->]
-    \item $0$, så er det \alert{ikke} lov å oppgi noen henvisning,
+    \item \(0\), så er det \alert{ikke} lov å oppgi noen henvisning,
       fordi dette navnet er det øverste eller det eneste nivået i en
       kjede
-    \item $128$, så er det \alert{ikke} lov å oppgi noen IPv6-adresse,
+    \item \(128\), så er det \alert{ikke} lov å oppgi noen IPv6-adresse,
       fordi man henviser til et helt annet navn, tydeligvis et
       overflødig alternativ til \texttt{CNAME}
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{DNS}
+  \framesubtitle{\texttt{A6}}
+  %\pause
+  \begin{itemize}[<+->]
   \item Avsnittene 3.1.1 og 3.1.3 i \rfc{2874} er ikke enige med seg
-    selv når prefikslengda settes til $128$
+    selv når prefikslengda settes til \(128\)
+    \begin{itemize}[<+->]
+    \item Avsnitt 3.1.1:\\
+      \textit{The address suffix component SHALL NOT be present if the prefix
+      length is 128.\/}
+    \item Avsnitt 3.1.3:\\
+      \textit{The IPv6 address MAY be be\textrm{[sic]} absent if the prefix length is
+      128.\/}
+    \end{itemize}
+  \item Med andre ord, avsnitt 3.1.1 forbyr IPv6-adresse når
+    prefikslengda er \(128\), mens avsnitt 3.1.3 sier at IPv6-adresse
+    \textit{kan\/} utelates i det samme tilfellet.
+  \item Er det noe rart at noen av oss kan bli forvirra?
   \end{itemize}
 \end{frame}
 
@@ -2536,7 +2588,7 @@ Internet Control Message Protocol v6
     \item Andre opplysninger er tilgjengelig med DHCPv6
     \item Dette er ingen «Home Agent»
     \item Routerens preferansenivå er «High»
-    \item Annonseringens levetid er 1800~s $=$ 30~min
+    \item Annonseringens levetid er 1800~s \(=\) 30~min
     \item Routerens lag-2-adresse
     \item Linkens MTU-verdi
     \end{itemize}
@@ -2567,7 +2619,7 @@ Internet Control Message Protocol v6
   \columnbreak
   %\pause
   \begin{itemize}[<+->]
-  \item Routeren opppgir følgende om \texttt{2001:700:1100:3::/64}
+  \item Routeren oppgir følgende om \texttt{2001:700:1100:3::/64}
     \begin{itemize}[<+->]
     \item Prefikset er direkte tilgjengelig
     \item Autokonfigurasjon er tillatt
@@ -2584,6 +2636,15 @@ Internet Control Message Protocol v6
   \framesubtitle{Neighbor Solititation}
   \pause
 \begin{Verbatim}[fontsize=\tiny]
+Internet Protocol Version 6, Src: 2001:700:1100:3:226:18ff:fef2:7240, Dst: ff02::1:ff52:67e2
+    0110 .... = Version: 6
+    .... 0000 0000 .... .... .... .... .... = Traffic class: 0x00000000
+    .... .... .... 0000 0000 0000 0000 0000 = Flowlabel: 0x00000000
+    Payload length: 32
+    Next header: ICMPv6 (58)
+    Hop limit: 255
+    Source: pc226-02-w7.fig.ol.no (2001:700:1100:3:226:18ff:fef2:7240)
+    Destination: ff02::1:ff52:67e2
 Internet Control Message Protocol v6
     Type: Neighbor Solicitation (135)
     Code: 0
@@ -2614,6 +2675,37 @@ Internet Control Message Protocol v6
   \framesubtitle{Neighbor Advertisement}
   \pause
 \begin{Verbatim}[fontsize=\tiny]
+Internet Protocol Version 6, Src: 2001:700:1100:3:20b:dbff:fe52:67e2, Dst: 2001:700:1100:3:226:18ff:fef2:7240
+    0110 .... = Version: 6
+    .... 0000 0000 .... .... .... .... .... = Traffic class: 0x00000000
+    .... .... .... 0000 0000 0000 0000 0000 = Flowlabel: 0x00000000
+    Payload length: 32
+    Next header: ICMPv6 (58)
+    Hop limit: 255
+    Source: monitor2.fig.ol.no (2001:700:1100:3:20b:dbff:fe52:67e2)
+    Destination: pc226-02-w7.fig.ol.no (2001:700:1100:3:226:18ff:fef2:7240)
+Internet Control Message Protocol v6
+    Type: Neighbor Advertisement (136)
+    Code: 0
+    Checksum: 0x157e [correct]
+    Flags: 0x60000000
+        0... .... .... .... .... .... .... .... = Router: Not set
+        .1.. .... .... .... .... .... .... .... = Solicited: Set
+        ..1. .... .... .... .... .... .... .... = Override: Set
+        ...0 0000 0000 0000 0000 0000 0000 0000 = Reserved: 0
+    Target Address: monitor2.fig.ol.no (2001:700:1100:3:20b:dbff:fe52:67e2)
+    ICMPv6 Option (Target link-layer address : 00:0b:db:52:67:e2)
+        Type: Target link-layer address (2)
+        Length: 1 (8 bytes)
+        Link-layer address: DellEsgP_52:67:e2 (00:0b:db:52:67:e2)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Neighbor Discovery}
+  \framesubtitle{Neighbor Advertisement}
+  %\pause
+\begin{Verbatim}[fontsize=\tiny]
 Internet Control Message Protocol v6
     Type: Neighbor Advertisement (136)
     Code: 0
@@ -2632,7 +2724,8 @@ Internet Control Message Protocol v6
   \pause
   \begin{itemize}[<+->]
   \item \texttt{2001:700:1100:3:20B:DBFF:FE52:67E2} sendte svar
-    tilbake til \texttt{2001:700:1100:3:226:18FF:FEF2:7240} med klar beskjed at
+    tilbake til \texttt{2001:700:1100:3:226:18FF:FEF2:7240} med klar
+    beskjed om at
     \begin{itemize}[<+->]
     \item Den er ikke en router
     \item Dette er et svar på en forespørsel og ikke en tilfeldig annonsering
@@ -3002,7 +3095,7 @@ Internet Control Message Protocol v6
   \item De 112 øvrige bitene kan settes fritt
   \item Eksempel:
     \begin{itemize}[<+->]
-    \item \texttt{FF12::DEAD:BEEF:CAFE:0:FACE:B00C:1}
+    \item \texttt{FF12:DEAD:BEEF:CAFE:0:FACE:B00C:1}
     \item En link-local, midlertidig multicast-adresse
     \end{itemize}
   \end{itemize}
@@ -3076,7 +3169,7 @@ Internet Control Message Protocol v6
     nettverksprefikset
   \item Feltet «RIID» settes til møtepunktets grensesnittidentifikator
     \begin{itemize}[<+->]
-    \item RIID kan ikke være $0$, for dette skaper konflikt med
+    \item RIID kan ikke være \(0\), for dette skaper konflikt med
       «Subnet-Router Anycast Address» fra \rfc{3513}
     \end{itemize}
   \item Feltet «plen» settes til prefikslengden til nettverksprefikset
@@ -3185,7 +3278,7 @@ Internet Control Message Protocol v6
   %\pause
   \begin{enumerate}[<+->]
   \item \alert{\texttt{interface Vlan48}}
-  \item \texttt{description Datarom 129}
+  \item \texttt{description Klasserom 100}
   \item \texttt{ip address 128.39.194.193 255.255.255.224}
   \item \texttt{ip access-group Vlan48IPv4UtTil out}
   \item \texttt{ip helper-address 128.39.174.42}
@@ -3312,7 +3405,7 @@ Internet Control Message Protocol v6
   \item \texttt{\textbf{remark} \textit{comment}}
   \item \texttt{exit}\\
     Husk:\\
-    \texttt{\textit{operator}} $\in$ \{\texttt{\textbf{gt}} |
+    \texttt{\textit{operator}} \(\in\) \{\texttt{\textbf{gt}} |
     \texttt{\textbf{lt}} | \texttt{\textbf{neq}} |
     \texttt{\textbf{eq}} | \texttt{\textbf{range}}\}\\
     \texttt{\textbf{reflect}} er bare gyldig for \texttt{\textbf{permit}}-regler
