@@ -282,6 +282,28 @@
   \end{itemize}
 \end{frame}
 
+\section{Antall adresser}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{Antall adresser}
+  \pause
+  \begin{itemize}[<+->]
+  \item Totalt antall IPv6-adresser:
+  \item \(2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456\)
+  \item Bare \(1/8\) kan brukes til offentlige unicast-adresser:
+  \item
+    \(2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432\)
+  \item Fortsatt er det mange flere IPv6-unicast-adresser enn det er
+    IPv4-adresser:
+  \item
+    \(2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296\)
+  \item Mindre enn \alert<9>{\(3.702.258.688\)} IPv4-adresser kan bli
+    brukt som offentlige IPv4-unicast-adresser
+  \item Se Tronds utregning fra juli 2012:
+    \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
+  \end{itemize}
+\end{frame}
+
 \section{Hvorfor trenger vi IPv6?}
 \begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
@@ -320,44 +342,47 @@
   \end{itemize}
 \end{frame}
 
-\section{Midlertidige tiltak}
+\section{Hvorfor brukes ikke IPv6?}
 \begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
-  \framesubtitle{Midlertidige tiltak}
+  \framesubtitle{Hvorfor brukes ikke IPv6?}
   \pause
   \begin{itemize}[<+->]
-  \item Midlertidige tiltak:
+  \item Markedskreftene bestemmer
+  \item «Vente-og-se»-holdning
+  \item Stikker hodet ned i sanda
+  \item Store selskaper:
     \begin{itemize}[<+->]
-    \item Network Address Translation,
-    \item Carrier-Grade NAT, og
-    \item Shared Address Space (\texttt{100.64.0.0/10})
+    \item Kjøper opp små selskaper og hamstrer IPv4-blokker
+    \item Kjøper IPv4-blokker på ettermarkedet/konkursbo:
+      \begin{itemize}[<+->]
+      \item
+        \href{http://www.computerworld.com/s/article/9215055/Microsoft_offers_7.5M_for_666_624_IPv4_addresses}{Microsoft
+          \(\to\) \$7,5 mill.\ \(\to\) Nortel \(\to\) 666.624 IPv4-adresser
+          \(\to\) Microsoft}
+      \end{itemize}
     \end{itemize}
-  \item Dette er bare støttebandasje med kort utløpstid
-  \item Glem det!
-  \item Ende-til-ende-konnektivitet oppnås best uten noen former for
-    adresseoversettelse
   \end{itemize}
 \end{frame}
 
-\section{Antall adresser}
 \begin{frame}%[allowframebreaks]
   \frametitle{Kort om IPv6}
-  \framesubtitle{Antall adresser}
-  \pause
+  \framesubtitle{Hvorfor brukes ikke IPv6?}
+  %\pause
   \begin{itemize}[<+->]
-  \item Totalt antall IPv6-adresser:
-  \item \(2^{128}=340.282.366.920.938.463.463.374.607.431.768.211.456\)
-  \item Bare \(1/8\) kan brukes til offentlige unicast-adresser:
-  \item
-    \(2^{125}=\phantom{0}42.535.295.865.117.307.932.921.825.928.971.026.432\)
-  \item Fortsatt er det mange flere IPv6-unicast-adresser enn det er
-    IPv4-adresser:
-  \item
-    \(2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296\)
-  \item Mindre enn \alert<9>{\(3.702.258.688\)} IPv4-adresser kan bli
-    brukt som offentlige IPv4-unicast-adresser
-  \item Se Tronds utregning fra juli 2012:
-    \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
+  \item Telebransjen satser fortsatt hardt på IPv4:
+    \begin{itemize}[<+->]
+    \item (Edge) NAT i CPE\hfill\prfc{1631}
+    \item Carrier-Grade NAT i stamnett\hfill\prfc{6264}
+    \item Shared Address Space etter behov i stamnett (\texttt{100.64.0.0/10})\hfill\prfc{6598}
+%    \item HTTP/S-tunnelering av rubb og stubb
+    \end{itemize}
+  \item Glem det!
+  \item Ende-til-ende-konnektivitet oppnås best uten noen former for
+    adresseoversettelse
+  \item Før eller siden blir CGN for kostbart og komplisert å vedlikeholde
+  \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
+  \item \alert<8>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
   \end{itemize}
 \end{frame}
 
@@ -424,47 +449,6 @@
       \end{itemize}
     \item Ble omgjort fra krav til anbefaling for IPv6 av \rfc{6434}
     \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\section{Hvorfor brukes ikke IPv6?}
-\begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Hvorfor brukes ikke IPv6?}
-  \pause
-  \begin{itemize}[<+->]
-  \item Markedskreftene bestemmer
-  \item «Vente-og-se»-holdning
-  \item Stikker hodet ned i sanda
-  \item Store selskaper:
-    \begin{itemize}[<+->]
-    \item Kjøper opp små selskaper og hamstrer IPv4-blokker
-    \item Kjøper IPv4-blokker på ettermarkedet/konkursbo:
-      \begin{itemize}[<+->]
-      \item
-        \href{http://www.computerworld.com/s/article/9215055/Microsoft_offers_7.5M_for_666_624_IPv4_addresses}{Microsoft
-          \(\to\) \$7,5 mill.\ \(\to\) Nortel \(\to\) 666.624 IPv4-adresser
-          \(\to\) Microsoft}
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
-  \framesubtitle{Hvorfor brukes ikke IPv6?}
-  %\pause
-  \begin{itemize}[<+->]
-  \item Telebransjen satser fortsatt hardt på IPv4:
-    \begin{itemize}[<+->]
-    \item (Edge) NAT i CPE\hfill\prfc{1631}
-    \item Carrier-Grade NAT i stamnett\hfill\prfc{6264}
-    \item Shared Address Space etter behov i stamnett\hfill\prfc{6598}
-%    \item HTTP/S-tunnelering av rubb og stubb
-    \end{itemize}
-  \item Før eller siden blir CGN for kostbart og komplisert å vedlikeholde
-  \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
-  \item \alert<8>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
   \end{itemize}
 \end{frame}
 
@@ -719,7 +703,8 @@
     \item Encapsulating Security Payload
     \item Mobility Header
     \end{enumerate}
-  \item Se \rfc{2460}, \rfc{4302}, \rfc{4303} og \rfc{6275}
+  \item Se \rfc{2460}, \rfc{4302}, \rfc{4303}, \rfc{6275} og
+    \rfc{7045}
   \end{itemize}
 \end{frame}
 
@@ -742,7 +727,29 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 0
+  \item Hop-by-hop Options Header må komme før andre Options Headere
+    og før payload
+  \item Alle ledd bør undersøke Hop-by-hop Options Header og dens innhold
+  \item Høyhastighetsroutere vil enten ignorere H-b-H eller la en
+    saktegående routingprosess ta seg av slike pakker
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Utvidelsesheadere}
+  \framesubtitle{Hop-by-hop Options Header}
+  %\pause
+  \begin{itemize}[<+->]
+  \item Valgene \texttt{Pad1} og \texttt{PadN} er definert i
+    \rfc{2460}
+  \item Andre valg: Jumbo Payload \prfc{2675}, RPL Option \prfc{6553},
+    Tunnel Encapsulation Limit \prfc{2473}, Router Alert \prfc{2711},
+    Quick-Start \prfc{4782}, CALIPSO \prfc{5570}, SMF\_DPD
+    \prfc{6621}, Home Address \prfc{6275}, ILNP nonce \prfc{6744},
+    Line-Identification Option \prfc{6788}, IP\_DFF \prfc{6971}
+  \item Ref.:
+    \texttt{\url{http://www.iana.org/assignments/ipv6-parameters/ipv6-parameters.xhtml}}
   \end{itemize}
 \end{frame}
 
@@ -765,7 +772,7 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 60
   \end{itemize}
 \end{frame}
 
@@ -788,7 +795,7 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 43
   \end{itemize}
 \end{frame}
 
@@ -807,11 +814,11 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 44
   \end{itemize}
 \end{frame}
 
-\subsection{Autentication Header}
+\subsection{Authentication Header}
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Authentication Header}
@@ -834,7 +841,7 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 51
   \end{itemize}
 \end{frame}
 
@@ -867,7 +874,7 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 50
   \end{itemize}
 \end{frame}
 
@@ -892,7 +899,7 @@
 
   \pause
   \begin{itemize}[<+->]
-  \item Bla, bla, bla
+  \item Protokollnummer: 135
   \end{itemize}
 \end{frame}
 
@@ -3243,7 +3250,7 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: IPv6-routing}
   %\pause
   \begin{enumerate}[<+->]
-  \item \alert{\texttt{interface GigabitEthernet0/50}}
+  \item \alert{\texttt{interface GigabitEthernet0/49}}
   \item \texttt{description Linknett mellom FiG og Uninett/HiG}
   \item \alert{\texttt{no switchport}}
   \item \texttt{ip address 128.39.70.170 255.255.255.252}
@@ -3264,7 +3271,7 @@ Internet Control Message Protocol v6
   %\pause
   \begin{enumerate}[<+->]
   \item Default route:\\
-    \alert{\texttt{ipv6 route ::/0 GigabitEthernet0/50 2001:700:0:8074::1}}
+    \alert{\texttt{ipv6 route ::/0 GigabitEthernet0/49 2001:700:0:8074::1}}
   \item Nullroute linknettet, og offisielle og private adresser:\\
     \alert{\texttt{ipv6 route 2001:700:0:8074::/64 Null0}}\\
     \alert{\texttt{ipv6 route 2001:700:1100::/48\ \ \ Null0}}\\
@@ -3524,13 +3531,27 @@ Internet Control Message Protocol v6
   \item Windows:
     \begin{itemize}[<+->]
     \item \texttt{netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
+    \item \texttt{netsh interface ipv6 set route ::/0\ "\textit{navn-på-grensesnitt}"\ \textit{routerens-IPv6-adresse}}
+    \item Eksempel:
     \item \texttt{netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1337}
+    \item \texttt{netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1}
     \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{OS-konfig}
+  %\pause
+  \begin{itemize}[<+->]
   \item *BSD:
     \begin{itemize}[<+->]
     \item \texttt{ifconfig \textit{navn-på-grensesnitt} inet6 \textit{IPv6-adresse} prefixlen \textit{prefikslengde}}
+    \item \texttt{route add -inet6 default \textit{routerens-IPv6-adresse}}
+    \item Eksempel:
     \item \texttt{ifconfig em0 inet6 2001:700:1100:8008::1337 prefixlen 64}
+    \item \texttt{route add -inet6 default 2001:700:1100:8008::1}
     \item Vanligvis lagres slike innstillingene permanent, for eksempel i \texttt{/etc/rc.conf}
     \end{itemize}
   \end{itemize}
