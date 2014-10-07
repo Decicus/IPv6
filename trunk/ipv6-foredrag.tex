@@ -1982,13 +1982,13 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
     \item Avsnitt 3.1.1:\\
       \textit{The address suffix component SHALL NOT be present if the prefix
       length is 128.\/}
-    \item Avsnitt 3.1.3:\\
-      \textit{The IPv6 address MAY be be\textrm{[sic]} absent if the prefix length is
-      128.\/}
+  \item Avsnitt 3.1.3:\\
+    \textit{The IPv6 address MAY be be\textnormal{[sic]} absent if the
+      prefix length is 128.\/}
     \end{itemize}
   \item Med andre ord, avsnitt 3.1.1 forbyr IPv6-adresse når
     prefikslengda er \(128\), mens avsnitt 3.1.3 sier at IPv6-adresse
-    \textit{kan\/} utelates i det samme tilfellet.
+    \textit{kan utelates\/} i det \textit{samme\/} tilfellet.
   \item Er det noe rart at noen av oss kan bli forvirra?
   \end{itemize}
 \end{frame}
@@ -3088,18 +3088,18 @@ Internet Control Message Protocol v6
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{T} er satt til \texttt{1}}
   \pause
-\begin{Verbatim}[fontsize=\tiny]
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |                  112 bits                   |
 +--------+----+----+---------------------------------------------+
-|11111111|0001|scop|                  group ID                   |
+|\Alert{4}{11111111}|\Alert{4}{0001}|\Alert{5}{scop}|                  \Alert{6}{group ID}                   |
 +--------+----+----+---------------------------------------------+
 \end{Verbatim}
   \pause
   \begin{itemize}[<+->]
   \item Adresseformatet er gitt av \rfc{4291}
-  \item De 12 mest signifikante bitene må beholdes som vist
-  \item Rekkevidden settes til ønsket, lovlig verdi
-  \item De 112 øvrige bitene kan settes fritt
+  \item \alert<4>{De 12 mest signifikante bitene} må beholdes som vist
+  \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi
+  \item \alert<6>{De 112 øvrige bitene} kan settes fritt
   \item Eksempel:
     \begin{itemize}[<+->]
     \item \texttt{FF12:DEAD:BEEF:CAFE:0:FACE:B00C:1}
@@ -3113,21 +3113,23 @@ Internet Control Message Protocol v6
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{PT} er satt til \texttt{11}}
   \pause
-\begin{Verbatim}[fontsize=\tiny]
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |   8    |    8   |       64       |    32    |
 +--------+----+----+--------+--------+----------------+----------+
-|11111111|0011|scop|reserved|  plen  | network prefix | group ID |
+|\Alert{4}{11111111}|\Alert{4}{0011}|\Alert{5}{scop}|reserved|  \Alert{6}{plen}  | \Alert{7}{network prefix} | group ID |
 +--------+----+----+--------+--------+----------------+----------+
 \end{Verbatim}
   \pause
   \begin{itemize}[<+->]
   \item Adresseformatet er gitt av \rfc{3306}
-  \item De 12 mest signifikante bitene må beholdes som vist
-  \item Rekkevidden settes til ønsket, lovlig verdi, og rekkevidden
-    skal ikke overskride \textit{utbredelsen\/} av det angitte
-    nettverksprefikset
-  \item Feltet «plen» settes til prefikslengden til nettverksprefikset
-  \item Nettverksprefikset er ditt eget unicast-prefiks
+  \item \alert<4>{De 12 mest signifikante bitene} må beholdes som vist
+  \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi, og
+    rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
+    angitte nettverksprefikset
+  \item Feltet \alert<6>{«plen»} settes til prefikslengden til
+    nettverksprefikset, \(0<\mathtt{plen}\le64\)
+  \item \alert<7>{Nettverksprefikset} er ditt eget unicast-prefiks,
+    paddet med null til det blir 64 bit langt
   \item «Group ID» settes i tråd med retningslinjene til \rfc{3307}
   \end{itemize}
 \end{frame}
@@ -3146,11 +3148,11 @@ Internet Control Message Protocol v6
   \begin{itemize}[<+->]
   \item Eksempel:
     \begin{itemize}[<+->]
-    \item \texttt{FF3E:0030:2001:700:1100:0:8000:1337}
+    \item \texttt{FF3E:0030:2001:700:1100:0:1337:1337}
     \item Den første adressa er begrenset til internett (global, 48-bit)
-    \item \texttt{FF38:0030:2001:700:1100:0:8000:1337}
+    \item \texttt{FF38:0030:2001:700:1100:0:1337:1337}
     \item Den andre adressa er begrenset til FSI (organizational-local, 48-bit)
-    \item \texttt{FF32:0040:2001:700:1100:3:8000:1337}
+    \item \texttt{FF32:0040:2001:700:1100:3:1337:1337}
     \item Den tredje adressa er begrenset til IT-avdelingen ved FSI (link-local, 64-bit)
     \end{itemize}
   \end{itemize}
@@ -3161,26 +3163,29 @@ Internet Control Message Protocol v6
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{RPT} er satt til \texttt{111}}
   \pause
-\begin{Verbatim}[fontsize=\tiny]
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|11111111|0111|scop|rsvd|RIID|plen| network prefix | group ID |
+|\Alert{4}{11111111}|\Alert{4}{0111}|\Alert{5}{scop}|rsvd|\Alert{6,7}{RIID}|\Alert{8}{plen}| \Alert{9}{network prefix} | group ID |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
   \pause
   \begin{itemize}[<+->]
   \item Adresseformatet er gitt av \rfc{3956}
-  \item De 12 mest signifikante bitene må beholdes som vist
-  \item Rekkevidden settes til ønsket, lovlig verdi, og rekkevidden
-    skal ikke overskride \textit{utbredelsen\/} av det angitte
-    nettverksprefikset
-  \item Feltet «RIID» settes til møtepunktets grensesnittidentifikator
+  \item \alert<4>{De 12 mest signifikante bitene} må beholdes som vist
+  \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi, og
+    rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
+    angitte nettverksprefikset
+  \item Feltet «RIID» settes til \alert<6>{møtepunktets
+      grensesnittidentifikator}
     \begin{itemize}[<+->]
-    \item RIID kan ikke være \(0\), for dette skaper konflikt med
-      «Subnet-Router Anycast Address» fra \rfc{3513}
+    \item \alert<7>{RIID} kan ikke være \(0\), for dette skaper
+      konflikt med «Subnet-Router Anycast Address» fra \rfc{3513}
     \end{itemize}
-  \item Feltet «plen» settes til prefikslengden til nettverksprefikset
-  \item Nettverksprefikset er ditt eget unicast-prefiks
+  \item Feltet «plen» settes til \alert<8>{prefikslengden til
+      nettverksprefikset}, \(0<\mathtt{plen}\le64\)
+  \item \alert<9>{Nettverksprefikset} er ditt eget unicast-prefiks,
+    paddet med null til det blir 64 bit langt
   \item «Group ID» settes i tråd med retningslinjene til \rfc{3307}
   \end{itemize}
 \end{frame}
@@ -3199,9 +3204,9 @@ Internet Control Message Protocol v6
   \begin{itemize}[<+->]
   \item Eksempler:
     \begin{itemize}[<+->]
-    \item \texttt{FF7\alert<3>{8}:0\alert<5>{1}\alert<4>{30}:\alert<4-5>{2001}:\alert<4-5>{700}:\alert<4-5>{1100}:\alert<4-5>{0}:8000:1337}
+    \item \texttt{FF7\alert<3>{8}:0\alert<5>{1}\alert<4>{30}:\alert<4-5>{2001}:\alert<4-5>{700}:\alert<4-5>{1100}:\alert<4-5>{0}:1337:1337}
       \begin{itemize}[<+->]
-      \item Denne adressa er begrenset til organization-local
+      \item Denne adressa er begrenset til \alert<3>{organization-local}
       \item Nettverksprefikset er \texttt{\alert<4>{2001:700:1100}::/\alert<4>{48}}
       \item Møtepunktets adresse er \alert<6>{\texttt{\alert<5>{2001:700:1100}::\alert<5>{1}}}
       \item Møtepunktets adresse må konfigureres på et
@@ -3276,6 +3281,8 @@ Internet Control Message Protocol v6
     \alert{\texttt{ipv6 route 2001:700:0:8074::/64 Null0}}\\
     \alert{\texttt{ipv6 route 2001:700:1100::/48\ \ \ Null0}}\\
     \alert{\texttt{ipv6 route FD5C:14CF:C300::/48\ \  Null0}}
+  \item Statisk routing av returtrafikk til VPN-klientene:\\
+    \alert{\texttt{ipv6 route FD5C:14CF:C300:A000::/52 Vlan29 2001:700:1100:F002::2}}
   \end{enumerate}
 \end{frame}
 
@@ -3514,8 +3521,14 @@ Internet Control Message Protocol v6
   \item IPv6 må installeres manuelt i Windows XP og Server 2003
     \begin{itemize}[<+->]
     \item DNS-oppslag sendes alltid over \alert{IPv4}
+    \item Noe av AD-trafikken sendes alltid over \alert{IPv4}
+    \item RDP-server i Server 2003 kan bare bruke \alert{IPv4}
     \end{itemize}
   \item IPv6 er påskrudd i Windows Vista, Server 2008 og nyere versjoner
+    \begin{itemize}[<+->]
+    \item DNS-oppslag kan nå sendes over IPv6
+    \item Nyere Windows kan fint fungere med bare IPv6
+    \end{itemize}
   \item Linux og *BSD har hatt IPv6-støtte i lang tid
   \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
     vanlige for skrivebordssystemer
@@ -3532,11 +3545,13 @@ Internet Control Message Protocol v6
     \begin{itemize}[<+->]
     \item \texttt{netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
     \item \texttt{netsh interface ipv6 set route ::/0\ "\textit{navn-på-grensesnitt}"\ \textit{routerens-IPv6-adresse}}
-    \item Eksempel:
+    \end{itemize}
+  \item Eksempel:
+    \begin{itemize}[<+->]
     \item \texttt{netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1337}
     \item \texttt{netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1}
-    \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
     \end{itemize}
+  \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
   \end{itemize}
 \end{frame}
 
@@ -3549,11 +3564,13 @@ Internet Control Message Protocol v6
     \begin{itemize}[<+->]
     \item \texttt{ifconfig \textit{navn-på-grensesnitt} inet6 \textit{IPv6-adresse} prefixlen \textit{prefikslengde}}
     \item \texttt{route add -inet6 default \textit{routerens-IPv6-adresse}}
-    \item Eksempel:
+    \end{itemize}
+  \item Eksempel:
+    \begin{itemize}[<+->]
     \item \texttt{ifconfig em0 inet6 2001:700:1100:8008::1337 prefixlen 64}
     \item \texttt{route add -inet6 default 2001:700:1100:8008::1}
-    \item Vanligvis lagres slike innstillingene permanent, for eksempel i \texttt{/etc/rc.conf}
     \end{itemize}
+  \item Vanligvis lagres slike innstillingene permanent, for eksempel i \texttt{/etc/rc.conf}
   \end{itemize}
 \end{frame}
 
