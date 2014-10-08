@@ -480,8 +480,8 @@
       satt opp som servernett og ansattnett, m.m.
     \item \texttt{128.39.172.0/24} ble delt opp i flere subnett og
       satt opp som nett for datalab
-    \item \texttt{128.39.173.0/24} ble satt opp for klienter på
-      trådløst studentnett
+    \item \texttt{128.39.173.0/24} ble satt opp for inntil 252
+      IPv4-klienter på trådløst studentnett
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -537,7 +537,7 @@
     \item \texttt{128.39.172.0/\alert{23}} brukes nå for inntil 508
       IPv4-klienter på trådløst studentnett
     \end{itemize}
-  \item Sommeren 2014: Tok i bruk nye linknett fordi
+  \item Våren 2014: Tok i bruk nye linknett fordi
     \texttt{fig-gsw.fig.ol.no} ble tilkoblet
     \texttt{gjovik-gw1.uninett.no}
     \begin{itemize}[<+->]
@@ -560,10 +560,6 @@
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
   \begin{itemize}[<+->]
-  \item \href{http://www.oppland.no/}{Oppland FK} (OFK) har ingen
-    planer om å innføre IPv6
-  \item \href{http://www.hordaland.no/}{Hordaland FK} har satt en
-    IPv6-adresse på webserveren deres, \texttt{2a02:20a0:0:3::81:130}
   \item I dag er de fleste brukere ved FSI kasta over til OFK-nettene
   \item Dette skjedde etter ombygginga i 2011--2012
   \item Andreklasse data er velsigna med å kunne velge mellom FSI- og
@@ -601,6 +597,25 @@
     \item Skrivere
     \item VPN-klienter
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{IPv6 andre steder i Norge}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Kort om IPv6}
+  \framesubtitle{IPv6 andre steder i Norge}
+  \pause
+  \begin{itemize}[<+->]
+  \item \href{http://www.oppland.no/}{Oppland FK} (OFK) har ingen
+    planer om å innføre IPv6
+  \item \href{http://www.hordaland.no/}{Hordaland FK} har satt en
+    IPv6-adresse på webserveren deres, \texttt{2a02:20a0:0:3::81:130}
+  \item \href{http://www.vaf.no/}{Vest-Agder FK} har også satt en
+    IPv6-adresse på webserveren deres, \texttt{2001:67c:28ac:1::2}
+  \item \href{http://vg.no/}{VG} tok i bruk IPv6 i 2010,
+    \texttt{2001:67c:21e0::16}
+  \item \href{http://www.amedia.no/}{Amedia AS'} (tidl.\ A-pressen) mange
+    (nett)aviser ble tilgjengelig med IPv6 samtidig med VG
   \end{itemize}
 \end{frame}
 
@@ -3102,8 +3117,8 @@ Internet Control Message Protocol v6
   \item \alert<6>{De 112 øvrige bitene} kan settes fritt
   \item Eksempel:
     \begin{itemize}[<+->]
-    \item \texttt{FF12:DEAD:BEEF:CAFE:0:FACE:B00C:1}
-    \item En link-local, midlertidig multicast-adresse
+    \item \texttt{FF\alert<9>{1}\alert<10>{2}:DEAD:BEEF:CAFE:0:FACE:B00C:1}
+    \item En \alert<9>{midlertidig}, \alert<10>{link-local} multicast-adresse
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -3116,7 +3131,7 @@ Internet Control Message Protocol v6
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |   8    |    8   |       64       |    32    |
 +--------+----+----+--------+--------+----------------+----------+
-|\Alert{4}{11111111}|\Alert{4}{0011}|\Alert{5}{scop}|reserved|  \Alert{6}{plen}  | \Alert{7}{network prefix} | group ID |
+|\Alert{4}{11111111}|\Alert{4}{0011}|\Alert{5}{scop}|reserved|  \Alert{6}{plen}  | \Alert{7}{network prefix} | \Alert{8}{group ID} |
 +--------+----+----+--------+--------+----------------+----------+
 \end{Verbatim}
   \pause
@@ -3126,11 +3141,11 @@ Internet Control Message Protocol v6
   \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi, og
     rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
     angitte nettverksprefikset
-  \item Feltet \alert<6>{«plen»} settes til prefikslengden til
-    nettverksprefikset, \(0<\mathtt{plen}\le64\)
-  \item \alert<7>{Nettverksprefikset} er ditt eget unicast-prefiks,
-    paddet med null til det blir 64 bit langt
-  \item «Group ID» settes i tråd med retningslinjene til \rfc{3307}
+  \item Feltet «plen» settes til \alert<6>{prefikslengden til
+      nettverksprefikset for subnettet ditt}, \(0<\mathtt{plen}\le64\)
+  \item \alert<7>{Nettverksprefikset} er unicast-prefikset for
+    subnettet ditt
+  \item \alert<8>{«Group ID»} settes i tråd med retningslinjene til \rfc{3307}
   \end{itemize}
 \end{frame}
 
@@ -3146,14 +3161,17 @@ Internet Control Message Protocol v6
 \end{Verbatim}
   %\pause
   \begin{itemize}[<+->]
-  \item Eksempel:
+  \item Eksempler:
     \begin{itemize}[<+->]
-    \item \texttt{FF3E:0030:2001:700:1100:0:1337:1337}
-    \item Den første adressa er begrenset til internett (global, 48-bit)
-    \item \texttt{FF38:0030:2001:700:1100:0:1337:1337}
-    \item Den andre adressa er begrenset til FSI (organizational-local, 48-bit)
-    \item \texttt{FF32:0040:2001:700:1100:3:1337:1337}
-    \item Den tredje adressa er begrenset til IT-avdelingen ved FSI (link-local, 64-bit)
+    \item \texttt{FF3\alert<3>{E}:0030:2001:700:1100:0:1337:1337}
+    \item Den første adressa er begrenset til internett (global,
+      48-bit)
+    \item \texttt{FF3\alert<5>{8}:0030:2001:700:1100:0:1337:1337}
+    \item Den andre adressa er begrenset til FSI, gitt at FSI er
+      utgangspunktet (organizational-local, 48-bit)
+    \item \texttt{FF3\alert<7>{2}:0040:2001:700:1100:3:1337:1337}
+    \item Den tredje adressa er begrenset til IT-avdelingen ved FSI,
+      gitt at IT-avdelingen er utgangspunktet (link-local, 64-bit)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -3166,7 +3184,7 @@ Internet Control Message Protocol v6
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|\Alert{4}{11111111}|\Alert{4}{0111}|\Alert{5}{scop}|rsvd|\Alert{6,7}{RIID}|\Alert{8}{plen}| \Alert{9}{network prefix} | group ID |
+|\Alert{4}{11111111}|\Alert{4}{0111}|\Alert{5}{scop}|rsvd|\Alert{6-7}{RIID}|\Alert{8}{plen}| \Alert{9}{network prefix} | \Alert{10}{group ID} |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
   \pause
@@ -3179,14 +3197,15 @@ Internet Control Message Protocol v6
   \item Feltet «RIID» settes til \alert<6>{møtepunktets
       grensesnittidentifikator}
     \begin{itemize}[<+->]
-    \item \alert<7>{RIID} kan ikke være \(0\), for dette skaper
+    \item Feltet \alert<7>{«RIID»} kan ikke være \(0\), for dette skaper
       konflikt med «Subnet-Router Anycast Address» fra \rfc{3513}
     \end{itemize}
   \item Feltet «plen» settes til \alert<8>{prefikslengden til
-      nettverksprefikset}, \(0<\mathtt{plen}\le64\)
-  \item \alert<9>{Nettverksprefikset} er ditt eget unicast-prefiks,
-    paddet med null til det blir 64 bit langt
-  \item «Group ID» settes i tråd med retningslinjene til \rfc{3307}
+      nettverksprefikset for subnettet ditt}, \(0<\mathtt{plen}\le64\)
+  \item \alert<9>{Nettverksprefikset} er unicast-prefikset for
+    subnettet ditt
+  \item \alert<10>{«Group ID»} settes i tråd med retningslinjene til
+    \rfc{3307}
   \end{itemize}
 \end{frame}
 
@@ -3202,9 +3221,9 @@ Internet Control Message Protocol v6
 \end{Verbatim}
   %pause
   \begin{itemize}[<+->]
-  \item Eksempler:
+  \item Eksempel:
     \begin{itemize}[<+->]
-    \item \texttt{FF7\alert<3>{8}:0\alert<5>{1}\alert<4>{30}:\alert<4-5>{2001}:\alert<4-5>{700}:\alert<4-5>{1100}:\alert<4-5>{0}:1337:1337}
+    \item \texttt{FF7\alert<3>{8}:0\alert<5>{1}\alert<4>{30}:\alert<4-5>{2001:700:1100:0}:1337:1337}
       \begin{itemize}[<+->]
       \item Denne adressa er begrenset til \alert<3>{organization-local}
       \item Nettverksprefikset er \texttt{\alert<4>{2001:700:1100}::/\alert<4>{48}}
