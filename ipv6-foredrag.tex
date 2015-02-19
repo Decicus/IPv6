@@ -160,7 +160,7 @@
     \texttt{\$${}$Ximalas${}$\$}
   \item Driverfila for denne PDF-fila bærer denne identifikasjonen:\\
     \svndriverfil
-  \item Copyright \copyright\ 2014 Trond Endrestøl
+  \item Copyright \copyright\ 2015 Trond Endrestøl
   \item Dette verket er lisensiert med:
     \href{http://creativecommons.org/}{Creative Commons},
     \href{http://creativecommons.org/licenses/by-sa/3.0/no/}{Navngivelse-DelPåSammeVilkår
@@ -335,9 +335,9 @@
     oppfører seg pent:
     \begin{itemize}
     \item \href{https://www.arin.net/}{ARIN} kan holde på til
-      \href{http://www.potaroo.net/tools/ipv4/}{mars 2015}
+      \href{http://www.potaroo.net/tools/ipv4/}{20.\ mai 2015}
     \item \href{http://www.afrinic.net/}{AFRINIC} kan holde på til
-      \href{http://www.potaroo.net/tools/ipv4/}{juni 2019}(!)
+      \href{http://www.potaroo.net/tools/ipv4/}{13.\ januar 2019}(!)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -360,7 +360,14 @@
         \href{http://www.computerworld.com/s/article/9215055/Microsoft_offers_7.5M_for_666_624_IPv4_addresses}{Microsoft
           \(\to\) \$7,5 mill.\ \(\to\) Nortel \(\to\) 666.624 IPv4-adresser
           \(\to\) Microsoft}
+      \item
+        \href{http://www.standard.difi.no/filearchive/samf-ok-analyse-ipv6-v0-8.pdf}{Altibox
+          \(\to\)
+          \$1,3 mill.\ \(\to\)
+          ? \(\to\) 130.000 IPv4-adresser \(\to\) Altibox}
       \end{itemize}
+    \item Stykkprisen for IPv4-adresser har gått ned fra
+      \$11,25/adresse til \$10/adresse
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -473,8 +480,8 @@
     \item \texttt{128.39.46.8/30} ble linknettet mellom HiG/Uninett og
       FSI
       \begin{itemize}[<+->]
-      \item \texttt{128.39.46.9\phantom{0}} brukes ved HiG
-      \item \texttt{128.39.46.10} brukes ved FSI
+      \item \texttt{128.39.46.9\phantom{0}} ble brukt ved HiG
+      \item \texttt{128.39.46.10} ble brukt ved FSI
       \end{itemize}
     \item \texttt{128.39.174.0/24} ble delt opp i flere subnett og
       satt opp som servernett og ansattnett, m.m.
@@ -495,8 +502,8 @@
     \texttt{2001:700:0:11D::/64} ble aktivert mellom HiG/Uninett og
     FSI
     \begin{itemize}[<+->]
-    \item \texttt{2001:700:0:11D::1} brukes ved HiG
-    \item \texttt{2001:700:0:11D::2} brukes ved FSI
+    \item \texttt{2001:700:0:11D::1} ble brukt ved HiG
+    \item \texttt{2001:700:0:11D::2} ble brukt ved FSI
     \end{itemize}
   \item Samme dag ble IPv6 innført for FSI-VLAN-ene 20, 30, 70 og 80:
     \begin{itemize}[<+->]
@@ -531,9 +538,9 @@
   \item Høsten 2010: Enda en IPv4-serie ble innført:
     \texttt{128.39.194.0/24}
     \begin{itemize}[<+->]
-    \item \texttt{128.39.194.0/24} brukes nå til datalab med samme
+    \item \texttt{128.39.194.0/24} brukes til datalab med samme
       subnetting (inndeling) som den gamle
-      \texttt{128.39.172.0/24}-serien
+      \texttt{128.39.172.0/24}-serien hadde i 2006
     \item \texttt{128.39.172.0/\alert{23}} brukes nå for inntil 508
       IPv4-klienter på trådløst studentnett
     \end{itemize}
@@ -560,8 +567,9 @@
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
   \begin{itemize}[<+->]
-  \item I dag er de fleste brukere ved FSI kasta over til OFK-nettene
-  \item Dette skjedde etter ombygginga i 2011--2012
+  \item I dag er de fleste brukere ved FSI kasta over i nettet til
+    Oppland fylkeskommune (OFK)
+  \item Dette skjedde etter ombygginga av skolen i 2011--2012
   \item Andreklasse data er velsigna med å kunne velge mellom FSI- og
     OFK-nettene
   \item Andreklasse data velger som regel det førstnevnte, vanligvis
@@ -577,9 +585,9 @@
   %\pause
   \begin{itemize}[<+->]
   \item Alle FSI-VLAN har både IPv4- og IPv6-adresser (dual-stack)
-  \item FSI-VLAN med offentlige IPv4-adresser bruker offentlige
+  \item FSI-VLAN med offentlige IPv4-adresser, bruker offentlige
     IPv6-adresser fra \texttt{2001:700:1100::/48}-serien
-  \item FSI-VLAN med private IPv4-adresser \prfc{1918} bruker private
+  \item FSI-VLAN med private IPv4-adresser \prfc{1918}, bruker private
     IPv6-adresser fra \texttt{FD5C:14CF:C300::/48}-serien
   \item Private adresser brukes for alt utstyr som ikke har behov for
     internettforbindelse:
@@ -589,9 +597,11 @@
       \item Med unntak for kjerneswitchen som er L3-router for
         nettverket ved FSI
       \end{itemize}
-    \item Basestasjoner og WLAN-kontroller
+    \item Gamle basestasjoner (AIR-LAP1231G-E-K9) og gammel
+      WLAN-kontroller (AIR-WLC4402-25-K9)
       \begin{itemize}[<+->]
-      \item Før omlegginga til OFK-nettene
+      \item Den nyeste WLAN-kontrolleren (AIR-CT5508-K9) og de nyere
+        basestasjonene (AIR-LAP1242AG-E-K9) er dytta inn i OFK-nettet
       \end{itemize}
     \item UPS-er
     \item Skrivere
@@ -606,13 +616,17 @@
   \framesubtitle{IPv6 andre steder i Norge}
   \pause
   \begin{itemize}[<+->]
-  \item \href{http://www.oppland.no/}{Oppland FK} (OFK) har ingen
+  \item Mesteparten av Uninett og deres kunder bruker IPv6
+  \item \href{http://www.oppland.no/}{Oppland FK} har ingen
     planer om å innføre IPv6
   \item \href{http://www.hordaland.no/}{Hordaland FK} har satt en
     IPv6-adresse på webserveren deres, \texttt{2a02:20a0:0:3::81:130}
   \item \href{http://www.vaf.no/}{Vest-Agder FK} har også satt en
     IPv6-adresse på webserveren deres, \texttt{2001:67c:28ac:1::2}
-  \item \href{http://vg.no/}{VG} tok i bruk IPv6 i 2010,
+  \item \href{http://www.nkom.no/}{Nasjonal kommunikasjonsmyndighet}
+    har satt en IPv6-adresse på webserveren deres,
+    \texttt{2a02:228:105:d000::10}
+  \item \href{http://vg.no/}{VG} tok IPv6 i bruk i 2010,
     \texttt{2001:67c:21e0::16}
   \item \href{http://www.amedia.no/}{Amedia AS'} (tidl.\ A-pressen) mange
     (nett)aviser ble tilgjengelig med IPv6 samtidig med VG
@@ -1043,7 +1057,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:0700:0000:0000:0000:0000:0000:0000\phantom{/32}}
   \item FSI:\\\texttt{2001:0700:1100:0000:0000:0000:0000:0000\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:0700:1100:0003:0000:0000:0000:0000\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:0700:1100:0003:0221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:0700:1100:0003:0221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1055,7 +1069,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{\alert{2001:0700}:0000:0000:0000:0000:0000:0000\phantom{/32}}
   \item FSI:\\\texttt{2001:0700:\alert{1100}:0000:0000:0000:0000:0000\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:0700:1100:\alert{0003}:0000:0000:0000:0000\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:0700:1100:0003:\alert{0221:70FF:FE73:686E}\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:0700:1100:0003:\alert{0221:70FF:FE73:686E}\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1067,7 +1081,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:0700:0000:0000:0000:0000:0000:0000\phantom{/32}}
   \item FSI:\\\texttt{2001:0700:1100:0000:0000:0000:0000:0000\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:0700:1100:0003:0000:0000:0000:0000\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:0700:1100:0003:0221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:0700:1100:0003:0221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1079,7 +1093,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:\alert{0}700:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0\phantom{/32}}
   \item FSI:\\\texttt{2001:\alert{0}700:1100:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:\alert{0}700:1100:\alert{000}3:\alert{000}0:\alert{000}0:\alert{000}0:\alert{000}0\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:\alert{0}700:1100:\alert{000}3:\alert{0}221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:\alert{0}700:1100:\alert{000}3:\alert{0}221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1091,7 +1105,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:\alert{700}:\alert{0}:\alert{0}:\alert{0}:\alert{0}:\alert{0}:\alert{0}\phantom{/32}}
   \item FSI:\\\texttt{2001:\alert{700}:1100:\alert{0}:\alert{0}:\alert{0}:\alert{0}:\alert{0}\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:\alert{700}:1100:\alert{3}:\alert{0}:\alert{0}:\alert{0}:\alert{0}\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:\alert{700}:1100:\alert{3}:\alert{221}:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:\alert{700}:1100:\alert{3}:\alert{221}:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1103,7 +1117,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:700:0:0:0:0:0:0\phantom{/32}}
   \item FSI:\\\texttt{2001:700:1100:0:0:0:0:0\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:0:0:0:0\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1115,7 +1129,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:700:\alert{0:0:0:0:0:0}\phantom{/32}}
   \item FSI:\\\texttt{2001:700:1100:\alert{0:0:0:0:0}\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:\alert{0:0:0:0}\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1127,7 +1141,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:700\alert{::}\phantom{/32}}
   \item FSI:\\\texttt{2001:700:1100\alert{::}\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:700:1100:3\alert{::}\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1139,7 +1153,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:700::\phantom{/32}}
   \item FSI:\\\texttt{2001:700:1100::\phantom{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:700:1100:3::\phantom{/64}}
-  \item Tronds D531:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\phantom{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1151,7 +1165,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:700::\alert{/32}}
   \item FSI:\\\texttt{2001:700:1100::\alert{/48}}
   \item IT-avdelingen@FSI:\\\texttt{2001:700:1100:3::\alert{/64}}
-  \item Tronds D531:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\alert{/128}}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E\alert{/128}}
   \end{itemize}
 \end{frame}
 
@@ -1163,7 +1177,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Uninett:\\\texttt{2001:700::/32}
   \item FSI:\\\texttt{2001:700:1100::/48}
   \item IT-avdelingen@FSI:\\\texttt{2001:700:1100:3::/64}
-  \item Tronds D531:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E/128}
+  \item Tronds D531 i IT-avdelingen@FSI:\\\texttt{2001:700:1100:3:221:70FF:FE73:686E/128}
   \end{itemize}
 \end{frame}
 
@@ -1272,8 +1286,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Gitt denne MAC-48-adressa: \texttt{00:21:70:73:68:6E}
     \item Invertér universal/local-bitet: \texttt{0\alert{2}:21:70:73:68:6E}
       \begin{itemize}[<+->]
-      \item Før: \texttt{0\alert{0}} (heksadesimalt) \(\to\) \texttt{000000\alert{0}0} (binært)
-      \item Etter: \texttt{000000\alert{1}0} (binært) \(\to\) \texttt{0\alert{2}} (heksadesimalt)
+      \item Før: \texttt{0\alert{0}} (heksadesimalt) \({}={}\) \texttt{000000\alert{0}0} (binært)
+      \item Etter: \texttt{000000\alert{1}0} (binært) \({}={}\) \texttt{0\alert{2}} (heksadesimalt)
       \end{itemize}
     \item Sett inn \texttt{FF:FE} på midten: \texttt{02:21:70:\alert{FF:FE}:73:68:6E}
     \item Ta bort overflødig kolon og nuller: \texttt{221:70FF:FE73:686E}
@@ -1297,6 +1311,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item MAC-48 \(\to\) EUI-64 skal bruke \texttt{FF:FF}
     \item EUI-48 \(\to\) EUI-64 skal bruke \texttt{FF:FE}
     \end{itemize}
+  \item Se \texttt{\url{http://standards.ieee.org/develop/regauth/tut/eui.pdf}}
   \item Fordi IPv6 bruker universal/local-bitet med invertert
     betydning/verdi, så er arbeidsuhellet akseptert
   \item Se \rfc{4291}
@@ -1321,7 +1336,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     til lave verdier
   \item For eksempel \texttt{::53} \hfill(DNS-tjener, kanskje)
   \item Samme eksempel, men med et vilkårlig prefiks:
-    \texttt{2001:db8:1234:1::\alert{53}}
+    \texttt{2001:db8:1234:8::\alert{53}}
   \end{itemize}
 \end{frame}
 
@@ -1459,14 +1474,14 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
       \begin{itemize}[<+->]
       \item Brukes av klienter som ennå ikke vet sin egen adresse
         (DHCPv6)
-      \end{itemize}
-    \item \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
-      \begin{itemize}[<+->]
-      \item Brukes for å angi default route
       \item Brukes av tjenester som godtar forespørsler fra alle
         grensesnitt (sjekk ut
         \href{http://www.freebsd.org/cgi/man.cgi?query=bind&apropos=0&sektion=2&manpath=FreeBSD+9.1-RELEASE&arch=default&format=html}{\texttt{bind}(2)}-systemkallet
         i «Juniks»)
+      \end{itemize}
+    \item \texttt{0:0:0:0:0:0:0:0/0} eller \texttt{::/0}
+      \begin{itemize}[<+->]
+      \item Brukes for å angi default route
       \end{itemize}
     \item Tilsvarer \texttt{0.0.0.0/32} og \texttt{0/32}, og \texttt{0.0.0.0/0} og \texttt{0/0} i IPv4
     \end{itemize}
@@ -1620,7 +1635,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Bruksområde:
     \begin{itemize}[<+->]
     \item Lokal kommunikasjon internt i VLAN-et
-    \item Sentral for autokonfigurasjon
+    \item Sentral for autokonfigurasjon (av unicastadresser)
     \item Blir ikke videresendt av routere til andre VLAN eller til internett
     \item Kan brukes i ad-hoc-nett
     \end{itemize}
@@ -1991,8 +2006,8 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   \framesubtitle{\texttt{A6}}
   %\pause
   \begin{itemize}[<+->]
-  \item Avsnittene 3.1.1 og 3.1.3 i \rfc{2874} er ikke enige med seg
-    selv når prefikslengda settes til \(128\)
+  \item Avsnittene 3.1.1 og 3.1.3 i \rfc{2874} er ikke enige med
+    hverandre når prefikslengda settes til \(128\)
     \begin{itemize}[<+->]
     \item Avsnitt 3.1.1:\\
       \textit{The address suffix component SHALL NOT be present if the prefix
@@ -2042,7 +2057,9 @@ svabu           IN A6 64       ::4 ext-servere.ip6
 \end{verbatim}
   \item Forklaring:
     \begin{itemize}%[<+->]
-    \item \texttt{svabu.fig.ol.no.} mangler de 64 mest signifikante bitene og henviser til \texttt{ext-servere.ip6.fig.ol.no.}
+    \item \texttt{svabu.fig.ol.no.} oppgir \texttt{::4}, mangler de 64
+      mest signifikante bitene og henviser til
+      \texttt{ext-servere.ip6.fig.ol.no.}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -2061,29 +2078,9 @@ ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
 \end{verbatim}
   \item Forklaring:
     \begin{itemize}%[<+->]
-    \item \texttt{ext-servere.ip6.fig.ol.no.} mangler de 48 mest signifikante bitene og henviser til \texttt{fig.ip6.uninett.no.}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]%[allowframebreaks]
-  \frametitle{DNS}
-  \framesubtitle{\texttt{A6}}
-  %\pause
-  \begin{itemize}%[<+->]
-  \item Et tenkt eksempel med \texttt{A6}:
-  \item 
-\begin{verbatim}
-$ORIGIN fig.ol.no.
-svabu           IN A6 64       ::4 ext-servere.ip6
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
-
-$ORIGIN ip6.uninett.no.
-fig     IN A6 32 0:0:1100:: uninett
-\end{verbatim}
-  \item Forklaring:
-    \begin{itemize}%[<+->]
-    \item \texttt{fig.ip6.uninett.no.} mangler de 32 mest signifikante bitene og henviser til \texttt{uninett.ip6.uninett.no.}
+    \item \texttt{ext-servere.ip6.fig.ol.no.} oppgir
+      \texttt{0:0:0:1::}, mangler de 48 mest signifikante bitene og
+      henviser til \texttt{fig.ip6.uninett.no.}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -2102,11 +2099,12 @@ ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
 
 $ORIGIN ip6.uninett.no.
 fig     IN A6 32 0:0:1100:: uninett
-uninett IN A6  0 2001:700::
 \end{verbatim}
   \item Forklaring:
     \begin{itemize}%[<+->]
-    \item Kjeden slutter med \texttt{uninett.ip6.uninett.no.} og her angis de 32 mest signifikante bitene
+    \item \texttt{fig.ip6.uninett.no.} oppgir \texttt{0:0:1100::},
+      mangler de 32 mest signifikante bitene og henviser til
+      \texttt{uninett.ip6.uninett.no.}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -2127,12 +2125,36 @@ $ORIGIN ip6.uninett.no.
 fig     IN A6 32 0:0:1100:: uninett
 uninett IN A6  0 2001:700::
 \end{verbatim}
-    \item Vi får bygd opp følgende adressekjede:
+  \item Forklaring:
+    \begin{itemize}%[<+->]
+    \item Kjeden slutter med \texttt{uninett.ip6.uninett.no.} og her
+      angis de 32 mest signifikante bitene, \texttt{2001:700::}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{DNS}
+  \framesubtitle{\texttt{A6}}
+  %\pause
+  \begin{itemize}%[<+->]
+  \item Et tenkt eksempel med \texttt{A6}:
+  \item 
+\begin{verbatim}
+$ORIGIN fig.ol.no.
+svabu           IN A6 64       ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+
+$ORIGIN ip6.uninett.no.
+fig     IN A6 32 0:0:1100:: uninett
+uninett IN A6  0 2001:700::
+\end{verbatim}
+    \item Vi har påvist følgende adressekjede:
       \begin{itemize}%[<+->]
-      \item \texttt{::4}\hfill\texttt{svabu.fig.ol.no.}
-      \item \texttt{0:0:0:1::}\hfill\texttt{ext-servere.ip6.fig.ol.no.}
-      \item \texttt{0:0:1100::}\hfill\texttt{fig.ip6.uninett.no.}
-      \item \texttt{2001:700::}\hfill\texttt{uninett.ip6.uninett.no.}
+      \item \texttt{0000:0000:0000:0000::4}\hfill\texttt{svabu.fig.ol.no.}
+      \item \texttt{0000:0000:0000:0001::}\hfill\texttt{ext-servere.ip6.fig.ol.no.}
+      \item \texttt{0000:0000:1100:0000::}\hfill\texttt{fig.ip6.uninett.no.}
+      \item \texttt{2001:0700:0000:0000::}\hfill\texttt{uninett.ip6.uninett.no.}
       \end{itemize}
     \item Bitvis-\texttt{OR} gir den fullstendige adressa \texttt{2001:700:1100:1::4}
   \end{itemize}
@@ -3032,11 +3054,13 @@ Internet Control Message Protocol v6
     \texttt{HKEY\_LOCAL\_MACHINE\Textbackslash SYSTEM\Textbackslash
       CurrentControlSet\Textbackslash services\Textbackslash
       TCPIP6\Textbackslash Parameters}
-  \item Type 3 er enklere og mer forutsigbart, og det beste valget for
-    statisk tildeling av IPv6-adresse med tanke på reinstallasjon av
-    OS
-  \item Jeg har ikke funnet noen annen måte å tvinge en bestemt
-    DUID-type i Windows, enn å sette \texttt{Dhcpv6DUID} manuelt eller
+  \item Denne verdien må slettes før man lager et image av oppsettet,
+    ellers vil alle maskinene identifisere seg som den samme klienten
+  \item Type 3 er enklere og mer forutsigbart, og er det beste valget
+    for statisk tildeling av IPv6-adresse via DHCPv6, spesielt med
+    tanke på reinstallasjon av OS
+  \item Jeg har ikke funnet noen måte å tvinge en bestemt DUID-type i
+    Windows, annet enn å sette \texttt{Dhcpv6DUID} manuelt eller
     gjennom skript, og naturlig nok restarte Windows etterpå
   \item \href{http://klub.com.pl/dhcpv6/}{Dibbler} og Unix-systemer er
     tradisjonelt langt snillere, og lar oss angi i konfigurasjonen de
@@ -3251,10 +3275,10 @@ Internet Control Message Protocol v6
 \end{frame}
 
 \section{Cisco IOS}
-\subsection{IPv6-routing}
+\subsection{IPv6-unicast-routing}
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   \pause
   \begin{enumerate}[<+->]
   \item \texttt{configure terminal}
@@ -3264,14 +3288,14 @@ Internet Control Message Protocol v6
   \item \texttt{configure terminal}
   \item \alert{\texttt{ip routing}}\hfill(Nødvendig for IP-routing i det hele tatt)
   \item \alert{\texttt{ipv6 unicast-routing}}
-  \item \texttt{no ipv6 source-route}
+  \item \texttt{no ipv6 source-route}\hfill(Er unødvendig i nyere IOS)
   \item \texttt{end}
   \end{enumerate}
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   %\pause
   \begin{enumerate}[<+->]
   \item \alert{\texttt{interface GigabitEthernet0/49}}
@@ -3291,7 +3315,7 @@ Internet Control Message Protocol v6
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   %\pause
   \begin{enumerate}[<+->]
   \item Default route:\\
@@ -3307,7 +3331,7 @@ Internet Control Message Protocol v6
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   %\pause
   \begin{enumerate}[<+->]
   \item \alert{\texttt{interface Vlan48}}
@@ -3322,6 +3346,22 @@ Internet Control Message Protocol v6
   \item \alert{\texttt{ipv6 nd router-preference High}}
   \item \alert{\texttt{ipv6 dhcp server offisiell}}
   \item \alert{\texttt{ipv6 traffic-filter Vlan48IPv6UtTil out}}
+  \end{enumerate}
+\end{frame}
+
+\subsection{IPv6-multicast-routing}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  %\pause
+  \begin{enumerate}[<+->]
+  \item Global konfigurasjon:\\
+    \alert{\texttt{ipv6 multicast-routing}}\\
+  \item Begrense utbredelse av intern multicasttrafikk\\
+    \alert{\texttt{interface GigabitEthernet0/49}}\\
+    \alert{\texttt{ipv6 multicast boundary scope 8}}\\
+    Bare trafikk med rekkevidde større enn 8 slipper ut på og inn fra
+    internett
   \end{enumerate}
 \end{frame}
 
