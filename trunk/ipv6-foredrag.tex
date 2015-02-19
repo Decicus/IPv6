@@ -594,11 +594,11 @@
     \begin{itemize}[<+->]
     \item Switcher
       \begin{itemize}[<+->]
-      \item Med unntak for kjerneswitchen som er L3-router for
+      \item Med unntak av kjerneswitchen som er L3-router for
         nettverket ved FSI
       \end{itemize}
-    \item Gamle basestasjoner (AIR-LAP1231G-E-K9) og gammel
-      WLAN-kontroller (AIR-WLC4402-25-K9)
+    \item Gammel WLAN-kontroller (AIR-WLC4402-25-K9) og gamle
+      basestasjoner (AIR-LAP1231G-E-K9)
       \begin{itemize}[<+->]
       \item Den nyeste WLAN-kontrolleren (AIR-CT5508-K9) og de nyere
         basestasjonene (AIR-LAP1242AG-E-K9) er dytta inn i OFK-nettet
@@ -1393,16 +1393,16 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \begin{itemize}[<+->]
   \item Verdiene
     \begin{itemize}[<+->]
-    \item \texttt{00\alert{0}0} \(=\) \texttt{0},
-    \item \texttt{00\alert{0}1} \(=\) \texttt{1},
-    \item \texttt{01\alert{0}0} \(=\) \texttt{4},
-    \item \texttt{01\alert{0}1} \(=\) \texttt{5},
-    \item \texttt{10\alert{0}0} \(=\) \texttt{8},
-    \item \texttt{10\alert{0}1} \(=\) \texttt{9},
-    \item \texttt{11\alert{0}0} \(=\) \texttt{C} og
-    \item \texttt{11\alert{0}1} \(=\) \texttt{D},
+    \item \texttt{0} \(=\) \texttt{00\alert{0}0},
+    \item \texttt{1} \(=\) \texttt{00\alert{0}1},
+    \item \texttt{4} \(=\) \texttt{01\alert{0}0},
+    \item \texttt{5} \(=\) \texttt{01\alert{0}1},
+    \item \texttt{8} \(=\) \texttt{10\alert{0}0},
+    \item \texttt{9} \(=\) \texttt{10\alert{0}1},
+    \item \texttt{C} \(=\) \texttt{11\alert{0}0} og
+    \item \texttt{D} \(=\) \texttt{11\alert{0}1},
     \end{itemize}
-  \item gir alle \(0\) i \texttt{u}-bitet
+    medfører \(0\) i \texttt{u}-bitet
   \end{itemize}
 \end{frame}
 
@@ -3187,13 +3187,13 @@ Internet Control Message Protocol v6
   \begin{itemize}[<+->]
   \item Eksempler:
     \begin{itemize}[<+->]
-    \item \texttt{FF3\alert<3>{E}:0030:2001:700:1100:0:1337:1337}
+    \item \texttt{FF3\alert<3>{E}:00\alert<3>{30}:2001:700:1100:0:1337:1337}
     \item Den første adressa er begrenset til internett (global,
       48-bit)
-    \item \texttt{FF3\alert<5>{8}:0030:2001:700:1100:0:1337:1337}
+    \item \texttt{FF3\alert<5>{8}:00\alert<5>{30}:2001:700:1100:0:1337:1337}
     \item Den andre adressa er begrenset til FSI, gitt at FSI er
       utgangspunktet (organizational-local, 48-bit)
-    \item \texttt{FF3\alert<7>{2}:0040:2001:700:1100:3:1337:1337}
+    \item \texttt{FF3\alert<7>{2}:00\alert<7>{40}:2001:700:1100:3:1337:1337}
     \item Den tredje adressa er begrenset til IT-avdelingen ved FSI,
       gitt at IT-avdelingen er utgangspunktet (link-local, 64-bit)
     \end{itemize}
