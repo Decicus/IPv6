@@ -3410,7 +3410,173 @@ Internet Control Message Protocol v6
     \alert{\texttt{ipv6 multicast boundary scope 8}}\\
     Bare trafikk med rekkevidde større enn 8 slipper ut på, og inn
     fra, internett
+  \item Kan du ikke bruke \texttt{ipv6 multicast boundary scope}, så
+    må du bruke ACL-er og sperre for uaktuelle rekkevidder og
+    \textit{alle\/} mulige kombinasjoner av flagg!
+  \item Derfor bør flagg og rekkevidde ha omvendt rekkefølge i
+    multicastadressene, men det toget har forlengst gått \dots
   \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  %\pause
+  \begin{multicols}{2}
+    \begin{itemize}%[<+->]
+    \item Alle flagg og rekkevidde lik 3
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+deny ipv6 any FF\alert{03}::/16
+deny ipv6 any FF\alert{13}::/16
+deny ipv6 any FF\alert{23}::/16
+deny ipv6 any FF\alert{33}::/16
+deny ipv6 any FF\alert{43}::/16
+deny ipv6 any FF\alert{53}::/16
+deny ipv6 any FF\alert{63}::/16
+deny ipv6 any FF\alert{73}::/16
+deny ipv6 any FF\alert{83}::/16
+deny ipv6 any FF\alert{93}::/16
+deny ipv6 any FF\alert{A3}::/16
+deny ipv6 any FF\alert{B3}::/16
+deny ipv6 any FF\alert{C3}::/16
+deny ipv6 any FF\alert{D3}::/16
+deny ipv6 any FF\alert{E3}::/16
+deny ipv6 any FF\alert{F3}::/16
+\end{Verbatim}
+    \item Alle flagg og rekkevidde lik 4
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+deny ipv6 any FF\alert{04}::/16
+deny ipv6 any FF\alert{14}::/16
+deny ipv6 any FF\alert{24}::/16
+deny ipv6 any FF\alert{34}::/16
+deny ipv6 any FF\alert{44}::/16
+deny ipv6 any FF\alert{54}::/16
+deny ipv6 any FF\alert{64}::/16
+deny ipv6 any FF\alert{74}::/16
+deny ipv6 any FF\alert{84}::/16
+deny ipv6 any FF\alert{94}::/16
+deny ipv6 any FF\alert{A4}::/16
+deny ipv6 any FF\alert{B4}::/16
+deny ipv6 any FF\alert{C4}::/16
+deny ipv6 any FF\alert{D4}::/16
+deny ipv6 any FF\alert{E4}::/16
+deny ipv6 any FF\alert{F4}::/16
+\end{Verbatim}
+    \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  %\pause
+  \begin{multicols}{2}
+    \begin{itemize}%[<+->]
+    \item Alle flagg og rekkevidde lik 5:
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+deny ipv6 any FF\alert{05}::/16
+deny ipv6 any FF\alert{15}::/16
+deny ipv6 any FF\alert{25}::/16
+deny ipv6 any FF\alert{35}::/16
+deny ipv6 any FF\alert{45}::/16
+deny ipv6 any FF\alert{55}::/16
+deny ipv6 any FF\alert{65}::/16
+deny ipv6 any FF\alert{75}::/16
+deny ipv6 any FF\alert{85}::/16
+deny ipv6 any FF\alert{95}::/16
+deny ipv6 any FF\alert{A5}::/16
+deny ipv6 any FF\alert{B5}::/16
+deny ipv6 any FF\alert{C5}::/16
+deny ipv6 any FF\alert{D5}::/16
+deny ipv6 any FF\alert{E5}::/16
+deny ipv6 any FF\alert{F5}::/16
+\end{Verbatim}
+    \item Alle flagg og rekkevidde lik 6:
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+deny ipv6 any FF\alert{06}::/16
+deny ipv6 any FF\alert{16}::/16
+deny ipv6 any FF\alert{26}::/16
+deny ipv6 any FF\alert{36}::/16
+deny ipv6 any FF\alert{46}::/16
+deny ipv6 any FF\alert{56}::/16
+deny ipv6 any FF\alert{66}::/16
+deny ipv6 any FF\alert{76}::/16
+deny ipv6 any FF\alert{86}::/16
+deny ipv6 any FF\alert{96}::/16
+deny ipv6 any FF\alert{A6}::/16
+deny ipv6 any FF\alert{B6}::/16
+deny ipv6 any FF\alert{C6}::/16
+deny ipv6 any FF\alert{D6}::/16
+deny ipv6 any FF\alert{E6}::/16
+deny ipv6 any FF\alert{F6}::/16
+\end{Verbatim}
+    \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  %\pause
+  \begin{multicols}{2}
+    \begin{itemize}%[<+->]
+    \item Alle flagg og rekkevidde lik 7:
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+deny ipv6 any FF\alert{07}::/16
+deny ipv6 any FF\alert{17}::/16
+deny ipv6 any FF\alert{27}::/16
+deny ipv6 any FF\alert{37}::/16
+deny ipv6 any FF\alert{47}::/16
+deny ipv6 any FF\alert{57}::/16
+deny ipv6 any FF\alert{67}::/16
+deny ipv6 any FF\alert{77}::/16
+deny ipv6 any FF\alert{87}::/16
+deny ipv6 any FF\alert{97}::/16
+deny ipv6 any FF\alert{A7}::/16
+deny ipv6 any FF\alert{B7}::/16
+deny ipv6 any FF\alert{C7}::/16
+deny ipv6 any FF\alert{D7}::/16
+deny ipv6 any FF\alert{E7}::/16
+deny ipv6 any FF\alert{F7}::/16
+\end{Verbatim}
+    \item Alle flagg og rekkevidde lik 8:
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\scriptsize]
+deny ipv6 any FF\alert{08}::/16
+deny ipv6 any FF\alert{18}::/16
+deny ipv6 any FF\alert{28}::/16
+deny ipv6 any FF\alert{38}::/16
+deny ipv6 any FF\alert{48}::/16
+deny ipv6 any FF\alert{58}::/16
+deny ipv6 any FF\alert{68}::/16
+deny ipv6 any FF\alert{78}::/16
+deny ipv6 any FF\alert{88}::/16
+deny ipv6 any FF\alert{98}::/16
+deny ipv6 any FF\alert{A8}::/16
+deny ipv6 any FF\alert{B8}::/16
+deny ipv6 any FF\alert{C8}::/16
+deny ipv6 any FF\alert{D8}::/16
+deny ipv6 any FF\alert{E8}::/16
+deny ipv6 any FF\alert{F8}::/16
+\end{Verbatim}
+    \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  %\pause
+  \begin{itemize}%[<+->]
+    \item Hadde bare flagg og rekkevidde byttet plass i spesifikasjonen:
+\begin{Verbatim}[commandchars=\\\{\}]
+deny ipv6 any FF\alert{30}::/\alert{12}
+deny ipv6 any FF\alert{40}::/\alert{12}
+deny ipv6 any FF\alert{50}::/\alert{12}
+deny ipv6 any FF\alert{60}::/\alert{12}
+deny ipv6 any FF\alert{70}::/\alert{12}
+deny ipv6 any FF\alert{80}::/\alert{12}
+\end{Verbatim}
+  \end{itemize}
 \end{frame}
 
 \subsection{ACL-er}
@@ -3661,10 +3827,10 @@ Internet Control Message Protocol v6
   \item Eldre IOS må bruke port-ACL-er for å oppnå det samme:
     \begin{itemize}[<+->]
     \item \texttt{ipv6 access-list sperre-fremmed-RA}
-      \begin{itemize}[<+->]
+      \begin{enumerate}[<+->]
       \item \texttt{deny\ \ \ icmp any any router-advertisement}
       \item \texttt{permit    ipv6 any any}
-      \end{itemize}
+      \end{enumerate}
     \item \texttt{interface range GigabitEthernet0/1 - 48}
       \begin{itemize}[<+->]
       \item \texttt{ipv6 traffic-filter sperre-fremmed-RA in}
@@ -3683,13 +3849,35 @@ Internet Control Message Protocol v6
     er å bruke port-ACL-er:
     \begin{itemize}[<+->]
     \item \texttt{ipv6 access-list sperre-falske-dhcpv6-servere}
-      \begin{itemize}[<+->]
+      \begin{enumerate}[<+->]
       \item \texttt{deny\ \ \ udp\ \ any eq 547           any}
       \item \texttt{permit    ipv6   any \phantom{eq 547} any}
-      \end{itemize}
+      \end{enumerate}
     \item \texttt{interface range GigabitEthernet0/1 - 48}
       \begin{itemize}[<+->]
       \item \texttt{ipv6 traffic-filter sperre-falske-dhcpv6-servere in}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Kombinert ACL for kantporter}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: Kombinert ACL for kantporter}
+  \pause
+  \begin{itemize}[<+->]
+  \item Kombinert ACL for kantporter
+    \begin{itemize}[<+->]
+    \item \texttt{ipv6 access-list kantporter}
+      \begin{enumerate}[<+->]
+      \item \texttt{deny\ \ \ icmp   any \phantom{eq 547} any router-advertisement}
+      \item \texttt{deny\ \ \ udp\ \ any eq 547           any}
+      \item \texttt{permit    ipv6   any \phantom{eq 547} any}
+      \end{enumerate}
+    \item \texttt{interface range GigabitEthernet0/1 - 48}
+      \begin{itemize}[<+->]
+      \item \texttt{ipv6 traffic-filter kantporter in}
       \end{itemize}
     \end{itemize}
   \end{itemize}
