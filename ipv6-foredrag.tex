@@ -560,6 +560,8 @@
       \item \texttt{2001:700:0:8074::2} brukes ved FSI
       \end{itemize}
     \end{itemize}
+  \item Vinteren 2015: La om datalabseriene, siden antallet av datalab
+    er skikkelig knøttete
   \end{itemize}
 \end{frame}
 
@@ -574,8 +576,8 @@
   \item Andreklasse data er velsigna med å kunne velge mellom FSI- og
     OFK-nettene
   \item Andreklasse data velger som regel det førstnevnte, vanligvis
-    FSI-VLAN 48 som tilbyr \texttt{128.39.194.192/27} og
-    \texttt{2001:700:1100:8008::/64}
+    FSI-VLAN 40 som tilbyr \texttt{128.39.194.0/26} og
+    \texttt{2001:700:1100:8001::/64}
   \item Førsteklasse data ønsker det samme tilbudet; så vi får se \dots
   \end{itemize}
 \end{frame}
@@ -2888,8 +2890,8 @@ Internet Control Message Protocol v6
     \rfc{6644} og \rfc{7083}
   \item Kommunikasjonen foregår først med multicast og UDP, og kan
     senere bytte til unicast og UDP
-  \item Klientene bruker port 546 og serverne/relay-agentene bruker
-    port 547
+  \item Klientene bruker port 546, mens serverne og relay-agentene
+    bruker port 547
   \item Klientene bruker sin egen link-local-adresse som avsender og
     multicast-adressa \texttt{FF02::1:2} som mottaker
   \item Relay-agentene videresender til multicast-adressa
@@ -3382,18 +3384,20 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   %\pause
   \begin{enumerate}[<+->]
-  \item \alert{\texttt{interface Vlan48}}
+  \item \alert{\texttt{interface Vlan40}}
   \item \texttt{description Klasserom 100}
-  \item \texttt{ip address 128.39.194.193 255.255.255.224}
-  \item \texttt{ip access-group Vlan48IPv4UtTil out}
+  \item \texttt{ip address 128.39.194.1 255.255.255.192}
+  \item \texttt{ip access-group Vlan40IPv4InnFra in}
+  \item \texttt{ip access-group Vlan40IPv4UtTil out}
   \item \texttt{ip helper-address 128.39.174.42}
   \item \texttt{ip pim sparse-dense-mode}
   \item \texttt{ip igmp version 3}
-  \item \alert{\texttt{ipv6 address 2001:700:1100:8008::1/64}}
+  \item \alert{\texttt{ipv6 address 2001:700:1100:8001::1/64}}
   \item \alert{\texttt{ipv6 nd other-config-flag}}
   \item \alert{\texttt{ipv6 nd router-preference High}}
   \item \alert{\texttt{ipv6 dhcp server offisiell}}
-  \item \alert{\texttt{ipv6 traffic-filter Vlan48IPv6UtTil out}}
+  \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6Infra in}}
+  \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6UtTil out}}
   \end{enumerate}
 \end{frame}
 
@@ -3412,8 +3416,9 @@ Internet Control Message Protocol v6
     fra, internett
   \item Kan du ikke bruke \texttt{ipv6 multicast boundary scope}, så
     må du bruke ACL-er og sperre for uaktuelle rekkevidder og
-    \textit{alle\/} mulige kombinasjoner av flagg!
-  \item Derfor bør flagg og rekkevidde ha omvendt rekkefølge i
+    \textit{alle\/} mulige kombinasjoner av flagg! (Bare for å være
+    føre var.)
+  \item Derfor burde flagg og rekkevidde ha omvendt rekkefølge i
     multicastadressene, men det toget har forlengst gått \dots
   \end{enumerate}
 \end{frame}
@@ -3576,6 +3581,10 @@ deny ipv6 any FF\alert{60}::/\alert{12}
 deny ipv6 any FF\alert{70}::/\alert{12}
 deny ipv6 any FF\alert{80}::/\alert{12}
 \end{Verbatim}
+    \item Dette ville bare gitt 6 regler i ACL-ene
+    \item Det er en sterk kontrast til de 96 reglene som vi må bruke i
+      ACL-ene når vi ikke kan bruke \texttt{ipv6 multicast boundary
+        scope 8}
   \end{itemize}
 \end{frame}
 
@@ -3753,7 +3762,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \item \texttt{sntp address 2001:700:1100:1::4}
     \item \texttt{information refresh 0 2}
     \end{itemize}
-  \item \texttt{interface Vlan48}
+  \item \texttt{interface Vlan40}
     \begin{itemize}[<+->]
     \item \texttt{ipv6 dhcp server offisiell}
     \end{itemize}
@@ -3922,8 +3931,8 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \end{itemize}
   \item Eksempel:
     \begin{itemize}[<+->]
-    \item \texttt{netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1337}
-    \item \texttt{netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8008::1}
+    \item \texttt{netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1337}
+    \item \texttt{netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1}
     \end{itemize}
   \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
   \end{itemize}
@@ -3941,13 +3950,13 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \end{itemize}
   \item Eksempel:
     \begin{itemize}[<+->]
-    \item \texttt{ifconfig em0 inet6 2001:700:1100:8008::1337 prefixlen 64}
-    \item \texttt{route add -inet6 default 2001:700:1100:8008::1}
+    \item \texttt{ifconfig em0 inet6 2001:700:1100:8001::1337 prefixlen 64}
+    \item \texttt{route add -inet6 default 2001:700:1100:8001::1}
     \end{itemize}
   \item Vanligvis lagres slike innstillinger permanent, for eksempel i \texttt{/etc/rc.conf}
     \begin{itemize}[<+->]
-    \item \texttt{ifconfig\_em0\_ipv6="inet6 2001:700:1100:8008::1337 prefixlen 64"}
-    \item \texttt{ipv6\_defaultrouter="2001:700:1100:8008::1"}
+    \item \texttt{ifconfig\_em0\_ipv6="inet6 2001:700:1100:8001::1337 prefixlen 64"}
+    \item \texttt{ipv6\_defaultrouter="2001:700:1100:8001::1"}
     \end{itemize}
   \end{itemize}
 \end{frame}
