@@ -2030,10 +2030,11 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
   \pause
   \begin{itemize}[<+->]
   \item \texttt{A6}-poster var foreslått som erstatning for
-    \texttt{AAAA}-poster av \rfc{2874}, men er endret til
-    eksperimentell av \rfc{3363}
-  \item \rfc{3364} diskuterer
-    fordeler og ulemper med \texttt{AAAA} og \texttt{A6}
+    \texttt{AAAA}-poster av \rfc{2874}, men ble endret til
+    eksperimentell av \rfc{3363}, og senere til historisk av
+    \rfc{6563}
+  \item \rfc{3364} diskuterer fordeler og ulemper med \texttt{AAAA} og
+    \texttt{A6}
   \item En \texttt{A6}-post består av 2--3 ting:
     \begin{enumerate}[<+->]
     \item Prefikslengde fra og med \(0\) til og med \(128\)
@@ -2072,7 +2073,7 @@ $ORIGIN 1.0.0.0.0.0.1.1.0.0.7.0.1.0.0.2.ip6.arpa.
     \textit{kan utelates\/} i det \textit{samme\/} tilfellet
   \item Er det noe rart at noen av oss kan bli forvirra?
   \item Vil du leke med \texttt{A6} i et lukket miljø, så sjekk ut
-    BIND~9.2.x
+    ISC BIND~9.2.x
   \end{itemize}
 \end{frame}
 
@@ -2089,8 +2090,8 @@ uninett IN A6  0 2001:700::
 fig     IN A6 32 0:0:1100:: uninett
 
 $ORIGIN fig.ol.no.
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
-svabu           IN A6 64       ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1::  fig.ip6.uninett.no.
+svabu           IN A6 64        ::4 ext-servere.ip6
 \end{verbatim}
   \item Vi vil vite IPv6-adressa for \texttt{svabu.fig.ol.no.} og vi
     vil bruke \texttt{A6}-poster for å finne svaret
@@ -2126,8 +2127,8 @@ svabu           IN A6 64       ::4 ext-servere.ip6
   \item 
 \begin{verbatim}
 $ORIGIN fig.ol.no.
-svabu           IN A6 64       ::4 ext-servere.ip6
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+svabu           IN A6 64        ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1::  fig.ip6.uninett.no.
 \end{verbatim}
   \item Forklaring:
     \begin{itemize}%[<+->]
@@ -2147,8 +2148,8 @@ ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
   \item 
 \begin{verbatim}
 $ORIGIN fig.ol.no.
-svabu           IN A6 64       ::4 ext-servere.ip6
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+svabu           IN A6 64        ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1::  fig.ip6.uninett.no.
 
 $ORIGIN ip6.uninett.no.
 fig     IN A6 32 0:0:1100:: uninett
@@ -2195,8 +2196,8 @@ uninett IN A6  0 2001:700::
   \item 
 \begin{verbatim}
 $ORIGIN fig.ol.no.
-svabu           IN A6 64       ::4 ext-servere.ip6
-ext-servere.ip6 IN A6 48 0:0:0:1:: fig.ip6.uninett.no.
+svabu           IN A6 64        ::4 ext-servere.ip6
+ext-servere.ip6 IN A6 48 0:0:0:1::  fig.ip6.uninett.no.
 
 $ORIGIN ip6.uninett.no.
 fig     IN A6 32 0:0:1100:: uninett
