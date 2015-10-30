@@ -94,13 +94,13 @@
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1145,989 1150,999 1155,989 "/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="360" y="140" width="370.4" height="86"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="360" y="140" width="370.4" height="86"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="369" y="163.8">
-      <tspan x="369" y="163.8">1. CPE starter opp WAN-grensesnittet</tspan>
-      <tspan x="369" y="179.8">2. CPE genererer linklokal adresse for WAN-grensesnittet</tspan>
-      <tspan x="369" y="195.8">3. CPE bekrefter at linklocal adresse er unik ved hjelp av DAD</tspan>
-      <tspan x="369" y="211.8">4. CPE sender DHCPv6-forespørsel på WAN-grensesnittet</tspan>
+    <rect style="fill: #ffffff" x="359.75" y="140" width="370.9" height="86"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="359.75" y="140" width="370.9" height="86"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="368.75" y="163.8">
+      <tspan x="368.75" y="163.8">1. CPE starter opp WAN-grensesnittet</tspan>
+      <tspan x="368.75" y="179.8">2. CPE genererer linklokal adresse for WAN-grensesnittet</tspan>
+      <tspan x="368.75" y="195.8">3. CPE bekrefter at linklokal adresse er unik ved hjelp av DAD</tspan>
+      <tspan x="368.75" y="211.8">4. CPE sender DHCPv6-forespørsel på WAN-grensesnittet</tspan>
     </text>
   </g>
   <g>
