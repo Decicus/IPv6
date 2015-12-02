@@ -338,8 +338,10 @@
         2015}
     \end{itemize}
   \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
-    pent, så kan AFRINIC holde på til
-    \href{http://www.potaroo.net/tools/ipv4/}{9.\ januar 2019}
+    pent, så kan
+    \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{1.\ januar
+      2019}
   \end{itemize}
 \end{frame}
 
@@ -595,8 +597,9 @@
       \item \texttt{2001:700:0:8074::2} brukes ved FSI
       \end{itemize}
     \end{itemize}
-  \item Vinteren 2015: La om datalabseriene, siden antallet av datalab
+  \item Vinterferien 2015: La om datalabseriene, siden antallet av datalab
     er skikkelig knøttete
+  \item Desember 2015: Ny kjerneswitch: Cisco Catalyst 4500E med Supervisor 8-E
   \end{itemize}
 \end{frame}
 
@@ -668,7 +671,7 @@
     \texttt{2001:67c:21e0::16}
   \item \href{http://www.amedia.no/}{Amedia AS'} (tidl.\ A-pressen) mange
     (nett)aviser ble tilgjengelig med IPv6 samtidig med VG
-  \item \href{http://www.digi.no/}{digi.no} tok i bruk IPv6
+  \item \href{http://www.digi.no/}{digi.no} tok i bruk IPv6,
     \href{https://twitter.com/digi_no/status/567348983237206016}{26.~februar
       2015}
   \end{itemize}
@@ -3423,16 +3426,14 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   %\pause
   \begin{enumerate}[<+->]
-  \item \alert{\texttt{interface GigabitEthernet0/49}}
+  \item \alert{\texttt{interface TenGigabitEthernet1/2}}
   \item \texttt{description Linknett mellom FiG og Uninett/HiG}
   \item \alert{\texttt{no switchport}}
-  \item \texttt{ip address 128.39.70.170 255.255.255.252}
-  \item \texttt{ip access-group InetIPv4Inn in}
-  \item \texttt{ip access-group InetIPv4Ut out}
-  \item \texttt{ip pim sparse-mode}
-  \item \texttt{ip igmp version 3}
   \item \alert{\texttt{ipv6 address 2001:700:0:8074::2/64}}
   \item \alert{\texttt{ipv6 nd ra suppress}}
+  \item \alert{\texttt{no ipv6 redirects}}
+  \item \alert{\texttt{no ipv6 unreachables}}
+  \item \alert{\texttt{ipv6 multicast boundary scope 8}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Inn in}}
   \item \alert{\texttt{ipv6 traffic-filter InetIPv6Ut out}}
   \end{enumerate}
@@ -3444,7 +3445,7 @@ Internet Control Message Protocol v6
   %\pause
   \begin{enumerate}[<+->]
   \item Default route:\\
-    \alert{\texttt{ipv6 route ::/0 GigabitEthernet0/49 2001:700:0:8074::1}}
+    \alert{\texttt{ipv6 route ::/0 TenGigabitEthernet1/2 2001:700:0:8074::1 name FiG-Uninett}}
   \item Nullroute linknettet, og offisielle og private adresser:\\
     \alert{\texttt{ipv6 route 2001:700:0:8074::/64 Null0}}\\
     \alert{\texttt{ipv6 route 2001:700:1100::/48\ \ \ Null0}}\\
@@ -3471,8 +3472,8 @@ Internet Control Message Protocol v6
   \item \alert{\texttt{ipv6 nd other-config-flag}}
   \item \alert{\texttt{ipv6 nd router-preference High}}
   \item \alert{\texttt{ipv6 dhcp server offisiell}}
-  \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6Infra in}}
-  \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6UtTil out}}
+  \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6InnFra in}}
+  \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6UtTil\ \ out}}
   \end{enumerate}
 \end{frame}
 
@@ -3485,7 +3486,7 @@ Internet Control Message Protocol v6
   \item Global konfigurasjon:\\
     \alert{\texttt{ipv6 multicast-routing}}\\
   \item Begrense utbredelse av intern multicasttrafikk\\
-    \alert{\texttt{interface GigabitEthernet0/49}}\\
+    \alert{\texttt{interface TenGigabitEthernet1/2}}\\
     \alert{\texttt{ipv6 multicast boundary scope 8}}\\
     Bare trafikk med rekkevidde større enn 8 slipper ut på, og inn
     fra, internett
@@ -3903,7 +3904,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     kantporter
   \item Nyere IOS har egne kommandoer for dette:
     \begin{itemize}[<+->]
-    \item \texttt{interface range GigabitEthernet0/1 - 48}
+    \item \texttt{interface range GigabitEthernet3/1 - 48}
       \begin{itemize}[<+->]
       \item \texttt{ipv6 nd raguard}
       \end{itemize}
@@ -3915,7 +3916,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
       \item \texttt{deny\ \ \ icmp any any router-advertisement}
       \item \texttt{permit    ipv6 any any}
       \end{enumerate}
-    \item \texttt{interface range GigabitEthernet0/1 - 48}
+    \item \texttt{interface range GigabitEthernet3/1 - 48}
       \begin{itemize}[<+->]
       \item \texttt{ipv6 traffic-filter sperre-fremmed-RA in}
       \end{itemize}
@@ -3937,7 +3938,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
       \item \texttt{deny\ \ \ udp\ \ any eq 547           any}
       \item \texttt{permit    ipv6   any \phantom{eq 547} any}
       \end{enumerate}
-    \item \texttt{interface range GigabitEthernet0/1 - 48}
+    \item \texttt{interface range GigabitEthernet3/1 - 48}
       \begin{itemize}[<+->]
       \item \texttt{ipv6 traffic-filter sperre-falske-dhcpv6-servere in}
       \end{itemize}
@@ -3959,7 +3960,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
       \item \texttt{deny\ \ \ udp\ \ any eq 547           any}
       \item \texttt{permit    ipv6   any \phantom{eq 547} any}
       \end{enumerate}
-    \item \texttt{interface range GigabitEthernet0/1 - 48}
+    \item \texttt{interface range GigabitEthernet3/1 - 48}
       \begin{itemize}[<+->]
       \item \texttt{ipv6 traffic-filter kantporter in}
       \end{itemize}
