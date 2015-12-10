@@ -4029,10 +4029,20 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \item \texttt{ifconfig em0 inet6 2001:700:1100:8001::1337 prefixlen 64}
     \item \texttt{route add -inet6 default 2001:700:1100:8001::1}
     \end{itemize}
-  \item Vanligvis lagres slike innstillinger permanent, for eksempel i \texttt{/etc/rc.conf}
+  \item Slike innstillinger lagres permanent i \texttt{/etc/rc.conf}:
     \begin{itemize}[<+->]
     \item \texttt{ifconfig\_em0\_ipv6="inet6 2001:700:1100:8001::1337 prefixlen 64"}
     \item \texttt{ipv6\_defaultrouter="2001:700:1100:8001::1"}
+    \end{itemize}
+  \item Aktivering av midlertidige adresser:
+    \begin{itemize}[<+->]
+    \item \texttt{sysctl net.inet6.ip6.use\_tempaddr=1}
+    \item \texttt{sysctl net.inet6.ip6.prefer\_tempaddr=1}
+    \end{itemize}
+  \item Lagres vanligvis som to linjer i \texttt{/etc/sysctl.conf}:
+    \begin{itemize}[<+->]
+    \item \texttt{net.inet6.ip6.use\_tempaddr=1}
+    \item \texttt{net.inet6.ip6.prefer\_tempaddr=1}
     \end{itemize}
   \end{itemize}
 \end{frame}
