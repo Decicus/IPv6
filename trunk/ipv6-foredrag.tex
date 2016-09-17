@@ -161,7 +161,7 @@
     \texttt{\$${}$Ximalas${}$\$}
   \item Driverfila for denne PDF-fila bærer denne identifikasjonen:\\
     \svndriverfil
-  \item Copyright \copyright\ 2015 Trond Endrestøl
+  \item Copyright \copyright\ 2016 Trond Endrestøl
   \item Dette verket er lisensiert med:
     \href{http://creativecommons.org/}{Creative Commons},
     \href{http://creativecommons.org/licenses/by-sa/3.0/no/}{Navngivelse-DelPåSammeVilkår
@@ -340,8 +340,8 @@
   \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
     pent, så kan
     \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
-    holde på til \href{http://www.potaroo.net/tools/ipv4/}{18.\ 
-      mai 2018}
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{30.\ 
+      juni 2018}
   \end{itemize}
 \end{frame}
 
@@ -356,6 +356,12 @@
   \begin{itemize}[<+->]
   \item Markedskreftene bestemmer
   \item Mange inntar en «vente-og-se»-holdning
+    \begin{itemize}[<+->]
+    \item \href{https://homenet.no/}{\texttt{homenet.no}} vil
+      \textit{ikke tilby\/}
+      \href{https://homenet.no/kundeservice/kundeservice_og_hjelp/teknisk/hva_betyr_egentlig_adsl__vdsl_og_andre_ord_som_vi_bruker_/har_dere_ikke_ipv6_}{IPv6}
+      før det er full krise
+    \end{itemize}
   \item Store og mellomstore selskaper:
     \begin{itemize}[<+->]
     \item Kjøper opp små selskaper og hamstrer IPv4-blokker
@@ -3472,6 +3478,7 @@ Internet Control Message Protocol v6
   \item \texttt{ip helper-address 128.39.174.42}
   \item \texttt{ip pim passive}
   \item \texttt{ip igmp version 3}
+  \item \alert{\texttt{ipv6 address FE80::1 link-local}}
   \item \alert{\texttt{ipv6 address 2001:700:1100:8001::1/64}}
   \item \alert{\texttt{ipv6 nd other-config-flag}}
   \item \alert{\texttt{ipv6 nd router-preference High}}
@@ -3969,6 +3976,27 @@ deny ipv6 any FF\alert{80}::/\alert{12}
       \item \texttt{ipv6 traffic-filter kantporter in}
       \end{itemize}
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Cisco AireOS}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco AireOS}
+  \pause
+  \begin{itemize}[<+->]
+  \item Cisco AireOS forlanger at routeren oppgis med link-local-adresse
+  \item Lurt å sette en fast link-local-adresse i routeren:
+    \begin{enumerate}[<+->]
+    \item \texttt{interface Vlan100}
+    \item \alert{\texttt{ipv6 address FE80::1 link-local}}
+    \item \texttt{ipv6 address FD5C:14CF:C300:100::1/64}
+    \end{enumerate}
+  \item Deretter konfigureres WLAN-kontrolleren omtrent slik:
+    \begin{enumerate}[<+->]
+    \item \texttt{config interface vlan management 100}
+    \item \alert{\texttt{config ipv6 interface address management primary fd5c:14cf:c300:100::2 64 fe80::1}}
+    \end{enumerate}
   \end{itemize}
 \end{frame}
 
