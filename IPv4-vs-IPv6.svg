@@ -173,8 +173,8 @@
   <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="386.25">
     <tspan x="188" y="386.25">Felter som er beholdt i IPv6</tspan>
   </text>
-  <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="436.25">
-    <tspan x="188" y="436.25">Felter som er fjernet fra IPv6</tspan>
+  <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="435.987">
+    <tspan x="188" y="435.987">Felter som er utelatt i IPv6</tspan>
   </text>
   <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="486.25">
     <tspan x="188" y="486.25">Navn og plassering er forskjellig for IPv6</tspan>
@@ -182,7 +182,7 @@
   <text font-size="18.0622" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="188" y="538.25">
     <tspan x="188" y="538.25">Nytt felt i IPv6</tspan>
   </text>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="1400" y="524.45">
+  <text font-size="12.8" style="fill: #000000;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="1400" y="524.45">
     <tspan x="1400" y="524.45">$Ximalas$</tspan>
   </text>
 </svg>
