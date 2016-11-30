@@ -179,68 +179,74 @@
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 2: IPv6-header}
+  \framesubtitle{Del 2: IPv6 i inn- og utland}
   \tableofcontents[part=2]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 3: IPv6 over Ethernet}
+  \framesubtitle{Del 3: IPv6-header}
   \tableofcontents[part=3]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 4: Grunnleggende om adresser}
+  \framesubtitle{Del 4: IPv6 over Ethernet}
   \tableofcontents[part=4]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 5: Adressetyper}
+  \framesubtitle{Del 5: Grunnleggende om adresser}
   \tableofcontents[part=5]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 6: DNS}
+  \framesubtitle{Del 6: Adressetyper}
   \tableofcontents[part=6]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 7: ICMPv6}
+  \framesubtitle{Del 7: DNS}
   \tableofcontents[part=7]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 8: Neighbor Discovery}
+  \framesubtitle{Del 8: ICMPv6}
   \tableofcontents[part=8]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 9: DHCPv6}
+  \framesubtitle{Del 9: Neighbor Discovery}
   \tableofcontents[part=9]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 10: Avansert multicast}
+  \framesubtitle{Del 10: DHCPv6}
   \tableofcontents[part=10]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 11: Konfigurasjon av IPv6}
+  \framesubtitle{Del 11: Avansert multicast}
   \tableofcontents[part=11]%[pausesections]
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Oversikt av hele foredraget}
-  \framesubtitle{Del 12: Noen RFC-er om IPv6}
+  \framesubtitle{Del 12: Konfigurasjon av IPv6}
   \tableofcontents[part=12]%[pausesections]
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Oversikt av hele foredraget}
+  \framesubtitle{Del 13: Noen RFC-er om IPv6}
+  \tableofcontents[part=13]%[pausesections]
 \end{frame}
 
 \part{Kort om IPv6}
@@ -268,18 +274,18 @@
   \framesubtitle{Hva er IPv6?}
   \pause
   \begin{itemize}[<+->]
-  \item En lag-3-protokoll ment å erstatte IPv4
+  \item En lag-3-protokoll som erstatning for IPv4
   \item Har eksistert siden desember 1995, først spesifisert i \rfc{1883}
+  \item \alert<12>{128-bit adresser}
+  \item \alert<12>{Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6}
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, riktig rekkefølge er viktig
-  \item \alert<12>{128-bit adresser}
   \item Ny versjon av ICMP: ICMPv6
   \item ARP og RARP for IPv6 er en del av ICMPv6
     \begin{itemize}[<+->]
     \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
     \end{itemize}
   \item Ny versjon av DHCP: DHCPv6
-  \item \alert<12>{Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6}
   \end{itemize}
 \end{frame}
 
@@ -340,7 +346,7 @@
   \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
     pent, så kan
     \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
-    holde på til \href{http://www.potaroo.net/tools/ipv4/}{30.\ 
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{27.\ 
       juni 2018}
   \end{itemize}
 \end{frame}
@@ -397,9 +403,9 @@
   \item Telebransjen satser fortsatt hardt på IPv4:
     \begin{itemize}[<+->]
     \item (Edge) NAT i CPE\hfill\prfc{3022}
-    \item Carrier-Grade NAT i stamnett\hfill\prfc{6264}
+    \item Carrier-Grade NAT (CGN) i stamnett\hfill\prfc{6264}
     \item Shared Address Space etter behov i stamnett (\texttt{100.64.0.0/10})\hfill\prfc{6598}
-%    \item HTTP/S-tunnelering av rubb og stubb
+    \item (Litt off-topic: HTTP/S-tunnelering av rubb og stubb)
     \end{itemize}
   \item Glem det!
   \item Ende-til-ende-konnektivitet oppnås best uten noen former for
@@ -414,7 +420,7 @@
   \item 464XLAT er en mulig
     \href{https://conference.apnic.net/data/37/464xlat-apricot-2014_1393236641.pdf}{avslutningsstrategi
       for IPv4}\hfill\prfc{6877}
-  \item \alert<9>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
+  \item \alert<13>{IPv6 er det eneste tilgjengelige og realistiske alternativet til IPv4}
   \end{itemize}
 \end{frame}
 
@@ -503,9 +509,21 @@
   \end{itemize}
 \end{frame}
 
+\part{IPv6 i inn- og utland}
+
+\begin{frame}
+  \partpage
+\end{frame}
+
+\section*{Oversikt over del~2: IPv6 i inn- og utland}
+\begin{frame}%[allowframebreaks]
+  \frametitle{Oversikt over del~2: IPv6 i inn- og utland}
+    \tableofcontents%[pausesections]
+\end{frame}
+
 \section{IPv6 ved Fagskolen Innlandet}
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   \pause
   \begin{itemize}[<+->]
@@ -538,7 +556,7 @@
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
   \begin{itemize}[<+->]
@@ -575,7 +593,7 @@
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
   \begin{itemize}[<+->]
@@ -606,11 +624,13 @@
   \item Vinterferien 2015: La om datalabseriene, siden antallet av datalab
     er skikkelig knøttete
   \item Desember 2015: Ny kjerneswitch: Cisco Catalyst 4500E med Supervisor 8-E
+  \item Høsten 2016: NAT44-routere for WLAN; supplement til offentlige
+    IPv4-adresser
   \end{itemize}
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
   \begin{itemize}[<+->]
@@ -627,7 +647,7 @@
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   %\pause
   \begin{itemize}[<+->]
@@ -641,17 +661,13 @@
     \begin{itemize}[<+->]
     \item Switcher
       \begin{itemize}[<+->]
-      \item Med unntak av kjerneswitchen som er L3-router for
+      \item Med unntak av kjerneswitchen som er L3-switch for
         nettverket ved FSI
       \end{itemize}
-    \item Gammel WLAN-kontroller (AIR-WLC4402-25-K9) og gamle
-      basestasjoner (AIR-LAP1231G-E-K9)
-      \begin{itemize}[<+->]
-      \item Den nyeste WLAN-kontrolleren (AIR-CT5508-K9) og de nyere
-        basestasjonene (AIR-LAP1242AG-E-K9) er dytta inn i OFK-nettet
-      \end{itemize}
     \item UPS-er
+    \item Lights-out
     \item Skrivere
+    \item Virtualiseringsservere
     \item VPN-klienter
     \end{itemize}
   \end{itemize}
@@ -659,7 +675,7 @@
 
 \section{IPv6 andre steder i Norge}
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 andre steder i Norge}
   \pause
   \begin{itemize}[<+->]
@@ -685,14 +701,14 @@
 
 \section{IPv6 i utlandet}
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 i utlandet}
   \pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item
     \href{http://www.internetsociety.org/ipv6/archive-2011-world-ipv6-day/}{World
       IPv6 Day}, 8.\ juni 2011
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item Målet var å teste IPv6 i 24 timer
     \item Mer enn 400 deltakere
     \item AOL, Akamai Technologies, BBC, Cisco, Comcast, Facebook,
@@ -702,38 +718,38 @@
     \end{itemize}
   \item \href{http://www.worldipv6launch.org/}{World IPv6 Launch},
     6.\ juni 2012
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item Denne dagen ble IPv6 slått på for alltid
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 i utlandet}
   \pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Facebook er tilgjengelig med IPv6
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{2a03:2880:2130:cf05:face:b00c:0:1} og
     \item \texttt{2a03:2880:2110:df07:face:b00c:0:1}
     \end{itemize}
   \item Google er tilgjengelig med IPv6
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{2a00:1450:400c:c00::5e},
     \item \texttt{2a00:1450:400c:c00::8a} og
     \item \texttt{2a00:1450:4010:c04::63}
     \end{itemize}
   \item LinkedIn er tilgjengelig med IPv6
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{2620:109:c007:102::5be1:f881}
     \end{itemize}
   \item Snapchat er tilgjengelig med IPv6
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{2a00:1450:400c:c00::79}
     \end{itemize}
   \item Wikipedia er tilgjengelig med IPv6
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{2620:0:862:ed1a::1}
     \end{itemize}
   \end{itemize}
@@ -741,10 +757,10 @@
 
 \section{Google Chrome og IPvFoo}
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{Google Chrome og IPvFoo}
   \pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item \href{https://code.google.com/p/ipvfoo/}{IPvFoo} for Google
     Chrome lar deg se hvilke IP-adresser som innholdet ble hentet fra
   \item Her er et eksempel fra \texttt{\url{http://vg.no/}}:\\
@@ -754,10 +770,10 @@
 
 \section{Mozilla Firefox og IPvFox}
 \begin{frame}%[allowframebreaks]
-  \frametitle{Kort om IPv6}
+  \frametitle{IPv6 i inn- og utland}
   \framesubtitle{Mozilla Firefox og IPvFox}
   \pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item
     \href{https://addons.mozilla.org/en-US/firefox/addon/ipvfox/}{IPvFox}
     gjør det samme for Mozilla Firefox som IPvFoo gjør for Google
@@ -773,9 +789,9 @@
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~2: IPv6-header}
+\section*{Oversikt over del~3: IPv6-header}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~2: IPv6-header}
+  \frametitle{Oversikt over del~3: IPv6-header}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -813,7 +829,7 @@
     \ifratio{43}{\includegraphics[scale=.0975]{IPv4-vs-IPv6.pdf}}%
       {\includegraphics[scale=.1225]{IPv4-vs-IPv6.pdf}}
 
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item Versjonsfeltet (4 bit) settes til \texttt{0110}
     \item Traffic Class (8 bit) er det samme som Type of Service i
       IPv4
@@ -834,7 +850,7 @@
   \frametitle{IPv6-header}
   \framesubtitle{Flow Label}
   \pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Flow Label-feltet kan brukes av sanntidsapplikasjoner
   \item Flow Label-verdien angir pakker som tilhører samme sesjon
   \item Routere bør videresende pakker med samme verdi i Flow
@@ -875,7 +891,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Hop-by-hop Options Header}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |  Hdr Ext Len  |                               |
@@ -888,8 +904,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 0
   \item Hop-by-hop Options Header må komme før andre Options Headere
     og før payload
@@ -903,7 +919,7 @@
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Hop-by-hop Options Header}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Valgene \texttt{Pad1} og \texttt{PadN} er definert i
     \rfc{2460}
   \item Andre valg: Jumbo Payload \prfc{2675}, RPL Option \prfc{6553},
@@ -920,7 +936,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Destination Options Header}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |  Hdr Ext Len  |                               |
@@ -933,8 +949,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 60
   \end{itemize}
 \end{frame}
@@ -943,7 +959,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Routing Header}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |  Hdr Ext Len  |  Routing Type | Segments Left |
@@ -956,8 +972,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 43
   \end{itemize}
 \end{frame}
@@ -966,7 +982,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Fragment Header}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Next Header  |   Reserved    |      Fragment Offset    |Res|M|
@@ -975,8 +991,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 44
   \end{itemize}
 \end{frame}
@@ -985,7 +1001,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Authentication Header}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1002,8 +1018,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 51
   \end{itemize}
 \end{frame}
@@ -1012,7 +1028,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Encapsulating Security Payload}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1035,8 +1051,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 50
   \end{itemize}
 \end{frame}
@@ -1045,7 +1061,7 @@
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Utvidelsesheadere}
   \framesubtitle{Mobility Header}
-  \pause
+  %\pause
 \begin{Verbatim}[fontsize=\tiny]
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Payload Proto |  Header Len   |   MH Type     |   Reserved    |
@@ -1060,8 +1076,8 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 \end{Verbatim}
 
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Protokollnummer: 135
   \end{itemize}
 \end{frame}
@@ -1072,9 +1088,9 @@
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~3: IPv6 over Ethernet}
+\section*{Oversikt over del~4: IPv6 over Ethernet}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~3: IPv6 over Ethernet}
+  \frametitle{Oversikt over del~4: IPv6 over Ethernet}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -1156,9 +1172,9 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~4: Grunnleggende om adresser}
+\section*{Oversikt over del~5: Grunnleggende om adresser}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~4: Grunnleggende om adresser}
+  \frametitle{Oversikt over del~5: Grunnleggende om adresser}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -1524,9 +1540,9 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Manuell grensesnittidentifikator}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Verdiene
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{0} \(=\) \texttt{00\alert{0}0},
     \item \texttt{1} \(=\) \texttt{00\alert{0}1},
     \item \texttt{4} \(=\) \texttt{01\alert{0}0},
@@ -1547,7 +1563,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \pause
   \begin{itemize}[<+->]
   \item Konstant grensesnittidentifikator truer personvernet
-  \item Eksempel med Tronds D531-læppis:
+  \item Eksempel med Tronds gamle Dell Latitude D531:
     \begin{itemize}[<+->]
     \item \texttt{2001:700:1100:3:\alert{221:70FF:FE73:686E}}\hfill(IT-avdelingen@FSI)
     \item \texttt{2001:700:1D00:8:\alert{221:70FF:FE73:686E}}\hfill(public-nettet@HiG)
@@ -1571,10 +1587,10 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Tilfeldig grensesnittidentifikator}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item \rfc{4941} angir en metode for generering av tilfeldig
     grensesnittidentifikator:
-    \begin{enumerate}[<+->]
+    \begin{enumerate}%[<+->]
     \item Sett sammen historisk verdi fra forrige runde (eller et
       tilfeldig 64-bit heltall) med den konstante
       grensesnittidentifikatoren til et 128-bit heltall
@@ -1731,9 +1747,9 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~5: Adressetyper}
+\section*{Oversikt over del~6: Adressetyper}
 \begin{frame}%[allowframebreaks]
-  \frametitle{Oversikt over del~5: Adressetyper}
+  \frametitle{Oversikt over del~6: Adressetyper}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -1888,15 +1904,15 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \frametitle{Adressetyper}
   \framesubtitle{Unike, lokale, aggregerbare adresser}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Her er algoritmen fra \rfc{4193} for å generere de 40
     tilfeldige bitene:
-    \begin{enumerate}[<+->]
+    \begin{enumerate}%[<+->]
     \item Uttrykk nåværende øyeblikk som et 64-bit heltall i
       NTP-format \prfc{5905}
     \item Bruk en EUI-64-identifikator fra systemet som kjører denne
       algoritmen
-      \begin{itemize}[<+->]
+      \begin{itemize}%[<+->]
       \item Mangler du en EUI-64-identifikator, så kan du lage en fra
         en 48-bit MAC-adresse som angitt i \rfc{4291}
       \item Kan du ikke lage en EUI-64-identifikator, så bruk en annen
@@ -1977,7 +1993,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Multicast-adresser}
   %\pause
   \begin{multicols}{2}
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item Følgende rekkevidder er definert i \rfc{4921}:
     \item \texttt{0}: reservert
     \item \texttt{1}: interface-local
@@ -2005,9 +2021,9 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \frametitle{Adressetyper}
   \framesubtitle{Multicast-adresser}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Noen kjente IPv6-multicastadresser:
-    \begin{itemize}[<+->]
+    \begin{itemize}%[<+->]
     \item \texttt{FF02::1}\quad All nodes on the local network segment
     \item \texttt{FF02::2}\quad All routers on the local network segment
     \item \texttt{FF02::5}\quad OSPFv3 All SPF routers
@@ -2075,9 +2091,9 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~6: DNS}
+\section*{Oversikt over del~7: DNS}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~6: DNS}
+  \frametitle{Oversikt over del~7: DNS}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -2304,9 +2320,9 @@ uninett IN A6  0 2001:700::
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~7: ICMPv6}
+\section*{Oversikt over del~8: ICMPv6}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~7: ICMPv6}
+  \frametitle{Oversikt over del~8: ICMPv6}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -2634,9 +2650,9 @@ uninett IN A6  0 2001:700::
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~8: Neighbor Discovery}
+\section*{Oversikt over del~9: Neighbor Discovery}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~8: Neighbor Discovery}
+  \frametitle{Oversikt over del~9: Neighbor Discovery}
   \tableofcontents%[pausesections]
 \end{frame}
 
@@ -2961,9 +2977,9 @@ Internet Control Message Protocol v6
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~9: DHCPv6}
+\section*{Oversikt over del~10: DHCPv6}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~9: DHCPv6}
+  \frametitle{Oversikt over del~10: DHCPv6}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -3234,9 +3250,9 @@ Internet Control Message Protocol v6
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~10: Avansert multicast}
+\section*{Oversikt over del~11: Avansert multicast}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~10: Avansert multicast}
+  \frametitle{Oversikt over del~11: Avansert multicast}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -3406,9 +3422,9 @@ Internet Control Message Protocol v6
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~11: Konfigurasjon av IPv6}
+\section*{Oversikt over del~12: Konfigurasjon av IPv6}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~11: Konfigurasjon av IPv6}
+  \frametitle{Oversikt over del~12: Konfigurasjon av IPv6}
     \tableofcontents%[pausesections]
 \end{frame}
 
@@ -3416,7 +3432,19 @@ Internet Control Message Protocol v6
 \subsection{IPv6-unicast-routing}
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (nye Catalyst-switcher)}
+  \pause
+  \begin{enumerate}[<+->]
+  \item \texttt{configure terminal}
+  \item \alert{\texttt{ipv6 unicast-routing}}
+  \item \texttt{no ipv6 source-route}\hfill(Er unødvendig i nyere IOS)
+  \item \texttt{end}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (gamle Catalyst-switcher)}
   \pause
   \begin{enumerate}[<+->]
   \item \texttt{configure terminal}
@@ -4085,9 +4113,9 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \partpage
 \end{frame}
 
-\section*{Oversikt over del~12: Noen RFC-er om IPv6}
+\section*{Oversikt over del~13: Noen RFC-er om IPv6}
 \begin{frame}[allowframebreaks]
-  \frametitle{Oversikt over del~12: Noen RFC-er om IPv6}
+  \frametitle{Oversikt over del~13: Noen RFC-er om IPv6}
     \tableofcontents%[pausesections]
 \end{frame}
 
