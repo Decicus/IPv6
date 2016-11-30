@@ -1,6 +1,8 @@
 @echo off
 rem $Ximalas$
 
+if not "%1"=="" goto bare1fil
+
 set NAVN=ipv6-foredrag
 
 pdflatex %NAVN%.foredrag.tex
@@ -39,5 +41,12 @@ pdflatex %NAVN%.handout.4on1.169.tex
 pdflatex %NAVN%.handout.4on1.1610.tex
 pdflatex %NAVN%.handout.4on1.1610.tex
 
+goto end
+
+:bare1fil
+pdflatex %1
+pdflatex %1
+
+:end
 echo.
 echo Ferdig.
