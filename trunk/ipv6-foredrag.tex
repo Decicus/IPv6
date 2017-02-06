@@ -479,6 +479,10 @@
       \pause
     \item Uninett trenger bare å annonsere dette IPv6-prefikset:
     \item \texttt{2001:700::/32}
+    \item Uninetts prefiks er en del av \texttt{2001:600::/23} som
+      RIPE NCC
+      \href{http://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml}{fikk}
+      av IANA, 1.~juli 1999
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -2538,7 +2542,7 @@ uninett IN A6  0 2001:700::
     \item 149: Certification Path Advertisement
     \end{itemize}
   \item Med SEND unngås DoS-problemene til Neighbor Discovery
-  \item Routerne deler ut kryptografisk genererte adresser \rfc{3972}
+  \item Routerne deler ut kryptografisk genererte adresser \prfc{3972}
   \item Dette krever sertifikatstruktur (RPKI, \rfc{6494}) i routere og i klienter
   \item Ikke implementert i Cisco IOS 12.2(55)SE for Catalyst 3560G
   \item Ikke spesielt aktuelt for FSI, for annet enn ansattnett, på
