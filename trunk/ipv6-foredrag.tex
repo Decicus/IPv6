@@ -161,7 +161,7 @@
     \texttt{\$${}$Ximalas${}$\$}
   \item Driverfila for denne PDF-fila bærer denne identifikasjonen:\\
     \svndriverfil
-  \item Copyright \copyright\ 2016 Trond Endrestøl
+  \item Copyright \copyright\ 2017 Trond Endrestøl
   \item Dette verket er lisensiert med:
     \href{http://creativecommons.org/}{Creative Commons},
     \href{http://creativecommons.org/licenses/by-sa/3.0/no/}{Navngivelse-DelPåSammeVilkår
@@ -3531,8 +3531,8 @@ Internet Control Message Protocol v6
   \item Begrense utbredelse av intern multicasttrafikk\\
     \alert{\texttt{interface TenGigabitEthernet1/2}}\\
     \alert{\texttt{ipv6 multicast boundary scope 8}}\\
-    Bare trafikk med rekkevidde større enn 8 slipper ut på, og inn
-    fra, internett
+    Bare trafikk med rekkevidde større enn 8 slipper ut på internett,
+    og inn fra internett
   \item Kan du ikke bruke \texttt{ipv6 multicast boundary scope}, så
     må du bruke ACL-er og sperre for uaktuelle rekkevidder og
     \textit{alle\/} mulige kombinasjoner av flagg! (Bare for å være
@@ -4051,6 +4051,8 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \begin{itemize}[<+->]
     \item DNS-oppslag kan nå sendes over IPv6
     \item Nyere Windows kan fint fungere med bare IPv6
+    \item WSUS-tjenester må ha \alert{IPv4} i tillegg til IPv6 for å
+      kommunisere med Microsofts globale oppdateringsservere
     \end{itemize}
   \item Linux og *BSD har hatt IPv6-støtte i lang tid
   \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
