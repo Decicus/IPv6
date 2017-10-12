@@ -98,7 +98,7 @@
 \makeatother
 
 \title{\textbf{IPv6-foredrag}}
-\subtitle{21 år, men har ennå ikke fått den største suksessen}
+\subtitle{21 år, men ennå ikke den største suksessen}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
 \institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
 \logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
@@ -3503,19 +3503,19 @@ Internet Control Message Protocol v6
   \end{enumerate}
 \end{frame}
 
-\begin{frame}%[allowframebreaks]
+\begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
   \framesubtitle{Cisco IOS: IPv6-unicast-routing}
   %\pause
   \begin{enumerate}%[<+->]
   \item Default route:\\
-    \alert{\texttt{ipv6 route ::/0 TenGigabitEthernet1/2 2001:700:0:8074::1 name FiG-Uninett}}
+    \alert{\texttt{\small ipv6 route ::/0 TenGigabitEthernet1/2 2001:700:0:8074::1 name FiG-Uninett}}
   \item Nullroute linknettet, og offisielle og private adresser:\\
     \alert{\texttt{ipv6 route 2001:700:0:8074::/64 Null0}}\\
     \alert{\texttt{ipv6 route 2001:700:1100::/48\ \ \ Null0}}\\
     \alert{\texttt{ipv6 route FD5C:14CF:C300::/48\ \  Null0}}
   \item Statisk routing av returtrafikk til VPN-klientene:\\
-    \alert{\texttt{ipv6 route FD5C:14CF:C300:A001::/64 Vlan21 2001:700:1100:F001::2}}\
+    \alert{\texttt{ipv6 route FD5C:14CF:C300:A001::/64 Vlan21 2001:700:1100:F001::2}}\\
     \alert{\texttt{ipv6 route FD5C:14CF:C300:A002::/64 Vlan21 2001:700:1100:F001::3}}\\
     \alert{\texttt{ipv6 route FD5C:14CF:C300:A003::/64 Vlan21 2001:700:1100:F001::4}}
   \end{enumerate}
@@ -4046,8 +4046,8 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \end{enumerate}
   \item Deretter konfigureres WLAN-kontrolleren omtrent slik:
     \begin{enumerate}%[<+->]
-    \item \texttt{config interface vlan management 100}
-    \item \alert{\texttt{config ipv6 interface address management primary fd5c:14cf:c300:100::2 64 fe80::1}}
+    \item \texttt{\footnotesize config interface vlan management 100}
+    \item \alert{\texttt{\footnotesize config ipv6 interface address management primary fd5c:14cf:c300:100::2 64 fe80::1}}
     \end{enumerate}
   \end{itemize}
 \end{frame}
@@ -4071,8 +4071,9 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \begin{itemize}%[<+->]
     \item DNS-oppslag kan nå sendes over IPv6
     \item Nyere Windows kan fint fungere med bare IPv6
-    \item WSUS-tjenester må ha \alert{IPv4} i tillegg til IPv6 for å
-      kommunisere med Microsofts globale oppdateringsservere
+    \item Windows (Server) eldre enn 8 og 2012 må ha \alert{IPv4} i
+      tillegg til IPv6 for å kommunisere med Microsofts globale
+      oppdateringsservere
     \end{itemize}
   \item Linux og *BSD har hatt IPv6-støtte i lang tid
   \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
