@@ -288,7 +288,7 @@
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, men riktig rekkefølge er viktig
   \item Nye versjoner av ICMP og DHCP: ICMPv6 og DHCPv6
-  \item ARP og RARP for IPv4 er en del av ICMPv6 for IPv6
+  \item ARP- og RARP-funksjonene for IPv6 er en del av ICMPv6
     \begin{itemize}%[<+->]
     \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
     \end{itemize}
@@ -310,6 +310,7 @@
     IPv4-adresser:
   \item
     \(2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296\)
+  \item Ca.\ \href{https://en.wikipedia.org/wiki/World_population}{7,6 mrd.}\ mennesker på Jorda
   \item Mindre enn \alert<2>{\(3.702.258.432\)} IPv4-adresser kan bli
     brukt som offentlige IPv4-unicast-adresser
   \item Se Tronds utregning fra juli 2012:
@@ -327,7 +328,7 @@
   \item Verden går tom for offentlige IPv4-adresser
   \item
     «\href{http://www.potaroo.net/presentations/2012-05-22-terena.pdf}{IPokalypsen}»
-    er her!
+    er her! (Geoff Huston, APNIC)
   \item \href{http://www.iana.org/}{IANA} gikk tom
     \href{http://www.icann.org/en/news/press/releases/release-03feb11-en.pdf}{3.~februar
       2011}
@@ -352,8 +353,8 @@
   \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
     pent, så kan
     \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
-    holde på til \href{http://www.potaroo.net/tools/ipv4/}{5.\ 
-      oktober 2018}
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{27.\ 
+      september 2018}
   \end{itemize}
 \end{frame}
 
@@ -594,12 +595,15 @@
     \begin{itemize}%[<+->]
     \item Brukes i FSI-VLAN for internt bruk
       \begin{itemize}%[<+->]
-      \item Fikk første HP-skriver med IPv6-støtte og ville bruke IPv6
+      \item Fikk første HP-skriver med IPv6-støtte og ville utnytte dette
       \item Noen år senere: IPv6-adresser på kantswitchene med
         \href{http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_40_se/release/notes/OL13860.html}{Cisco
           IOS 12.2(40)SE}
       \end{itemize}
     \end{itemize}
+  \item Høsten 2008: DHCPv6-server i kjerneswitchen med
+    \href{https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_44_se/release/notes/OL14630.html}{Cisco
+      IOS 12.2(46)SE}
   \end{itemize}
 \end{frame}
 
@@ -1573,7 +1577,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 \begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Tilfeldig grensesnittidentifikator}
-  \pause
+  %\pause
   \begin{itemize}%[<+->]
   \item Konstant grensesnittidentifikator truer personvernet
   \item Eksempel med Tronds gamle Dell Latitude D531:
@@ -1712,8 +1716,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 \begin{frame}%[allowframebreaks]
   \frametitle{Grunnleggende om adresser}
   \framesubtitle{Duplicate Address Detection --- DAD}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Når en unicast-adresse er generert skal man alltid sjekke at
     ingen andre bruker den samme adressa\hfill\prfc{4862}
   \item Dette gjøres ved å sende en «ICMPv6 Neighbor
@@ -1722,14 +1726,13 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item ICMPv6-meldinga inneholder den genererte adressa i feltet for
     «Target Address»\hfill\prfc{4861}
   \item En «Solicited-node multicast address» er på formen
-    \texttt{FF02::1:FF\alert<8->{\textit{aa}}:\alert<8->{\textit{bbcc}}},
-    hvor \alert<8->{\texttt{\textit{aabbcc}}} er de 24 minst
+    \texttt{FF02::1:FF\alert{\textit{aa}}:\alert{\textit{bbcc}}},
+    hvor \alert{\texttt{\textit{aabbcc}}} er de 24 minst
     signifikante bitene fra den opprinnelige adressa\hfill\prfc{4291}
   \item Sett at den genererte adressa er
-    \texttt{2001:700:1100:3:221:70FF:FE\alert<8->{73}:\alert<8->{686E}}
+    \texttt{2001:700:1100:3:221:70FF:FE\alert{73}:\alert{686E}}
   \item «Solicited-node multicast address» vil da være
-    \texttt{FF02::1:FF\alert<8->{73}:\alert<8->{686E}}
-  \pause
+    \texttt{FF02::1:FF\alert{73}:\alert{686E}}
   \item Vanligvis kommer det ikke noe svar på slike ICMPv6-meldinger
     \dots
   \end{itemize}
@@ -1760,10 +1763,11 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{IPv6-adresser i URL-er}
   %\pause
   \begin{itemize}%[<+->]
-  \item \texttt{http:://[2001:db8:x:y::z]/bla/bla}
-  \item \texttt{http:://[2001:db8:x:y::z]:portnummer/bla/bla}
-  \item \texttt{https:://[2001:db8:x:y::z]/bla/bla}
-  \item \texttt{https:://[2001:db8:x:y::z]:portnummer/bla/bla}
+  \item \texttt{http://[2001:db8:x:y::z]/bla/bla}
+  \item \texttt{http://[2001:db8:x:y::z]:\textit{portnummer}/bla/bla}
+  \item \texttt{https://[2001:db8:x:y::z]/bla/bla}
+  \item \texttt{https://[2001:db8:x:y::z]:\textit{portnummer}/bla/bla}
+  \item Osv.
   \end{itemize}
 \end{frame}
 
@@ -1782,7 +1786,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
 \section{Adressetyper}
 \begin{frame}%[allowframebreaks]
   \frametitle{Adressetyper}
-  \pause
+  %\pause
   \begin{itemize}%[<+->]
   \item Det finnes flere adressetyper med forskjellige bruksområder:
     \begin{itemize}%[<+->]
@@ -2846,10 +2850,40 @@ Internet Control Message Protocol v6
   \item Routeren oppgir følgende om \texttt{2001:700:1100:3::/64}
     \begin{itemize}%[<+->]
     \item Prefikset er direkte tilgjengelig
-    \item Autokonfigurasjon er tillatt
+    \item Autokonfigurasjon med prefikset er tillatt
     \item Genererte adresser er gyldige i 30~dager, med foretrukket
       levetid på 7~dager
     \end{itemize}
+  \end{itemize}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]%[allowframebreaks]
+  \frametitle{Neighbor Discovery}
+  \framesubtitle{Router Advertisement}
+  %\pause
+  \begin{multicols}{2}
+\begin{Verbatim}[fontsize=\tiny]
+ICMPv6 Option (Recursive DNS Server 2001:700:1100:1::3 2001:700:1100:1::2)
+    Type: Recursive DNS Server (25)
+    Length: 5 (40 bytes)
+    Reserved
+    Lifetime: 400
+    Recursive DNS Servers: 2001:700:1100:1::3 (2001:700:1100:1::3)
+    Recursive DNS Servers: 2001:700:1100:1::2 (2001:700:1100:1::2)
+\end{Verbatim}
+  \columnbreak
+  %\pause
+  \begin{itemize}%[<+->]
+  \item RDNSS --- Recursive DNS Server
+  \item Routeren kan også oppgi DNS-serveradresser i routerannonseringa
+  \item Se \rfc{8106}
+  \item Dette kan sameksistere med DHCPv6
+  \item Det er fordelaktig med like verdier, begge steder
+  \item DHCPv6 kan i tillegg angi DNS-domenet for ukvalifiserte navn
+  \item Microsoft Windows 10 Creators Update (1703) vil
+    \href{https://insinuator.net/2017/05/one-step-closer-rdnss-rfc-8106-support-in-windows-10-creators-update/}{angivelig}
+    bruke RDNSS dersom DNS-opplysninger ikke kan hentes fra DHCPv6
   \end{itemize}
   \end{multicols}
 \end{frame}
@@ -2889,7 +2923,7 @@ Internet Control Message Protocol v6
       fortsatt var i live
     \end{enumerate}
   \item Forespørselen ble sendt til «Solicited-node multicast-adressa»
-    \texttt{FF02::1:FF\alert<7>{52}:\alert{67E2}}
+    \texttt{FF02::1:FF\alert{52}:\alert{67E2}}
   \end{itemize}
 \end{frame}
 
@@ -3487,7 +3521,7 @@ Internet Control Message Protocol v6
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (routerporter)}
   %\pause
   \begin{enumerate}%[<+->]
   \item \alert{\texttt{interface TenGigabitEthernet1/2}}
@@ -3505,7 +3539,7 @@ Internet Control Message Protocol v6
 
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (husholdningskommandoer)}
   %\pause
   \begin{enumerate}%[<+->]
   \item Default route:\\
@@ -3523,7 +3557,29 @@ Internet Control Message Protocol v6
 
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-unicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (servernett uten autokonfig)}
+  %\pause
+  \begin{enumerate}%[<+->]
+  \item \alert{\texttt{interface Vlan20}}
+  \item \texttt{description Ytre servernett}
+  \item {\texttt{ipv6 address FE80::1 link-local}}
+  \item {\texttt{ipv6 address 2001:700:1100:1::1/64}}
+  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}}
+  \item {\texttt{ipv6 nd other-config-flag}}
+  \item {\texttt{ipv6 nd router-preference High}}
+  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
+  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
+  \item {\texttt{no ipv6 redirects}}
+  \item {\texttt{no ipv6 unreachables}}
+  \item {\texttt{ipv6 dhcp server offisiell}}
+  \item {\texttt{ipv6 traffic-filter Vlan20IPv6InnFra in}}
+  \item {\texttt{ipv6 traffic-filter Vlan20IPv6UtTil\ \ out}}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (sluttbrukernett)}
   %\pause
   \begin{enumerate}%[<+->]
   \item \alert{\texttt{interface Vlan40}}
@@ -3534,16 +3590,40 @@ Internet Control Message Protocol v6
   \item \alert{\texttt{ipv6 nd router-preference High}}
   \item \alert{\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
   \item \alert{\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
+  \item \alert{\texttt{no ipv6 redirects}}
+  \item \alert{\texttt{no ipv6 unreachables}}
   \item \alert{\texttt{ipv6 dhcp server offisiell}}
   \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6InnFra in}}
   \item \alert{\texttt{ipv6 traffic-filter Vlan40IPv6UtTil\ \ out}}
   \end{enumerate}
 \end{frame}
 
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (trådløst sluttbrukernett)}
+  %\pause
+  \begin{enumerate}%[<+->]
+  \item \alert{\texttt{interface Vlan50}}
+  \item {description Trådløst studentnett}
+  \item {\texttt{ipv6 address FE80::1 link-local}}
+  \item {\texttt{ipv6 address 2001:700:1100:5::1/64}}
+  \item {\texttt{ipv6 nd other-config-flag}}
+  \item {\texttt{ipv6 nd router-preference High}}
+  \item \alert{\texttt{ipv6 nd ra solicited unicast}}
+  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
+  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
+  \item {\texttt{no ipv6 redirects}}
+  \item {\texttt{no ipv6 unreachables}}
+  \item {\texttt{ipv6 dhcp server offisiell}}
+  \item {\texttt{ipv6 traffic-filter Vlan50IPv6InnFra in}}
+  \item {\texttt{ipv6 traffic-filter Vlan50IPv6UtTil\ \ out}}
+  \end{enumerate}
+\end{frame}
+
 \subsection{IPv6-multicast-routing}
 \begin{frame}%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing (moderne kommandoer)}
   %\pause
   \begin{enumerate}%[<+->]
   \item Global konfigurasjon:\\
@@ -3553,6 +3633,14 @@ Internet Control Message Protocol v6
     \alert{\texttt{ipv6 multicast boundary scope 8}}\\
     Bare trafikk med rekkevidde større enn 8 slipper ut på internett,
     og inn fra internett
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing (ACL-metoden)}
+  %\pause
+  \begin{enumerate}%[<+->]
   \item Kan du ikke bruke \texttt{ipv6 multicast boundary scope}, så
     må du bruke ACL-er og sperre for uaktuelle rekkevidder og
     \textit{alle\/} mulige kombinasjoner av flagg! (Bare for å være
@@ -3564,7 +3652,7 @@ Internet Control Message Protocol v6
 
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing (ACL-metoden)}
   %\pause
   \begin{multicols}{2}
     \begin{itemize}%[<+->]
@@ -3612,7 +3700,7 @@ deny ipv6 any FF\alert{F4}::/16
 
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing (ACL-metoden)}
   %\pause
   \begin{multicols}{2}
     \begin{itemize}%[<+->]
@@ -3660,7 +3748,7 @@ deny ipv6 any FF\alert{F6}::/16
 
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing (ACL-metoden)}
   %\pause
   \begin{multicols}{2}
     \begin{itemize}%[<+->]
@@ -3708,7 +3796,7 @@ deny ipv6 any FF\alert{F8}::/16
 
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-multicast-routing}
+  \framesubtitle{Cisco IOS: IPv6-multicast-routing (ACL-metoden)}
   %\pause
   \begin{itemize}%[<+->]
     \item Hadde bare flagg og rekkevidde byttet plass i spesifikasjonen:
@@ -3963,8 +4051,8 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \framesubtitle{Cisco IOS: Sperre for fremmed routerannonsering}
   %\pause
   \begin{itemize}%[<+->]
-  \item Fremmed routerannonsering må sperres i inngående retning på
-    kantporter
+  \item Fremmed routerannonsering må sperres i \alert{inngående} retning på
+    \alert{kantporter}
   \item Nyere IOS har egne kommandoer for dette:
     \begin{itemize}%[<+->]
     \item \texttt{interface range GigabitEthernet3/1 - 48}
@@ -3993,8 +4081,8 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \framesubtitle{Cisco IOS: Sperre for falske DHCPv6-servere}
   %\pause
   \begin{itemize}%[<+->]
-  \item Falske DHCPv6-servere må sperres i kantportene, og det beste
-    er å bruke port-ACL-er:
+  \item Falske DHCPv6-servere må sperres på veg \alert{inn i
+      kantportene}, og det beste er å bruke port-ACL-er:
     \begin{itemize}%[<+->]
     \item \texttt{ipv6 access-list sperre-falske-dhcpv6-servere}
       \begin{enumerate}%[<+->]
@@ -4038,7 +4126,12 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   %\pause
   \begin{itemize}%[<+->]
   \item Cisco AireOS forlanger at routeren oppgis med link-local-adresse
-  \item Lurt å sette en fast link-local-adresse i routeren:
+  \item Routeren vil vanligvis bruke en autogenerert link-local-adresse
+    \begin{itemize}
+    \item For eksempel: \texttt{FE80::86B2:61FF:FE44:2F7F}
+    \end{itemize}
+  \item Denne adressa vil forandre seg ved utskiftning av routeren
+  \item Det er lurt å sette en fast link-local-adresse i routeren:
     \begin{enumerate}%[<+->]
     \item \texttt{interface Vlan100}
     \item \alert{\texttt{ipv6 address FE80::1 link-local}}
@@ -4047,7 +4140,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \item Deretter konfigureres WLAN-kontrolleren omtrent slik:
     \begin{enumerate}%[<+->]
     \item \texttt{\footnotesize config interface vlan management 100}
-    \item \alert{\texttt{\footnotesize config ipv6 interface address management primary fd5c:14cf:c300:100::2 64 fe80::1}}
+    \item \texttt{\footnotesize config ipv6 interface address management primary fd5c:14cf:c300:100::2 64 \alert{fe80::1}}
     \end{enumerate}
   \end{itemize}
 \end{frame}
@@ -4073,7 +4166,9 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \item Nyere Windows kan fint fungere med bare IPv6
     \item Windows (Server) eldre enn 8 og 2012 må ha \alert{IPv4} i
       tillegg til IPv6 for å kommunisere med Microsofts globale
-      oppdateringsservere
+      oppdateringsservere; dette skyldes
+      \href{https://insinuator.net/2014/05/microsoft-windows-update-over-ipv6-or-not/}{manglende}
+      \texttt{AAAA} for \texttt{download.windowsupdate.com}
     \end{itemize}
   \item Linux og *BSD har hatt IPv6-støtte i lang tid
   \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
@@ -4089,13 +4184,13 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \begin{itemize}%[<+->]
   \item Windows:
     \begin{itemize}%[<+->]
-    \item \texttt{netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
-    \item \texttt{netsh interface ipv6 set route ::/0\ "\textit{navn-på-grensesnitt}"\ \textit{routerens-IPv6-adresse}}
+    \item \texttt{\footnotesize netsh interface ipv6 set address\ "\textit{navn-på-grensesnitt}"\ \textit{IPv6-adresse}}
+    \item \texttt{\footnotesize netsh interface ipv6 set route ::/0\ "\textit{navn-på-grensesnitt}"\ \textit{routerens-IPv6-adresse}}
     \end{itemize}
   \item Eksempel:
     \begin{itemize}%[<+->]
-    \item \texttt{netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1337}
-    \item \texttt{netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1}
+    \item \texttt{\footnotesize netsh interface ipv6 set address\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1337}
+    \item \texttt{\footnotesize netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1}
     \end{itemize}
   \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
   \end{itemize}
@@ -4208,7 +4303,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     2017, ISBN-13: 978-1-58714-477-6
     \begin{itemize}%[<+->]
     \item Unngå førsteutgaven og unngå første opplag av andreutgaven
-      pga.\ for mange skrivefeil.
+      pga.\ for mange skrivefeil
     \end{itemize}
   \item «IPv6 for Enterprise Networks» av Shannon McFarland, Muninder
     Sambi, Nikhil Sharma og Sanjay Hooda, Cisco Press, 2011, ISBN-13:
@@ -4223,7 +4318,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     API, 3rd Edition» av W. Richard Stevens, Bill Fenner, Andrew
     M. Rudoff, Addison-Wesley Professional, 2003, ISBN-13: 978-0-13141-155-5
     \begin{itemize}%[<+->]
-    \item SCTP har i ettertid fått nye navn på flere konstanter.
+    \item SCTP har i ettertid fått nye navn på flere konstanter
     \end{itemize}
   \end{itemize}
 \end{frame}
