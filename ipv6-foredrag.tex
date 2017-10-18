@@ -288,9 +288,10 @@
   \item Enkel grunnheader med fast lengde
   \item Flere utvidelsesheadere, men riktig rekkefølge er viktig
   \item Nye versjoner av ICMP og DHCP: ICMPv6 og DHCPv6
-  \item ARP- og RARP-funksjonene for IPv6 er en del av ICMPv6
+  \item Innebygd kobling mellom adressene i lagene 2 og 3
     \begin{itemize}%[<+->]
-    \item Ikke nødvendig med ekstra lim for adressene i lagene 2 og 3
+      \item ARP og RARP ble funnet opp i ettertid for IPv4
+      \item ICMPv6 håndterer koblingene mellom link-adresser og IPv6-adresser
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -353,8 +354,8 @@
   \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
     pent, så kan
     \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
-    holde på til \href{http://www.potaroo.net/tools/ipv4/}{27.\ 
-      september 2018}
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{5.\ oktober
+      2018}
   \end{itemize}
 \end{frame}
 
@@ -2014,7 +2015,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
     multicast-adresser for internt bruk i organisasjonen
   \item Bruk av flaggene \texttt{R}, \texttt{P} og \texttt{T}
-    gjennomgås i detalj i del~10
+    gjennomgås i detalj i del~11
   \end{itemize}
 \end{frame}
 
@@ -3340,23 +3341,23 @@ Internet Control Message Protocol v6
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{T} er satt til \texttt{1}}
-  \pause
+  %\pause
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |                  112 bits                   |
 +--------+----+----+---------------------------------------------+
-|\Alert{4}{11111111}|\Alert{4}{0001}|\Alert{5}{scop}|                  \Alert{6}{group ID}                   |
+|\Alert{2}{11111111}|\Alert{2,5}{0001}|\Alert{3,6}{scop}|                  \Alert{4}{group ID}                   |
 +--------+----+----+---------------------------------------------+
 \end{Verbatim}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Adresseformatet er gitt av \rfc{4291}
-  \item \alert<4>{De 12 mest signifikante bitene} må beholdes som vist
-  \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi
-  \item \alert<6>{De 112 øvrige bitene} kan settes fritt
+  \item \alert<2>{De 12 mest signifikante bitene} må beholdes som vist
+  \item \alert<3>{Rekkevidden} settes til ønsket, lovlig verdi
+  \item \alert<4>{De 112 øvrige bitene} kan settes fritt
   \item Eksempel:
-    \begin{itemize}[<+->]
-    \item \texttt{FF\alert<9>{1}\alert<10>{2}:DEAD:BEEF:CAFE:0:FACE:B00C:1}
-    \item En \alert<9>{midlertidig}, \alert<10>{link-local} multicast-adresse
+    \begin{itemize}%[<+->]
+    \item \texttt{FF\alert<5>{1}\alert<6>{2}:DEAD:BEEF:CAFE:0:FACE:B00C:1}
+    \item En \alert<5>{midlertidig}, \alert<6>{link-local} multicast-adresse
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -3365,25 +3366,25 @@ Internet Control Message Protocol v6
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{PT} er satt til \texttt{11}}
-  \pause
+  %\pause
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |   8    |    8   |       64       |    32    |
 +--------+----+----+--------+--------+----------------+----------+
-|\Alert{4}{11111111}|\Alert{4}{0011}|\Alert{5}{scop}|reserved|  \Alert{6}{plen}  | \Alert{7}{network prefix} | \Alert{8}{group ID} |
+|\Alert{2}{11111111}|\Alert{2}{0011}|\Alert{3}{scop}|reserved|  \Alert{4}{plen}  | \Alert{5}{network prefix} | \Alert{6}{group ID} |
 +--------+----+----+--------+--------+----------------+----------+
 \end{Verbatim}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Adresseformatet er gitt av \rfc{3306}
-  \item \alert<4>{De 12 mest signifikante bitene} må beholdes som vist
-  \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi, og
+  \item \alert<2>{De 12 mest signifikante bitene} må beholdes som vist
+  \item \alert<3>{Rekkevidden} settes til ønsket, lovlig verdi, og
     rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
     angitte nettverksprefikset
-  \item Feltet «plen» settes til \alert<6>{prefikslengden til
+  \item Feltet «plen» settes til \alert<4>{prefikslengden til
       nettverksprefikset for subnettet ditt}, \(0<\mathtt{plen}\le64\)
-  \item \alert<7>{Nettverksprefikset} er unicast-prefikset for
+  \item \alert<5>{Nettverksprefikset} er unicast-prefikset for
     subnettet ditt
-  \item \alert<8>{«Group ID»} settes i tråd med retningslinjene til \rfc{3307}
+  \item \alert<6>{«Group ID»} settes i tråd med retningslinjene til \rfc{3307}
   \end{itemize}
 \end{frame}
 
@@ -3398,16 +3399,16 @@ Internet Control Message Protocol v6
 +--------+----+----+--------+--------+----------------+----------+
 \end{Verbatim}
   %\pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Eksempler:
-    \begin{itemize}[<+->]
-    \item \texttt{FF3\alert<3>{E}:00\alert<3>{30}:2001:700:1100:0:1337:1337}
+    \begin{itemize}%[<+->]
+    \item \texttt{FF3\alert<2>{E}:00\alert<2>{30}:2001:700:1100:0:1337:1337}
     \item Den første adressa er begrenset til internett (global,
       48-bit)
-    \item \texttt{FF3\alert<5>{8}:00\alert<5>{30}:2001:700:1100:0:1337:1337}
+    \item \texttt{FF3\alert<3>{8}:00\alert<3>{30}:2001:700:1100:0:1337:1337}
     \item Den andre adressa er begrenset til FSI, gitt at FSI er
       utgangspunktet (organizational-local, 48-bit)
-    \item \texttt{FF3\alert<7>{2}:00\alert<7>{40}:2001:700:1100:3:1337:1337}
+    \item \texttt{FF3\alert<4>{2}:00\alert<4>{40}:2001:700:1100:3:1337:1337}
     \item Den tredje adressa er begrenset til IT-avdelingen ved FSI,
       gitt at IT-avdelingen er utgangspunktet (link-local, 64-bit)
     \end{itemize}
@@ -3418,31 +3419,31 @@ Internet Control Message Protocol v6
 \begin{frame}[fragile]%[allowframebreaks]
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{RPT} er satt til \texttt{111}}
-  \pause
+  %\pause
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|\Alert{4}{11111111}|\Alert{4}{0111}|\Alert{5}{scop}|rsvd|\Alert{6-7}{RIID}|\Alert{8}{plen}| \Alert{9}{network prefix} | \Alert{10}{group ID} |
+|\Alert{2}{11111111}|\Alert{2}{0111}|\Alert{3}{scop}|rsvd|\Alert{4-5}{RIID}|\Alert{6}{plen}| \Alert{7}{network prefix} | \Alert{8}{group ID} |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
-  \pause
-  \begin{itemize}[<+->]
+  %\pause
+  \begin{itemize}%[<+->]
   \item Adresseformatet er gitt av \rfc{3956}
-  \item \alert<4>{De 12 mest signifikante bitene} må beholdes som vist
-  \item \alert<5>{Rekkevidden} settes til ønsket, lovlig verdi, og
+  \item \alert<2>{De 12 mest signifikante bitene} må beholdes som vist
+  \item \alert<3>{Rekkevidden} settes til ønsket, lovlig verdi, og
     rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
     angitte nettverksprefikset
-  \item Feltet «RIID» settes til \alert<6>{møtepunktets
+  \item Feltet «RIID» settes til \alert<4>{møtepunktets
       grensesnittidentifikator}
-    \begin{itemize}[<+->]
-    \item Feltet \alert<7>{«RIID»} kan ikke være \(0\), for dette skaper
+    \begin{itemize}%[<+->]
+    \item Feltet \alert<5>{«RIID»} kan ikke være \(0\), for dette skaper
       konflikt med «Subnet-Router Anycast Address» fra \rfc{3513}
     \end{itemize}
-  \item Feltet «plen» settes til \alert<8>{prefikslengden til
+  \item Feltet «plen» settes til \alert<6>{prefikslengden til
       nettverksprefikset for subnettet ditt}, \(0<\mathtt{plen}\le64\)
-  \item \alert<9>{Nettverksprefikset} er unicast-prefikset for
+  \item \alert<7>{Nettverksprefikset} er unicast-prefikset for
     subnettet ditt
-  \item \alert<10>{«Group ID»} settes i tråd med retningslinjene til
+  \item \alert<8>{«Group ID»} settes i tråd med retningslinjene til
     \rfc{3307}
   \end{itemize}
 \end{frame}
@@ -3454,18 +3455,18 @@ Internet Control Message Protocol v6
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|11111111|0111|\Alert{3}{scop}|rsvd|\Alert{5}{RIID}|\Alert{4}{plen}| \Alert{4-5}{network prefix} | group ID |
+|11111111|0111|\Alert{2}{scop}|rsvd|\Alert{4}{RIID}|\Alert{3}{plen}| \Alert{3}{network prefix} | group ID |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
   %pause
-  \begin{itemize}[<+->]
+  \begin{itemize}%[<+->]
   \item Eksempel:
-    \begin{itemize}[<+->]
-    \item \texttt{FF7\alert<3>{8}:0\alert<5>{1}\alert<4>{30}:\alert<4-5>{2001:700:1100:0}:1337:1337}
-      \begin{itemize}[<+->]
-      \item Denne adressa er begrenset til \alert<3>{organization-local}
-      \item Nettverksprefikset er \texttt{\alert<4>{2001:700:1100}::/\alert<4>{48}}
-      \item Møtepunktets adresse er \alert<6>{\texttt{\alert<5>{2001:700:1100}::\alert<5>{1}}}
+    \begin{itemize}%[<+->]
+    \item \texttt{FF7\alert<2>{8}:0\alert<4>{1}\alert<4>{30}:\alert<4>{2001:700:1100:0}:1337:1337}
+      \begin{itemize}%[<+->]
+      \item Denne adressa er begrenset til \alert<2>{organization-local}
+      \item Nettverksprefikset er \texttt{\alert<3>{2001:700:1100}::/\alert<3>{48}}
+      \item Møtepunktets adresse er \alert<5>{\texttt{\alert<4>{2001:700:1100}::\alert<4>{1}}}
       \item Møtepunktets adresse må konfigureres på et
         loopbackgrensesnitt i Fagskolens ytterste
         IPv6-multicast-router
@@ -3525,7 +3526,7 @@ Internet Control Message Protocol v6
   %\pause
   \begin{enumerate}%[<+->]
   \item \alert{\texttt{interface TenGigabitEthernet1/2}}
-  \item \texttt{description Linknett mellom FiG og Uninett/HiG}
+  \item \texttt{description Linknett mellom FSI og Uninett/NTNU i Gjøvik}
   \item \alert{\texttt{no switchport}}
   \item \alert{\texttt{ipv6 address 2001:700:0:8074::2/64}}
   \item \alert{\texttt{ipv6 nd ra suppress}}
@@ -3552,28 +3553,6 @@ Internet Control Message Protocol v6
     \alert{\texttt{ipv6 route FD5C:14CF:C300:A001::/64 Vlan21 2001:700:1100:F001::2}}\\
     \alert{\texttt{ipv6 route FD5C:14CF:C300:A002::/64 Vlan21 2001:700:1100:F001::3}}\\
     \alert{\texttt{ipv6 route FD5C:14CF:C300:A003::/64 Vlan21 2001:700:1100:F001::4}}
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}%[allowframebreaks]
-  \frametitle{Konfigurasjon av IPv6}
-  \framesubtitle{Cisco IOS: IPv6-unicast-routing (servernett uten autokonfig)}
-  %\pause
-  \begin{enumerate}%[<+->]
-  \item \alert{\texttt{interface Vlan20}}
-  \item \texttt{description Ytre servernett}
-  \item {\texttt{ipv6 address FE80::1 link-local}}
-  \item {\texttt{ipv6 address 2001:700:1100:1::1/64}}
-  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}}
-  \item {\texttt{ipv6 nd other-config-flag}}
-  \item {\texttt{ipv6 nd router-preference High}}
-  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
-  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
-  \item {\texttt{no ipv6 redirects}}
-  \item {\texttt{no ipv6 unreachables}}
-  \item {\texttt{ipv6 dhcp server offisiell}}
-  \item {\texttt{ipv6 traffic-filter Vlan20IPv6InnFra in}}
-  \item {\texttt{ipv6 traffic-filter Vlan20IPv6UtTil\ \ out}}
   \end{enumerate}
 \end{frame}
 
@@ -3617,6 +3596,28 @@ Internet Control Message Protocol v6
   \item {\texttt{ipv6 dhcp server offisiell}}
   \item {\texttt{ipv6 traffic-filter Vlan50IPv6InnFra in}}
   \item {\texttt{ipv6 traffic-filter Vlan50IPv6UtTil\ \ out}}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+  \frametitle{Konfigurasjon av IPv6}
+  \framesubtitle{Cisco IOS: IPv6-unicast-routing (servernett uten autokonfig)}
+  %\pause
+  \begin{enumerate}%[<+->]
+  \item \alert{\texttt{interface Vlan20}}
+  \item \texttt{description Ytre servernett}
+  \item {\texttt{ipv6 address FE80::1 link-local}}
+  \item {\texttt{ipv6 address 2001:700:1100:1::1/64}}
+  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}}
+  \item {\texttt{ipv6 nd other-config-flag}}
+  \item {\texttt{ipv6 nd router-preference High}}
+  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
+  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
+  \item {\texttt{no ipv6 redirects}}
+  \item {\texttt{no ipv6 unreachables}}
+  \item {\texttt{ipv6 dhcp server offisiell}}
+  \item {\texttt{ipv6 traffic-filter Vlan20IPv6InnFra in}}
+  \item {\texttt{ipv6 traffic-filter Vlan20IPv6UtTil\ \ out}}
   \end{enumerate}
 \end{frame}
 
