@@ -282,7 +282,8 @@
   \begin{itemize}%[<+->]
   \item En lag-3-protokoll
   \item Erstatning for IPv4
-  \item Har eksistert siden desember 1995, først spesifisert i \rfc{1883}
+  \item Har eksistert siden desember 1995, \rfc{1883}
+  \item Endelig standardisert i \rfc{8200}, juli 2017
   \item \alert<2>{Har 128-bit adresser}
   \item \alert<2>{Automatisk adressekonfigurasjon \textit{uten\/} bruk av DHCPv6}
   \item Enkel grunnheader med fast lengde
@@ -311,11 +312,14 @@
     IPv4-adresser:
   \item
     \(2^{32\phantom{0}}=\phantom{000.000.000.000.000.000.000.000.000.00}4.294.967.296\)
-  \item Ca.\ \href{https://en.wikipedia.org/wiki/World_population}{7,6 mrd.}\ mennesker på Jorda
+  \item Ca.\ \href{https://en.wikipedia.org/wiki/World_population}{7,6
+      mrd.}\ mennesker på Jorda, og ca.\ halvparten av disse bruker Internett
   \item Mindre enn \alert<2>{\(3.702.258.432\)} IPv4-adresser kan bli
     brukt som offentlige IPv4-unicast-adresser
   \item Se Tronds utregning fra juli 2012:
     \texttt{\url{http://ximalas.info/2012/07/20/how-many-ipv4-addresses-are-there/}}
+  \item Ingen adresser til infrastruktur hvis hver «internettperson»
+    får sin IPv4-adresse
   \end{itemize}
 \end{frame}
 
@@ -505,7 +509,8 @@
     \begin{itemize}%[<+->]
     \item Avsender må sjekke veien lengre fremme og måle smaleste krøttersti
     \item Path Maximum Transmission Unit Discovery (Path MTU, PMTUD)
-    \item Sende store nok pakker og redusere størrelsen og prøve på nytt dersom «Packet too big» mottas
+    \item Sende noen testpakker, og redusere størrelsen og prøve på
+      nytt dersom «Packet Too Big» mottas
     \end{itemize}
   \item IPsec ble spesifisert som en del av IPv6
     \begin{itemize}%[<+->]
@@ -749,8 +754,8 @@
   \begin{itemize}%[<+->]
   \item Facebook er tilgjengelig med IPv6
     \begin{itemize}%[<+->]
-    \item \texttt{2a03:2880:2130:cf05:face:b00c:0:1} og
-    \item \texttt{2a03:2880:2110:df07:face:b00c:0:1}
+    \item \texttt{2a03:2880:2130:cf05:\alert<2>{face}:\alert<2>{b00c}:0:1} og
+    \item \texttt{2a03:2880:2110:df07:\alert<2>{face}:\alert<2>{b00c}:0:1}
     \end{itemize}
   \item Google er tilgjengelig med IPv6
     \begin{itemize}%[<+->]
@@ -768,7 +773,7 @@
     \end{itemize}
   \item Wikipedia er tilgjengelig med IPv6
     \begin{itemize}%[<+->]
-    \item \texttt{2620:0:862:ed1a::1}
+    \item \texttt{2620:0:862:\alert<2>{ed1a}::1}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -881,7 +886,7 @@
   \item Flow Label-feltet kan også brukes til å smugle data sammen med
     legitim trafikk, eller merke slik trafikk, se avsnitt 6.1 i
     \rfc{6437}
-  \item Se \rfc{2460}, \rfc{3595}, \rfc{6294}, \rfc{6436} og \rfc{6437}
+  \item Se \rfc{3595}, \rfc{6294}, \rfc{6436}, \rfc{6437} og \rfc{8200}
   \end{itemize}
 \end{frame}
 
@@ -900,8 +905,8 @@
     \item Encapsulating Security Payload
     \item Mobility Header
     \end{enumerate}
-  \item Se \rfc{2460}, \rfc{4302}, \rfc{4303}, \rfc{6275} og
-    \rfc{7045}
+  \item Se \rfc{4302}, \rfc{4303}, \rfc{6275} og \rfc{7045} og
+    \rfc{8200}
   \end{itemize}
 \end{frame}
 
@@ -939,7 +944,7 @@
   %\pause
   \begin{itemize}%[<+->]
   \item Valgene \texttt{Pad1} og \texttt{PadN} er definert i
-    \rfc{2460}
+    \rfc{8200}
   \item Andre valg: Jumbo Payload \prfc{2675}, RPL Option \prfc{6553},
     Tunnel Encapsulation Limit \prfc{2473}, Router Alert \prfc{2711},
     Quick-Start \prfc{4782}, CALIPSO \prfc{5570}, SMF\_DPD
@@ -1130,7 +1135,7 @@
   \item Minste tillatte MTU for IPv6 er 1280 oktetter
   \item Er største tilgjengelige MTU mindre enn 1280 oktetter, så må
     lagene under IPv6 sørge for fragmentering og sammensetting av
-    IPv6-datagrammene \prfc{2460}
+    IPv6-datagrammene \prfc{8200}
   \end{itemize}
 \end{frame}
 
@@ -1179,6 +1184,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Frame Relay: \rfc{2590}
   \item IEEE 1394 (FireWire): \rfc{3146}
   \item Low-Power Wireless Personal Area Networks (6LoWPAN): \rfc{4919}
+  \item Personal Area Networks (PAN): \rfc{4944}
   \item Point-to-point protocol (PPP): \rfc{5072}
   \item Brevduer: \rfc{6214}, basert på \rfc{1149}
   \end{itemize}
@@ -1708,8 +1714,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     \item Tjenestene må da åpne separate lyttesocketer for IPv4 og
       IPv6
     \end{itemize}
-  \item \rfc{6890} inneholder en oversikt over alle spesialadresser
-    for både IPv4 og IPv6
+  \item \rfc{6890} og \rfc{8190} inneholder en oversikt over alle
+    spesialadresser for IPv4 og IPv6
   \end{itemize}
 \end{frame}
 
@@ -1754,7 +1760,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     den samme adressa\hfill\prfc{4862}
   \item Resultat: «slabbedasken» kan bruke nettverket uforstyrra
   \item Dersom det er 2 eller flere «slabbedasker» i samme nettverk, hva da?
-  \item Problemet kan løses med «SEcure Neighbor Discovery» (SEND), \rfc{3971}
+  \item Problemet kan løses med «SEcure Neighbor Discovery» (SEND),
+    \rfc{3971}, og \rfc{6494}, \rfc{6495} og \rfc{6980}
   \end{itemize}
 \end{frame}
 
@@ -1841,7 +1848,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item De siste 64 bitene er grensesnittidentifikator i modda
     EUI-64-format
   \item Eksempel: \texttt{FEC0::DEAD:BEEF:1337}
-  \item Ikke bruk site-local-adresser \prfc{3879}
+  \item \textbf{Ikke} bruk site-local-adresser \prfc{3879}
   \item Site-local-adresser er erstatta med ULA \prfc{4193}
   \end{itemize}
 \end{frame}
@@ -2014,6 +2021,8 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
     i \rfc{3956}
   \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
     multicast-adresser for internt bruk i organisasjonen
+  \item \rfc{7371} utvider to av multicastadressetypene med et nytt
+    4-bit flaggfelt
   \item Bruk av flaggene \texttt{R}, \texttt{P} og \texttt{T}
     gjennomgås i detalj i del~11
   \end{itemize}
@@ -2025,11 +2034,11 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   %\pause
   \begin{multicols}{2}
     \begin{itemize}%[<+->]
-    \item Følgende rekkevidder er definert i \rfc{4921}:
+    \item Følgende rekkevidder er definert i \rfc{4921} og \rfc{7346}:
     \item \texttt{0}: reservert
     \item \texttt{1}: interface-local
     \item \texttt{2}: link-local
-    \item \texttt{3}: reservert
+    \item \texttt{3}: realm-local
     \item \texttt{4}: admin-local
     \item \texttt{5}: site-local
     \item \texttt{6}: ikke definert
@@ -2427,8 +2436,8 @@ uninett IN A6  0 2001:700::
     \item 131: Multicast Listener Report
     \item 132: Multicast Listener Done
     \end{itemize}
-  \item Brukes for å fortelle routere hvilke multicastadresser man vil
-    motta trafikk for
+  \item Brukes for å fortelle routere hvilke multicastadresser man er
+    interessert i
   \end{itemize}
 \end{frame}
 
@@ -2522,10 +2531,10 @@ uninett IN A6  0 2001:700::
   \end{itemize}
 \end{frame}
 
-\section{Version 2 Multicast Listener Report}
+\section{Multicast Listener Report Version 2}
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
-  \framesubtitle{Version 2 Multicast Listener Report}
+  \framesubtitle{Multicast Listener Report Version 2}
   %\pause
   \begin{itemize}%[<+->]
   \item Definert: \rfc{3810}
@@ -2571,8 +2580,8 @@ uninett IN A6  0 2001:700::
   \item Med SEND unngås DoS-problemene til Neighbor Discovery
   \item Routerne deler ut kryptografisk genererte adresser \prfc{3972}
   \item Dette krever sertifikatstruktur (RPKI, \rfc{6494}) i routere og i klienter
-  \item Ikke implementert i Cisco IOS 12.2(55)SE for Catalyst 3560G
-  \item Ikke spesielt aktuelt for FSI, for annet enn ansattnett, på
+  \item Implementert i Cisco IOS XE for Catalyst 4500E
+  \item Ikke spesielt aktuelt for FSI, annet enn for ansattnettet, på
     grunn av den administrative byrden
   \end{itemize}
 \end{frame}
@@ -2613,10 +2622,10 @@ uninett IN A6  0 2001:700::
   \end{itemize}
 \end{frame}
 
-\section{FMIPv6}
+\section{Fast Handovers for Mobile IPv6 (FMIPv6)}
 \begin{frame}%[allowframebreaks]
   \frametitle{ICMPv6}
-  \framesubtitle{FMIPv6}
+  \framesubtitle{Fast Handovers for Mobile IPv6 (FMIPv6)}
   %\pause
   \begin{itemize}%[<+->]
   \item Definert: \rfc{5568}
@@ -2624,6 +2633,7 @@ uninett IN A6  0 2001:700::
     \begin{itemize}%[<+->]
     \item 154: FMIPv6, Fast handovers, Mobile IPv6
     \end{itemize}
+  \item Se også \texttt{\url{http://fmipv6.org/}}
   \end{itemize}
 \end{frame}
 
@@ -2880,7 +2890,7 @@ ICMPv6 Option (Recursive DNS Server 2001:700:1100:1::3 2001:700:1100:1::2)
   \item Routeren kan også oppgi DNS-serveradresser i routerannonseringa
   \item Se \rfc{8106}
   \item Dette kan sameksistere med DHCPv6
-  \item Det er fordelaktig med like verdier, begge steder
+  %\item Det er fordelaktig med like verdier, begge steder
   \item DHCPv6 kan i tillegg angi DNS-domenet for ukvalifiserte navn
   \item Microsoft Windows 10 Creators Update (1703) vil
     \href{https://insinuator.net/2017/05/one-step-closer-rdnss-rfc-8106-support-in-windows-10-creators-update/}{angivelig}
@@ -3052,7 +3062,7 @@ Internet Control Message Protocol v6
   \item DHCPv6 er definert i \rfc{3315} med oppdateringer fra
     \rfc{3319}, \rfc{3633}, \rfc{3646}, \rfc{3736}, \rfc{4361},
     \rfc{5007}, \rfc{5494}, \rfc{6221}, \rfc{6422}, \rfc{6603},
-    \rfc{6644}, \rfc{7083} og \rfc{7550}
+    \rfc{6644}, \rfc{7083}, \rfc{7227}, \rfc{7283} og \rfc{7550}
   \item Kommunikasjonen foregår først med multicast og UDP, og kan
     senere bytte til unicast og UDP
   \item Klientene bruker port 546, mens serverne og relay-agentene
@@ -3062,8 +3072,9 @@ Internet Control Message Protocol v6
   \item Relay-agentene videresender til multicast-adressa
     \texttt{FF05::1:3}, med mindre de kjenner og vil bruke
     unicast-adressa til serveren
-  \item Serverne svarer med sin link-local-adresser som avsender og
-    klientens link-local-adresse som mottaker
+  \item En on-link-server eller -relay-agent svarer med sin
+    link-local-adresser som avsender og klientens link-local-adresse
+    som mottaker
   \end{itemize}
 \end{frame}
 
@@ -3301,7 +3312,7 @@ Internet Control Message Protocol v6
   \framesubtitle{Multicastflaggene}
   %\pause
   \begin{itemize}%[<+->]
-  \item Flaggene heter \texttt{0RPT}\hfill(null, err, pe, te)
+  \item Flaggene heter \texttt{XRPT}
   \item Flagget \texttt{T} angir med \texttt{0} at adressa er velkjent
     (definert av \href{http://www.iana.org/}{IANA}), og med \texttt{1}
     at adressa er midlertidig (lokalt definert)
@@ -3312,6 +3323,12 @@ Internet Control Message Protocol v6
     i \rfc{3956}
   \item Flaggene \texttt{P} og \texttt{R} gjør det enkelt å lage egne
     multicast-adresser for internt bruk i organisasjonen
+  \item Flagget \texttt{X} er reservert for fremtidig bruk
+  \item \rfc{7371} delegerer 4 av de 8 reserverte bitene i
+    multicastadressene som fremtidige flaggbit, \texttt{rrrr}
+  \item Delegeringa er hittil bare gyldig når flagget \texttt{T} er
+    påskrudd, eller når flaggene \texttt{PT} eller \texttt{RPT} er
+    påskrudd
   \end{itemize}
 \end{frame}
 
@@ -3346,18 +3363,19 @@ Internet Control Message Protocol v6
   \framesubtitle{Når \texttt{PT} er satt til \texttt{11}}
   %\pause
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
-|   8    |  4 |  4 |   8    |    8   |       64       |    32    |
-+--------+----+----+--------+--------+----------------+----------+
-|\Alert{2}{11111111}|\Alert{2}{0011}|\Alert{3}{scop}|reserved|  \Alert{4}{plen}  | \Alert{5}{network prefix} | \Alert{6}{group ID} |
-+--------+----+----+--------+--------+----------------+----------+
+|   8    |  4 |  4 |  4 |  4 |    8   |       64       |    32    |
++--------+----+----+----+----+--------+----------------+----------+
+|\Alert{2}{11111111}|\Alert{2}{0011}|\Alert{3}{scop}|ff2 |rsvd|  \Alert{4}{plen}  | \Alert{4-5}{network prefix} | \Alert{6}{group ID} |
++--------+----+----+----+----+--------+----------------+----------+
 \end{Verbatim}
   %\pause
   \begin{itemize}%[<+->]
-  \item Adresseformatet er gitt av \rfc{3306}
+  \item Adresseformatet er gitt av \rfc{3306} og \rfc{7371}
   \item \alert<2>{De 12 mest signifikante bitene} må beholdes som vist
   \item \alert<3>{Rekkevidden} settes til ønsket, lovlig verdi, og
     rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
     angitte nettverksprefikset
+  \item Feltene «ff2» og «rsvd» må være nullet ut inntil videre
   \item Feltet «plen» settes til \alert<4>{prefikslengden til
       nettverksprefikset for subnettet ditt}, \(0<\mathtt{plen}\le64\)
   \item \alert<5>{Nettverksprefikset} er unicast-prefikset for
@@ -3370,11 +3388,11 @@ Internet Control Message Protocol v6
   \frametitle{Avansert multicast}
   \framesubtitle{Når \texttt{PT} er satt til \texttt{11}}
   %\pause
-\begin{Verbatim}[fontsize=\tiny]
-|   8    |  4 |  4 |   8    |    8   |       64       |    32    |
-+--------+----+----+--------+--------+----------------+----------+
-|11111111|0011|scop|reserved|  plen  | network prefix | group ID |
-+--------+----+----+--------+--------+----------------+----------+
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
+|   8    |  4 |  4 |  4 |  4 |    8   |       64       |    32    |
++--------+----+----+----+----+--------+----------------+----------+
+|11111111|0011|\Alert{2-4}{scop}|ff2 |rsvd|  \Alert{2-4}{plen}  | network prefix | group ID |
++--------+----+----+----+----+--------+----------------+----------+
 \end{Verbatim}
   %\pause
   \begin{itemize}%[<+->]
@@ -3401,16 +3419,17 @@ Internet Control Message Protocol v6
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|\Alert{2}{11111111}|\Alert{2}{0111}|\Alert{3}{scop}|rsvd|\Alert{4-5}{RIID}|\Alert{6}{plen}| \Alert{7}{network prefix} | \Alert{8}{group ID} |
+|\Alert{2}{11111111}|\Alert{2}{0111}|\Alert{3}{scop}|ff2 |\Alert{4-5}{RIID}|\Alert{6}{plen}| \Alert{7}{network prefix} | \Alert{8}{group ID} |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
   %\pause
   \begin{itemize}%[<+->]
-  \item Adresseformatet er gitt av \rfc{3956}
+  \item Adresseformatet er gitt av \rfc{3956} og \rfc{7371}
   \item \alert<2>{De 12 mest signifikante bitene} må beholdes som vist
   \item \alert<3>{Rekkevidden} settes til ønsket, lovlig verdi, og
     rekkevidden skal ikke overskride \textit{utbredelsen\/} av det
     angitte nettverksprefikset
+  \item Feltet «ff2» må være nullet ut inntil videre
   \item Feltet «RIID» settes til \alert<4>{møtepunktets
       grensesnittidentifikator}
     \begin{itemize}%[<+->]
@@ -3433,14 +3452,14 @@ Internet Control Message Protocol v6
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|11111111|0111|\Alert{2}{scop}|rsvd|\Alert{4}{RIID}|\Alert{3}{plen}| \Alert{3}{network prefix} | group ID |
+|11111111|0111|\Alert{2}{scop}|ff2 |\Alert{4}{RIID}|\Alert{3}{plen}| \Alert{3}{network prefix} | group ID |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
   %pause
   \begin{itemize}%[<+->]
   \item Eksempel:
     \begin{itemize}%[<+->]
-    \item \texttt{FF7\alert<2>{8}:0\alert<4>{1}\alert<4>{30}:\alert<4>{2001:700:1100:0}:1337:1337}
+    \item \texttt{FF7\alert<2>{8}:0\alert<4>{1}\alert<3>{30}:\alert<3-4>{2001:700:1100:0}:1337:1337}
       \begin{itemize}%[<+->]
       \item Denne adressa er begrenset til \alert<2>{organization-local}
       \item Nettverksprefikset er \texttt{\alert<3>{2001:700:1100}::/\alert<3>{48}}
@@ -3449,7 +3468,7 @@ Internet Control Message Protocol v6
         loopbackgrensesnitt i Fagskolens ytterste
         IPv6-multicast-router
       \item \texttt{interface Loopback1}\\
-        \texttt{\ ipv6 address 2001:700:1100::1/128}
+        \texttt{\ \alert<5>{ipv6 address 2001:700:1100::1/128}}
       \end{itemize}
     \end{itemize}
   \end{itemize}
@@ -4225,7 +4244,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \frametitle{Noen RFC-er om IPv6}
   %\pause
   \begin{itemize}%[<+->]
-  \item IPv6-spesifikasjon: \rfc{2460}, \rfc{5095}, \rfc{5722},
+  \item IPv6-spesifikasjon: \rfc{8200}, \rfc{5095}, \rfc{5722},
     \rfc{5871}, \rfc{6437}, \rfc{6564}, \rfc{6935} og \rfc{6946}
   \item ICMPv6: \rfc{4443} og \rfc{4884}
   \item Neighbor Discovery: \rfc{4861}, \rfc{5942} og \rfc{6980}
@@ -4257,6 +4276,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \rfc{3542} og \rfc{4038}
   \item Grunnleggende krav til IPv6-routere hos sluttbrukere (CER):
     \rfc{7084}
+  \item Valg av router når man har flere prefiks: \rfc{8028}
   \end{itemize}
 \end{frame}
 
