@@ -3312,7 +3312,7 @@ Internet Control Message Protocol v6
   \framesubtitle{Multicastflaggene}
   %\pause
   \begin{itemize}%[<+->]
-  \item Flaggene heter \texttt{XRPT}
+  \item Flaggene heter \texttt{XRPT} \prfc{7371}
   \item Flagget \texttt{T} angir med \texttt{0} at adressa er velkjent
     (definert av \href{http://www.iana.org/}{IANA}), og med \texttt{1}
     at adressa er midlertidig (lokalt definert)
@@ -3326,9 +3326,8 @@ Internet Control Message Protocol v6
   \item Flagget \texttt{X} er reservert for fremtidig bruk
   \item \rfc{7371} delegerer 4 av de 8 reserverte bitene i
     multicastadressene som fremtidige flaggbit, \texttt{rrrr}
-  \item Delegeringa er hittil bare gyldig når flagget \texttt{T} er
-    påskrudd, eller når flaggene \texttt{PT} eller \texttt{RPT} er
-    påskrudd
+  \item Delegeringa er bare gyldig når flaggene \texttt{PT} eller
+    \texttt{RPT} er påskrudd
   \end{itemize}
 \end{frame}
 
@@ -3431,7 +3430,7 @@ Internet Control Message Protocol v6
     angitte nettverksprefikset
   \item Feltet «ff2» må være nullet ut inntil videre
   \item Feltet «RIID» settes til \alert<4>{møtepunktets
-      grensesnittidentifikator}
+      grensesnittidentifikator}, fra \texttt{1} til \texttt{F}
     \begin{itemize}%[<+->]
     \item Feltet \alert<5>{«RIID»} kan ikke være \(0\), for dette skaper
       konflikt med «Subnet-Router Anycast Address» fra \rfc{3513}
@@ -3452,14 +3451,14 @@ Internet Control Message Protocol v6
 \begin{Verbatim}[commandchars=\\\{\},fontsize=\tiny]
 |   8    |  4 |  4 |  4 |  4 | 8  |       64       |    32    |
 +--------+----+----+----+----+----+----------------+----------+
-|11111111|0111|\Alert{2}{scop}|ff2 |\Alert{4}{RIID}|\Alert{3}{plen}| \Alert{3}{network prefix} | group ID |
+|11111111|0111|\Alert{2}{scop}|ff2 |\Alert{4-5}{RIID}|\Alert{3}{plen}| \Alert{3-5}{network prefix} | group ID |
 +--------+----+----+----+----+----+----------------+----------+
 \end{Verbatim}
   %pause
   \begin{itemize}%[<+->]
   \item Eksempel:
     \begin{itemize}%[<+->]
-    \item \texttt{FF7\alert<2>{8}:0\alert<4>{1}\alert<3>{30}:\alert<3-4>{2001:700:1100:0}:1337:1337}
+    \item \texttt{FF7\alert<2>{8}:0\alert<4-5>{1}\alert<3>{30}:\alert<3-5>{2001:700:1100:0}:1337:1337}
       \begin{itemize}%[<+->]
       \item Denne adressa er begrenset til \alert<2>{organization-local}
       \item Nettverksprefikset er \texttt{\alert<3>{2001:700:1100}::/\alert<3>{48}}
