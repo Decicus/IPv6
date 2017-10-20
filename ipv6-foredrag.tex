@@ -751,31 +751,38 @@
   \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 i utlandet}
   %\pause
-  \begin{itemize}%[<+->]
-  \item Facebook er tilgjengelig med IPv6
+  \begin{multicols}{2}
     \begin{itemize}%[<+->]
-    \item \texttt{2a03:2880:2130:cf05:\alert<2>{face}:\alert<2>{b00c}:0:1} og
-    \item \texttt{2a03:2880:2110:df07:\alert<2>{face}:\alert<2>{b00c}:0:1}
+    \item Facebook er tilgjengelig med IPv6
+      \begin{itemize}%[<+->]
+      \item \texttt{\scriptsize2a03:2880:2130:cf05:\alert<2>{face}:\alert<2>{b00c}:0:1} og
+      \item \texttt{\scriptsize2a03:2880:2110:df07:\alert<2>{face}:\alert<2>{b00c}:0:1}
+      \end{itemize}
+    \item Google er tilgjengelig med IPv6
+      \begin{itemize}%[<+->]
+      \item \texttt{2a00:1450:400c:c00::5e},
+      \item \texttt{2a00:1450:400c:c00::8a} og
+      \item \texttt{2a00:1450:4010:c04::63}
+      \end{itemize}
+      \vfill\null\columnbreak
+    \item LinkedIn er tilgjengelig med IPv6
+      \begin{itemize}%[<+->]
+      \item \texttt{2620:109:c007:102::5be1:f881}
+      \end{itemize}
+    \item Snapchat er tilgjengelig med IPv6
+      \begin{itemize}%[<+->]
+      \item \texttt{2a00:1450:400c:c00::79}
+      \end{itemize}
+    \item Wikipedia er tilgjengelig med IPv6
+      \begin{itemize}%[<+->]
+      \item \texttt{2620:0:862:\alert<2>{ed1a}::1}
+      \end{itemize}
+    \item YouTube er tilgjengelig med IPv6
+      \begin{itemize}%[<+->]
+      \item \texttt{2a00:1450:400f:807::200e}
+      \end{itemize}
     \end{itemize}
-  \item Google er tilgjengelig med IPv6
-    \begin{itemize}%[<+->]
-    \item \texttt{2a00:1450:400c:c00::5e},
-    \item \texttt{2a00:1450:400c:c00::8a} og
-    \item \texttt{2a00:1450:4010:c04::63}
-    \end{itemize}
-  \item LinkedIn er tilgjengelig med IPv6
-    \begin{itemize}%[<+->]
-    \item \texttt{2620:109:c007:102::5be1:f881}
-    \end{itemize}
-  \item Snapchat er tilgjengelig med IPv6
-    \begin{itemize}%[<+->]
-    \item \texttt{2a00:1450:400c:c00::79}
-    \end{itemize}
-  \item Wikipedia er tilgjengelig med IPv6
-    \begin{itemize}%[<+->]
-    \item \texttt{2620:0:862:\alert<2>{ed1a}::1}
-    \end{itemize}
-  \end{itemize}
+  \end{multicols}
 \end{frame}
 
 \section{Google Chrome og IPvFoo}
@@ -1997,9 +2004,10 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \item Definert: \rfc{4291}
   \item Bruksområde: én-til-mange-kommunikasjon
   \item Prefiks: \texttt{FF::/8}
-  \item Flagg \texttt{\textit{f\/}} og rekkevidde
+  \item Flaggfelt~1 \texttt{\textit{f\/}} og rekkevidde
     \texttt{\textit{r\/}} er innebygget i adressa:
     \texttt{FF\textit{fr}::/16}
+  \item Flaggfelt~2: \rfc{7371}
   \item Eksempel: \texttt{FF0E::101/128}\hfill(global multicast-adresse
     for NTP)
   \end{itemize}
@@ -2010,7 +2018,7 @@ Ethernet II, Src: AsustekC_f2:72:40 (00:26:18:f2:72:40), Dst: Cisco_77:14:57 (00
   \framesubtitle{Multicast-adresser}
   %\pause
   \begin{itemize}%[<+->]
-  \item Flaggene heter \texttt{0RPT}\hfill(null, err, pe, te)
+  \item Flaggene heter \texttt{XRPT}
   \item Flagget \texttt{T} angir med \texttt{0} at adressa er velkjent
     (definert av \href{http://www.iana.org/}{IANA}), og med \texttt{1}
     at adressa er midlertidig (lokalt definert)
@@ -2459,7 +2467,7 @@ uninett IN A6  0 2001:700::
   \item Sentral ved autokonfigurering av adresser
   \item Brukes for å bekrefte at nodene er oppegående og bestemme
     lag-2-adressene til mottakere
-  \item Neighbor Discovery gjennomgås i detalj i del~8
+  \item Neighbor Discovery gjennomgås i detalj i del~9
   \end{itemize}
 \end{frame}
 
@@ -2617,8 +2625,13 @@ uninett IN A6  0 2001:700::
     \item 152: Multicast Router Solicitation
     \item 153: Multicast Router Termination
     \end{itemize}
-  \item Catalyst 3560G har ikke støtte for annet enn IPv4-multicast
-  \item Ved FSI har vi ikke fått testet IPv6-multicast
+  \item Catalyst 4500E har full støtte for multicast
+  \item Ved FSI er det bare IPv6-automatikken som bruker
+    IPv6-multicast
+  \item VLC 2.2.6 bare tryner når vi prøver å sende lyd og bilde til
+    en multicastadresse
+  \item Eldre versjoner av VLC fungerte prikkfritt med multicast
+  \item Ghost kan bruke IPv4-multicast ved mottak av «image»
   \end{itemize}
 \end{frame}
 
@@ -4299,10 +4312,12 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \item «IPv6 Fundamentals: A Straightforward Approach to
     Understanding IPv6, 2nd Edition» av Rick Graziani, Cisco Press,
     2017, ISBN-13: 978-1-58714-477-6
-    \begin{itemize}%[<+->]
-    \item Unngå førsteutgaven og unngå første opplag av andreutgaven
-      pga.\ for mange skrivefeil
-    \end{itemize}
+    \ifratio{43}{}{ % Underpunktet tar for mye plass for 4:3-formatet.
+      \begin{itemize}%[<+->]
+      \item Unngå førsteutgaven og unngå første opplag av andreutgaven
+        pga.\ for mange skrivefeil
+      \end{itemize}
+    }
   \item «IPv6 for Enterprise Networks» av Shannon McFarland, Muninder
     Sambi, Nikhil Sharma og Sanjay Hooda, Cisco Press, 2011, ISBN-13:
     978-1-58714-227-7
@@ -4315,9 +4330,11 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \item «Unix Network Programming, Volume 1: The Sockets Networking
     API, 3rd Edition» av W. Richard Stevens, Bill Fenner, Andrew
     M. Rudoff, Addison-Wesley Professional, 2003, ISBN-13: 978-0-13141-155-5
-    \begin{itemize}%[<+->]
-    \item SCTP har i ettertid fått nye navn på flere konstanter
-    \end{itemize}
+    \ifratio{43}{}{ % Underpunktet tar for mye plass for 4:3-formatet.
+      \begin{itemize}%[<+->]
+      \item SCTP har i ettertid fått nye navn på flere konstanter
+      \end{itemize}
+    }
   \end{itemize}
 \end{frame}
 
