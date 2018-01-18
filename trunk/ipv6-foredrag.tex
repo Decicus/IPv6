@@ -153,7 +153,7 @@
     \texttt{\$${}$Ximalas${}$\$}
   \item Driverfila for denne PDF-fila bærer denne identifikasjonen:\\
     \svndriverfil
-  \item Copyright \copyright\ 2017 Trond Endrestøl
+  \item Copyright \copyright\ 2018 Trond Endrestøl
   \item Dette verket er lisensiert med:
     \href{http://creativecommons.org/}{Creative Commons},
     \href{http://creativecommons.org/licenses/by-sa/3.0/no/}{Navngivelse-DelPåSammeVilkår
@@ -2764,6 +2764,13 @@ ICMPv6 Option (Recursive DNS Server 2001:700:1100:1::3 2001:700:1100:1::2)
     Lifetime: 400
     Recursive DNS Servers: 2001:700:1100:1::3 (2001:700:1100:1::3)
     Recursive DNS Servers: 2001:700:1100:1::2 (2001:700:1100:1::2)
+ICMPv6 Option (DNS Search List Option fig.ol.no)
+    Type: DNS Search List Option (31)
+    Length: 3 (24 bytes)
+    Reserved
+    Lifetime: 400
+    Domain Names: fig.ol.no\000
+    Padding
 \end{Verbatim}
   \columnbreak
   \begin{itemize}
@@ -3410,6 +3417,7 @@ Internet Control Message Protocol v6
   \item \alert{\texttt{ipv6 address 2001:700:1100:8001::1/64}}
   \item \alert{\texttt{ipv6 nd other-config-flag}}
   \item \alert{\texttt{ipv6 nd router-preference High}}
+  \item \alert{\texttt{ipv6 nd ra dns-search-list domain fig.ol.no}}
   \item \alert{\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
   \item \alert{\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
   \item \alert{\texttt{no ipv6 redirects}}
@@ -3425,19 +3433,20 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: IPv6-unicast-routing (trådløst sluttbrukernett)}
   \begin{enumerate}
   \item \alert{\texttt{interface Vlan50}}
-  \item {description Trådløst studentnett}
-  \item {\texttt{ipv6 address FE80::1 link-local}}
-  \item {\texttt{ipv6 address 2001:700:1100:5::1/64}}
-  \item {\texttt{ipv6 nd other-config-flag}}
-  \item {\texttt{ipv6 nd router-preference High}}
+  \item description Trådløst studentnett
+  \item \texttt{ipv6 address FE80::1 link-local}
+  \item \texttt{ipv6 address 2001:700:1100:5::1/64}
+  \item \texttt{ipv6 nd other-config-flag}
+  \item \texttt{ipv6 nd router-preference High}
   \item \alert{\texttt{ipv6 nd ra solicited unicast}}
-  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
-  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
-  \item {\texttt{no ipv6 redirects}}
-  \item {\texttt{no ipv6 unreachables}}
-  \item {\texttt{ipv6 dhcp server offisiell}}
-  \item {\texttt{ipv6 traffic-filter Vlan50IPv6InnFra in}}
-  \item {\texttt{ipv6 traffic-filter Vlan50IPv6UtTil\ \ out}}
+  \item \texttt{ipv6 nd ra dns-search-list domain fig.ol.no}
+  \item \texttt{ipv6 nd ra dns server 2001:700:1100:1::3}
+  \item \texttt{ipv6 nd ra dns server 2001:700:1100:1::2}
+  \item \texttt{no ipv6 redirects}
+  \item \texttt{no ipv6 unreachables}
+  \item \texttt{ipv6 dhcp server offisiell}
+  \item \texttt{ipv6 traffic-filter Vlan50IPv6InnFra in}
+  \item \texttt{ipv6 traffic-filter Vlan50IPv6UtTil\ \ out}
   \end{enumerate}
 \end{frame}
 
@@ -3445,20 +3454,21 @@ Internet Control Message Protocol v6
   \frametitle{Konfigurasjon av IPv6}
   \framesubtitle{Cisco IOS: IPv6-unicast-routing (servernett uten autokonfig)}
   \begin{enumerate}
-  \item \alert{\texttt{interface Vlan20}}
-  \item \texttt{description Ytre servernett}
-  \item {\texttt{ipv6 address FE80::1 link-local}}
-  \item {\texttt{ipv6 address 2001:700:1100:1::1/64}}
-  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}}
-  \item {\texttt{ipv6 nd other-config-flag}}
-  \item {\texttt{ipv6 nd router-preference High}}
-  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::3}}
-  \item {\texttt{ipv6 nd ra dns server 2001:700:1100:1::2}}
-  \item {\texttt{no ipv6 redirects}}
-  \item {\texttt{no ipv6 unreachables}}
-  \item {\texttt{ipv6 dhcp server offisiell}}
-  \item {\texttt{ipv6 traffic-filter Vlan20IPv6InnFra in}}
-  \item {\texttt{ipv6 traffic-filter Vlan20IPv6UtTil\ \ out}}
+  \item \alert{\texttt{interface Vlan20}
+  \item \texttt{description Ytre servernett
+  \item \texttt{ipv6 address FE80::1 link-local}
+  \item \texttt{ipv6 address 2001:700:1100:1::1/64}
+  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}
+  \item \texttt{ipv6 nd other-config-flag}
+  \item \texttt{ipv6 nd router-preference High}
+  \item \texttt{ipv6 nd ra dns-search-list domain fig.ol.no}
+  \item \texttt{ipv6 nd ra dns server 2001:700:1100:1::3}
+  \item \texttt{ipv6 nd ra dns server 2001:700:1100:1::2}
+  \item \texttt{no ipv6 redirects}
+  \item \texttt{no ipv6 unreachables}
+  \item \texttt{ipv6 dhcp server offisiell}
+  \item \texttt{ipv6 traffic-filter Vlan20IPv6InnFra in}
+  \item \texttt{ipv6 traffic-filter Vlan20IPv6UtTil\ \ out}
   \end{enumerate}
 \end{frame}
 
