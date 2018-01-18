@@ -3433,7 +3433,7 @@ Internet Control Message Protocol v6
   \framesubtitle{Cisco IOS: IPv6-unicast-routing (trådløst sluttbrukernett)}
   \begin{enumerate}
   \item \alert{\texttt{interface Vlan50}}
-  \item description Trådløst studentnett
+  \item \texttt{description Trådløst studentnett}
   \item \texttt{ipv6 address FE80::1 link-local}
   \item \texttt{ipv6 address 2001:700:1100:5::1/64}
   \item \texttt{ipv6 nd other-config-flag}
@@ -3454,11 +3454,11 @@ Internet Control Message Protocol v6
   \frametitle{Konfigurasjon av IPv6}
   \framesubtitle{Cisco IOS: IPv6-unicast-routing (servernett uten autokonfig)}
   \begin{enumerate}
-  \item \alert{\texttt{interface Vlan20}
-  \item \texttt{description Ytre servernett
+  \item \alert{\texttt{interface Vlan20}}
+  \item \texttt{description Ytre servernett}
   \item \texttt{ipv6 address FE80::1 link-local}
   \item \texttt{ipv6 address 2001:700:1100:1::1/64}
-  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}
+  \item \alert{\texttt{ipv6 nd prefix default 2592000 604800 no-autoconfig}}
   \item \texttt{ipv6 nd other-config-flag}
   \item \texttt{ipv6 nd router-preference High}
   \item \texttt{ipv6 nd ra dns-search-list domain fig.ol.no}
