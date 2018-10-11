@@ -347,8 +347,8 @@
   \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
     pent, så kan
     \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
-    holde på til \href{http://www.potaroo.net/tools/ipv4/}{3.\ oktober
-      2018}
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{31.\ mai
+      2019}
   \end{itemize}
 \end{frame}
 
@@ -438,6 +438,22 @@
     \href{http://www.internetsociety.org/deploy360/blog/2013/10/microsoft-the-best-xbox-one-gaming-experience-will-be-over-ipv6/}{IPv6}
   \item Mer enn 50\,\% av kundetrafikken hos T-Mobile US går med
     \href{https://conference.apnic.net/data/37/464xlat-apricot-2014_1393236641.pdf}{IPv6}
+  \item Adresserommene fra \rfc{1918}
+    \begin{itemize}
+    \item kan bli uttømt over tid, og
+    \item bli problematisk ved fusjoner, bl.a. overlappinger;
+    \end{itemize}
+    noe Microsoft
+    \href{https://blog.apnic.net/2017/01/19/ipv6-only-at-microsoft/}{opplevde}
+    etter fusjon med Nokia og utvidelse av Azure
+  \item Microsoft eksperimenterte med ren IPv6 i 2016, og møtte noen hindre på veien
+    \begin{itemize}
+    \item routere som ikke støtter RDNSS \prfc{8106} og gjør livet
+      surt for Android,
+    \item Android som ikke støtter DHCPv6 \prfc{3315} og gjør livet
+      surt for brukerne når RDNSS ikke er tilgjengelig, og
+    \item Windows 10 som hadde en feil ved DHCPv6-håndteringen
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
