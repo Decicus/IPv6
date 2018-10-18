@@ -92,7 +92,7 @@
 \title{\textbf{IPv6-foredrag}}
 \subtitle{22 år, men ennå ikke den største suksessen}
 \author[T.~Endrestøl]{\href{http://fig.ol.no/~trond/}{Trond Endrestøl}}
-\institute[FSI/IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
+\institute[FSI, IT]{\href{http://fagskolen-innlandet.no/}{Fagskolen Innlandet}, IT-avdelingen}
 \logo{\includegraphics[scale=.25]{fi_logo_147px.pdf}}
 %\subject{Emne for bruk i egenskapene til PDF-fila}
 %\keywords{Nøkkelord for bruk i egenskapene til PDF-fila}
@@ -249,13 +249,6 @@
 
 \part{Kort om IPv6}
 
-% Av en eller annen grunn klarer ikke beamer 2017/08/22 v3.43 å dytte
-% den første delen inn blant bokmerkene i PDF-filene.  Kanskje kommer
-% dette av at det er noen frames før den aller første \part-kommandoen.
-\makeatletter
-\bookmark[page=\the\c@page,level=1]{Kort om IPv6}
-\makeatother
-
 \begin{frame}
   \partpage
 \end{frame}
@@ -283,7 +276,7 @@
   \item Innebygd kobling mellom adressene i lagene 2 og 3
     \begin{itemize}
       \item ARP og RARP ble funnet opp i ettertid for IPv4
-      \item ICMPv6 håndterer koblingene mellom link-adresser og IPv6-adresser
+      \item ICMPv6 og ND håndterer koblingene mellom link-adresser og IPv6-adresser
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -344,11 +337,21 @@
       \href{https://www.arin.net/announcements/2015/20150924.html}{24.~september
         2015}
     \end{itemize}
-  \item Dersom \href{http://www.afrinic.net/}{AFRINIC} oppfører seg
-    pent, så kan
+  \item Dersom \href{http://www.afrinic.net/}{AFRINIC} fortsetter i
+    dagens tempo, så kan
     \href{http://afrinic.net/en/community/ipv4-exhaustion}{AFRINIC}
-    holde på til \href{http://www.potaroo.net/tools/ipv4/}{31.\ mai
+    holde på til \href{http://www.potaroo.net/tools/ipv4/}{8.\ juni
       2019}
+    \begin{itemize}
+    \item AFRINIC er i
+      \href{https://afrinic.net/en/library/news/1973-afrinic-is-approaching-ipv4-exhaustion-phase-1}{fase
+        1} med
+      \href{https://www.afrinic.net/www3-utils/statistics/ipv4_exhaustion/charts/bar/data/pool-usage.php}{7.407.616
+        enkeltadresser ledig}, og vil gå til fase 2 når de har bare én
+      /11-blokk ledig i den siste /8-blokken
+    \item AFRINIC vil prøve å holde én sammenhengende /11-blokk lengst
+      mulig i reserve
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -365,8 +368,8 @@
     \begin{itemize}
     \item \href{https://homenet.no/}{\texttt{homenet.no}} vil
       \textit{ikke tilby\/}
-      \href{https://homenet.no/kundeservice/kundeservice_og_hjelp/teknisk/hva_betyr_egentlig_adsl__vdsl_og_andre_ord_som_vi_bruker_/har_dere_ikke_ipv6_}{IPv6}
-      før det er full krise
+      \href{https://www.homenet.no/kundeservice}{IPv6}
+      før «et større behov foreligger»
     \end{itemize}
   \item Store og mellomstore selskaper:
     \begin{itemize}
@@ -391,6 +394,9 @@
       \end{itemize}
     \item Prisen for brukte IPv4-adresser har gått ned fra
       \$11,25/adresse til \$10/adresse
+      \begin{itemize}
+      \item Ca. kr.~82,55/adresse
+      \end{itemize}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -415,7 +421,7 @@
       \href{http://www.nyteknik.se/nyheter/it_telekom/allmant/article3904264.ece}{spore
         abonnenter}
     \end{itemize}
-  \item 3G og 4G/LTE klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
+  \item 4G/LTE og 5G klarer kanskje å øke IPv6-presset\hfill\prfc{6459}
   \item 464XLAT er en mulig
     \href{https://conference.apnic.net/data/37/464xlat-apricot-2014_1393236641.pdf}{avslutningsstrategi
       for IPv4}\hfill\prfc{6877}
@@ -463,6 +469,14 @@
   \framesubtitle{Andre nyttige ting ved IPv6}
   \begin{itemize}
   \item Hierarkisk adressestruktur
+    \begin{itemize}
+    \item LIR/ISP mottar som regel et /32-prefiks av RIR (eller NIR i APNIC-regionen)
+    \item Sluttbruker mottar som regel et /48-, /52- eller et
+      /56-prefiks
+    \item Sluttbruker kan da opprette \(2^{128-48-64}=2^{16}=65536\),
+      \(2^{128-52-64}=2^{12}=4096\) eller \(2^{128-56-64}=2^8=256\)
+      subnett/VLAN
+    \end{itemize}
   \item Enklere planlegging av subnett sammenlignet med IPv4
     \begin{itemize}
     \item De fleste IPv6-subnett bruker et 64-bit prefiks
@@ -490,7 +504,9 @@
       \hfill\texttt{192.146.238.0/23}\hfill\null
     \item Uninett trenger bare å annonsere dette IPv6-prefikset:
     \item \texttt{2001:700::/32}
-    \item Uninetts prefiks er en del av \texttt{2001:600::/23} som
+    \item Uninetts prefiks ble
+      \href{https://apps.db.ripe.net/db-web-ui/\#/lookup?source=ripe\&key=2001:700::\%2F32\&type=inet6num}{allokert}
+      6.~april 2001(?), og er en del av \texttt{2001:600::/23} som
       RIPE NCC
       \href{http://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml}{fikk}
       av IANA, 1.~juli 1999
@@ -628,12 +644,12 @@
     \begin{itemize}
     \item IPv4-linknett: \texttt{128.39.70.168/30}
       \begin{itemize}
-      \item \texttt{128.39.70.169} brukes ved HiG
+      \item \texttt{128.39.70.169} brukes ved HiG (nå NTNU i Gjøvik)
       \item \texttt{128.39.70.170} brukes ved FSI
       \end{itemize}
     \item IPv6-linknett: \texttt{2001:700:0:8074::/64}
       \begin{itemize}
-      \item \texttt{2001:700:0:8074::1} brukes ved HiG
+      \item \texttt{2001:700:0:8074::1} brukes ved HiG (nå NTNU i Gjøvik)
       \item \texttt{2001:700:0:8074::2} brukes ved FSI
       \end{itemize}
     \end{itemize}
@@ -649,6 +665,9 @@
   \frametitle{IPv6 i inn- og utland}
   \framesubtitle{IPv6 ved Fagskolen Innlandet}
   \begin{itemize}
+  \item Oktober 2017: RDNSS i RA for alle VLAN
+  \item Januar 2018: DNSSL i RA for alle VLAN\newline
+    \phantom{X}\hfill(Cisco må kvalitetssikre dokumentasjonen sin \dots)
   \item I dag er de fleste brukere ved FSI kasta over i nettet til
     Oppland fylkeskommune (OFK)
   \item Dette skjedde etter ombygginga av skolen i 2011--2012
@@ -4026,7 +4045,7 @@ deny ipv6 any FF\alert{80}::/\alert{12}
   \item Linux og *BSD har hatt IPv6-støtte i lang tid
   \item Autokonfig med tilfeldig grensesnittidentifikator er det mest
     vanlige for skrivebordssystemer
-  \item Manuell konfigurasjon er mest vanlig for serversystemer
+  \item Manuell konfigurasjon er mest vanlig for infrastruktur
   \end{itemize}
 \end{frame}
 
@@ -4045,6 +4064,8 @@ deny ipv6 any FF\alert{80}::/\alert{12}
     \item \texttt{\footnotesize netsh interface ipv6 set route ::/0\ "\texttt{Lokal tilkobling}"\ 2001:700:1100:8001::1}
     \end{itemize}
   \item Konfigurasjon gjennom grafisk grensesnitt i «Kontrollpanelet» er også mulig
+  \item \texttt{netsh} er utfasa i nyere Windows-versjoner i favør av
+    PowerShell
   \end{itemize}
 \end{frame}
 
